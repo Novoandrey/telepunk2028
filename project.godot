@@ -18,11 +18,15 @@ config/icon="res://icon.svg"
 [display]
 
 window/size/viewport_width=540
-window/size/viewport_height=1260
+window/size/viewport_height=960
 
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://localization/TP_Localize.en.translation", "res://localization/TP_Localize.fr.translation", "res://localization/TP_Localize.ru.translation")
 
 [rendering]
 
