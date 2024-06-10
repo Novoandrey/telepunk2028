@@ -1,3 +1,20 @@
-[gd_scene format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=2 format=3 uid="uid://b8losi1peqew4"]
+
+[sub_resource type="GDScript" id="GDScript_77nju"]
+script/source = "extends Node2D
+
+# TODO: Something something
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+"
 
 [node name="Game" type="Node2D"]
+script = SubResource("GDScript_77nju")
+
+[node name="Camera2D" type="Camera2D" parent="."]
