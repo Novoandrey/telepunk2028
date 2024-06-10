@@ -25,3 +25,5 @@ func _on_button_en_button_down():
 func _on_button_fr_button_down():
 	TranslationServer.set_locale("fr")
 	pass # Replace with function body.
+
+# TODO: Добавить остальные локализации
