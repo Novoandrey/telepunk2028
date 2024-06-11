@@ -1,7 +1,5 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=3 format=3 uid="uid://b8losi1peqew4"]
 
-[ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_it0cj"]
-[ext_resource type="AudioStream" uid="uid://cto076y8tkcb6" path="res://assets/music/02-the-morning-of-the-new-millennium.mp3" id="2_he3kv"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
 
 [sub_resource type="GDScript" id="GDScript_77nju"]
@@ -24,12 +22,10 @@ script = SubResource("GDScript_77nju")
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-3, -109)
 scale = Vector2(0.863281, 0.863282)
-texture = ExtResource("1_it0cj")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_he3kv")
 autoplay = true
 
 [node name="Control" type="Control" parent="."]
