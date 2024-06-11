@@ -1,0 +1,5 @@
+[gd_resource type="NavigationPolygon" format=3 uid="uid://bugcgl60ofrmw"]
+
+[resource]
+outlines = Array[PackedVector2Array]([PackedVector2Array(-34, -31, -66, -16, -66, 19, -34, 35, -1, 19, -1, -16)])
+source_geometry_group_name = &"navigation_polygon_source_group"
