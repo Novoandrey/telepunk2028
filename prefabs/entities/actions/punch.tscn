@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6pi2cjidhtv"]
+
+[ext_resource type="Script" path="res://scripts/actions/Punch.gd" id="1_tqagx"]
+
+[node name="Punch" type="Node2D"]
+script = ExtResource("1_tqagx")
+_cost = 3
+_area = 1
+_range = 1
+_damage = 5
+_actionHintText = "Выберите цель для удара"
+_animation = null
