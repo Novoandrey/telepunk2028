@@ -38,9 +38,9 @@ script = ExtResource("3_5sg5t")
 [node name="ButtonRU" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -70.0
-offset_top = -330.0
+offset_top = -329.0
 offset_right = 71.0
-offset_bottom = -294.0
+offset_bottom = -293.0
 text = "STARTSCREEN_LANG_RU"
 clip_text = true
 

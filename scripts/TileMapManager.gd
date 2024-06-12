@@ -15,7 +15,8 @@ var tilemap_size
 var point_id: int = 0
 var currentX: int = 0
 var currentY: int = 0
-var dummie = preload("res://assets/prefabs/dummie.tscn")
+
+var tile_size = tile_set.tile_size;
 
 func _ready():
 	tilemap_size = get_used_rect().end - get_used_rect().position
@@ -37,14 +38,6 @@ func _ready():
 	add_traversable_tiles(get_used_cells(0))
 	connect_traversable_tiles(get_used_cells(0))
 	print(astar.get_point_count())
-
-
-func _input(event):
-	
-	if event.is_action_pressed("ui_action"):
-		var tile_position = local_to_map(get_viewport().get_mouse_position())
-		print(tile_position)
-		print(map_to_local(tile_position))
 
 func is_point_walkable(position):
 	var map_position = local_to_map(position)
@@ -90,3 +83,19 @@ func set_player_path(_player_position, _player_destination) -> Array:
 			#astar.get_closest_point(_player_destination))
 	return astar.get_point_path(astar.get_closest_point(_player_position),
 			astar.get_closest_point(_player_destination))
+
+func draw_outline(cell: Vector2i):
+	var coords = map_to_local(cell)
+	
+	
+	#draw_polyline([Vector2(coords.x, coords.y - tile_size.y / 2), 
+	#Vector2(coords.x + tile_size.x / 2, coords.y - tile_size.y / 4),
+	#Vector2(coords.x + tile_size.x / 2, coords.y + tile_size.y / 4),
+	#Vector2(coords.x, coords.y + tile_size.y / 2),
+	#Vector2(coords.x - tile_size.x / 2, coords.y + tile_size.y / 4),
+	#Vector2(coords.x - tile_size.x / 2, coords.y - tile_size.y / 4),
+	#Vector2(coords.x, coords.y - tile_size.y / 2)
+	#], Color(0.0, 1.0, 0.0), 5.0)
+	
+	print("Линия")
+	

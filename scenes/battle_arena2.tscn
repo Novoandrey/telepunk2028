@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://c6au4ft6g5mgf"]
+[gd_scene load_steps=4 format=3 uid="uid://df6va56hupiw8"]
 
-[ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="1_3fy4h"]
-[ext_resource type="Script" path="res://scripts/TileMapManager.gd" id="2_13w58"]
+[ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="1_n6d1l"]
+[ext_resource type="Script" path="res://scripts/TileMapManager.gd" id="2_80nm7"]
 
 [sub_resource type="Curve" id="Curve_a1aor"]
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0]
@@ -16,7 +16,7 @@ y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="Environment"]
 y_sort_enabled = true
-tile_set = ExtResource("1_3fy4h")
+tile_set = ExtResource("1_n6d1l")
 format = 2
 layer_0/name = "terrain"
 layer_0/y_sort_enabled = true
@@ -25,7 +25,7 @@ layer_0/tile_data = PackedInt32Array(65536, 131075, 2, 196608, 131075, 2, 327680
 layer_1/name = "impassable"
 layer_1/y_sort_enabled = true
 layer_1/z_index = 1
-layer_1/tile_data = PackedInt32Array(262146, 3, 1, 327681, 3, 1, 327682, 3, 1, 393219, 3, 1, 458755, 3, 1, 458756, 3, 1, 524292, 3, 1, 524293, 3, 1, 589828, 3, 1, 589829, 3, 1, 655365, 3, 1, 720901, 3, 1, 917508, 3, 1, 917507, 3, 1, 983043, 3, 1, 983042, 3, 1, 1048578, 3, 1, 1179649, 3, 1, 589825, 3, 1, 655362, 3, 1, 720898, 3, 1, 786434, 3, 1, 851969, 3, 1, 851968, 3, 1, 262147, 3, 1, 262148, 3, 1, 262149, 3, 1, 262150, 3, 1, 327683, 3, 1, 327684, 3, 1, 327685, 3, 1, 393220, 3, 1, 393221, 3, 1, 917509, 3, 1, 917510, 3, 1, 917511, 3, 1)
+layer_1/tile_data = PackedInt32Array(131074, 3, 1, 131075, 3, 1, 131076, 3, 1, 131077, 3, 1, 327682, 3, 1, 327683, 3, 1, 327684, 3, 1, 327685, 3, 1, 524290, 3, 1, 524291, 3, 1, 524292, 3, 1, 524293, 3, 1, 655363, 3, 1, 720899, 3, 1, 655364, 3, 1, 655365, 3, 1, 720900, 3, 1, 983042, 3, 1, 1048579, 3, 1, 1114115, 3, 1, 1114116, 3, 1, 1048581, 3, 1, 983045, 3, 1)
 layer_2/name = "objects"
 layer_2/y_sort_enabled = true
 layer_2/z_index = -1
@@ -33,7 +33,7 @@ layer_2/tile_data = PackedInt32Array()
 layer_3/name = "prediction"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array()
-script = ExtResource("2_13w58")
+script = ExtResource("2_80nm7")
 
 [node name="Line2D" type="Line2D" parent="."]
 z_index = 2
