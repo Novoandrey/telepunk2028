@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://iw04dvseynii"]
-
-[ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="1_58ojs"]
-
-[node name="Dummie" type="AnimatedSprite2D"]
-position = Vector2(120, 120)
-sprite_frames = ExtResource("1_58ojs")
-animation = &"idle"
