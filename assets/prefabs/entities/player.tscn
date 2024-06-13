@@ -1,6 +1,6 @@
 [gd_scene load_steps=35 format=3 uid="uid://b655whi43nq3n"]
 
-[ext_resource type="Script" path="res://scripts/player/PlayerController.gd" id="1_vi27s"]
+[ext_resource type="Script" path="res://scripts/player/PlayerController.gd" id="1_dgyff"]
 [ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_ftee8"]
 [ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/prefabs/UI/health.tscn" id="3_es2sf"]
 [ext_resource type="Texture2D" uid="uid://bojnbxpqva8hd" path="res://assets/sprites/player/Animations/Idle/idle1.png" id="4_rdivb"]
@@ -138,10 +138,10 @@ z_index = 1
 y_sort_enabled = true
 motion_mode = 1
 wall_min_slide_angle = 0.0
-script = ExtResource("1_vi27s")
+script = ExtResource("1_dgyff")
 _health = 10
-_actionPoints = 4
-_movePoints = 5
+_actionPoints = 10
+_movePoints = 7
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -155,6 +155,7 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_e8mem")
 
 [node name="Health" parent="." instance=ExtResource("3_es2sf")]
+mouse_filter = 2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_wt8el")
@@ -170,4 +171,4 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -30)
-texture = ExtResource("6_2fngb")
+texture = ExtResource("4_rdivb")
