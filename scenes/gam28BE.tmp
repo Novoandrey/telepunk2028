@@ -1,0 +1,126 @@
+[gd_scene load_steps=8 format=3 uid="uid://b8losi1peqew4"]
+
+[ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
+[ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
+[ext_resource type="Script" path="res://scripts/LoadLevel.gd" id="3_qfjf2"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/arena_scene.tscn" id="4_36wxk"]
+[ext_resource type="Script" path="res://scenes/LevelListManager.gd" id="5_1k2gq"]
+[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/arena_scene2.tscn" id="6_gky52"]
+
+[sub_resource type="GDScript" id="GDScript_77nju"]
+script/source = "extends Node2D
+
+# TODO: Something something
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(_delta):
+	pass
+
+
+func switch_scene():
+	
+	pass
+"
+
+[node name="Game" type="Node2D"]
+script = SubResource("GDScript_77nju")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-3, -109)
+scale = Vector2(0.863281, 0.863282)
+texture = ExtResource("1_f8ct7")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+autoplay = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_5sg5t")
+
+[node name="ButtonRU" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -329.0
+offset_right = 71.0
+offset_bottom = -293.0
+text = "STARTSCREEN_LANG_RU"
+clip_text = true
+
+[node name="ButtonEN" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -277.0
+offset_right = 71.0
+offset_bottom = -241.0
+text = "STARTSCREEN_LANG_EN"
+clip_text = true
+
+[node name="ButtonFR" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -224.0
+offset_right = 71.0
+offset_bottom = -188.0
+text = "STARTSCREEN_LANG_FR"
+clip_text = true
+
+[node name="ButtonContinue" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 194.0
+offset_right = 71.0
+offset_bottom = 230.0
+text = "STARTSCREEN_PROCEED"
+clip_text = true
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = -129.0
+offset_top = -117.0
+offset_right = 131.0
+offset_bottom = 117.0
+
+[node name="Label" type="Label" parent="Control/PanelContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+text = "STARTSCREEN_WELCOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Arena 1" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 269.0
+offset_right = 71.0
+offset_bottom = 305.0
+text = "Загрузить уровень"
+clip_text = true
+script = ExtResource("3_qfjf2")
+
+[node name="OptionButton" type="OptionButton" parent="Control"]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 267.0
+offset_right = 259.0
+offset_bottom = 306.0
+script = ExtResource("5_1k2gq")
+level_list = Array[PackedScene]([ExtResource("4_36wxk"), ExtResource("6_gky52")])
+
+[connection signal="button_down" from="Control/ButtonRU" to="." method="_on_button_ru_button_down"]
+[connection signal="button_down" from="Control/ButtonRU" to="Control" method="_on_button_ru_button_down"]
+[connection signal="button_down" from="Control/ButtonEN" to="." method="_on_button_en_button_down"]
+[connection signal="button_down" from="Control/ButtonEN" to="Control" method="_on_button_en_button_down"]
+[connection signal="button_down" from="Control/ButtonFR" to="." method="_on_button_fr_button_down"]
+[connection signal="button_down" from="Control/ButtonFR" to="Control" method="_on_button_fr_button_down"]
+[connection signal="pressed" from="Control/Arena 1" to="Control/Arena 1" method="on_click"]
+[connection signal="item_selected" from="Control/OptionButton" to="Control/OptionButton" method="_on_item_selected"]
