@@ -3,10 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://cirs4mglvl2m7" path="res://assets/sprites/tilesets/tiles.tres" id="1_bsk3e"]
 [ext_resource type="Script" path="res://scripts/tiles/FireTile.gd" id="1_ssovo"]
 
-[node name="FireTile" type="Node2D" node_paths=PackedStringArray("outline_sprite")]
+[node name="FireTile" type="Node2D"]
 z_index = -1
 script = ExtResource("1_ssovo")
-outline_sprite = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -1

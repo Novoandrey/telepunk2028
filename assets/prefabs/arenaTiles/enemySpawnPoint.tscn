@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://pd0wjop7dv5h"]
+
+[ext_resource type="Script" path="res://scripts/tiles/SpawnPoint.gd" id="1_l7dxb"]
+[ext_resource type="PackedScene" uid="uid://bl24olpybhlie" path="res://assets/prefabs/entities/enemy.tscn" id="2_rwwbq"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="3_quo7g"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ui77m"]
+font_size = 10
+font_color = Color(0, 0, 0, 1)
+
+[node name="Spawn" type="Node2D"]
+z_index = -1
+scale = Vector2(1.25, 1.25)
+script = ExtResource("1_l7dxb")
+critter = ExtResource("2_rwwbq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0.124572, 0.0864943, 1)
+z_index = -1
+position = Vector2(0, -20)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("3_quo7g")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -24.0
+offset_top = -31.2
+offset_right = 25.0
+offset_bottom = -8.2
+text = "Enemy"
+label_settings = SubResource("LabelSettings_ui77m")
+horizontal_alignment = 1
+vertical_alignment = 1
