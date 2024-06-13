@@ -1,11 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://bdcys2bwnj5e5"]
+[gd_scene load_steps=4 format=3 uid="uid://bdcys2bwnj5e5"]
 
+[ext_resource type="Script" path="res://scripts/actions/ActionController.gd" id="1_3nsje"]
 [ext_resource type="Texture2D" uid="uid://c34tdwq6jnf64" path="res://assets/sprites/player/Actions/grenadeIcon.png" id="1_yxi23"]
+[ext_resource type="PackedScene" uid="uid://c08om4uxu8ctk" path="res://assets/prefabs/entities/actions/grenade.tscn" id="2_dc0nm"]
 
 [node name="Grenade" type="Control"]
 custom_minimum_size = Vector2(0, 75)
 layout_mode = 3
 anchors_preset = 0
+script = ExtResource("1_3nsje")
+_action = ExtResource("2_dc0nm")
 
 [node name="TextureButton" type="TextureButton" parent="."]
 layout_mode = 1
@@ -17,3 +21,5 @@ grow_vertical = 2
 texture_normal = ExtResource("1_yxi23")
 ignore_texture_size = true
 stretch_mode = 0
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
