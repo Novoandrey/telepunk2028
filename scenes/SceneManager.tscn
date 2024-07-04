@@ -1,11 +1,11 @@
 [gd_scene load_steps=5 format=3 uid="uid://cnuebos6g30lw"]
 
-[ext_resource type="Script" path="res://scripts/SceneManager.gd" id="1_1nnhn"]
+[ext_resource type="Script" path="res://scripts/scene_manager/SceneManager.gd" id="1_1nnhn"]
 [ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/game.tscn" id="2_ffot7"]
-[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/arena_scene.tscn" id="3_dpl3v"]
-[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/arena_scene2.tscn" id="4_c0nkl"]
+[ext_resource type="PackedScene" uid="uid://cik8olsm1mnhn" path="res://scenes/game_chapters/metro.tscn" id="3_yckxh"]
+[ext_resource type="PackedScene" uid="uid://dmedpdpbc30j2" path="res://scenes/game_chapters/e-city.tscn" id="4_xhsyp"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_1nnhn")
 first_scene = ExtResource("2_ffot7")
-level_list = Array[PackedScene]([ExtResource("3_dpl3v"), ExtResource("4_c0nkl")])
+level_list = Array[PackedScene]([ExtResource("3_yckxh"), ExtResource("4_xhsyp")])

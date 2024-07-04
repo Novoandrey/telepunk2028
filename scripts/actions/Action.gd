@@ -2,7 +2,7 @@ class_name Action
 
 extends Node
 
-@onready var _actionHint: Label = get_node("/root/ArenaScene/UI/ActionHint")
+@onready var _actionHint: Label = get_node("/root/ArenaScene/CanvasLayer/UI/ActionHint")
 @onready var _owner:Critter = get_node("../")
 
 @export var _cost: int

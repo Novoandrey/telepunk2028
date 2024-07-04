@@ -27,6 +27,3 @@ func get_critter_at_cell(cell) -> Critter:
 			return critter
 	return null
 
-func return_to_menu():
-	sceneManager.switch_scenes(preload("res://scenes/game.tscn"), get_parent())
-	pass

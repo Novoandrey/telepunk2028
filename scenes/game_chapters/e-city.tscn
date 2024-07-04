@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://dmedpdpbc30j2"]
+
+[ext_resource type="Script" path="res://scripts/scene_manager/LevelManager.gd" id="1_kbx5w"]
+[ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_tkdyx"]
+[ext_resource type="PackedScene" uid="uid://c6d4ceqhektri" path="res://assets/prefabs/UI/ChapterSelection/scene_button.tscn" id="2_w8153"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/arena_scene.tscn" id="4_j8682"]
+[ext_resource type="PackedScene" uid="uid://cc0rahc1qfts" path="res://scenes/game_scenes/dialogues/dialogue_template.tscn" id="5_ce3v1"]
+[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_scenes/arenas/arena_scene2.tscn" id="6_kjufp"]
+[ext_resource type="PackedScene" uid="uid://hahjtv8d6ugy" path="res://scenes/game_scenes/events/event_template.tscn" id="7_wrp74"]
+[ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://assets/prefabs/UI/ChapterSelection/back_button.tscn" id="8_eugi0"]
+
+[node name="Chapter" type="Node2D"]
+script = ExtResource("1_kbx5w")
+metadata/SceneType = "Chapter"
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(270, 480)
+scale = Vector2(0.527832, 0.539555)
+texture = ExtResource("1_tkdyx")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SceneButton" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock") instance=ExtResource("2_w8153")]
+layout_mode = 0
+offset_left = 224.0
+offset_top = 77.0
+offset_right = 316.0
+offset_bottom = 108.0
+text = "Арена А"
+levels_to_unlock = [NodePath("../SceneButton2")]
+is_entry = true
+scene_to_load = ExtResource("4_j8682")
+
+[node name="SceneButton2" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock") instance=ExtResource("2_w8153")]
+layout_mode = 0
+offset_left = 327.0
+offset_top = 207.0
+offset_right = 419.0
+offset_bottom = 238.0
+text = "Диалог А"
+levels_to_unlock = [NodePath("../SceneButton3"), NodePath("../SceneButton4")]
+scene_to_load = ExtResource("5_ce3v1")
+
+[node name="SceneButton3" parent="CanvasLayer/Control" instance=ExtResource("2_w8153")]
+layout_mode = 0
+offset_left = 178.0
+offset_top = 328.0
+offset_right = 270.0
+offset_bottom = 359.0
+text = "Арена Б"
+scene_to_load = ExtResource("6_kjufp")
+
+[node name="SceneButton4" parent="CanvasLayer/Control" instance=ExtResource("2_w8153")]
+layout_mode = 0
+offset_left = 331.0
+offset_top = 327.0
+offset_right = 423.0
+offset_bottom = 358.0
+text = "Событие А"
+scene_to_load = ExtResource("7_wrp74")
+
+[node name="BackButton" parent="CanvasLayer/Control" instance=ExtResource("8_eugi0")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 120.0
+offset_bottom = 40.0

@@ -1,26 +1,38 @@
-[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://cnh4y1n4dwabp"]
+[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://cnh4y1n4dwabp"]
 
-[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="1_3fh34"]
 [ext_resource type="Texture2D" uid="uid://bob2txyiwyr5c" path="res://assets/sprites/tilesets/fullTiles.png" id="1_af8dj"]
 [ext_resource type="Texture2D" uid="uid://cchok1s88f8iy" path="res://assets/sprites/tilesets/topTiles.png" id="2_27s5v"]
-[ext_resource type="PackedScene" uid="uid://khwdovkv6p6s" path="res://assets/prefabs/arenaTiles/playerSpawnPoint.tscn" id="2_btihb"]
-[ext_resource type="Shader" path="res://assets/shaders/tile.gdshader" id="2_rt38o"]
+[ext_resource type="PackedScene" uid="uid://khwdovkv6p6s" path="res://assets/prefabs/arenaTiles/playerSpawnPoint.tscn" id="2_bal74"]
 [ext_resource type="PackedScene" uid="uid://cxasr4smr0hda" path="res://assets/prefabs/arenaTiles/fireTile.tscn" id="3_4c1bn"]
-[ext_resource type="PackedScene" uid="uid://pd0wjop7dv5h" path="res://assets/prefabs/arenaTiles/enemySpawnPoint.tscn" id="3_ros41"]
+[ext_resource type="PackedScene" uid="uid://pd0wjop7dv5h" path="res://assets/prefabs/arenaTiles/enemySpawnPoint.tscn" id="3_ca31d"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="5_57t87"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6wief"]
 resource_name = "Hazards"
 scenes/1/scene = ExtResource("3_4c1bn")
-scenes/2/scene = ExtResource("2_btihb")
-scenes/3/scene = ExtResource("3_ros41")
+scenes/2/scene = ExtResource("2_bal74")
+scenes/3/scene = ExtResource("3_ca31d")
+
+[sub_resource type="Shader" id="Shader_h7pb6"]
+code = "shader_type spatial;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_o8qnp"]
-shader = ExtResource("2_rt38o")
-shader_parameter/scale = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_188na"]
-shader = ExtResource("2_rt38o")
-shader_parameter/scale = 1.0
+render_priority = 0
+shader = SubResource("Shader_h7pb6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03kms"]
 texture = ExtResource("1_af8dj")
@@ -64,7 +76,6 @@ use_texture_padding = false
 0:2/0/physics_layer_0/angular_velocity = 0.0
 1:2/0 = 0
 1:2/0/texture_origin = Vector2i(0, -11)
-1:2/0/material = SubResource("ShaderMaterial_188na")
 1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_0/angular_velocity = 0.0
 2:2/0 = 0
@@ -120,15 +131,15 @@ use_texture_padding = false
 3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:4/0/physics_layer_0/angular_velocity = 0.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5k1g3"]
-shader = ExtResource("1_3fh34")
-shader_parameter/width = 1.5
-shader_parameter/outline_color = Color(0.310978, 0.000422588, 0.890198, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbal6"]
+shader = ExtResource("5_57t87")
+shader_parameter/width = 2.0
+shader_parameter/outline_color = Color(0, 0, 0.792157, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ooh2"]
-shader = ExtResource("1_3fh34")
-shader_parameter/width = 1.5
-shader_parameter/outline_color = Color(0.996078, 0, 0, 1)
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdtev"]
+shader = ExtResource("5_57t87")
+shader_parameter/width = 2.0
+shader_parameter/outline_color = Color(0.835294, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amery"]
 texture = ExtResource("2_27s5v")
@@ -136,43 +147,36 @@ margins = Vector2i(0, 2)
 separation = Vector2i(0, 2)
 texture_region_size = Vector2i(55, 55)
 0:0/0 = 0
-0:0/0/material = SubResource("ShaderMaterial_5k1g3")
+0:0/0/material = SubResource("ShaderMaterial_nbal6")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0 = 0
-1:0/0/material = SubResource("ShaderMaterial_4ooh2")
+1:0/0/modulate = Color(1, 0, 0, 1)
+1:0/0/material = SubResource("ShaderMaterial_sdtev")
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
 2:0/0 = 0
-2:0/0/material = SubResource("ShaderMaterial_5k1g3")
 2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:0/0/physics_layer_0/angular_velocity = 0.0
 0:1/0 = 0
-0:1/0/material = SubResource("ShaderMaterial_5k1g3")
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
 1:1/0 = 0
-1:1/0/material = SubResource("ShaderMaterial_5k1g3")
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
 2:1/0 = 0
-2:1/0/material = SubResource("ShaderMaterial_5k1g3")
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
 0:2/0 = 0
-0:2/0/material = SubResource("ShaderMaterial_5k1g3")
 0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:2/0/physics_layer_0/angular_velocity = 0.0
 1:2/0 = 0
-1:2/0/material = SubResource("ShaderMaterial_5k1g3")
 1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:2/0/physics_layer_0/angular_velocity = 0.0
 0:3/0 = 0
-0:3/0/material = SubResource("ShaderMaterial_5k1g3")
 0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:3/0/physics_layer_0/angular_velocity = 0.0
 1:3/0 = 0
-1:3/0/material = SubResource("ShaderMaterial_5k1g3")
 1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:3/0/physics_layer_0/angular_velocity = 0.0
 

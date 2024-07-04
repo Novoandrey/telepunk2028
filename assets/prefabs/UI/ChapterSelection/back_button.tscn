@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c33r6wij86wpg"]
+
+[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="1_r3ci2"]
+
+[node name="BackButton" type="Button"]
+offset_left = 10.0
+offset_top = 6.0
+offset_right = 130.0
+offset_bottom = 46.0
+text = "GETBACK"
+script = ExtResource("1_r3ci2")

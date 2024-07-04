@@ -4,6 +4,7 @@ extends Critter
 
 #@export var _animation: AnimatedSprite2D
 @onready var _path_line: Line2D = get_node("/root/ArenaScene/BattleArena/Line2D")
+@onready var _camera : Camera2D = get_node("/root/ArenaScene/Camera2D")
 
 var _current_path_prediction: Array
 var _current_tile_prediction: Vector2i :
@@ -23,6 +24,7 @@ func _ready():
 	global_position = tilemap.to_global(tilemap.map_to_local(tilemap.local_to_map(tilemap.to_local(global_position))))
 	_current_tile = tilemap.local_to_map(tilemap.to_local(global_position))
 	_currentMovePoints = _movePoints
+	_camera.make_current()
 
 func _physics_process(delta):
 	if(!_current_path_prediction.is_empty()):
@@ -44,7 +46,9 @@ func _physics_process(delta):
 			animation_tree["parameters/conditions/isMoving"] = false
 #Управление действиями игрока
 func _unhandled_input(event):
-	var mouse_pos = get_viewport().get_mouse_position()
+	
+	var mouse_pos = get_global_mouse_position()
+	
 	if _currentAction == null:
 		_current_tile_prediction = tilemap.local_to_map(tilemap.to_local(mouse_pos))
 	else:
@@ -52,23 +56,31 @@ func _unhandled_input(event):
 		available_action_area()
 	if tilemap.get_cell_tile_data(1, tilemap.local_to_map(tilemap.to_local(mouse_pos))):
 		return
-	if event.is_action_pressed("ui_action"):
+	
+	if event.is_action_released("ui_action"):
 		print("Clicked on {pos}".format({"pos": mouse_pos}))
-		print(tilemap.to_local(mouse_pos))
+		#print(tilemap.to_local(mouse_pos))
 		if _currentAction != null: #Совершение действия
 			var target_cell = tilemap.local_to_map(tilemap.to_local(mouse_pos))
 			if available_action_tile(_currentAction._range).has(target_cell):
 				_currentAction.activate(target_cell)
 		#Перемещение
 		elif _currentMovePoints > 0 and tilemap.astar.has_point(tilemap.get_id_for_point(tilemap.local_to_map(tilemap.to_local(mouse_pos)))) and !tilemap.astar.is_point_disabled(tilemap.get_id_for_point(tilemap.local_to_map(tilemap.to_local(mouse_pos)))):
+			if _path_line.get_point_count() > _currentMovePoints:
+				return
 			_current_path = tilemap.set_player_path(
 					tilemap.local_to_map(tilemap.to_local(global_position)),
 					tilemap.local_to_map(tilemap.to_local(mouse_pos))
 				).slice(1, _currentMovePoints+1)
-			print(_current_path)
+			#print(_current_path)
 			_state = state_names[State.WALK]
 			animation_tree["parameters/conditions/isIdle"] = false
 			animation_tree["parameters/conditions/isMoving"] = true
+	
+
+func move_prediction():
+	pass
+
 	
 func draw_prediction(_current_tile_prediction):
 	_path_line.clear_points()

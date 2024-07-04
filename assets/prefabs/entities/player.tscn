@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/player/PlayerController.gd" id="1_dgyff"]
 [ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_ftee8"]
-[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/prefabs/UI/health.tscn" id="3_es2sf"]
+[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/prefabs/UI/Arena/health.tscn" id="3_es2sf"]
 [ext_resource type="Texture2D" uid="uid://bojnbxpqva8hd" path="res://assets/sprites/player/Animations/Idle/idle1.png" id="4_rdivb"]
 [ext_resource type="Texture2D" uid="uid://hcnr2fh3bfns" path="res://assets/sprites/player/Animations/Idle/idle2.png" id="5_gi6oy"]
 [ext_resource type="Texture2D" uid="uid://dc16nkefmhc6w" path="res://assets/sprites/player/Animations/Idle/idle3.png" id="6_2fngb"]

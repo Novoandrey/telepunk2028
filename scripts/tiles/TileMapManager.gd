@@ -20,7 +20,7 @@ var tile_size = tile_set.tile_size;
 
 func _ready():
 	tilemap_size = get_used_rect().end - get_used_rect().position
-	tile_set.tile_size = Vector2i(tile_set.tile_size.x * tilemapScale, tile_set.tile_size.y * tilemapScale)
+	#tile_set.tile_size = Vector2i(tile_set.tile_size.x * tilemapScale, tile_set.tile_size.y * tilemapScale)
 	print(tilemap_size)
 	var point_id: int = 0
 	var adjacent_point_id: int = 0
@@ -51,7 +51,7 @@ func is_point_walkable(position):
 
 func add_traversable_tiles(tiles: Array):
 	for tile in tiles:
-		print(tile)
+		#print(tile)
 		if(get_cell_tile_data(1, tile)):
 			continue
 		var id = get_id_for_point(tile)
@@ -82,8 +82,8 @@ func astar_point_on_grid(_point_position) -> Vector2i:
 	return astar.get_point_position(astar.get_closest_point(_point_position))
 	
 func set_player_path(_player_position, _player_destination) -> Array:
-	print(astar.get_closest_point(_player_position))
-	print(astar.get_closest_point(_player_destination))
+	#print(astar.get_closest_point(_player_position))
+	#print(astar.get_closest_point(_player_destination))
 	#astar.connect_points(astar.get_closest_point(_player_position),
 			#astar.get_closest_point(_player_destination))
 	return astar.get_point_path(astar.get_closest_point(_player_position),

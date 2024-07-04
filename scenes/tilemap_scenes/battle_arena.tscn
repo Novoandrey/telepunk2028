@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6au4ft6g5mgf"]
 
-[ext_resource type="Texture2D" uid="uid://nrmvqrq3cdji" path="res://assets/sprites/background/House.png" id="1_owjc4"]
+[ext_resource type="Texture2D" uid="uid://41kybqra6gp5" path="res://assets/sprites/background/House.png" id="1_owjc4"]
 [ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="2_6qmug"]
 [ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="3_3camn"]
 
@@ -23,8 +23,7 @@ y_sort_enabled = true
 
 [node name="TileMap" type="TileMap" parent="Environment"]
 y_sort_enabled = true
-position = Vector2(0, -32)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-300, -300)
 tile_set = ExtResource("2_6qmug")
 format = 2
 layer_0/name = "terrain"

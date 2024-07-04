@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
-[ext_resource type="Script" path="res://scripts/LoadLevel.gd" id="3_qfjf2"]
+[ext_resource type="Script" path="res://scripts/LoadButton.gd" id="3_x1c3m"]
 [ext_resource type="Script" path="res://scripts/LevelListManager.gd" id="4_t1jjk"]
 
 [sub_resource type="GDScript" id="GDScript_77nju"]
@@ -19,13 +19,11 @@ func _process(_delta):
 	pass
 
 
-func switch_scene():
-	
-	pass
 "
 
 [node name="Game" type="Node2D"]
 script = SubResource("GDScript_77nju")
+metadata/SceneType = "Menu"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-3, -109)
@@ -103,7 +101,7 @@ offset_right = 71.0
 offset_bottom = 305.0
 text = "Загрузить уровень"
 clip_text = true
-script = ExtResource("3_qfjf2")
+script = ExtResource("3_x1c3m")
 
 [node name="OptionButton" type="OptionButton" parent="Control"]
 layout_mode = 0
@@ -119,5 +117,5 @@ script = ExtResource("4_t1jjk")
 [connection signal="button_down" from="Control/ButtonEN" to="Control" method="_on_button_en_button_down"]
 [connection signal="button_down" from="Control/ButtonFR" to="." method="_on_button_fr_button_down"]
 [connection signal="button_down" from="Control/ButtonFR" to="Control" method="_on_button_fr_button_down"]
-[connection signal="pressed" from="Control/Arena 1" to="Control/Arena 1" method="on_click"]
+[connection signal="pressed" from="Control/Arena 1" to="Control/Arena 1" method="_on_pressed"]
 [connection signal="item_selected" from="Control/OptionButton" to="Control/OptionButton" method="_on_item_selected"]
