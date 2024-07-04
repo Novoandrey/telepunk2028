@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/scene_manager/LevelManager.gd" id="1_sgg6a"]
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="2_kbfj6"]
 [ext_resource type="PackedScene" uid="uid://c6d4ceqhektri" path="res://assets/prefabs/UI/ChapterSelection/scene_button.tscn" id="3_0lulg"]
-[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/arena_scene.tscn" id="4_03vma"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/arena_scene.tscn" id="4_03vma"]
 [ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://assets/prefabs/UI/ChapterSelection/back_button.tscn" id="4_4c5mg"]
 
 [node name="Chapter" type="Node2D"]

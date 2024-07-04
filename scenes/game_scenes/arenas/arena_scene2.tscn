@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://scripts/player/ActionPointsBar.gd" id="3_m6nng"]
 [ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="3_n2ybj"]
 [ext_resource type="Script" path="res://scripts/player/MovePointsBar.gd" id="4_8w2pg"]
-[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/Arena/grenade_button.tscn" id="5_xjlrs"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/Arena/punch_button.tscn" id="6_f2tv0"]
+[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/grenade_button.tscn" id="5_xjlrs"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_f2tv0"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_vq5q7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
@@ -27,6 +27,7 @@ limit_top = -200
 limit_right = 1080
 limit_bottom = 1080
 script = ExtResource("3_n2ybj")
+boundsUpperOffset = 300
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

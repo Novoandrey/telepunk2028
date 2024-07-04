@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="2_56hj0"]
 [ext_resource type="Script" path="res://scripts/player/ActionPointsBar.gd" id="3_bfepx"]
 [ext_resource type="Script" path="res://scripts/player/MovePointsBar.gd" id="4_6q0mc"]
-[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/Arena/grenade_button.tscn" id="5_u6iig"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/Arena/punch_button.tscn" id="6_eqdxq"]
+[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/grenade_button.tscn" id="5_u6iig"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_eqdxq"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_b3s6c"]
 [ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="8_1blvn"]
 
