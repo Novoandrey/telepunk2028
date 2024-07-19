@@ -41,29 +41,29 @@ scene_to_load = ExtResource("4_vxmww")
 
 [node name="SceneButton2" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock") instance=ExtResource("2_w8153")]
 layout_mode = 0
-offset_left = 327.0
-offset_top = 207.0
-offset_right = 419.0
-offset_bottom = 238.0
+offset_left = 189.0
+offset_top = 211.0
+offset_right = 281.0
+offset_bottom = 242.0
 text = "Диалог А"
 levels_to_unlock = [NodePath("../SceneButton3"), NodePath("../SceneButton4")]
 scene_to_load = ExtResource("5_ce3v1")
 
 [node name="SceneButton3" parent="CanvasLayer/Control" instance=ExtResource("2_w8153")]
 layout_mode = 0
-offset_left = 178.0
-offset_top = 328.0
-offset_right = 270.0
-offset_bottom = 359.0
+offset_left = 98.0
+offset_top = 329.0
+offset_right = 190.0
+offset_bottom = 360.0
 text = "Арена Б"
 scene_to_load = ExtResource("6_4yrmm")
 
 [node name="SceneButton4" parent="CanvasLayer/Control" instance=ExtResource("2_w8153")]
 layout_mode = 0
-offset_left = 331.0
-offset_top = 327.0
-offset_right = 423.0
-offset_bottom = 358.0
+offset_left = 290.0
+offset_top = 328.0
+offset_right = 384.0
+offset_bottom = 359.0
 text = "Событие А"
 scene_to_load = ExtResource("7_wrp74")
 

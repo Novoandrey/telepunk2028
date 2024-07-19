@@ -4,6 +4,7 @@ extends LoadButton
 
 @export var levels_to_unlock: Array[LevelButton]
 @export var is_entry: bool = false
+var curve: PackedScene = preload("res://assets/prefabs/UI/ChapterSelection/curved_line.tscn")
 
 var is_locked: bool = true :
 	get:
@@ -21,13 +22,15 @@ func _ready():
 		is_locked = false
 	
 	for level_button in levels_to_unlock:
-		var path2D = Path2D.new()
-		path2D.position.y = size.y
-		path2D.position.x = size.x/2
-		path2D.curve = Curve2D.new()
-		path2D.curve.add_point(Vector2(0,0), Vector2(50,25))
-		path2D.curve.add_point(Vector2(100,100), Vector2(-50,-25))
-		add_child(path2D)
+		var _current_curve = curve.instantiate()
+		_current_curve.position.y = size.y
+		_current_curve.position.x = size.x/2
+		add_child(_current_curve)
+		_current_curve._path.curve.set_point_position(0, Vector2(0,0))
+		_current_curve._path.curve.set_point_position(1, Vector2(level_button.position.x - position.x, level_button.position.y - position.y - size.y))
+		_current_curve._path.curve.set_point_out(0, Vector2(0,(level_button.position.y - position.y)/2))
+		_current_curve._path.curve.set_point_in(1, Vector2(0,-(level_button.position.y - position.y)/2))
+		_current_curve.redraw()
 
 
 func _on_pressed():
