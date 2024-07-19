@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
-[ext_resource type="Script" path="res://scripts/LoadButton.gd" id="3_x1c3m"]
+[ext_resource type="Script" path="res://scripts/ui/LoadButton.gd" id="3_xthrr"]
 [ext_resource type="Script" path="res://scripts/LevelListManager.gd" id="4_t1jjk"]
 
 [sub_resource type="GDScript" id="GDScript_77nju"]
@@ -101,7 +101,7 @@ offset_right = 71.0
 offset_bottom = 305.0
 text = "Загрузить уровень"
 clip_text = true
-script = ExtResource("3_x1c3m")
+script = ExtResource("3_xthrr")
 
 [node name="OptionButton" type="OptionButton" parent="Control"]
 layout_mode = 0

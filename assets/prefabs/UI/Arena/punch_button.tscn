@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://oxwjndfopy8r"]
 
-[ext_resource type="Script" path="res://scripts/actions/ActionController.gd" id="1_x3hfq"]
+[ext_resource type="Script" path="res://scripts/ui/ActionController.gd" id="1_x3hfq"]
 [ext_resource type="PackedScene" uid="uid://b6pi2cjidhtv" path="res://assets/prefabs/entities/actions/punch.tscn" id="2_ugsx5"]
 [ext_resource type="Texture2D" uid="uid://3obx6i82ow7p" path="res://assets/sprites/player/Actions/punch.jpg" id="3_463k2"]
 

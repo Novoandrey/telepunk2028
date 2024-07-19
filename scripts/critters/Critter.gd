@@ -18,7 +18,7 @@ signal Current_MovePoints_On_Value_Changed(previousValue, currentValue)
 signal Current_ActionPoints_On_Value_Changed(previousValue, currentValue)
 signal Current_Action_On_Value_Changed(previousValue, currentValue)
 
-@onready var tilemap: TileMap = get_node("/root/ArenaScene/BattleArena/Environment/TileMap")
+@onready var tilemap: TileMapManager = get_node("/root/ArenaScene/BattleArena/Environment/TileMap")
 @onready var gameManager: GameManager = get_node("/root/ArenaScene/GameManager")
 @onready var animation_tree: AnimationTree = get_node("AnimationTree")
 
@@ -64,6 +64,7 @@ var _current_tile: Vector2i :
 	set(value):
 		if _current_tile != value:
 			_current_tile = value
+@onready var is_moving: bool = false
 
 func _ready():
 	global_position = tilemap.to_global(tilemap.map_to_local(tilemap.local_to_map(tilemap.to_local(global_position))))

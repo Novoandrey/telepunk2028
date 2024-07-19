@@ -16,7 +16,10 @@ var _playerCritter :
 		Player_Critter_Added.emit(value)
 		_playerCritter = value	
 
+var _currentCritter
+
 func switch_turns():
+	
 	_playerCritter.refresh_actions()
 	for _critter in _enemyCritters:
 		tilemap.astar.set_point_disabled(tilemap.get_id_for_point(_critter._current_tile))

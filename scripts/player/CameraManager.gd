@@ -1,7 +1,9 @@
+class_name CameraManager
+
 extends Camera2D
 
 @export var max_zoom = 2
-@export var min_zoom = zoom.x
+@export var min_zoom = 0.25
 @export var zoom_speed = 0.1
 @export var boundsUpperOffset = 0
 
@@ -54,7 +56,6 @@ func _unhandled_input(event):
 		return
 	
 	if event is InputEventMouseButton:
-		print("Mouse")
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
 			if zoom.x < max_zoom:
 				zoom *= 1.1
@@ -64,6 +65,7 @@ func _unhandled_input(event):
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			drag_start_pos = get_viewport().get_mouse_position()
 			drag_camera_pos = position
+			print("Mouse")
 			isDragging = true
 			
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:

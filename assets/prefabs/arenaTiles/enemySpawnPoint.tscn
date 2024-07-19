@@ -10,7 +10,7 @@ font_color = Color(0, 0, 0, 1)
 
 [node name="Spawn" type="Node2D"]
 z_index = -1
-scale = Vector2(1.25, 1.875)
+scale = Vector2(5, 5)
 script = ExtResource("1_l7dxb")
 critter = ExtResource("2_rwwbq")
 

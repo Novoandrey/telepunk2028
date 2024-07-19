@@ -1,10 +1,11 @@
-[gd_resource type="TileSet" load_steps=14 format=3 uid="uid://cnh4y1n4dwabp"]
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://cnh4y1n4dwabp"]
 
 [ext_resource type="Texture2D" uid="uid://bob2txyiwyr5c" path="res://assets/sprites/tilesets/fullTiles.png" id="1_af8dj"]
 [ext_resource type="Texture2D" uid="uid://cchok1s88f8iy" path="res://assets/sprites/tilesets/topTiles.png" id="2_27s5v"]
 [ext_resource type="PackedScene" uid="uid://khwdovkv6p6s" path="res://assets/prefabs/arenaTiles/playerSpawnPoint.tscn" id="2_bal74"]
 [ext_resource type="PackedScene" uid="uid://cxasr4smr0hda" path="res://assets/prefabs/arenaTiles/fireTile.tscn" id="3_4c1bn"]
 [ext_resource type="PackedScene" uid="uid://pd0wjop7dv5h" path="res://assets/prefabs/arenaTiles/enemySpawnPoint.tscn" id="3_ca31d"]
+[ext_resource type="PackedScene" uid="uid://cxf066cxoynkb" path="res://assets/prefabs/arenaTiles/default_tile.tscn" id="4_r2e46"]
 [ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="5_57t87"]
 
 [sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6wief"]
@@ -12,6 +13,7 @@ resource_name = "Hazards"
 scenes/1/scene = ExtResource("3_4c1bn")
 scenes/2/scene = ExtResource("2_bal74")
 scenes/3/scene = ExtResource("3_ca31d")
+scenes/4/scene = ExtResource("4_r2e46")
 
 [sub_resource type="Shader" id="Shader_h7pb6"]
 code = "shader_type spatial;
@@ -182,7 +184,7 @@ texture_region_size = Vector2i(55, 55)
 
 [resource]
 tile_shape = 3
-tile_size = Vector2i(68, 68)
+tile_size = Vector2i(360, 225)
 physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 3
 custom_data_layer_0/name = "Terrain"

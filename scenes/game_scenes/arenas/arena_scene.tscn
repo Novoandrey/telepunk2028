@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://34axhhhrme4h"]
+[gd_scene load_steps=12 format=3 uid="uid://34axhhhrme4h"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_hr80h"]
 [ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="2_56hj0"]
@@ -8,6 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_eqdxq"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_b3s6c"]
 [ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="8_1blvn"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_1a7ty"]
+events = [SubResource("InputEventKey_6um3h")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
 font_color = Color(0, 0, 0, 1)
@@ -118,6 +124,7 @@ anchor_bottom = 1.0
 offset_top = -31.0
 grow_horizontal = 2
 grow_vertical = 0
+shortcut = SubResource("Shortcut_1a7ty")
 text = "Закончить ход"
 
 [node name="Actions" type="VBoxContainer" parent="CanvasLayer/UI"]
