@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://34axhhhrme4h"]
+[gd_scene load_steps=13 format=3 uid="uid://34axhhhrme4h"]
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_hr80h"]
 [ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="2_56hj0"]
 [ext_resource type="Script" path="res://scripts/player/ActionPointsBar.gd" id="3_bfepx"]
 [ext_resource type="Script" path="res://scripts/player/MovePointsBar.gd" id="4_6q0mc"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="4_6x25v"]
 [ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/grenade_button.tscn" id="5_u6iig"]
 [ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_eqdxq"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_b3s6c"]
@@ -34,7 +35,14 @@ limit_right = 1080
 limit_bottom = 1080
 editor_draw_limits = true
 script = ExtResource("8_1blvn")
+pan_speed = 2.0
 boundsUpperOffset = 300
+can_pan = true
+can_zoom = true
+
+[node name="Center" type="Sprite2D" parent="Camera2D"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6x25v")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -165,6 +173,19 @@ offset_right = 130.0
 offset_bottom = 50.0
 text = "GETBACK"
 script = ExtResource("7_b3s6c")
+
+[node name="PointA" type="Sprite2D" parent="."]
+position = Vector2(270, 480)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6x25v")
+
+[node name="PointB" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6x25v")
+
+[node name="PointCenter" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6x25v")
 
 [connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/AP" method="On_Player_Critter_Spawned"]
 [connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/MP" method="On_Player_Critter_Spawned"]

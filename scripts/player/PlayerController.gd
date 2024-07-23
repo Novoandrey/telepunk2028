@@ -107,7 +107,24 @@ func draw_prediction(_current_tile_prediction):
 			#break;
 		_path_line.add_point(tilemap.to_global(tilemap.map_to_local(point)))
 	_path_line.get_point_count()
-	
+
+func available_movement_tiles():
+	if _currentAction != null:
+		return
+	tilemap.clear_layer(-1)
+	var tiles_to_highlight: Array[Vector2i]
+	var current_tiles_to_highlight: Array[Vector2i] = [_current_tile]
+	for i in range(_currentMovePoints):
+		for tile in current_tiles_to_highlight:
+			for cell in tilemap.get_surrounding_cells(tile):
+				if tilemap.get_cell_tile_data(1, cell) or tilemap.get_cell_tile_data(-1, cell) or tilemap.get_cell_source_id(0, cell) == -1 or cell == _current_tile:
+					continue
+				if gameManager.get_critter_at_cell(cell) != null:
+					continue
+				tilemap.set_cell(-1, cell, 5, Vector2i(0,0))
+				tiles_to_highlight.append(cell)
+		current_tiles_to_highlight = tiles_to_highlight
+		tiles_to_highlight = []	
 	
 func available_movement_tiles_update(previousValue, currentValue):
 	if _currentAction != null:

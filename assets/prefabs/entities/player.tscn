@@ -143,7 +143,6 @@ script = ExtResource("1_dgyff")
 _health = 10
 _actionPoints = 10
 _movePoints = 7
-_critterType = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false

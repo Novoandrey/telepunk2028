@@ -19,6 +19,6 @@ collision_layer = 2
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
 polygon = PackedVector2Array(-178, -55, 0, -101, 178, -55, 178, 32, -1, 76, -178, 32)
 
-[connection signal="body_entered" from="Area2D" to="." method="deal_damage"]
 [connection signal="body_entered" from="Area2D" to="." method="highlight_on"]
+[connection signal="body_entered" from="Area2D" to="." method="deal_damage"]
 [connection signal="body_exited" from="Area2D" to="." method="highlight_off"]
