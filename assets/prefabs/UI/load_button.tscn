@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bjsbxxmw8y70u"]
+
+[ext_resource type="Script" path="res://scripts/ui/LoadButton.gd" id="1_g5s0m"]
+
+[node name="LoadButton" type="Button"]
+offset_right = 100.0
+offset_bottom = 50.0
+text = "Next scene"
+script = ExtResource("1_g5s0m")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

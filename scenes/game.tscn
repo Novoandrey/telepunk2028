@@ -1,29 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=5 format=3 uid="uid://b8losi1peqew4"]
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
 [ext_resource type="Script" path="res://scripts/ui/LoadButton.gd" id="3_xthrr"]
 [ext_resource type="Script" path="res://scripts/LevelListManager.gd" id="4_t1jjk"]
 
-[sub_resource type="GDScript" id="GDScript_77nju"]
-script/source = "extends Node2D
-
-# TODO: Something something
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-
-
-"
-
 [node name="Game" type="Node2D"]
-script = SubResource("GDScript_77nju")
-metadata/SceneType = "Menu"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-3, -109)
