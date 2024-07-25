@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_2vo6c"]
 [ext_resource type="PackedScene" uid="uid://df6va56hupiw8" path="res://scenes/tilemap_scenes/battle_arena2.tscn" id="2_sttct"]
 [ext_resource type="Script" path="res://scripts/player/ActionPointsBar.gd" id="3_m6nng"]
-[ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="3_n2ybj"]
 [ext_resource type="Script" path="res://scripts/player/MovePointsBar.gd" id="4_8w2pg"]
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="4_ao4go"]
 [ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/grenade_button.tscn" id="5_xjlrs"]
 [ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_f2tv0"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_vq5q7"]
+[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/prefabs/UI/player_camera.tscn" id="9_rd1wq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
 font_color = Color(0, 0, 0, 1)
@@ -20,22 +20,6 @@ metadata/SceneType = "Arena"
 script = ExtResource("1_2vo6c")
 
 [node name="BattleArena" parent="." instance=ExtResource("2_sttct")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(270, 480)
-limit_left = -540
-limit_top = -200
-limit_right = 1080
-limit_bottom = 1080
-script = ExtResource("3_n2ybj")
-pan_speed = 2.0
-boundsUpperOffset = 300
-can_pan = true
-can_zoom = true
-
-[node name="Center" type="Sprite2D" parent="Camera2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ao4go")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -178,6 +162,8 @@ texture = ExtResource("4_ao4go")
 [node name="PointCenter" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_ao4go")
+
+[node name="Camera2D" parent="." instance=ExtResource("9_rd1wq")]
 
 [connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/AP" method="On_Player_Critter_Spawned"]
 [connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/MP" method="On_Player_Critter_Spawned"]

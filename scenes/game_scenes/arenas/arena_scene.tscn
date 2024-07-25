@@ -2,13 +2,13 @@
 
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_hr80h"]
 [ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="2_56hj0"]
+[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/prefabs/UI/player_camera.tscn" id="3_8dyag"]
 [ext_resource type="Script" path="res://scripts/player/ActionPointsBar.gd" id="3_bfepx"]
 [ext_resource type="Script" path="res://scripts/player/MovePointsBar.gd" id="4_6q0mc"]
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="4_6x25v"]
 [ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/grenade_button.tscn" id="5_u6iig"]
 [ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_eqdxq"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_b3s6c"]
-[ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="8_1blvn"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
 keycode = 32
@@ -27,22 +27,7 @@ script = ExtResource("1_hr80h")
 
 [node name="BattleArena" parent="." instance=ExtResource("2_56hj0")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(270, 480)
-limit_left = -540
-limit_top = -200
-limit_right = 1080
-limit_bottom = 1080
-editor_draw_limits = true
-script = ExtResource("8_1blvn")
-pan_speed = 2.0
-boundsUpperOffset = 300
-can_pan = true
-can_zoom = true
-
-[node name="Center" type="Sprite2D" parent="Camera2D"]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_6x25v")
+[node name="Camera2D" parent="." instance=ExtResource("3_8dyag")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

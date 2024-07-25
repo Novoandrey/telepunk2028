@@ -11,14 +11,20 @@ extends Camera2D
 @export var can_zoom: bool
 @export var can_rotate: bool
 
+
 @onready var tile_map : TileMap = get_node("/root/ArenaScene/BattleArena/Environment/TileMap")
 @onready var point_a = get_node("/root/ArenaScene/PointA")
 @onready var point_b = get_node("/root/ArenaScene/PointB")
 @onready var point_center = get_node("/root/ArenaScene/PointCenter")
+@onready var drag_timer = $Timer
 
 var drag_start_pos = Vector2.ZERO
 var drag_camera_pos = Vector2.ZERO
-var isDragging = false
+var is_dragging = false :
+	get:
+		return is_dragging
+	set(value):
+		is_dragging = value
 
 var start_zoom: Vector2
 var start_dist: float
@@ -45,6 +51,7 @@ func _ready():
 	limit_left = left_bound
 	limit_right = right_bound
 	limit_bottom = bottom_bound
+	
 
 func _process(delta):
 	pass
@@ -53,11 +60,11 @@ func _process(delta):
 func _unhandled_input(event):
 	
 	mobile_camera_control(event)
-	print(get_canvas_transform().affine_inverse() * event.position)
+	#print(get_canvas_transform().affine_inverse() * event.position)
 	
 	pc_camera_control(event)
 	
-			
+	
 
 func pc_camera_control(event):
 	if event is InputEventScreenTouch:
@@ -71,16 +78,18 @@ func pc_camera_control(event):
 			if zoom.x > min_zoom:
 				zoom *= 0.9
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			_touches[0] = event.position
 			drag_start_pos = get_viewport().get_mouse_position()
 			drag_camera_pos = get_screen_center_position()
+			start_drag()
 			print("Mouse")
-			isDragging = true
 			
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
-			isDragging = false
+			_touches.erase(0)
+			is_dragging = false
 			
 	if event is InputEventMouseMotion:
-		if isDragging:
+		if _touches.size() >= 1:
 			var moveVector = get_viewport().get_mouse_position() - drag_start_pos
 			position = drag_camera_pos - moveVector * 1/zoom.x
 
@@ -97,8 +106,11 @@ func mobile_camera_control(event):
 func _handle_touch(event):
 	if event.pressed:
 		_touches[event.index] = event.position
+		start_drag()
 	else:
 		_touches.erase(event.index)
+		if _touches.size() <= 0:
+			is_dragging = false
 	
 	if _touches.size() == 2:
 		var touch_point_positions = _touches.values()
@@ -129,4 +141,12 @@ func _handle_drag(event):
 		zoom = current_zoom
 		
 
+func start_drag():
+	drag_timer.start()
 
+
+func _on_timer_timeout():
+	print("Start drag")
+	if _touches.is_empty():
+		return
+	is_dragging = true

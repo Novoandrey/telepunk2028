@@ -38,7 +38,7 @@ func _unhandled_input(event):
 	else:
 		_current_tile_prediction = tilemap_point_position(mouse_pos)
 		available_action_area()
-	if !tilemap.has_nav_point(mouse_pos):
+	if !tilemap.has_nav_point(mouse_pos) or _camera.is_dragging == true:
 		return
 	
 	if event.is_action_released("ui_action"):
