@@ -1,11 +1,11 @@
 [gd_scene load_steps=4 format=3 uid="uid://d2tvdpadg7pea"]
 
-[ext_resource type="Script" path="res://scripts/tools/Cutscene.gd" id="1_xwh05"]
-[ext_resource type="PackedScene" uid="uid://bjsbxxmw8y70u" path="res://assets/prefabs/UI/load_button.tscn" id="2_4bl5v"]
-[ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/game.tscn" id="3_efpp6"]
+[ext_resource type="Script" path="res://scripts/tools/Event.gd" id="1_qjm0e"]
+[ext_resource type="PackedScene" uid="uid://bjsbxxmw8y70u" path="res://assets/prefabs/UI/load_button.tscn" id="2_ebtp6"]
+[ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/game.tscn" id="3_i5174"]
 
 [node name="Cutscene" type="Node2D"]
-script = ExtResource("1_xwh05")
+script = ExtResource("1_qjm0e")
 scene_time = 5.0
 
 [node name="Timer" type="Timer" parent="."]
@@ -36,11 +36,11 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Катсцена 2"
 
-[node name="LoadButton" parent="Control" instance=ExtResource("2_4bl5v")]
+[node name="LoadButton" parent="Control" instance=ExtResource("2_ebtp6")]
 layout_mode = 0
 offset_left = 187.0
 offset_top = 876.0
 offset_right = 287.0
 offset_bottom = 926.0
-scene_to_load = ExtResource("3_efpp6")
+scene_to_load = ExtResource("3_i5174")
 clear_previous_scene = true

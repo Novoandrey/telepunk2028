@@ -1,4 +1,6 @@
-extends Node2D
+class_name EventManager
+
+extends LevelManager
 
 @onready var scene_manager: SceneManager = get_node("/root/SceneManager")
 

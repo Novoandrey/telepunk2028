@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/scene_manager/SceneManager.gd" id="1_1nnhn"]
 [ext_resource type="PackedScene" uid="uid://cik8olsm1mnhn" path="res://scenes/game_chapters/metro.tscn" id="3_yckxh"]
 [ext_resource type="PackedScene" uid="uid://dmedpdpbc30j2" path="res://scenes/game_chapters/e-city.tscn" id="4_xhsyp"]
-[ext_resource type="PackedScene" uid="uid://hgf7wjayo5n1" path="res://scenes/game_scenes/cutscenes/cutscene_template.tscn" id="5_q46s7"]
+[ext_resource type="PackedScene" uid="uid://hgf7wjayo5n1" path="res://scenes/game_scenes/events/event_sequence_template.tscn" id="5_q46s7"]
 
 [node name="SceneManager" type="Node"]
 script = ExtResource("1_1nnhn")
 first_scene = ExtResource("5_q46s7")
-level_list = Array[PackedScene]([ExtResource("3_yckxh"), ExtResource("4_xhsyp"), ExtResource("5_q46s7")])
+level_list = Array[PackedScene]([ExtResource("3_yckxh"), ExtResource("4_xhsyp")])

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cnxkfsy73nirc"]
 
 [ext_resource type="Texture2D" uid="uid://cjfoq3dcoxb8i" path="res://assets/sprites/player/Resource.png" id="1_gjwwd"]
-[ext_resource type="Script" path="res://scripts/player/HealthBar.gd" id="2_00l8s"]
+[ext_resource type="Script" path="res://scripts/ui/bars/HealthBar.gd" id="2_00l8s"]
 
 [node name="Health" type="TextureProgressBar"]
 z_index = 5

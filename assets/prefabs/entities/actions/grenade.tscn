@@ -8,6 +8,4 @@ _cost = 6
 _area = 3
 _range = 6
 _damage = 5
-_max_usage = null
 _actionHintText = "Выберите точку для броска гранаты"
-_animation = null

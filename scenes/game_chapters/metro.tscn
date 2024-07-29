@@ -8,7 +8,7 @@
 
 [node name="Chapter" type="Node2D"]
 script = ExtResource("1_sgg6a")
-metadata/SceneType = "Chapter"
+level_name = "Метро"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(270, 480)

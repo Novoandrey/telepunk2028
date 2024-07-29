@@ -1,4 +1,4 @@
-class_name Cutscene
+class_name Event
 
 extends Node
 

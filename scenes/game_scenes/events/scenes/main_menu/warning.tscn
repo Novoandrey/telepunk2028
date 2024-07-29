@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://de4wd73d0yla3"]
+[gd_scene load_steps=2 format=3 uid="uid://c0tg1v4a3up71"]
 
-[ext_resource type="Script" path="res://scripts/tools/Cutscene.gd" id="1_vuedd"]
+[ext_resource type="Script" path="res://scripts/tools/Event.gd" id="1_0fbta"]
 
 [node name="Cutscene" type="Node2D"]
-script = ExtResource("1_vuedd")
+script = ExtResource("1_0fbta")
 scene_time = 2.0
 
 [node name="Timer" type="Timer" parent="."]

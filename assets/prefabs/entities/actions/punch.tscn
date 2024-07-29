@@ -5,9 +5,6 @@
 [node name="Punch" type="Node2D"]
 script = ExtResource("1_tqagx")
 _cost = 3
-_area = null
 _range = 1
 _damage = 5
-_max_usage = null
 _actionHintText = "Выберите цель для удара"
-_animation = null

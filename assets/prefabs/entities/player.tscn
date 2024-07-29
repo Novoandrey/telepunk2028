@@ -172,4 +172,4 @@ libraries = {
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(2, -30)
-texture = ExtResource("7_ibee3")
+texture = ExtResource("4_rdivb")

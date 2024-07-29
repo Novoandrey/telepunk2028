@@ -3,12 +3,12 @@
 [ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_hr80h"]
 [ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="2_56hj0"]
 [ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/prefabs/UI/player_camera.tscn" id="3_8dyag"]
-[ext_resource type="Script" path="res://scripts/player/ActionPointsBar.gd" id="3_bfepx"]
-[ext_resource type="Script" path="res://scripts/player/MovePointsBar.gd" id="4_6q0mc"]
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="4_6x25v"]
-[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/grenade_button.tscn" id="5_u6iig"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/punch_button.tscn" id="6_eqdxq"]
+[ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="4_croqn"]
+[ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="5_wy61t"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/prefabs/UI/Arena/punch_button.tscn" id="6_morc1"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_b3s6c"]
+[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/prefabs/UI/Arena/grenade_button.tscn" id="7_ik1jd"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
 keycode = 32
@@ -17,7 +17,6 @@ keycode = 32
 events = [SubResource("InputEventKey_6um3h")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
-font_color = Color(0, 0, 0, 1)
 
 [node name="ArenaScene" type="Node"]
 metadata/SceneType = "Arena"
@@ -62,7 +61,7 @@ text = "Очки действий"
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
-script = ExtResource("3_bfepx")
+script = ExtResource("4_croqn")
 
 [node name="APCount" type="Label" parent="CanvasLayer/UI/VBoxContainer/AP"]
 layout_mode = 1
@@ -89,7 +88,7 @@ text = "Очки движений"
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
-script = ExtResource("4_6q0mc")
+script = ExtResource("5_wy61t")
 
 [node name="MPCount" type="Label" parent="CanvasLayer/UI/VBoxContainer/MP"]
 layout_mode = 1
@@ -132,10 +131,10 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
-[node name="Grenade" parent="CanvasLayer/UI/Actions" instance=ExtResource("5_u6iig")]
+[node name="Punch" parent="CanvasLayer/UI/Actions" instance=ExtResource("6_morc1")]
 layout_mode = 2
 
-[node name="Punch" parent="CanvasLayer/UI/Actions" instance=ExtResource("6_eqdxq")]
+[node name="Grenade" parent="CanvasLayer/UI/Actions" instance=ExtResource("7_ik1jd")]
 layout_mode = 2
 
 [node name="ActionHint" type="Label" parent="CanvasLayer/UI"]

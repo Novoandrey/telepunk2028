@@ -9,9 +9,10 @@ extends Node
 @export var _area: int
 @export var _range: int
 @export var _damage: int
-@export var _max_usage: int
 @export var _actionHintText: String
 @export var _animation: Critter.State
+
+signal OnActionUsed()
 
 func _ready():
 	_actionHint.text = _actionHintText
@@ -20,10 +21,11 @@ func _ready():
 		_owner.available_action_tile(_range)
 
 func activate(target, user = null):
-	pass
+	OnActionUsed.emit()
 
 func _exit_tree():
 	_owner._currentAction = null
 	if _owner._critterType == Critter.CRITTER_TYPE.PLAYER:
 		_owner.available_movement_tiles()
 		_actionHint.text = ""
+	queue_free()

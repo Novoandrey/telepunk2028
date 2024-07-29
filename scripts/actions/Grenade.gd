@@ -2,12 +2,14 @@ extends Action
 
 
 func activate(target: Vector2i, user:Critter = null):
+	super(target, user)
 	var tilemap: TileMap = _owner.tilemap
 	_owner.animation_tree["parameters/conditions/isPunching"] = true
 	_owner._currentActionPoints -= _cost
 	if _owner.gameManager.get_critter_at_cell(target) != null:
 		_owner.gameManager.get_critter_at_cell(target)._currentHealth -= _damage
 	var tiles_damaged : Array[Vector2i]
+	tiles_damaged.append(target)
 	var current_tiles_to_damage : Array[Vector2i] = [target]
 	var current_tiles_to_damage_continue : Array[Vector2i]
 	for i in range(_area):

@@ -12,7 +12,7 @@
 
 [node name="Chapter" type="Node2D"]
 script = ExtResource("1_kbx5w")
-metadata/SceneType = "Chapter"
+level_name = "E-City"
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(270, 480)

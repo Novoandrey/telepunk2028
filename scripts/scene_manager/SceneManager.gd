@@ -1,7 +1,7 @@
 class_name SceneManager
 
 extends Node
-@onready var root = get_parent()
+@onready var root = get_node("/root")
 
 @export var first_scene: PackedScene
 @export var keep_first: bool = true
@@ -20,7 +20,7 @@ func _ready():
 func switch_scenes(_scene_to_load, _scene_to_destroy, keep_scene: bool = true, clear_previous: bool = false):
 	var _current_scene
 	print(_scene_to_destroy)
-	if !_scene_to_load.is_class("Node"):
+	if _scene_to_load.is_class("PackedScene"):
 		_current_scene = _scene_to_load.instantiate()
 	else:
 		_current_scene = _scene_to_load

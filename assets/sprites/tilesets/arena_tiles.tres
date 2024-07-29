@@ -135,12 +135,12 @@ use_texture_padding = false
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_nbal6"]
 shader = ExtResource("5_57t87")
-shader_parameter/width = 2.0
+shader_parameter/width = 5.0
 shader_parameter/outline_color = Color(0, 0, 0.792157, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sdtev"]
 shader = ExtResource("5_57t87")
-shader_parameter/width = 2.0
+shader_parameter/width = 5.0
 shader_parameter/outline_color = Color(0.835294, 0, 0, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amery"]
