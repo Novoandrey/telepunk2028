@@ -5,16 +5,16 @@ extends Control
 @export var _action: PackedScene
 @export var max_usage: int = -1
 
-signal On_Current_Usage_Value_Changed(previousValue, currentValue)
+signal current_usage_on_value_changed(previousValue, currentValue)
 
-@onready var _actionHint: Label = get_node("/root/ArenaScene/CanvasLayer/UI/ActionHint")
+@onready var _actionHint: Label = get_node("/root/Chapter/Level/CanvasLayer/UI/ActionHint")
 @onready var _button: TextureButton = get_child(0).get_child(0)
 @onready var _usage_bar: ProgressBar = get_child(0).get_child(1)
 var current_usage: int :
 	get:
 		return current_usage
 	set(value):
-		On_Current_Usage_Value_Changed.emit(current_usage, value)
+		current_usage_on_value_changed.emit(current_usage, value)
 		current_usage = value
 		if current_usage == 0:
 			#_button.disabled = true
@@ -27,13 +27,13 @@ var created_action: Action
 var is_active: bool = false
 
 func _ready():
-	get_node("/root/ArenaScene/GameManager").Player_Critter_Added.connect(On_Player_Critter_Spawned)
+	get_node("../../../../GameManager").Player_Critter_Added.connect(On_Player_Critter_Spawned)
 	if max_usage == -1:
 		_usage_bar.hide()
 	current_usage = max_usage
 
 func On_Player_Critter_Spawned(_playerCritter):
-	_playerCritter.Current_Action_On_Value_Changed.connect(set_is_active)
+	_playerCritter.current_action_on_value_changed.connect(set_is_active)
 	_player = _playerCritter
 
 func _on_texture_button_pressed():
@@ -44,11 +44,11 @@ func _on_texture_button_pressed():
 		if !is_active:
 			created_action = _action.instantiate()
 			if _player._currentActionPoints > created_action._cost:
-				created_action.OnActionUsed.connect(use_action)
+				created_action.on_action_used.connect(use_action)
 				_player.add_child(created_action)
 				is_active = true
 		else:
-			created_action.OnActionUsed.disconnect(use_action)
+			created_action.on_action_used.disconnect(use_action)
 			_player.remove_child(created_action)
 			is_active = false
 		print("created")

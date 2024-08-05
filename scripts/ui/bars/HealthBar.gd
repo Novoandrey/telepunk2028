@@ -5,7 +5,7 @@ extends TextureProgressBar
 func _ready():
 	max_value = _char._health
 	value = _char._health
-	_char.Current_Health_On_Value_Changed.connect(Current_Health)
+	_char.current_health_on_value_changed.connect(Current_Health)
 	label.text = "{current}/{max}".format({"current": value, "max": max_value})
 
 func Current_Health(previousValue, currentValue):

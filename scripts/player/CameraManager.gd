@@ -12,10 +12,10 @@ extends Camera2D
 @export var can_rotate: bool
 
 
-@onready var tile_map : TileMap = get_node("/root/ArenaScene/BattleArena/Environment/TileMap")
-@onready var point_a = get_node("/root/ArenaScene/PointA")
-@onready var point_b = get_node("/root/ArenaScene/PointB")
-@onready var point_center = get_node("/root/ArenaScene/PointCenter")
+@onready var tile_map : TileMap = get_node("../BattleArena/Environment/TileMap")
+@onready var point_a = get_node("../PointA")
+@onready var point_b = get_node("../PointB")
+@onready var point_center = get_node("../PointCenter")
 @onready var drag_timer = $Timer
 
 var drag_start_pos = Vector2.ZERO
@@ -52,6 +52,7 @@ func _ready():
 	limit_right = right_bound
 	limit_bottom = bottom_bound
 	
+	make_current()
 
 func _process(delta):
 	pass

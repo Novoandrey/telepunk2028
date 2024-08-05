@@ -7,7 +7,7 @@ func _ready():
 	max_value = action.max_usage
 	value = action.current_usage
 	label.text = str(action.current_usage) + "/" + str(action.max_usage)
-	action.On_Current_Usage_Value_Changed.connect(current_uses)
+	action.current_usage_on_value_changed.connect(current_uses)
 
 func current_uses(previousValue, currentValue):
 	max_value = action.max_usage

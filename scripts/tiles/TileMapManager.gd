@@ -27,8 +27,8 @@ func _ready():
 		print(map_to_local(cell))
 	print(astar.get_point_count())
 
-func is_point_walkable(position):
-	var map_position = local_to_map(position)
+func is_point_walkable(_position):
+	var map_position = local_to_map(_position)
 	if map_rect.has_point(map_position):
 		return true
 	return false

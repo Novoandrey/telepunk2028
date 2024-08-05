@@ -2,12 +2,13 @@ class_name GameManager
 
 extends Node
 
-@onready var tilemap: TileMapManager = get_node("/root/ArenaScene/BattleArena/Environment/TileMap")
+@onready var tilemap: TileMapManager = get_node("../BattleArena/Environment/TileMap")
 @onready var sceneManager: SceneManager = get_node("/root/SceneManager")
 var action_buttons: Array
 
 signal Player_Critter_Added(_playerCritter)
 
+var arena_critter: Array
 var _enemyCritters: Array
 var _playerCritter :
 	get:
@@ -19,7 +20,6 @@ var _playerCritter :
 var _currentCritter
 
 func switch_turns():
-	
 	_playerCritter.refresh_actions()
 	for _critter in _enemyCritters:
 		tilemap.astar.set_point_disabled(tilemap.get_id_for_point(_critter._current_tile))

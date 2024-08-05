@@ -1,0 +1,177 @@
+[gd_scene load_steps=35 format=3 uid="uid://b655whi43nq3n"]
+
+[ext_resource type="Script" path="res://scripts/player/CritterController.gd" id="1_r2jjn"]
+[ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_1kso7"]
+[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/Arena/health.tscn" id="3_ecd6b"]
+[ext_resource type="Texture2D" uid="uid://bojnbxpqva8hd" path="res://assets/sprites/player/Animations/Idle/idle1.png" id="4_10s4p"]
+[ext_resource type="Texture2D" uid="uid://hcnr2fh3bfns" path="res://assets/sprites/player/Animations/Idle/idle2.png" id="5_ug2bi"]
+[ext_resource type="Texture2D" uid="uid://dc16nkefmhc6w" path="res://assets/sprites/player/Animations/Idle/idle3.png" id="6_l6oac"]
+[ext_resource type="Texture2D" uid="uid://c4toqhjo3nnku" path="res://assets/sprites/player/Animations/Idle/idle4.png" id="7_lvnqb"]
+[ext_resource type="Texture2D" uid="uid://pgghb2hxwsy4" path="res://assets/sprites/player/Animations/Punch/punch1.png" id="8_7woc3"]
+[ext_resource type="Texture2D" uid="uid://cs32oao0qwxuc" path="res://assets/sprites/player/Animations/Punch/punch2.png" id="9_6t4m8"]
+[ext_resource type="Texture2D" uid="uid://sdvyde7kt60d" path="res://assets/sprites/player/Animations/Punch/punch3.png" id="10_2trdc"]
+[ext_resource type="Texture2D" uid="uid://djdyg62k2teg2" path="res://assets/sprites/player/Animations/Walk/walk1.png" id="11_lf7bi"]
+[ext_resource type="Texture2D" uid="uid://bv5l0n8abwcgy" path="res://assets/sprites/player/Animations/Walk/walk2.png" id="12_gl6ti"]
+[ext_resource type="Texture2D" uid="uid://bep4y5anfwpgc" path="res://assets/sprites/player/Animations/Walk/walk3.png" id="13_vxwaf"]
+[ext_resource type="Texture2D" uid="uid://c2g8bq3wuqq57" path="res://assets/sprites/player/Animations/Walk/walk4.png" id="14_w0tlv"]
+[ext_resource type="Texture2D" uid="uid://cr2rbbhy14l71" path="res://assets/sprites/player/Animations/Walk/walk5.png" id="15_nr7xo"]
+[ext_resource type="Texture2D" uid="uid://b10jamr5uabmo" path="res://assets/sprites/player/Animations/Walk/walk6.png" id="16_50inc"]
+[ext_resource type="Texture2D" uid="uid://cwod7dust1bbw" path="res://assets/sprites/player/Animations/Walk/walk7.png" id="17_5f5dw"]
+[ext_resource type="Texture2D" uid="uid://c4kcc0w38a1co" path="res://assets/sprites/player/Animations/Walk/walk8.png" id="18_88cy3"]
+[ext_resource type="Texture2D" uid="uid://qltkyvspwmm7" path="res://assets/sprites/player/Animations/Walk/walk9.png" id="19_doedw"]
+[ext_resource type="Texture2D" uid="uid://dfpdfb6uofhoo" path="res://assets/sprites/player/Animations/Walk/walk10.png" id="20_yi1ms"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8mem"]
+radius = 3.0
+height = 26.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p0m7l"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hdbn7"]
+animation = &"punch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hxfu3"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xh0tn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xmx28"]
+advance_mode = 2
+advance_condition = &"isMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pho5j"]
+advance_mode = 2
+advance_condition = &"isIdle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odivp"]
+advance_mode = 2
+advance_condition = &"isPunching"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdt55"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wt8el"]
+states/Start/position = Vector2(207, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_p0m7l")
+states/idle/position = Vector2(411, 100)
+states/punch/node = SubResource("AnimationNodeAnimation_hdbn7")
+states/punch/position = Vector2(411, -21)
+states/walk/node = SubResource("AnimationNodeAnimation_hxfu3")
+states/walk/position = Vector2(603, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_xh0tn"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_xmx28"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_pho5j"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_odivp"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_gdt55")]
+graph_offset = Vector2(-144, -98)
+
+[sub_resource type="Animation" id="Animation_vj18a"]
+resource_name = "idle"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_10s4p"), ExtResource("5_ug2bi"), ExtResource("6_l6oac"), ExtResource("7_lvnqb")]
+}
+
+[sub_resource type="Animation" id="Animation_n40gf"]
+resource_name = "punch"
+length = 1.20002
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_7woc3"), ExtResource("9_6t4m8"), ExtResource("10_2trdc"), ExtResource("8_7woc3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/conditions/isPunching")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d44oi"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.1001, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_lf7bi"), ExtResource("11_lf7bi"), ExtResource("12_gl6ti"), ExtResource("13_vxwaf"), ExtResource("14_w0tlv"), ExtResource("15_nr7xo"), ExtResource("16_50inc"), ExtResource("17_5f5dw"), ExtResource("18_88cy3"), ExtResource("19_doedw"), ExtResource("20_yi1ms")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1bsh"]
+_data = {
+"idle": SubResource("Animation_vj18a"),
+"punch": SubResource("Animation_n40gf"),
+"walk": SubResource("Animation_d44oi")
+}
+
+[node name="Character" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(3, 3)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_r2jjn")
+_health = 20
+_actionPoints = 10
+_movePoints = 7
+_moveSpeed = 7.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(2, -30)
+sprite_frames = ExtResource("2_1kso7")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_e8mem")
+disabled = true
+
+[node name="Health" parent="." instance=ExtResource("3_ecd6b")]
+mouse_filter = 2
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_wt8el")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/isIdle = false
+parameters/conditions/isMoving = false
+parameters/conditions/isPunching = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q1bsh")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, -30)
+texture = ExtResource("7_lvnqb")

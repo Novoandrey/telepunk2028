@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://de5uk1y3cv7od"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_e130b"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_s3r6c"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_e130b")
+
+[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_s3r6c")]
+level_to_unload = NodePath("..")

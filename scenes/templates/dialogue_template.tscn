@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://cc0rahc1qfts"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_wbq15"]
+[ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/level_selection/back_button.tscn" id="2_2un7r"]
+
+[node name="DialogueTemplate" type="Node2D"]
+script = ExtResource("1_wbq15")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 540.0
+offset_bottom = 960.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackButton" parent="Control" instance=ExtResource("2_2un7r")]
+layout_mode = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 120.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -105.0
+offset_top = -25.0
+offset_right = 95.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(100, 25)
+text = "Шаблон диалога"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/BackButton" to="Control/BackButton" method="_return_to_previous_level"]
