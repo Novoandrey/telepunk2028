@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dercsxmevvbdf"]
+
+[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_1tl5k"]
+
+[node name="Player" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(3, 3)
+script = ExtResource("1_1tl5k")

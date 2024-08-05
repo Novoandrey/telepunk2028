@@ -1,35 +1,22 @@
-[gd_scene load_steps=5 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=7 format=3 uid="uid://b8losi1peqew4"]
 
-[ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_it0cj"]
-[ext_resource type="AudioStream" uid="uid://cto076y8tkcb6" path="res://assets/music/02-the-morning-of-the-new-millennium.mp3" id="2_he3kv"]
+[ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
-
-[sub_resource type="GDScript" id="GDScript_77nju"]
-script/source = "extends Node2D
-
-# TODO: Something something
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta):
-	pass
-"
+[ext_resource type="Script" path="res://scripts/ui/LoadButton.gd" id="3_xthrr"]
+[ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ign3h"]
+[ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city.tscn" id="5_ik1rq"]
+[ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro.tscn" id="6_f308j"]
 
 [node name="Game" type="Node2D"]
-script = SubResource("GDScript_77nju")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(-3, -109)
 scale = Vector2(0.863281, 0.863282)
-texture = ExtResource("1_it0cj")
+texture = ExtResource("1_f8ct7")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_he3kv")
 autoplay = true
 
 [node name="Control" type="Control" parent="."]
@@ -42,9 +29,9 @@ script = ExtResource("3_5sg5t")
 [node name="ButtonRU" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -70.0
-offset_top = -330.0
+offset_top = -329.0
 offset_right = 71.0
-offset_bottom = -294.0
+offset_bottom = -293.0
 text = "STARTSCREEN_LANG_RU"
 clip_text = true
 
@@ -90,9 +77,41 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="Arena 1" type="Button" parent="Control" node_paths=PackedStringArray("scene_to_unload")]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 269.0
+offset_right = 71.0
+offset_bottom = 305.0
+text = "Загрузить уровень"
+clip_text = true
+script = ExtResource("3_xthrr")
+keep_current_scene = true
+scene_to_unload = NodePath("../..")
+
+[node name="OptionButton" type="OptionButton" parent="Control" node_paths=PackedStringArray("load_button")]
+layout_mode = 0
+offset_left = 99.0
+offset_top = 267.0
+offset_right = 259.0
+offset_bottom = 306.0
+script = ExtResource("4_ign3h")
+chapter_list = Array[PackedScene]([ExtResource("5_ik1rq"), ExtResource("6_f308j")])
+load_button = NodePath("../Arena 1")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = -100.0
+offset_top = 362.0
+offset_right = 100.0
+offset_bottom = 412.0
+text = "Мультиплеер"
+
 [connection signal="button_down" from="Control/ButtonRU" to="." method="_on_button_ru_button_down"]
 [connection signal="button_down" from="Control/ButtonRU" to="Control" method="_on_button_ru_button_down"]
 [connection signal="button_down" from="Control/ButtonEN" to="." method="_on_button_en_button_down"]
 [connection signal="button_down" from="Control/ButtonEN" to="Control" method="_on_button_en_button_down"]
 [connection signal="button_down" from="Control/ButtonFR" to="." method="_on_button_fr_button_down"]
 [connection signal="button_down" from="Control/ButtonFR" to="Control" method="_on_button_fr_button_down"]
+[connection signal="pressed" from="Control/Arena 1" to="Control/Arena 1" method="_on_pressed"]
+[connection signal="item_selected" from="Control/OptionButton" to="Control/OptionButton" method="_on_item_selected"]

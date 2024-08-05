@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://c08om4uxu8ctk"]
+
+[ext_resource type="Script" path="res://scripts/actions/Grenade.gd" id="1_1cwmg"]
+
+[node name="Grenade" type="Node2D"]
+script = ExtResource("1_1cwmg")
+_cost = 6
+_area = 3
+_range = 6
+_damage = 5
+_actionHintText = "Выберите точку для броска гранаты"

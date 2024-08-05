@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://df6va56hupiw8"]
+
+[ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="1_n6d1l"]
+[ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="2_80nm7"]
+
+[sub_resource type="Curve" id="Curve_a1aor"]
+_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[node name="BattleArena" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [-116.0, 19.0, -16.0]
+metadata/_edit_vertical_guides_ = [-34.0]
+
+[node name="Environment" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="TileMap" type="TileMap" parent="Environment"]
+y_sort_enabled = true
+scale = Vector2(0.5, 0.5)
+tile_set = ExtResource("1_n6d1l")
+format = 2
+layer_0/name = "terrain"
+layer_0/y_sort_enabled = true
+layer_0/z_index = -2
+layer_0/tile_data = PackedInt32Array(131069, 2, 262144, 196605, 2, 262144, 262141, 2, 262144, 327677, 2, 262144, 393213, 2, 262144, 458749, 2, 262144, 131070, 2, 262144, 196606, 2, 262144, 262142, 2, 262144, 327678, 2, 262144, 393214, 2, 262144, 458750, 2, 262144, 131071, 2, 262144, 196607, 2, 262144, 262143, 2, 262144, 327679, 2, 262144, 393215, 2, 262144, 458751, 2, 262144, 65536, 2, 262144, 131072, 2, 262144, 196608, 2, 262144, 262144, 2, 262144, 327680, 2, 262144, 393216, 2, 262144, 65537, 2, 262144, 131073, 2, 262144, 196609, 2, 262144, 262145, 2, 262144, 327681, 2, 262144, 393217, 2, 262144, 65538, 2, 262144, 131074, 2, 262144, 196610, 2, 262144, 262146, 2, 262144, 327682, 2, 262144, 393218, 2, 262144, 65539, 2, 262144, 131075, 2, 262144, 196611, 2, 262144, 262147, 2, 262144, 327683, 2, 262144, 393219, 2, 262144, 524285, 2, 262144, 589821, 2, 262144, 655357, 2, 262144, 720893, 2, 262144, 786429, 2, 262144, 851965, 2, 262144, 917501, 2, 262144, 524286, 2, 262144, 589822, 2, 262144, 655358, 2, 262144, 720894, 2, 262144, 786430, 2, 262144, 851966, 2, 262144, 917502, 2, 262144, 524287, 2, 262144, 589823, 2, 262144, 655359, 2, 262144, 720895, 2, 262144, 786431, 2, 262144, 851967, 2, 262144, 917503, 2, 262144, 458752, 2, 262144, 524288, 2, 262144, 589824, 2, 262144, 655360, 2, 262144, 720896, 2, 262144, 786432, 2, 262144, 851968, 2, 262144, 458753, 2, 262144, 524289, 2, 262144, 589825, 2, 262144, 655361, 2, 262144, 720897, 2, 262144, 786433, 2, 262144, 851969, 2, 262144, 458754, 2, 262144, 524290, 2, 262144, 589826, 2, 262144, 655362, 2, 262144, 720898, 2, 262144, 786434, 2, 262144, 851970, 2, 262144, 458755, 2, 262144, 524291, 2, 262144, 589827, 2, 262144, 655363, 2, 262144, 720899, 2, 262144, 786435, 2, 262144, 851971, 2, 262144)
+layer_1/name = "impassable"
+layer_1/y_sort_enabled = true
+layer_1/z_index = 1
+layer_1/tile_data = PackedInt32Array()
+layer_2/name = "objects"
+layer_2/y_sort_enabled = true
+layer_2/z_index = -1
+layer_2/tile_data = PackedInt32Array(524288, 2, 131072, 327681, 2, 196608, 720897, 2, 196608)
+layer_3/name = "prediction"
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array()
+script = ExtResource("2_80nm7")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 2
+width_curve = SubResource("Curve_a1aor")
+joint_mode = 2

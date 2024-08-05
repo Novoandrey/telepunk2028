@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxf066cxoynkb"]
+
+[ext_resource type="Script" path="res://scripts/tiles/Tile.gd" id="1_eq5oh"]
+[ext_resource type="Texture2D" uid="uid://cmt71t2oc145n" path="res://assets/sprites/tilesets/testtile.png" id="2_nxbc8"]
+
+[node name="Tile" type="Node2D"]
+z_index = -1
+position = Vector2(0, -10)
+script = ExtResource("1_eq5oh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(0, 11)
+texture = ExtResource("2_nxbc8")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(-178, -55, 0, -101, 178, -55, 178, 32, -1, 76, -178, 32)
+
+[node name="Control" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="body_entered" from="Area2D" to="." method="critter_enter"]
+[connection signal="body_entered" from="Area2D" to="." method="deal_damage"]
+[connection signal="body_exited" from="Area2D" to="." method="critter_exit"]

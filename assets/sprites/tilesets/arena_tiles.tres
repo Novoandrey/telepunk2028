@@ -1,0 +1,196 @@
+[gd_resource type="TileSet" load_steps=15 format=3 uid="uid://cnh4y1n4dwabp"]
+
+[ext_resource type="Texture2D" uid="uid://bob2txyiwyr5c" path="res://assets/sprites/tilesets/fullTiles.png" id="1_af8dj"]
+[ext_resource type="Texture2D" uid="uid://cchok1s88f8iy" path="res://assets/sprites/tilesets/topTiles.png" id="2_27s5v"]
+[ext_resource type="PackedScene" uid="uid://khwdovkv6p6s" path="res://assets/nodes/arenaTiles/playerSpawnPoint.tscn" id="2_bal74"]
+[ext_resource type="PackedScene" uid="uid://cxasr4smr0hda" path="res://assets/nodes/arenaTiles/fireTile.tscn" id="3_4c1bn"]
+[ext_resource type="PackedScene" uid="uid://pd0wjop7dv5h" path="res://assets/nodes/arenaTiles/enemySpawnPoint.tscn" id="3_ca31d"]
+[ext_resource type="PackedScene" uid="uid://cxf066cxoynkb" path="res://assets/nodes/arenaTiles/default_tile.tscn" id="4_r2e46"]
+[ext_resource type="Shader" path="res://assets/shaders/outline.gdshader" id="5_57t87"]
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_6wief"]
+resource_name = "Hazards"
+scenes/1/scene = ExtResource("3_4c1bn")
+scenes/2/scene = ExtResource("2_bal74")
+scenes/3/scene = ExtResource("3_ca31d")
+scenes/4/scene = ExtResource("4_r2e46")
+
+[sub_resource type="Shader" id="Shader_h7pb6"]
+code = "shader_type spatial;
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+}
+
+//void light() {
+	// Called for every pixel for every light affecting the material.
+	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8qnp"]
+render_priority = 0
+shader = SubResource("Shader_h7pb6")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_03kms"]
+texture = ExtResource("1_af8dj")
+texture_region_size = Vector2i(65, 89)
+use_texture_padding = false
+0:0/0 = 0
+0:0/0/texture_origin = Vector2i(0, -11)
+0:0/0/y_sort_origin = 1
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/texture_origin = Vector2i(0, -11)
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/texture_origin = Vector2i(0, -11)
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/texture_origin = Vector2i(0, -11)
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -34, -34, -17, -34, 17, 0, 34, 34, 17, 34, -17)
+2:1/0/custom_data_1 = true
+3:1/0 = 0
+3:1/0/texture_origin = Vector2i(0, -11)
+3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/texture_origin = Vector2i(0, -11)
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/texture_origin = Vector2i(0, 11)
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/texture_origin = Vector2i(0, -11)
+0:2/0/material = SubResource("ShaderMaterial_o8qnp")
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/texture_origin = Vector2i(0, -11)
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0 = 0
+2:2/0/texture_origin = Vector2i(0, -11)
+2:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:2/0/physics_layer_0/angular_velocity = 0.0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -34, -34, -17, -34, 17, 0, 34, 34, 17, 34, -17)
+2:2/0/custom_data_1 = true
+3:2/0 = 0
+3:2/0/texture_origin = Vector2i(0, -11)
+3:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:2/0/physics_layer_0/angular_velocity = 0.0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -34, -34, -17, -34, 17, 0, 34, 34, 17, 34, -17)
+3:2/0/custom_data_0 = 1
+3:2/0/custom_data_1 = true
+3:3/0 = 0
+3:3/0/texture_origin = Vector2i(0, -11)
+3:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:3/0/physics_layer_0/angular_velocity = 0.0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(0, -34, -34, -17, -34, 17, 0, 34, 34, 17, 34, -17)
+3:3/0/custom_data_0 = 1
+3:3/0/custom_data_1 = true
+2:4/0 = 0
+2:4/0/texture_origin = Vector2i(0, -11)
+2:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:4/0/physics_layer_0/angular_velocity = 0.0
+1:4/0 = 0
+1:4/0/texture_origin = Vector2i(0, -11)
+1:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:4/0/physics_layer_0/angular_velocity = 0.0
+0:4/0 = 0
+0:4/0/texture_origin = Vector2i(0, -11)
+0:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:4/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/texture_origin = Vector2i(0, -11)
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/texture_origin = Vector2i(0, -11)
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+2:3/0 = 0
+2:3/0/texture_origin = Vector2i(0, -11)
+2:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:3/0/physics_layer_0/angular_velocity = 0.0
+3:0/0 = 0
+3:0/0/texture_origin = Vector2i(0, -11)
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:4/0 = 0
+3:4/0/texture_origin = Vector2i(0, -11)
+3:4/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:4/0/physics_layer_0/angular_velocity = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nbal6"]
+shader = ExtResource("5_57t87")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = Color(0, 0, 0.792157, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdtev"]
+shader = ExtResource("5_57t87")
+shader_parameter/width = 5.0
+shader_parameter/outline_color = Color(0.835294, 0, 0, 1)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_amery"]
+texture = ExtResource("2_27s5v")
+margins = Vector2i(0, 2)
+separation = Vector2i(0, 2)
+texture_region_size = Vector2i(55, 55)
+0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_nbal6")
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0 = 0
+1:0/0/modulate = Color(1, 0, 0, 1)
+1:0/0/material = SubResource("ShaderMaterial_sdtev")
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+2:1/0 = 0
+2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:1/0/physics_layer_0/angular_velocity = 0.0
+0:2/0 = 0
+0:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+0:3/0 = 0
+0:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:3/0/physics_layer_0/angular_velocity = 0.0
+1:3/0 = 0
+1:3/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:3/0/physics_layer_0/angular_velocity = 0.0
+
+[resource]
+tile_shape = 3
+tile_size = Vector2i(360, 225)
+physics_layer_0/collision_layer = 1
+physics_layer_0/collision_mask = 3
+custom_data_layer_0/name = "Terrain"
+custom_data_layer_0/type = 2
+custom_data_layer_1/name = "Walkable"
+custom_data_layer_1/type = 1
+sources/2 = SubResource("TileSetScenesCollectionSource_6wief")
+sources/5 = SubResource("TileSetAtlasSource_amery")
+sources/3 = SubResource("TileSetAtlasSource_03kms")
