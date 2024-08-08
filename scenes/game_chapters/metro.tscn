@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/arena_scene.tscn" id="4_ikxp5"]
 [ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/level_selection/back_button.tscn" id="5_q2sra"]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_lm7ft")
 level_name = "Метро"
 

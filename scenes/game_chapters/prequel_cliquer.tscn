@@ -1,0 +1,106 @@
+[gd_scene load_steps=4 format=3 uid="uid://cdnrhxx85gis6"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_j24vn"]
+[ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_m3hud"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_qv17l"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_j24vn")
+level_name = "Prequel"
+
+[node name="ClickerManager" type="Node2D" parent="."]
+script = ExtResource("2_m3hud")
+
+[node name="TapsScore" type="Label" parent="ClickerManager"]
+offset_left = 153.0
+offset_top = 92.0
+offset_right = 317.0
+offset_bottom = 124.0
+text = "000"
+horizontal_alignment = 1
+
+[node name="TapsStrength" type="Label" parent="ClickerManager"]
+offset_left = 151.0
+offset_top = 21.0
+offset_right = 315.0
+offset_bottom = 53.0
+text = "STRENGTH"
+horizontal_alignment = 1
+
+[node name="AutoScore" type="Label" parent="ClickerManager"]
+offset_left = 141.0
+offset_top = 60.0
+offset_right = 305.0
+offset_bottom = 92.0
+text = "Auto Score"
+horizontal_alignment = 1
+
+[node name="TapButton" type="Button" parent="ClickerManager"]
+offset_left = 117.0
+offset_top = 810.0
+offset_right = 345.0
+offset_bottom = 964.0
+text = "TAP"
+
+[node name="UpgradeButton" type="Button" parent="ClickerManager"]
+offset_left = 118.0
+offset_top = 707.0
+offset_right = 344.0
+offset_bottom = 742.0
+text = "Upgrade"
+
+[node name="AutoButton" type="Button" parent="ClickerManager"]
+offset_left = 118.0
+offset_top = 759.0
+offset_right = 344.0
+offset_bottom = 794.0
+text = "Auto"
+
+[node name="Timer" type="Timer" parent="ClickerManager"]
+autostart = true
+
+[node name="Node1" type="Button" parent="ClickerManager"]
+offset_left = 174.0
+offset_top = 582.0
+offset_right = 283.0
+offset_bottom = 651.0
+
+[node name="Node2" type="Button" parent="ClickerManager"]
+offset_left = 174.0
+offset_top = 451.0
+offset_right = 283.0
+offset_bottom = 520.0
+
+[node name="Node3" type="Button" parent="ClickerManager"]
+offset_left = 174.0
+offset_top = 306.0
+offset_right = 283.0
+offset_bottom = 375.0
+
+[node name="Container" type="Container" parent="ClickerManager"]
+offset_left = 65.0
+offset_top = 127.0
+offset_right = 424.0
+offset_bottom = 370.0
+
+[node name="Button" type="Button" parent="ClickerManager/Container"]
+layout_mode = 2
+text = "UPGRAGE"
+
+[node name="Button2" type="Button" parent="ClickerManager/Container"]
+layout_mode = 2
+text = "Exit"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="ClickerManager/Container"]
+layout_mode = 2
+text = "вот тут у нас длиннющее описание"
+fit_content = true
+tab_size = 5
+
+[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_qv17l")]
+level_to_unload = NodePath("..")
+
+[connection signal="pressed" from="ClickerManager/TapButton" to="ClickerManager" method="_on_tap_button_pressed"]
+[connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="ClickerManager/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
+[connection signal="timeout" from="ClickerManager/Timer" to="ClickerManager" method="_on_timer_timeout"]
