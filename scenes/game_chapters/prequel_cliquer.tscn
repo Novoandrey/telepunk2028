@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://d00fi6jugilmr"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_j24vn"]
+[ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_m3hud"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_qv17l"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_j24vn")
+level_name = "Prequel"
+
+[node name="ClickerManager" type="Node2D" parent="."]
+script = ExtResource("2_m3hud")
+
+[node name="TapsScore" type="Label" parent="ClickerManager"]
+offset_left = 142.0
+offset_top = 28.0
+offset_right = 306.0
+offset_bottom = 60.0
+horizontal_alignment = 1
+
+[node name="TapsStrength" type="Label" parent="ClickerManager"]
+offset_left = 141.0
+offset_top = 146.0
+offset_right = 305.0
+offset_bottom = 178.0
+text = "STRENGTH"
+horizontal_alignment = 1
+
+[node name="AutoScore" type="Label" parent="ClickerManager"]
+offset_left = 141.0
+offset_top = 181.0
+offset_right = 305.0
+offset_bottom = 213.0
+text = "Auto Score"
+horizontal_alignment = 1
+
+[node name="TapButton" type="Button" parent="ClickerManager"]
+offset_left = 117.0
+offset_top = 810.0
+offset_right = 345.0
+offset_bottom = 964.0
+text = "TAP"
+
+[node name="UpgradeButton" type="Button" parent="ClickerManager"]
+offset_left = 118.0
+offset_top = 707.0
+offset_right = 344.0
+offset_bottom = 742.0
+text = "Upgrade"
+
+[node name="AutoButton" type="Button" parent="ClickerManager"]
+offset_left = 118.0
+offset_top = 759.0
+offset_right = 344.0
+offset_bottom = 794.0
+text = "Auto"
+
+[node name="Timer" type="Timer" parent="ClickerManager"]
+autostart = true
+
+[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_qv17l")]
+level_to_unload = NodePath("..")
+
+[connection signal="pressed" from="ClickerManager/TapButton" to="ClickerManager" method="_on_tap_button_pressed"]
+[connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="ClickerManager/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
+[connection signal="timeout" from="ClickerManager/Timer" to="ClickerManager" method="_on_timer_timeout"]

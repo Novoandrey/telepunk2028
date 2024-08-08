@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=8 format=3 uid="uid://b8losi1peqew4"]
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ign3h"]
 [ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city.tscn" id="5_ik1rq"]
 [ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro.tscn" id="6_f308j"]
+[ext_resource type="PackedScene" uid="uid://d00fi6jugilmr" path="res://scenes/game_chapters/prequel_cliquer.tscn" id="7_4pheg"]
 
 [node name="Game" type="Node2D"]
 
@@ -96,7 +97,7 @@ offset_top = 267.0
 offset_right = 259.0
 offset_bottom = 306.0
 script = ExtResource("4_ign3h")
-chapter_list = Array[PackedScene]([ExtResource("5_ik1rq"), ExtResource("6_f308j")])
+chapter_list = Array[PackedScene]([ExtResource("5_ik1rq"), ExtResource("6_f308j"), ExtResource("7_4pheg")])
 load_button = NodePath("../Arena 1")
 
 [node name="Button" type="Button" parent="Control"]
