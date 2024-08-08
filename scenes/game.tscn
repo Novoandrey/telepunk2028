@@ -2,15 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
-[ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LoadButton.gd" id="3_nauof"]
+[ext_resource type="Script" path="res://scripts/ui/LoadButton.gd" id="3_xthrr"]
 [ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ign3h"]
 [ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city.tscn" id="5_ik1rq"]
 [ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro.tscn" id="6_f308j"]
-<<<<<<< HEAD
 [ext_resource type="PackedScene" uid="uid://d00fi6jugilmr" path="res://scenes/game_chapters/prequel_cliquer.tscn" id="7_4pheg"]
-=======
-[ext_resource type="PackedScene" uid="uid://bhg4u20eohi2g" path="res://scenes/game_scenes/multiplayer_manager.tscn" id="7_qgbea"]
->>>>>>> 633d2d94da3cfefb20bb1e08448285f33ace14be
 
 [node name="Game" type="Node2D"]
 
@@ -24,14 +20,14 @@ texture = ExtResource("1_f8ct7")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 autoplay = true
 
-[node name="MainMenuUI" type="Control" parent="."]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_5sg5t")
 
-[node name="ButtonRU" type="Button" parent="MainMenuUI"]
+[node name="ButtonRU" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = -329.0
@@ -40,7 +36,7 @@ offset_bottom = -293.0
 text = "STARTSCREEN_LANG_RU"
 clip_text = true
 
-[node name="ButtonEN" type="Button" parent="MainMenuUI"]
+[node name="ButtonEN" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = -277.0
@@ -49,7 +45,7 @@ offset_bottom = -241.0
 text = "STARTSCREEN_LANG_EN"
 clip_text = true
 
-[node name="ButtonFR" type="Button" parent="MainMenuUI"]
+[node name="ButtonFR" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = -224.0
@@ -58,7 +54,7 @@ offset_bottom = -188.0
 text = "STARTSCREEN_LANG_FR"
 clip_text = true
 
-[node name="ButtonContinue" type="Button" parent="MainMenuUI"]
+[node name="ButtonContinue" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -70.0
 offset_top = 194.0
@@ -67,14 +63,14 @@ offset_bottom = 230.0
 text = "STARTSCREEN_PROCEED"
 clip_text = true
 
-[node name="PanelContainer" type="PanelContainer" parent="MainMenuUI"]
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 0
 offset_left = -129.0
 offset_top = -117.0
 offset_right = 131.0
 offset_bottom = 117.0
 
-[node name="Label" type="Label" parent="MainMenuUI/PanelContainer"]
+[node name="Label" type="Label" parent="Control/PanelContainer"]
 custom_minimum_size = Vector2(10, 10)
 layout_mode = 2
 text = "STARTSCREEN_WELCOME"
@@ -82,7 +78,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="Arena 1" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("scene_to_unload")]
+[node name="Arena 1" type="Button" parent="Control" node_paths=PackedStringArray("scene_to_unload")]
 layout_mode = 0
 offset_left = -70.0
 offset_top = 269.0
@@ -90,11 +86,11 @@ offset_right = 71.0
 offset_bottom = 305.0
 text = "Загрузить уровень"
 clip_text = true
-script = ExtResource("3_nauof")
+script = ExtResource("3_xthrr")
 keep_current_scene = true
 scene_to_unload = NodePath("../..")
 
-[node name="OptionButton" type="OptionButton" parent="MainMenuUI" node_paths=PackedStringArray("load_button")]
+[node name="OptionButton" type="OptionButton" parent="Control" node_paths=PackedStringArray("load_button")]
 layout_mode = 0
 offset_left = 99.0
 offset_top = 267.0
@@ -104,23 +100,19 @@ script = ExtResource("4_ign3h")
 chapter_list = Array[PackedScene]([ExtResource("5_ik1rq"), ExtResource("6_f308j"), ExtResource("7_4pheg")])
 load_button = NodePath("../Arena 1")
 
-[node name="Button" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("scene_to_unload", "scene_root")]
+[node name="Button" type="Button" parent="Control"]
 layout_mode = 0
 offset_left = -100.0
 offset_top = 362.0
 offset_right = 100.0
 offset_bottom = 412.0
 text = "Мультиплеер"
-script = ExtResource("3_nauof")
-scene_to_load = ExtResource("7_qgbea")
-scene_to_unload = NodePath("..")
-scene_root = NodePath("../..")
 
-[connection signal="button_down" from="MainMenuUI/ButtonRU" to="." method="_on_button_ru_button_down"]
-[connection signal="button_down" from="MainMenuUI/ButtonRU" to="MainMenuUI" method="_on_button_ru_button_down"]
-[connection signal="button_down" from="MainMenuUI/ButtonEN" to="." method="_on_button_en_button_down"]
-[connection signal="button_down" from="MainMenuUI/ButtonEN" to="MainMenuUI" method="_on_button_en_button_down"]
-[connection signal="button_down" from="MainMenuUI/ButtonFR" to="." method="_on_button_fr_button_down"]
-[connection signal="button_down" from="MainMenuUI/ButtonFR" to="MainMenuUI" method="_on_button_fr_button_down"]
-[connection signal="pressed" from="MainMenuUI/Arena 1" to="MainMenuUI/Arena 1" method="_on_pressed"]
-[connection signal="item_selected" from="MainMenuUI/OptionButton" to="MainMenuUI/OptionButton" method="_on_item_selected"]
+[connection signal="button_down" from="Control/ButtonRU" to="." method="_on_button_ru_button_down"]
+[connection signal="button_down" from="Control/ButtonRU" to="Control" method="_on_button_ru_button_down"]
+[connection signal="button_down" from="Control/ButtonEN" to="." method="_on_button_en_button_down"]
+[connection signal="button_down" from="Control/ButtonEN" to="Control" method="_on_button_en_button_down"]
+[connection signal="button_down" from="Control/ButtonFR" to="." method="_on_button_fr_button_down"]
+[connection signal="button_down" from="Control/ButtonFR" to="Control" method="_on_button_fr_button_down"]
+[connection signal="pressed" from="Control/Arena 1" to="Control/Arena 1" method="_on_pressed"]
+[connection signal="item_selected" from="Control/OptionButton" to="Control/OptionButton" method="_on_item_selected"]

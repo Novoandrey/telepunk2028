@@ -18,16 +18,15 @@ func _ready():
 	if first_scene == main_menu_scene:
 		scene_stack.append(main_menu)
 
-func switch_scenes(_scene_to_load, _scene_to_destroy, keep_scene: bool = true, scene_root: Node = root):
-	if scene_root == null:
-		scene_root = root
+func switch_scenes(_scene_to_load, _scene_to_destroy, keep_scene: bool = true, clear_previous: bool = false):
+	print(_scene_to_destroy)
 	if _scene_to_load is PackedScene:
 		_current_scene = _scene_to_load.instantiate()
 	else:
 		_current_scene = _scene_to_load
 	if _scene_to_destroy != null:
-		_scene_to_destroy.get_parent().remove_child(_scene_to_destroy)
-	scene_root.add_child(_current_scene)
+		root.remove_child(_scene_to_destroy)
+	root.add_child(_current_scene)
 	if !scene_stack.has(_current_scene) and keep_scene:
 		scene_stack.append(_current_scene)
 	if scene_stack.has(_scene_to_destroy):
@@ -37,12 +36,17 @@ func switch_scenes(_scene_to_load, _scene_to_destroy, keep_scene: bool = true, s
 			_scene_to_destroy.queue_free()
 			print("returned")
 			return
+	if clear_previous:
+		if scene_stack.size() < 2:
+			return
+		scene_stack[-2].queue_free()
+		scene_stack.erase(scene_stack[-2])
 
 func switch_chapter():
 	pass
 
-func add_scene(_scene_to_load, scene_root: Node = root):
-	scene_root.add_child(_scene_to_load.instantiate())
+func add_scene(_scene_to_load):
+	root.add_child(_scene_to_load.instantiate())
 	scene_stack.append(_scene_to_load)
 
 func add_scene_to_parent(_scene_to_load, _scene_parent):
@@ -51,10 +55,6 @@ func add_scene_to_parent(_scene_to_load, _scene_parent):
 	pass
 
 func return_to_scene():
-	if scene_stack.size() <= 1:
-		print("Only 1 scene in a scene stack. Unable to return.")
-		return
-	
 	switch_scenes(scene_stack[-2], scene_stack[-1])
 
 func return_to_main_menu():

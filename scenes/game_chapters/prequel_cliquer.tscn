@@ -20,17 +20,17 @@ horizontal_alignment = 1
 
 [node name="TapsStrength" type="Label" parent="ClickerManager"]
 offset_left = 141.0
-offset_top = 25.0
+offset_top = 146.0
 offset_right = 305.0
-offset_bottom = 57.0
+offset_bottom = 178.0
 text = "STRENGTH"
 horizontal_alignment = 1
 
 [node name="AutoScore" type="Label" parent="ClickerManager"]
 offset_left = 141.0
-offset_top = 60.0
+offset_top = 181.0
 offset_right = 305.0
-offset_bottom = 92.0
+offset_bottom = 213.0
 text = "Auto Score"
 horizontal_alignment = 1
 
@@ -57,34 +57,6 @@ text = "Auto"
 
 [node name="Timer" type="Timer" parent="ClickerManager"]
 autostart = true
-
-[node name="Node1" type="Button" parent="ClickerManager"]
-offset_left = 174.0
-offset_top = 582.0
-offset_right = 283.0
-offset_bottom = 651.0
-
-[node name="Node2" type="Button" parent="ClickerManager"]
-offset_left = 174.0
-offset_top = 432.0
-offset_right = 283.0
-offset_bottom = 501.0
-
-[node name="Container" type="Container" parent="ClickerManager"]
-offset_left = 55.0
-offset_top = 102.0
-offset_right = 414.0
-offset_bottom = 345.0
-
-[node name="TextEdit" type="TextEdit" parent="ClickerManager/Container"]
-layout_mode = 2
-
-[node name="Button" type="Button" parent="ClickerManager/Container"]
-layout_mode = 2
-text = "UPGRAGE"
-
-[node name="Button2" type="Button" parent="ClickerManager/Container"]
-layout_mode = 2
 
 [node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_qv17l")]
 level_to_unload = NodePath("..")
