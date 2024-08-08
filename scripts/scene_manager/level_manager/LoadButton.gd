@@ -6,7 +6,8 @@ extends Button
 
 @export var scene_to_load: PackedScene ##Сцена для загрузки
 @export var keep_current_scene: bool = false ##Сохранить текущую сцену в стэке сцен для возможного возвращения
-@export var scene_to_unload: Node
+@export var scene_to_unload: Node ##Сцена для выгрузки
+@export var scene_root: Node ##Родитель новой сцены, является root поумолчанию
 
 func _on_pressed():
-	scene_manager.switch_scenes(scene_to_load, scene_to_unload, keep_current_scene)
+	scene_manager.switch_scenes(scene_to_load, scene_to_unload, keep_current_scene, scene_root)

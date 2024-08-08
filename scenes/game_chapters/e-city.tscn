@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_scenes/arenas/arena_scene2.tscn" id="6_mec33"]
 [ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/level_selection/back_button.tscn" id="8_rp6io"]
 
-[node name="Level" type="Node2D"]
+[node name="Level2" type="Node2D"]
 script = ExtResource("1_ohf4v")
 level_name = "E-City"
 
