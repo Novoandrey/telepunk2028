@@ -7,7 +7,9 @@
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[node name="BattleArena" type="Node2D"]
+[node name="BattleArena" type="MultiplayerSpawner"]
+_spawnable_scenes = PackedStringArray("res://assets/nodes/entities/character/basic_char.tscn", "res://assets/nodes/entities/character/basic_enemy_char.tscn")
+spawn_path = NodePath(".")
 metadata/_edit_horizontal_guides_ = [-116.0, 19.0, -16.0]
 metadata/_edit_vertical_guides_ = [-34.0]
 
@@ -33,7 +35,7 @@ layer_2/z_index = -1
 layer_2/tile_data = PackedInt32Array(524288, 2, 131072, 327681, 2, 196608, 720897, 2, 196608)
 layer_3/name = "prediction"
 layer_3/y_sort_enabled = true
-layer_3/tile_data = PackedInt32Array()
+layer_3/tile_data = PackedInt32Array(786432, 2, 131072, 262144, 2, 131072, 524290, 2, 131072)
 script = ExtResource("2_80nm7")
 
 [node name="Line2D" type="Line2D" parent="."]

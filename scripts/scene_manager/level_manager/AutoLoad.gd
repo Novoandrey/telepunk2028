@@ -16,5 +16,5 @@ func _exit_tree():
 
 func auto_load_level():
 	if level_to_autoload != null:
-		SceneManager.switch_scenes(level_to_autoload, level_to_unload, keep_current_level)
+		SceneManager.switch_scenes(level_to_autoload.resource_path, level_to_unload.get_path(), keep_current_level)
 	pass

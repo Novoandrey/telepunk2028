@@ -17,11 +17,12 @@ const MAX_CONNECTIONS = 20
 # with the keys being each player's unique IDs.
 var players = {}
 
+var player_id
 # This is the local player info. This should be modified locally
 # before the connection is made. It will be passed to every other peer.
 # For example, the value of "name" can be set to something the player
 # entered in a UI scene.
-var player_info = {"name": "Name"}
+var player_info = {"id": 1,"name": "Name", "side": GameManager.SIDE.TEAM_1}
 
 var players_loaded = 0
 
@@ -46,6 +47,7 @@ func join_game(address = ""):
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
+	player_id = peer.get_unique_id()
 	print("Session joined")
 
 
@@ -55,7 +57,7 @@ func create_game():
 	if error:
 		return error
 	multiplayer.multiplayer_peer = peer
-
+	player_id = peer.get_unique_id()
 	players[1] = player_info
 	player_connected.emit(1, player_info)
 	print("Game created")
@@ -78,7 +80,6 @@ func player_loaded():
 	if multiplayer.is_server():
 		players_loaded += 1
 		if players_loaded == players.size():
-			$/root/Game.start_game()
 			players_loaded = 0
 
 
@@ -91,6 +92,7 @@ func _on_player_connected(id):
 @rpc("any_peer", "reliable")
 func _register_player(new_player_info):
 	var new_player_id = multiplayer.get_remote_sender_id()
+	new_player_info.id = new_player_id
 	players[new_player_id] = new_player_info
 	player_connected.emit(new_player_id, new_player_info)
 

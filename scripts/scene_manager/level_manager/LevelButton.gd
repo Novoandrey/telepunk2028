@@ -17,6 +17,8 @@ var is_locked: bool = true :
 
 
 func _ready():
+	super()
+	
 	if is_entry:
 		is_locked = false
 	

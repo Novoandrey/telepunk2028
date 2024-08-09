@@ -12,7 +12,7 @@ extends Node
 @export var require_visual: bool = true
 @export var end_turn: bool = true
 
-signal on_action_used()
+signal on_action_used(action_result: String)
 
 var action_resource: ActionController
 
@@ -22,7 +22,7 @@ func _ready():
 		_owner.available_action_tile(_range)
 
 func activate(_target, _user = null):
-	on_action_used.emit()
+	on_action_used.emit(_actionHintText)
 
 func _exit_tree():
 	_owner._currentAction = null

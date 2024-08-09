@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_lm7ft"]
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="2_x2mvn"]
 [ext_resource type="PackedScene" uid="uid://c6d4ceqhektri" path="res://scenes/scene_managment/level_selection/level_button.tscn" id="3_ronai"]
-[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/arena_scene.tscn" id="4_ikxp5"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/e-city_streets.tscn" id="4_kdoay"]
 [ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/level_selection/back_button.tscn" id="5_q2sra"]
 
 [node name="Level" type="Node2D"]
@@ -34,7 +34,7 @@ offset_right = 316.0
 offset_bottom = 108.0
 text = "Арена А"
 is_entry = true
-scene_to_load = ExtResource("4_ikxp5")
+scene_to_load = ExtResource("4_kdoay")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
 metadata/_edit_use_anchors_ = true

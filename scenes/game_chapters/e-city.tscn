@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_ohf4v"]
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="2_x6yu2"]
-[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/arena_scene.tscn" id="3_7qdj7"]
 [ext_resource type="PackedScene" uid="uid://c6d4ceqhektri" path="res://scenes/scene_managment/level_selection/level_button.tscn" id="3_kp4uy"]
 [ext_resource type="PackedScene" uid="uid://cc0rahc1qfts" path="res://scenes/templates/dialogue_template.tscn" id="4_dd2hs"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/e-city_streets.tscn" id="4_x8ul3"]
 [ext_resource type="PackedScene" uid="uid://hahjtv8d6ugy" path="res://scenes/templates/event_template.tscn" id="5_veh03"]
-[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_scenes/arenas/arena_scene2.tscn" id="6_mec33"]
+[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_scenes/arenas/metro_entrance.tscn" id="6_y4u0m"]
 [ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/level_selection/back_button.tscn" id="8_rp6io"]
 
 [node name="Level" type="Node2D"]
@@ -37,7 +37,7 @@ offset_bottom = 108.0
 text = "Арена А"
 levels_to_unlock = [NodePath("../SceneButton2")]
 is_entry = true
-scene_to_load = ExtResource("3_7qdj7")
+scene_to_load = ExtResource("4_x8ul3")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
 
@@ -60,7 +60,7 @@ offset_top = 329.0
 offset_right = 190.0
 offset_bottom = 360.0
 text = "Арена Б"
-scene_to_load = ExtResource("6_mec33")
+scene_to_load = ExtResource("6_y4u0m")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
 

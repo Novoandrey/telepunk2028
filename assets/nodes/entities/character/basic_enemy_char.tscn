@@ -1,8 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bl24olpybhlie"]
+[gd_scene load_steps=9 format=3 uid="uid://bl24olpybhlie"]
 
 [ext_resource type="Script" path="res://scripts/critters/Critter.gd" id="1_fot8l"]
+[ext_resource type="Shader" path="res://assets/shaders/outline_full.gdshader" id="2_17fs1"]
 [ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_q8ngt"]
-[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/Arena/health.tscn" id="3_2psks"]
+[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/health.tscn" id="3_2psks"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rkkrw"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:owner_id")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:critter_side")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dwtfi"]
+resource_local_to_scene = true
+shader = ExtResource("2_17fs1")
+shader_parameter/width = 1.5
+shader_parameter/outline_color = Color(1, 1, 1, 1)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vngii"]
 radius = 2.33333
@@ -19,7 +37,11 @@ script = ExtResource("1_fot8l")
 _health = 10
 _critterType = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_rkkrw")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_dwtfi")
 position = Vector2(2, -30)
 sprite_frames = ExtResource("2_q8ngt")
 animation = &"idle"

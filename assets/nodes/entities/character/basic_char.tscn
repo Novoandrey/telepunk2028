@@ -1,8 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://b655whi43nq3n"]
+[gd_scene load_steps=40 format=3 uid="uid://b655whi43nq3n"]
 
 [ext_resource type="Script" path="res://scripts/player/CritterController.gd" id="1_r2jjn"]
 [ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_1kso7"]
-[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/Arena/health.tscn" id="3_ecd6b"]
+[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/health.tscn" id="3_ecd6b"]
 [ext_resource type="Texture2D" uid="uid://bojnbxpqva8hd" path="res://assets/sprites/player/Animations/Idle/idle1.png" id="4_10s4p"]
 [ext_resource type="Texture2D" uid="uid://hcnr2fh3bfns" path="res://assets/sprites/player/Animations/Idle/idle2.png" id="5_ug2bi"]
 [ext_resource type="Texture2D" uid="uid://dc16nkefmhc6w" path="res://assets/sprites/player/Animations/Idle/idle3.png" id="6_l6oac"]
@@ -20,6 +20,33 @@
 [ext_resource type="Texture2D" uid="uid://c4kcc0w38a1co" path="res://assets/sprites/player/Animations/Walk/walk8.png" id="18_88cy3"]
 [ext_resource type="Texture2D" uid="uid://qltkyvspwmm7" path="res://assets/sprites/player/Animations/Walk/walk9.png" id="19_doedw"]
 [ext_resource type="Texture2D" uid="uid://dfpdfb6uofhoo" path="res://assets/sprites/player/Animations/Walk/walk10.png" id="20_yi1ms"]
+[ext_resource type="Shader" path="res://assets/shaders/outline_full.gdshader" id="21_dalfq"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_am7na"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:critter_side")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:owner_id")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("AnimationTree:parameters/conditions/isIdle")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("AnimationTree:parameters/conditions/isMoving")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("AnimationTree:parameters/conditions/isPunching")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:_currentMovePoints")
+properties/6/spawn = true
+properties/6/replication_mode = 2
+properties/7/path = NodePath(".:_current_tile")
+properties/7/spawn = true
+properties/7/replication_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8mem"]
 radius = 3.0
@@ -133,10 +160,24 @@ _data = {
 "walk": SubResource("Animation_d44oi")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn46v"]
+resource_local_to_scene = true
+shader = ExtResource("21_dalfq")
+shader_parameter/width = 1.5
+shader_parameter/outline_color = Color(0, 0, 0.490196, 1)
+
+[sub_resource type="Curve" id="Curve_eaube"]
+bake_resolution = 1000
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6nsgb"]
+
 [node name="Character" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(3, 3)
+input_pickable = true
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_r2jjn")
@@ -144,6 +185,9 @@ _health = 20
 _actionPoints = 10
 _movePoints = 7
 _moveSpeed = 7.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_am7na")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
@@ -173,5 +217,14 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fn46v")
 position = Vector2(2, -30)
-texture = ExtResource("7_lvnqb")
+texture = ExtResource("6_l6oac")
+
+[node name="Line2D" type="Line2D" parent="."]
+z_index = 2
+width_curve = SubResource("Curve_eaube")
+joint_mode = 2
+
+[node name="AnimationTree2" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeAnimation_6nsgb")

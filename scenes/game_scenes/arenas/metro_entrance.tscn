@@ -1,26 +1,27 @@
 [gd_scene load_steps=12 format=3 uid="uid://chp8gu65arjd7"]
 
-[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_2vo6c"]
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_204yu"]
-[ext_resource type="PackedScene" uid="uid://df6va56hupiw8" path="res://scenes/tilemap_scenes/battle_arena2.tscn" id="2_sttct"]
-[ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="3_spdf6"]
-[ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="4_8du7p"]
-[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="4_ao4go"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="6_h3gdt"]
-[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="7_ono3w"]
-[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_vq5q7"]
-[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/nodes/ui/player_camera.tscn" id="10_umbr4"]
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_3fg2y"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="2_m1bty"]
+[ext_resource type="PackedScene" uid="uid://df6va56hupiw8" path="res://scenes/tilemap_scenes/battle_arena2.tscn" id="3_ojiuw"]
+[ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="4_rkqnd"]
+[ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="5_3mmr4"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="6_dvh8u"]
+[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="7_3pt5d"]
+[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="8_wo5yw"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="9_ggnhk"]
+[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/nodes/ui/player_camera.tscn" id="10_tk5nv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_204yu")
+script = ExtResource("1_3fg2y")
+level_name = "Вход в метро (4)"
 metadata/SceneType = "Arena"
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_2vo6c")
+script = ExtResource("2_m1bty")
 
-[node name="BattleArena" parent="." instance=ExtResource("2_sttct")]
+[node name="BattleArena" parent="." instance=ExtResource("3_ojiuw")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -55,7 +56,7 @@ text = "Очки действий"
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
-script = ExtResource("3_spdf6")
+script = ExtResource("4_rkqnd")
 
 [node name="APCount" type="Label" parent="CanvasLayer/UI/VBoxContainer/AP"]
 layout_mode = 1
@@ -82,7 +83,7 @@ text = "Очки движений"
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
-script = ExtResource("4_8du7p")
+script = ExtResource("5_3mmr4")
 
 [node name="MPCount" type="Label" parent="CanvasLayer/UI/VBoxContainer/MP"]
 layout_mode = 1
@@ -124,10 +125,10 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
-[node name="Punch" parent="CanvasLayer/UI/Actions" instance=ExtResource("6_h3gdt")]
+[node name="Punch" parent="CanvasLayer/UI/Actions" instance=ExtResource("6_dvh8u")]
 layout_mode = 2
 
-[node name="Grenade" parent="CanvasLayer/UI/Actions" instance=ExtResource("7_ono3w")]
+[node name="Grenade" parent="CanvasLayer/UI/Actions" instance=ExtResource("7_3pt5d")]
 layout_mode = 2
 
 [node name="ActionHint" type="Label" parent="CanvasLayer/UI"]
@@ -149,24 +150,22 @@ offset_top = 10.0
 offset_right = 130.0
 offset_bottom = 50.0
 text = "GETBACK"
-script = ExtResource("7_vq5q7")
+script = ExtResource("8_wo5yw")
 
 [node name="PointA" type="Sprite2D" parent="."]
 position = Vector2(270, 480)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ao4go")
+texture = ExtResource("9_ggnhk")
 
 [node name="PointB" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("4_ao4go")
+texture = ExtResource("9_ggnhk")
 
 [node name="PointCenter" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("4_ao4go")
+texture = ExtResource("9_ggnhk")
 
-[node name="Camera2D" parent="." instance=ExtResource("10_umbr4")]
+[node name="Camera2D" parent="." instance=ExtResource("10_tk5nv")]
 
-[connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/AP" method="On_Player_Critter_Spawned"]
-[connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/MP" method="On_Player_Critter_Spawned"]
 [connection signal="pressed" from="CanvasLayer/UI/TurnButton" to="GameManager" method="switch_turns"]
 [connection signal="pressed" from="CanvasLayer/UI/GETBACK" to="CanvasLayer/UI/GETBACK" method="_return_to_previous_level"]

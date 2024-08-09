@@ -97,8 +97,7 @@ text = "вот тут у нас длиннющее описание"
 fit_content = true
 tab_size = 5
 
-[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_qv17l")]
-level_to_unload = NodePath("..")
+[node name="AutoLoader" parent="." instance=ExtResource("2_qv17l")]
 
 [connection signal="pressed" from="ClickerManager/TapButton" to="ClickerManager" method="_on_tap_button_pressed"]
 [connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]

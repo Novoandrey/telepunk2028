@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=12 format=3 uid="uid://b8losi1peqew4"]
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_cliquer.tscn" id="7_jy1li"]
 [ext_resource type="Script" path="res://scripts/tools/show_hide.gd" id="7_r4ege"]
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_manager_ui.gd" id="8_gmwqf"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_scenes/arenas/e-city_streets.tscn" id="10_xtsmx"]
+[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_scenes/arenas/metro_entrance.tscn" id="11_oc3b1"]
 
 [node name="Game" type="Node2D"]
 
@@ -164,13 +166,15 @@ offset_bottom = 326.0
 text = "Клиент
 "
 
-[node name="LevelList" type="Panel" parent="MultiplayerMenuUI"]
+[node name="LevelList" type="Panel" parent="MultiplayerMenuUI" node_paths=PackedStringArray("container")]
 layout_mode = 0
 offset_left = -178.0
 offset_top = -180.0
 offset_right = 176.0
 offset_bottom = 174.0
 script = ExtResource("4_ign3h")
+level_list = Array[PackedScene]([ExtResource("10_xtsmx"), ExtResource("11_oc3b1")])
+container = NodePath("ScrollContainer/VBoxContainer")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="MultiplayerMenuUI/LevelList"]
 layout_mode = 1
@@ -185,61 +189,30 @@ horizontal_scroll_mode = 0
 custom_minimum_size = Vector2(340, 0)
 layout_mode = 2
 
-[node name="ArenaLevel" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "E-City Streets"
+[node name="TextEdit" type="TextEdit" parent="MultiplayerMenuUI"]
+layout_mode = 0
+offset_left = -226.0
+offset_top = -278.0
+offset_bottom = -238.0
+placeholder_text = "Имя игрока"
 
-[node name="ArenaLevel2" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
+[node name="Arena 1" type="Button" parent="MultiplayerMenuUI" node_paths=PackedStringArray("scene_to_unload")]
+offset_left = -87.0
+offset_top = 368.0
+offset_right = 88.0
+offset_bottom = 404.0
+text = "Загрузить уровень"
+clip_text = true
+script = ExtResource("3_w7iou")
+keep_current_scene = true
+scene_to_unload = NodePath("../..")
 
-[node name="ArenaLevel3" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel4" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel5" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel6" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel7" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel8" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel9" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel10" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel11" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel12" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel13" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
-
-[node name="ArenaLevel14" type="Button" parent="MultiplayerMenuUI/LevelList/ScrollContainer/VBoxContainer"]
-layout_mode = 2
-text = "dffsdfsdfsdfsdfdsfdsfsdf"
+[node name="OptionButton" type="OptionButton" parent="MultiplayerMenuUI"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -279.0
+offset_right = 223.0
+offset_bottom = -239.0
 
 [connection signal="button_down" from="MainMenuUI/ButtonRU" to="." method="_on_button_ru_button_down"]
 [connection signal="button_down" from="MainMenuUI/ButtonRU" to="MainMenuUI" method="_on_button_ru_button_down"]
@@ -248,8 +221,13 @@ text = "dffsdfsdfsdfsdfdsfdsfsdf"
 [connection signal="button_down" from="MainMenuUI/ButtonFR" to="." method="_on_button_fr_button_down"]
 [connection signal="button_down" from="MainMenuUI/ButtonFR" to="MainMenuUI" method="_on_button_fr_button_down"]
 [connection signal="pressed" from="MainMenuUI/Arena 1" to="MainMenuUI/Arena 1" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/Arena 1" to="MultiplayerMenuUI" method="start_server"]
 [connection signal="selected_level_changed" from="MainMenuUI/LevelList" to="MainMenuUI/Arena 1" method="set_scene_to_load"]
 [connection signal="pressed" from="MainMenuUI/MultiplayerButton" to="MainMenuUI/MultiplayerButton" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerMenuUI/Back" to="MultiplayerMenuUI/Back" method="_on_pressed"]
 [connection signal="pressed" from="MultiplayerMenuUI/Host" to="MultiplayerMenuUI" method="start_server"]
 [connection signal="pressed" from="MultiplayerMenuUI/Client" to="MultiplayerMenuUI" method="start_client"]
+[connection signal="selected_level_changed" from="MultiplayerMenuUI/LevelList" to="MultiplayerMenuUI/Arena 1" method="set_scene_to_load"]
+[connection signal="text_changed" from="MultiplayerMenuUI/TextEdit" to="MultiplayerMenuUI" method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="MultiplayerMenuUI/Arena 1" to="MultiplayerMenuUI/Arena 1" method="_on_pressed_network"]
+[connection signal="item_selected" from="MultiplayerMenuUI/OptionButton" to="MultiplayerMenuUI" method="_on_option_button_item_selected"]

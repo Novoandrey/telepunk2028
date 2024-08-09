@@ -61,7 +61,6 @@ func _process(delta):
 func _unhandled_input(event):
 	
 	mobile_camera_control(event)
-	#print(get_canvas_transform().affine_inverse() * event.position)
 	
 	pc_camera_control(event)
 	
@@ -83,7 +82,6 @@ func pc_camera_control(event):
 			drag_start_pos = get_viewport().get_mouse_position()
 			drag_camera_pos = get_screen_center_position()
 			start_drag()
-			print("Mouse")
 			
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 			_touches.erase(0)
