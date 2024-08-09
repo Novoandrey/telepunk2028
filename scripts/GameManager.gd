@@ -3,7 +3,7 @@ class_name GameManager
 extends Node
 
 @onready var tilemap: TileMapManager = get_node("../BattleArena/Environment/TileMap")
-@onready var sceneManager: SceneManager = get_node("/root/SceneManager")
+
 var action_buttons: Array
 
 signal Player_Critter_Added(_playerCritter)

@@ -19,7 +19,7 @@ events = [SubResource("InputEventKey_6um3h")]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
 
-[node name="Level3" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_b23n1")
 metadata/SceneType = "Arena"
 
@@ -172,6 +172,10 @@ texture = ExtResource("4_6x25v")
 [node name="PointCenter" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_6x25v")
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://assets/nodes/entities/character/basic_char.tscn", "res://assets/nodes/entities/character/basic_enemy_char.tscn")
+spawn_path = NodePath("../BattleArena")
 
 [connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/AP" method="On_Player_Critter_Spawned"]
 [connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/MP" method="On_Player_Critter_Spawned"]

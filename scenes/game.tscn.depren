@@ -1,12 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=9 format=3 uid="uid://b8losi1peqew4"]
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_f8ct7"]
 [ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="3_5sg5t"]
-[ext_resource type="Script" path="res://scripts/scene_manager/LoadButton.gd" id="3_w7iou"]
+[ext_resource type="Script" path="res://scripts/scene_manager/LoadButton.gd" id="3_nauof"]
 [ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ign3h"]
 [ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city.tscn" id="5_ik1rq"]
 [ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro.tscn" id="6_f308j"]
-[ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_cliquer.tscn" id="7_jy1li"]
 [ext_resource type="Script" path="res://scripts/tools/show_hide.gd" id="7_r4ege"]
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_manager_ui.gd" id="8_gmwqf"]
 
@@ -82,24 +81,24 @@ autowrap_mode = 2
 
 [node name="Arena 1" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("scene_to_unload")]
 layout_mode = 0
-offset_left = -88.0
+offset_left = -195.0
 offset_top = 269.0
-offset_right = 87.0
+offset_right = -20.0
 offset_bottom = 305.0
 text = "Загрузить уровень"
 clip_text = true
-script = ExtResource("3_w7iou")
+script = ExtResource("3_nauof")
 keep_current_scene = true
 scene_to_unload = NodePath("../..")
 
 [node name="LevelList" type="Panel" parent="MainMenuUI" node_paths=PackedStringArray("load_button", "container")]
 layout_mode = 0
-offset_left = 97.0
+offset_left = 90.0
 offset_top = 222.0
-offset_right = 232.0
+offset_right = 225.0
 offset_bottom = 357.0
 script = ExtResource("4_ign3h")
-level_list = Array[PackedScene]([ExtResource("5_ik1rq"), ExtResource("6_f308j"), ExtResource("7_jy1li")])
+chapter_list = Array[PackedScene]([ExtResource("5_ik1rq"), ExtResource("6_f308j")])
 load_button = NodePath("../Arena 1")
 container = NodePath("ScrollContainer/VBoxContainer")
 
@@ -115,7 +114,6 @@ horizontal_scroll_mode = 0
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/LevelList/ScrollContainer"]
 clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="MultiplayerButton" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("node_to_hide", "node_to_show")]
 layout_mode = 0

@@ -3,11 +3,13 @@ class_name ActionController
 extends Control
 
 @export var _action: PackedScene
+@export var _action_text_hint: String
+@export var _cost: int
 @export var max_usage: int = -1
 
 signal current_usage_on_value_changed(previousValue, currentValue)
 
-@onready var _actionHint: Label = get_node("/root/Chapter/Level/CanvasLayer/UI/ActionHint")
+@onready var _actionHint: Label = get_node("../../ActionHint")
 @onready var _button: TextureButton = get_child(0).get_child(0)
 @onready var _usage_bar: ProgressBar = get_child(0).get_child(1)
 var current_usage: int :
@@ -20,9 +22,10 @@ var current_usage: int :
 			#_button.disabled = true
 			pass
 		else: 
-			_button.disabled = false
+			#_button.disabled = false
+			pass
 
-var _player
+var _player: Critter
 var created_action: Action
 var is_active: bool = false
 
@@ -42,8 +45,12 @@ func _on_texture_button_pressed():
 			_actionHint.text = "Не хватает использований"
 			return
 		if !is_active:
-			created_action = _action.instantiate()
-			if _player._currentActionPoints > created_action._cost:
+			if _cost > _player._currentActionPoints:
+				_actionHint.text = "Не хватает очков действий"
+				return
+			else:
+				created_action = _action.instantiate()
+				created_action.action_resource = self
 				created_action.on_action_used.connect(use_action)
 				_player.add_child(created_action)
 				is_active = true

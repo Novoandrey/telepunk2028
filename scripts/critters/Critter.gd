@@ -29,7 +29,7 @@ signal current_action_on_value_changed(previousValue, currentValue)
 @export var _critterType: CRITTER_TYPE = CRITTER_TYPE.PLAYER
 
 var tilemap: TileMapManager
-var owner_id: int
+var owner_id: int = 1
 var _currentAction: Action :
 	get:
 		return _currentAction

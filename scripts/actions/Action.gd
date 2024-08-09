@@ -2,10 +2,8 @@ class_name Action
 
 extends Node
 
-@onready var _actionHint: Label = get_node("/root/Chapter/Level/CanvasLayer/UI/ActionHint")
 @onready var _owner:Critter = get_node("../")
 
-@export var _cost: int
 @export var _area: int
 @export var _range: int
 @export var _damage: int
@@ -16,8 +14,9 @@ extends Node
 
 signal on_action_used()
 
+var action_resource: ActionController
+
 func _ready():
-	_actionHint.text = _actionHintText
 	_owner._currentAction = self
 	if _owner._critterType == Critter.CRITTER_TYPE.PLAYER:
 		_owner.available_action_tile(_range)
@@ -29,5 +28,4 @@ func _exit_tree():
 	_owner._currentAction = null
 	if _owner._critterType == Critter.CRITTER_TYPE.PLAYER:
 		_owner.available_movement_tiles()
-		_actionHint.text = ""
 	queue_free()
