@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://c6au4ft6g5mgf"]
 
-[ext_resource type="Texture2D" uid="uid://xvapc7uugcbf" path="res://assets/sprites/background/House.png" id="1_owjc4"]
-[ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="2_6qmug"]
-[ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="3_3camn"]
+[ext_resource type="Texture2D" uid="uid://xvapc7uugcbf" path="res://assets/sprites/background/House.png" id="1_j2oby"]
+[ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="2_cuq5w"]
+[ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="3_8wk3b"]
 
 [node name="BattleArena" type="MultiplayerSpawner"]
 _spawnable_scenes = PackedStringArray("res://assets/nodes/entities/character/basic_char.tscn", "res://assets/nodes/entities/character/basic_enemy_char.tscn")
@@ -14,13 +14,13 @@ metadata/_edit_vertical_guides_ = [-34.0]
 z_index = -2
 position = Vector2(207, -1059)
 scale = Vector2(3.01086, 3.01086)
-texture = ExtResource("1_owjc4")
+texture = ExtResource("1_j2oby")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -2
 position = Vector2(2941, -1049)
 scale = Vector2(3.01408, 3.01408)
-texture = ExtResource("1_owjc4")
+texture = ExtResource("1_j2oby")
 
 [node name="Environment" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -29,7 +29,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 position = Vector2(-300, -300)
 scale = Vector2(0.5, 0.5)
-tile_set = ExtResource("2_6qmug")
+tile_set = ExtResource("2_cuq5w")
 format = 2
 layer_0/name = "terrain"
 layer_0/y_sort_enabled = true
@@ -49,4 +49,4 @@ layer_3/tile_data = PackedInt32Array(524290, 2, 131072, 655363, 2, 196608, 78643
 layer_4/name = "prediction"
 layer_4/y_sort_enabled = true
 layer_4/tile_data = PackedInt32Array()
-script = ExtResource("3_3camn")
+script = ExtResource("3_8wk3b")

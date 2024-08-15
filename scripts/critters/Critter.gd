@@ -10,7 +10,7 @@ enum State {
 enum CRITTER_TYPE{
 	PLAYER = 0,
 	ENEMY = 1,
-}
+} 
 
 const state_names := ["IDLE", "WALK"]
 const UNSELECTED: Color = Color(0, 0, 125)

@@ -25,3 +25,4 @@ func _on_pressed_network():
 
 func set_scene_to_load(new_scene: PackedScene):
 	scene_to_load = new_scene	
+

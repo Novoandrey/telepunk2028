@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dy5vq3av7c487"]
 
 [ext_resource type="Script" path="res://scripts/ui/LoadButton.gd" id="1_2cvve"]
-[ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/game.tscn" id="2_1edox"]
+[ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/main_menu.tscn" id="2_1edox"]
 
 [node name="LoadButton" type="Button"]
 offset_right = 100.0

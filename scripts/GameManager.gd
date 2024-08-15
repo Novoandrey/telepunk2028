@@ -54,7 +54,6 @@ func configure_game():
 
 
 func switch_turns():
-	
 	switch_turns_rpc.rpc_id(1)
 
 @rpc("any_peer", "call_local", "reliable")

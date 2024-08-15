@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_0fbta"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_ady7v"]
-[ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/game.tscn" id="3_fthxp"]
+[ext_resource type="PackedScene" uid="uid://b8losi1peqew4" path="res://scenes/main_menu.tscn" id="3_mdtls"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_0fbta")
@@ -35,5 +35,5 @@ text = "Предупреждение"
 
 [node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_ady7v")]
 wait_time = 2.0
-level_to_autoload = ExtResource("3_fthxp")
+level_to_autoload = ExtResource("3_mdtls")
 level_to_unload = NodePath("..")

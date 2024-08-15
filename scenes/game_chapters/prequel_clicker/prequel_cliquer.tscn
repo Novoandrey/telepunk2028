@@ -1,15 +1,15 @@
 [gd_scene load_steps=4 format=3 uid="uid://cdnrhxx85gis6"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_j24vn"]
-[ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_m3hud"]
-[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_qv17l"]
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
+[ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_j24vn")
+script = ExtResource("1_yxhan")
 level_name = "Prequel"
 
 [node name="ClickerManager" type="Node2D" parent="."]
-script = ExtResource("2_m3hud")
+script = ExtResource("2_grbvu")
 
 [node name="TapsScore" type="Label" parent="ClickerManager"]
 offset_left = 153.0
@@ -97,7 +97,7 @@ text = "вот тут у нас длиннющее описание"
 fit_content = true
 tab_size = 5
 
-[node name="AutoLoader" parent="." instance=ExtResource("2_qv17l")]
+[node name="AutoLoader" parent="." instance=ExtResource("3_e3x6g")]
 
 [connection signal="pressed" from="ClickerManager/TapButton" to="ClickerManager" method="_on_tap_button_pressed"]
 [connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]

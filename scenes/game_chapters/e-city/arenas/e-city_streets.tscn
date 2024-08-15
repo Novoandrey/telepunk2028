@@ -1,16 +1,16 @@
 [gd_scene load_steps=15 format=3 uid="uid://34axhhhrme4h"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_bckpw"]
-[ext_resource type="Script" path="res://scripts/GameManager.gd" id="2_fv5hr"]
-[ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="3_7a5eq"]
-[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/nodes/ui/player_camera.tscn" id="4_vreop"]
-[ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="5_ikr2o"]
-[ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="6_q5o03"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="7_q08jp"]
-[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="8_bjj4c"]
-[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="9_ryum0"]
-[ext_resource type="Script" path="res://scripts/tools/ActionNotify.gd" id="9_wfew2"]
-[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="10_ixd3l"]
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_6ecsi"]
+[ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/game_chapters/e-city/arenas/tilemap_scenes/e-city_streets_battle_arena.tscn" id="2_s3m33"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="3_nb8a3"]
+[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/nodes/ui/player_camera.tscn" id="4_4oqin"]
+[ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="5_ore86"]
+[ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="6_73emh"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="7_1xt4i"]
+[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="8_lghf4"]
+[ext_resource type="Script" path="res://scripts/tools/ActionNotify.gd" id="9_0esps"]
+[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="10_xotcw"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="11_c6ukb"]
 
 [sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
 keycode = 32
@@ -21,16 +21,17 @@ events = [SubResource("InputEventKey_6um3h")]
 [sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_bckpw")
-level_name = "Улицы E-City"
+script = ExtResource("1_6ecsi")
+level_name = "Улицы E-City (2)"
 metadata/SceneType = "Arena"
 
-[node name="BattleArena" parent="." instance=ExtResource("3_7a5eq")]
+[node name="BattleArena" parent="." instance=ExtResource("2_s3m33")]
 
 [node name="GameManager" type="Node" parent="."]
-script = ExtResource("2_fv5hr")
+script = ExtResource("3_nb8a3")
+_turn_order = Array[int]([1, 2, 0])
 
-[node name="Camera2D" parent="." instance=ExtResource("4_vreop")]
+[node name="Camera2D" parent="." instance=ExtResource("4_4oqin")]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -65,7 +66,7 @@ text = "Очки действий"
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
-script = ExtResource("5_ikr2o")
+script = ExtResource("5_ore86")
 
 [node name="APCount" type="Label" parent="CanvasLayer/ArenaUI/PlayerResources/AP"]
 layout_mode = 1
@@ -92,7 +93,7 @@ text = "Очки движений"
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 show_percentage = false
-script = ExtResource("6_q5o03")
+script = ExtResource("6_73emh")
 
 [node name="MPCount" type="Label" parent="CanvasLayer/ArenaUI/PlayerResources/MP"]
 layout_mode = 1
@@ -135,10 +136,10 @@ grow_horizontal = 0
 grow_vertical = 2
 alignment = 2
 
-[node name="Punch" parent="CanvasLayer/ArenaUI/Actions" instance=ExtResource("7_q08jp")]
+[node name="Punch" parent="CanvasLayer/ArenaUI/Actions" instance=ExtResource("7_1xt4i")]
 layout_mode = 2
 
-[node name="Grenade" parent="CanvasLayer/ArenaUI/Actions" instance=ExtResource("8_bjj4c")]
+[node name="Grenade" parent="CanvasLayer/ArenaUI/Actions" instance=ExtResource("8_lghf4")]
 layout_mode = 2
 
 [node name="ActionHint" type="Label" parent="CanvasLayer/ArenaUI"]
@@ -154,7 +155,7 @@ grow_horizontal = 0
 text = "Описание действия"
 label_settings = SubResource("LabelSettings_ljfbr")
 horizontal_alignment = 1
-script = ExtResource("9_wfew2")
+script = ExtResource("9_0esps")
 
 [node name="GETBACK" type="Button" parent="CanvasLayer/ArenaUI"]
 layout_mode = 0
@@ -163,20 +164,20 @@ offset_top = 10.0
 offset_right = 130.0
 offset_bottom = 50.0
 text = "GETBACK"
-script = ExtResource("9_ryum0")
+script = ExtResource("10_xotcw")
 
 [node name="PointA" type="Sprite2D" parent="."]
 position = Vector2(270, 480)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_ixd3l")
+texture = ExtResource("11_c6ukb")
 
 [node name="PointB" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("10_ixd3l")
+texture = ExtResource("11_c6ukb")
 
 [node name="PointCenter" type="Sprite2D" parent="."]
 scale = Vector2(0.25, 0.25)
-texture = ExtResource("10_ixd3l")
+texture = ExtResource("11_c6ukb")
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
 _spawnable_scenes = PackedStringArray("res://assets/nodes/entities/character/basic_char.tscn", "res://assets/nodes/entities/character/basic_enemy_char.tscn")

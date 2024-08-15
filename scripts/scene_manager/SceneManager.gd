@@ -2,7 +2,7 @@ extends Node
 
 @onready var root = get_tree().root
 
-var main_menu_scene: PackedScene = preload("res://scenes/game.tscn")
+var main_menu_scene: PackedScene = preload("res://scenes/main_menu.tscn")
 var scene_stack: Array[Node]
 var _current_scene: Node
 
