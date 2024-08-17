@@ -1,47 +1,83 @@
-[gd_scene load_steps=7 format=3 uid="uid://6nbnesgrbeao"]
+[gd_scene load_steps=10 format=3 uid="uid://clnvpfxiwcloe"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_ji572"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_i0upr"]
 [ext_resource type="Texture2D" uid="uid://fvkjtx7fjs0b" path="res://assets/sprites/background/001_Intro_Background.jpg" id="3_0o3np"]
-[ext_resource type="Script" path="res://scripts/scene_manager/clicker_event_player.gd" id="4_ck8kl"]
+[ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn" id="3_uj566"]
+[ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="5_oalst"]
 
-[sub_resource type="Animation" id="Animation_oiq0t"]
-resource_name = "001_intro_animation"
-length = 8.0
+[sub_resource type="Animation" id="Animation_gj30f"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j825t"]
+_data = {
+"RESET": SubResource("Animation_gj30f")
+}
+
+[sub_resource type="Animation" id="Animation_px1sx"]
+resource_name = "001_clicker_intro"
+length = 9.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("001_Intro_UI_Stable/Control/Label:modulate")
+tracks/0/path = NodePath("Camera2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 0.482968),
+"times": PackedFloat32Array(0.6, 8),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Vector2(238, 483), Vector2(238, 2357)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera2D:position")
+tracks/1/path = NodePath("001_Intro_UI_Stable/Control/Label:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.5, 8),
-"transitions": PackedFloat32Array(1, 0.5),
+"times": PackedFloat32Array(0, 1.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(238, 483), Vector2(238, 2368)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AutoLoader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"auto_load_level"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("EventController")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y3vwa"]
 _data = {
-"001_intro_animation": SubResource("Animation_oiq0t")
+"001_clicker_intro": SubResource("Animation_px1sx")
 }
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_ji572")
 
 [node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_i0upr")]
+autostart = false
+level_to_autoload = ExtResource("3_uj566")
 level_to_unload = NodePath("..")
 
 [node name="IntroBackground" type="Sprite2D" parent="."]
@@ -93,8 +129,9 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="IntroAnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="EventController" parent="." instance=ExtResource("5_oalst")]
 libraries = {
-"": SubResource("AnimationLibrary_y3vwa")
+"": SubResource("AnimationLibrary_j825t"),
+"clicker": SubResource("AnimationLibrary_y3vwa")
 }
-script = ExtResource("4_ck8kl")
+starting_animation_name = "clicker/001_clicker_intro"
