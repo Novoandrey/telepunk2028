@@ -27,7 +27,6 @@ stream = ExtResource("2_eng21")
 autoplay = true
 
 [node name="MainMenuUI" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -134,6 +133,7 @@ node_to_hide = NodePath("..")
 node_to_show = NodePath("../../MultiplayerMenuUI")
 
 [node name="MultiplayerMenuUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

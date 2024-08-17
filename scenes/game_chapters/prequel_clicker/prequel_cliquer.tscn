@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=3 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
-[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yxhan")
@@ -76,28 +75,6 @@ offset_left = 174.0
 offset_top = 306.0
 offset_right = 283.0
 offset_bottom = 375.0
-
-[node name="Container" type="Container" parent="ClickerManager"]
-offset_left = 65.0
-offset_top = 127.0
-offset_right = 424.0
-offset_bottom = 370.0
-
-[node name="Button" type="Button" parent="ClickerManager/Container"]
-layout_mode = 2
-text = "UPGRAGE"
-
-[node name="Button2" type="Button" parent="ClickerManager/Container"]
-layout_mode = 2
-text = "Exit"
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ClickerManager/Container"]
-layout_mode = 2
-text = "вот тут у нас длиннющее описание"
-fit_content = true
-tab_size = 5
-
-[node name="AutoLoader" parent="." instance=ExtResource("3_e3x6g")]
 
 [connection signal="pressed" from="ClickerManager/TapButton" to="ClickerManager" method="_on_tap_button_pressed"]
 [connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]

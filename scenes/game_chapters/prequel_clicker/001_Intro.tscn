@@ -1,0 +1,100 @@
+[gd_scene load_steps=7 format=3 uid="uid://6nbnesgrbeao"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_ji572"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_i0upr"]
+[ext_resource type="Texture2D" uid="uid://fvkjtx7fjs0b" path="res://assets/sprites/background/001_Intro_Background.jpg" id="3_0o3np"]
+[ext_resource type="Script" path="res://scripts/scene_manager/clicker_event_player.gd" id="4_ck8kl"]
+
+[sub_resource type="Animation" id="Animation_oiq0t"]
+resource_name = "001_intro_animation"
+length = 8.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("001_Intro_UI_Stable/Control/Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 0.482968),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Camera2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5, 8),
+"transitions": PackedFloat32Array(1, 0.5),
+"update": 0,
+"values": [Vector2(238, 483), Vector2(238, 2368)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3vwa"]
+_data = {
+"001_intro_animation": SubResource("Animation_oiq0t")
+}
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ji572")
+
+[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_i0upr")]
+level_to_unload = NodePath("..")
+
+[node name="IntroBackground" type="Sprite2D" parent="."]
+position = Vector2(253, 1423)
+scale = Vector2(3.28292, 3.28292)
+texture = ExtResource("3_0o3np")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(238, 483)
+
+[node name="001_Intro_UI_Stable" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="Control" type="Control" parent="001_Intro_UI_Stable"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="001_Intro_UI_Stable/Control"]
+top_level = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -11.5
+offset_right = 63.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "001_tap_to_start"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="001_Intro_UI_Dynamic" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="001_Intro_UI_Dynamic"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="IntroAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_y3vwa")
+}
+script = ExtResource("4_ck8kl")
