@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fvkjtx7fjs0b"
-path="res://.godot/imported/001_Intro_Background.jpg-a71c67375e266056b24cef6486c05baa.ctex"
+uid="uid://ddpvqp21qp58f"
+path="res://.godot/imported/002_Intro_Cryo.png-5146092cd0f2cfccddbf1059aee00b8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/background/001_Intro_Background.jpg"
-dest_files=["res://.godot/imported/001_Intro_Background.jpg-a71c67375e266056b24cef6486c05baa.ctex"]
+source_file="res://assets/sprites/background/clicker/002_Intro_Cryo.png"
+dest_files=["res://.godot/imported/002_Intro_Cryo.png-5146092cd0f2cfccddbf1059aee00b8e.ctex"]
 
 [params]
 
