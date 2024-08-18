@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://cccjv1duxwf3p"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_ffywm"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_tqmjh"]
+[ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn" id="3_8msg0"]
+[ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="4_n4p1o"]
+[ext_resource type="Texture2D" uid="uid://ddpvqp21qp58f" path="res://assets/sprites/background/clicker/002_Intro_Cryo.png" id="5_0yb2p"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_ffywm")
+
+[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_tqmjh")]
+autostart = false
+level_to_autoload = ExtResource("3_8msg0")
+level_to_unload = NodePath("..")
+
+[node name="EventController" parent="." instance=ExtResource("4_n4p1o")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(238, 483)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_0yb2p")
+expand_mode = 5
