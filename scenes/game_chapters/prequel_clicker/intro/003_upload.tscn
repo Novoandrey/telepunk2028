@@ -1,0 +1,105 @@
+[gd_scene load_steps=4 format=3 uid="uid://brph51ccaimk8"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_57dsw"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_gxvnj"]
+[ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="3_cl23c"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_57dsw")
+
+[node name="AutoLoader" parent="." instance=ExtResource("2_gxvnj")]
+autostart = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(240, 480)
+
+[node name="FollowCamera" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="FollowCamera"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Background" type="PanelContainer" parent="FollowCamera/Control"]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Uploads" type="VBoxContainer" parent="FollowCamera/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -165.0
+offset_top = -235.5
+offset_right = 165.0
+offset_bottom = 235.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Mind" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Freon" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_2"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Docs" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Safe" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CryoSafe" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Happy" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="E-Net" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_7"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Hello" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_8"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Morozko" type="Label" parent="FollowCamera/Control/Uploads"]
+layout_mode = 2
+text = "003_upload_message_9"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EventController" parent="." instance=ExtResource("3_cl23c")]

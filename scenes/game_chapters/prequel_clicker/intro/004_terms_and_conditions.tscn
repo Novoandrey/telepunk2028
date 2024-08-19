@@ -1,13 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://hahjtv8d6ugy"]
+[gd_scene load_steps=4 format=3 uid="uid://ct0t45o82st4e"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_1jkvo"]
-[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_8q3ag"]
-[ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="3_fqcac"]
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_serlo"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_6uypq"]
+[ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="3_3w8p1"]
 
 [node name="Level" type="Node2D"]
-script = ExtResource("1_1jkvo")
+script = ExtResource("1_serlo")
 
-[node name="AutoLoader" parent="." instance=ExtResource("2_8q3ag")]
+[node name="AutoLoader" parent="." instance=ExtResource("2_6uypq")]
 autostart = false
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -42,4 +42,4 @@ text = "Шаблон события"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="EventController" parent="." instance=ExtResource("3_fqcac")]
+[node name="EventController" parent="." instance=ExtResource("3_3w8p1")]

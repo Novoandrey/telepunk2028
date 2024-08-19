@@ -17,7 +17,8 @@ func _ready():
 	skip_timer.wait_time = hold_to_skip_time
 	skip_timer.timeout.connect(skip_full)
 	skip_progress_bar.max_value = hold_to_skip_time
-	pass
+	if get_animation_list().size() == 0:
+		can_interact = false
 
 func _process(delta):
 	if !skip_timer.is_stopped():
@@ -37,7 +38,7 @@ func _unhandled_input(event):
 			skip_progress_bar.hide()
 			skip_timer.stop()
 		if !is_playing(): #Запустить анимацию
-			play(current_animation)
+			play()
 		elif !is_skipping: #Пропуск сцены
 			skip()
 		else: #Остановка пропуска сцены
