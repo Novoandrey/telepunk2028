@@ -19,5 +19,6 @@ var objective_completed: bool = false :
 			#Цель уровня завершена
 			pass
 
+
 func return_to_main_menu():
 	SceneManager.return_to_main_menu()

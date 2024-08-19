@@ -7,17 +7,18 @@ signal page_ended()
 @onready var horizontal_bar: HScrollBar = $_h_scroll
 
 func _ready():
-	vertical_bar.scrolling.connect(vertical_scroll)
-	print(vertical_bar)
+	vertical_bar.value_changed.connect(vertical_scroll)
+	#scroll_started.connect(vertical_scroll)
 
 func _unhandled_input(event):
 
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP or event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			vertical_scroll()
+			#vertical_scroll(vertical_bar.value)
+			pass
 
-func vertical_scroll():
-	if vertical_bar.value + size.y < vertical_bar.max_value:
+func vertical_scroll(value: float):
+	if value + vertical_bar.page * 2 < vertical_bar.max_value:
 		child_scrolled.emit()
 	else:
 		page_ended.emit()

@@ -37,7 +37,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Panel" parent="CanvasLayer/Control"]
@@ -72,6 +71,7 @@ size_flags_horizontal = 3
 custom_minimum_size = Vector2(450, 0)
 layout_mode = 2
 size_flags_horizontal = 4
+mouse_filter = 2
 text = "Уважаемый пользователь,
 
 Мы искренне рады, что вы выбрали нашу корпорацию для увлекательного путешествия в мир технологического совершенства и креативных возможностей. Мы, компания ДоброКрио, ставим ваше благополучие, комфорт и безопасность на первый план. Именно поэтому мы создали эту небольшую, но очень важную инструкцию и соглашение, чтобы вы могли быть уверены в том, что криокамера — это не просто устройство, а заботливый инструмент для улучшения вашей жизни.
@@ -198,6 +198,7 @@ autowrap_mode = 2
 [node name="Button" type="Button" parent="CanvasLayer/Control/ScrollContainer/VBoxContainer" node_paths=PackedStringArray("scene_to_unload")]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
+mouse_filter = 1
 script = ExtResource("3_ak1tq")
 scene_to_load = ExtResource("4_cup6i")
 scene_to_unload = NodePath("../../../../..")
@@ -227,6 +228,7 @@ anchor_bottom = 1.0
 offset_top = -117.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="Label" type="Label" parent="CanvasLayer/Control/SkipTerms"]
 layout_mode = 1
@@ -250,6 +252,7 @@ anchor_right = 1.0
 offset_left = -36.0
 offset_bottom = 36.0
 grow_horizontal = 0
+mouse_filter = 1
 
 [node name="EventController" parent="." instance=ExtResource("3_3w8p1")]
 

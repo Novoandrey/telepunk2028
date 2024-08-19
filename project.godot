@@ -57,6 +57,10 @@ ui_scroll_down={
 ]
 }
 
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
 [internationalization]
 
 locale/translations=PackedStringArray("res://localization/TP_Localize.en.translation", "res://localization/TP_Localize.fr.translation", "res://localization/TP_Localize.ru.translation")
