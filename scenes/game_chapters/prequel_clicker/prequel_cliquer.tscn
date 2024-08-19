@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
 
-[node name="Level2" type="Node2D"]
+[node name="Level" type="Node2D"]
 script = ExtResource("1_yxhan")
 level_name = "Prequel"
 
@@ -89,10 +89,14 @@ text = "UPGRAGE"
 
 [node name="Button2" type="Button" parent="ClickerManager/Container"]
 layout_mode = 2
+size_flags_horizontal = 8
 text = "Exit"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="ClickerManager/Container"]
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "вот тут у нас длиннющее описание"
 fit_content = true
 tab_size = 5
@@ -103,3 +107,4 @@ tab_size = 5
 [connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="ClickerManager/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
 [connection signal="timeout" from="ClickerManager/Timer" to="ClickerManager" method="_on_timer_timeout"]
+[connection signal="pressed" from="ClickerManager/Container/Button2" to="." method="return_to_main_menu"]

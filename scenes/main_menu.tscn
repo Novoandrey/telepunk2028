@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ox0b0"]
 [ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city/e-city.tscn" id="5_38na0"]
 [ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro/metro_level_selection.tscn" id="6_urvkc"]
-[ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn" id="7_l1j1d"]
 [ext_resource type="Script" path="res://scripts/tools/show_hide.gd" id="8_85yxo"]
+[ext_resource type="PackedScene" uid="uid://clnvpfxiwcloe" path="res://scenes/game_chapters/prequel_clicker/intro/001_intro.tscn" id="8_kpydi"]
 [ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_manager_ui.gd" id="9_bwey3"]
 [ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_chapters/e-city/arenas/e-city_streets.tscn" id="10_doyt2"]
 [ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_chapters/metro/arenas/metro_entrance.tscn" id="12_vpqbg"]
@@ -103,7 +103,7 @@ offset_top = 222.0
 offset_right = 232.0
 offset_bottom = 357.0
 script = ExtResource("4_ox0b0")
-level_list = Array[PackedScene]([ExtResource("5_38na0"), ExtResource("6_urvkc"), ExtResource("7_l1j1d")])
+level_list = Array[PackedScene]([ExtResource("5_38na0"), ExtResource("6_urvkc"), ExtResource("8_kpydi")])
 load_button = NodePath("../Arena 1")
 container = NodePath("ScrollContainer/VBoxContainer")
 

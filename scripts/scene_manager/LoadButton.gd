@@ -18,7 +18,6 @@ func _ready():
 
 func _on_pressed():
 	SceneManager.switch_scenes(scene_to_load.resource_path, scene_to_unload.get_path(), keep_current_scene, scene_root.get_path())
-	
 
 func _on_pressed_network():
 	SceneManager.switch_scenes.rpc(scene_to_load.resource_path, scene_to_unload.get_path(), keep_current_scene, scene_root.get_path())

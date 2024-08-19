@@ -1,14 +1,198 @@
-[gd_scene load_steps=4 format=3 uid="uid://brph51ccaimk8"]
+[gd_scene load_steps=13 format=3 uid="uid://brph51ccaimk8"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_57dsw"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_gxvnj"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="3_8n5jc"]
 [ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="3_cl23c"]
+[ext_resource type="PackedScene" uid="uid://ct0t45o82st4e" path="res://scenes/game_chapters/prequel_clicker/intro/004_terms_and_conditions.tscn" id="3_con23"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_amp7c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_8n5jc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x7bjn"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_mnhjc"]
+font_size = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_47oj7"]
+font_size = 32
+
+[sub_resource type="LabelSettings" id="LabelSettings_4mp66"]
+font_size = 24
+
+[sub_resource type="Animation" id="Animation_gwi2i"]
+resource_name = "003_clicker_upload"
+length = 2.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FollowCamera/Control/AnimatedSprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0872665, 0.174533, 0.261799, 0.349066, 0.436332, 0.523599, 0.610865]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("EventController")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(2.3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_pause_on_key"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FollowCamera/Control/Uploads/Freon:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FollowCamera/Control/Uploads/Docs:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("FollowCamera/Control/Uploads/Safe:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.9, 1.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("FollowCamera/Control/Uploads/CryoSafe:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("FollowCamera/Control/Uploads/Happy:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1.5, 1.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("FollowCamera/Control/Uploads/E-Net:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1.8, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("FollowCamera/Control/Uploads/Hello:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("FollowCamera/Control/StartLabel:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.1, 2.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("AutoLoader")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(2.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"auto_load_level"
+}]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("FollowCamera/Control/HBoxContainer/LoadingSymbol:text")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.6, 0.9, 1.2, 1.5, 1.8, 2.1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["|", "/", "-", "\\", "|", "-", "/", "\\"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w8hyy"]
+_data = {
+"003_clicker_upload": SubResource("Animation_gwi2i")
+}
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_57dsw")
 
-[node name="AutoLoader" parent="." instance=ExtResource("2_gxvnj")]
+[node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_gxvnj")]
 autostart = false
+level_to_autoload = ExtResource("3_con23")
+level_to_unload = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(240, 480)
@@ -34,6 +218,28 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FollowCamera/Control"]
+position = Vector2(240, 135)
+rotation = 0.610865
+scale = Vector2(1.4, 1)
+sprite_frames = SubResource("SpriteFrames_amp7c")
+
+[node name="Label" type="Label" parent="FollowCamera/Control/AnimatedSprite2D"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -62.0
+offset_top = -62.0
+offset_right = -62.0
+offset_bottom = -62.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Тут гифка/анимация"
+label_settings = SubResource("LabelSettings_x7bjn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
 [node name="Uploads" type="VBoxContainer" parent="FollowCamera/Control"]
 layout_mode = 1
 anchors_preset = 8
@@ -42,64 +248,138 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -165.0
-offset_top = -235.5
+offset_top = -142.0
 offset_right = 165.0
-offset_bottom = 235.5
+offset_bottom = 142.0
 grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Mind" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_1"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Freon" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_2"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Docs" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_3"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Safe" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_4"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="CryoSafe" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_5"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Happy" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_6"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="E-Net" type="Label" parent="FollowCamera/Control/Uploads"]
 layout_mode = 2
 text = "003_upload_message_7"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Hello" type="Label" parent="FollowCamera/Control/Uploads"]
+modulate = Color(1, 1, 1, 6.55651e-07)
 layout_mode = 2
 text = "003_upload_message_8"
+label_settings = SubResource("LabelSettings_mnhjc")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Morozko" type="Label" parent="FollowCamera/Control/Uploads"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 text = "003_upload_message_9"
+label_settings = SubResource("LabelSettings_mnhjc")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="StartLabel" type="Label" parent="FollowCamera/Control"]
+modulate = Color(1, 1, 1, 6.55651e-07)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -61.0
+offset_top = -179.0
+offset_right = 62.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "tap_to_start"
+label_settings = SubResource("LabelSettings_47oj7")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="FollowCamera/Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -54.0
+offset_top = 241.0
+offset_right = 55.0
+offset_bottom = 281.0
+grow_horizontal = 2
+
+[node name="Loading" type="Label" parent="FollowCamera/Control/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "loading"
+label_settings = SubResource("LabelSettings_4mp66")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="LoadingSymbol" type="Label" parent="FollowCamera/Control/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_stretch_ratio = 0.0
+text = "\\"
+label_settings = SubResource("LabelSettings_4mp66")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EventController" parent="." instance=ExtResource("3_cl23c")]
+libraries = {
+"": SubResource("AnimationLibrary_w8hyy")
+}
+autoplay = "003_clicker_upload"

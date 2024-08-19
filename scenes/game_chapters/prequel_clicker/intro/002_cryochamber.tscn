@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_ffywm"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_tqmjh"]
-[ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn" id="3_8msg0"]
+[ext_resource type="PackedScene" uid="uid://brph51ccaimk8" path="res://scenes/game_chapters/prequel_clicker/intro/003_upload.tscn" id="3_nx4yy"]
 [ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="4_n4p1o"]
 [ext_resource type="Texture2D" uid="uid://ddpvqp21qp58f" path="res://assets/sprites/background/clicker/002_Intro_Cryo.png" id="5_0yb2p"]
 
@@ -11,7 +11,7 @@ font_size = 24
 
 [sub_resource type="Animation" id="Animation_10afe"]
 resource_name = "002_clicker_cryo"
-length = 4.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -103,7 +103,7 @@ script = ExtResource("1_ffywm")
 
 [node name="AutoLoader" parent="." node_paths=PackedStringArray("level_to_unload") instance=ExtResource("2_tqmjh")]
 autostart = false
-level_to_autoload = ExtResource("3_8msg0")
+level_to_autoload = ExtResource("3_nx4yy")
 level_to_unload = NodePath("..")
 
 [node name="Static" type="CanvasLayer" parent="."]
@@ -142,6 +142,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="Dynamic/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -167,6 +168,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="StartLabel" type="Label" parent="Dynamic/Control"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -185,8 +187,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(238, 422)
-zoom = Vector2(20, 20)
+position = Vector2(238, 483)
 position_smoothing_speed = 500.0
 
 [node name="EventController" parent="." instance=ExtResource("4_n4p1o")]
