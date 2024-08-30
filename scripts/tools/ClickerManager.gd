@@ -7,11 +7,14 @@ var auto = 0
 
 
 func _process(delta):
+	strength = get_node("ProgressTreeManager").strength
 	$TapsScore.text = str(taps)
 	$TapsStrength.text = "Click Strength: " + str(strength)
 	$AutoScore.text = "Auto Score: " + str(auto)
 	$UpgradeButton.text = "Upgrade Cost: " + str(strength * 10)
 	$AutoButton.text = "Auto Cost: " + str((auto + 1) * 20)
+
+
 
 
 func _on_tap_button_pressed():

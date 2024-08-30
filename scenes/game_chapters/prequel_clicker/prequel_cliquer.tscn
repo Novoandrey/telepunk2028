@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=6 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
+[ext_resource type="Script" path="res://scenes/game_chapters/prequel_clicker/upgrade_tree_manager.gd" id="3_3k44y"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
+[ext_resource type="PackedScene" uid="uid://6g63puq3f3xk" path="res://scenes/game_chapters/prequel_clicker/upgrade_node_template.tscn" id="4_4jjsy"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yxhan")
@@ -59,47 +61,54 @@ text = "Auto"
 [node name="Timer" type="Timer" parent="ClickerManager"]
 autostart = true
 
-[node name="Node1" type="Button" parent="ClickerManager"]
-offset_left = 174.0
-offset_top = 582.0
-offset_right = 283.0
-offset_bottom = 651.0
-
-[node name="Node2" type="Button" parent="ClickerManager"]
-offset_left = 174.0
-offset_top = 451.0
-offset_right = 283.0
-offset_bottom = 520.0
-
-[node name="Node3" type="Button" parent="ClickerManager"]
-offset_left = 174.0
-offset_top = 306.0
-offset_right = 283.0
-offset_bottom = 375.0
+[node name="RichTextLabel" type="RichTextLabel" parent="ClickerManager"]
+custom_minimum_size = Vector2(300, 0)
+offset_left = 88.0
+offset_top = 128.0
+offset_right = 388.0
+offset_bottom = 151.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "вот тут у нас длиннющее описание"
+fit_content = true
+tab_size = 5
 
 [node name="Container" type="Container" parent="ClickerManager"]
-offset_left = 65.0
-offset_top = 127.0
-offset_right = 424.0
-offset_bottom = 370.0
-
-[node name="Button" type="Button" parent="ClickerManager/Container"]
-layout_mode = 2
-text = "UPGRAGE"
+offset_left = 44.0
+offset_top = 54.0
+offset_right = 114.0
+offset_bottom = 97.0
 
 [node name="Button2" type="Button" parent="ClickerManager/Container"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Exit"
 
-[node name="RichTextLabel" type="RichTextLabel" parent="ClickerManager/Container"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-text = "вот тут у нас длиннющее описание"
-fit_content = true
-tab_size = 5
+[node name="ProgressTreeManager" type="Node2D" parent="ClickerManager"]
+script = ExtResource("3_3k44y")
+
+[node name="SkillNode1" parent="ClickerManager/ProgressTreeManager" instance=ExtResource("4_4jjsy")]
+offset_left = 189.0
+offset_top = 542.0
+offset_right = 269.0
+offset_bottom = 622.0
+strength = 2
+
+[node name="SkillNode2" parent="ClickerManager/ProgressTreeManager/SkillNode1" instance=ExtResource("4_4jjsy")]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 8.0
+offset_top = -127.0
+offset_right = 88.0001
+offset_bottom = -47.0
+strength = 10
+mult_bool = false
+
+[node name="SkillNode3" parent="ClickerManager/ProgressTreeManager" instance=ExtResource("4_4jjsy")]
+offset_left = 201.0
+offset_top = 298.0
+offset_right = 281.0
+offset_bottom = 378.0
 
 [node name="AutoLoader" parent="." instance=ExtResource("3_e3x6g")]
 
@@ -108,3 +117,6 @@ tab_size = 5
 [connection signal="pressed" from="ClickerManager/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
 [connection signal="timeout" from="ClickerManager/Timer" to="ClickerManager" method="_on_timer_timeout"]
 [connection signal="pressed" from="ClickerManager/Container/Button2" to="." method="return_to_main_menu"]
+[connection signal="pressed" from="ClickerManager/ProgressTreeManager/SkillNode1" to="ClickerManager/ProgressTreeManager" method="_on_skill_node_pressed_control"]
+[connection signal="pressed" from="ClickerManager/ProgressTreeManager/SkillNode1/SkillNode2" to="ClickerManager/ProgressTreeManager" method="_on_skill_node_pressed_control"]
+[connection signal="pressed" from="ClickerManager/ProgressTreeManager/SkillNode3" to="ClickerManager/ProgressTreeManager" method="_on_skill_node_pressed_control"]

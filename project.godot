@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="telepunk2028"
-run/main_scene="res://scenes/game_chapters/game_intro/introduction.tscn"
+run/main_scene="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
