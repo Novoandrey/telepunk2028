@@ -15,8 +15,6 @@ func _process(delta):
 	$AutoButton.text = "Auto Cost: " + str((auto + 1) * 20)
 
 
-
-
 func _on_tap_button_pressed():
 	taps += strength
 

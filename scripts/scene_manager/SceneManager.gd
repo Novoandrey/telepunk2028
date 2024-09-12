@@ -8,12 +8,19 @@ var _current_scene: Node
 
 @rpc("call_local", "reliable")
 func switch_scenes(_scene_to_load_path: String, _scene_to_destroy_path: String, keep_scene: bool = true, _parent_scene_path: String = "/root"):
-	var _scene_to_load: PackedScene = load(_scene_to_load_path)
+	var has_scene: bool = false
+	for _scene in scene_stack:
+		if str(_scene.get_path()) == _scene_to_load_path:
+			has_scene = true
+			_current_scene = _scene
+			break
+	if !has_scene:
+		var _scene_to_load: PackedScene = load(_scene_to_load_path)
+		_current_scene = _scene_to_load.instantiate()
 	var _scene_to_destroy: Node = root.get_node(_scene_to_destroy_path)
 	var _parent_scene: Node = root.get_node(_parent_scene_path)
 	if _parent_scene == null:
 		_parent_scene = root
-	_current_scene = _scene_to_load.instantiate()
 	if _scene_to_destroy != null:
 		_scene_to_destroy.get_parent().remove_child(_scene_to_destroy)
 	_parent_scene.add_child(_current_scene)
@@ -36,8 +43,7 @@ func add_scene_to_parent(_scene_to_load, _scene_parent):
 	pass
 
 func return_to_scene():
-	#switch_scenes(scene_stack[-2], scene_stack[-1])
-	pass
+	switch_scenes(str(scene_stack[-2].get_path()), str(scene_stack[-1].get_path()))
 
 func return_to_main_menu():
 	root.get_child(2).queue_free()

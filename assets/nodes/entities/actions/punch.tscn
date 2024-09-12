@@ -4,7 +4,6 @@
 
 [node name="Punch" type="Node2D"]
 script = ExtResource("1_6lpcn")
-_cost = 3
 _range = 1
 _damage = 5
 _actionHintText = "Выберите цель для удара"

@@ -22,7 +22,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.6, 8, 10, 18),
 "transitions": PackedFloat32Array(0.8, 1, 1, 1),
 "update": 0,
-"values": [Vector2(238, 483), Vector2(238, 1280), Vector2(238, 1280), Vector2(238, 2357)]
+"values": [Vector2(270, 483), Vector2(270, 1280), Vector2(270, 1280), Vector2(270, 2357)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -104,7 +104,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(10, 18),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(92, 591), Vector2(92, 14)]
+"values": [Vector2(122, 591), Vector2(122, 14)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -139,7 +139,7 @@ scale = Vector2(3.28292, 3.28292)
 texture = ExtResource("4_og82t")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(238, 483)
+position = Vector2(270, 2357)
 
 [node name="001_Intro_UI_Stable" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -154,6 +154,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="StartLabel" type="Label" parent="001_Intro_UI_Stable/Control"]
+modulate = Color(1, 1, 1, 0)
 top_level = true
 layout_mode = 1
 anchors_preset = 8
@@ -191,9 +192,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -148.0
-offset_top = 111.0
+offset_top = -466.0
 offset_right = 156.0
-offset_bottom = 230.0
+offset_bottom = -347.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -209,7 +210,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Message2" type="Panel" parent="001_Intro_UI_Dynamic/Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -235,7 +235,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="SkipLabel" type="Label" parent="001_Intro_UI_Dynamic/Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

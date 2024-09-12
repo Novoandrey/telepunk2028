@@ -2,6 +2,8 @@ class_name GameManager
 
 extends Node
 
+static var instance: GameManager
+
 enum SIDE {
 	ENEMY = 0,
 	TEAM_1 = 1,
@@ -10,7 +12,7 @@ enum SIDE {
 	TEAM_4 = 4
 }
 
-@onready var tilemap: TileMapManager = get_node("../BattleArena/Environment/TileMap")
+@onready var tilemap: TileMapManager = TileMapManager.instance
 
 signal critter_selected(_previous_critter, _selected_critter) ##
 
@@ -19,6 +21,8 @@ signal critter_selected(_previous_critter, _selected_critter) ##
 var arena_critters: Dictionary ##Словарь с криттерами арены. Ключ выступает как id стороны, где содержимое криттеры стороны
 var _current_team: SIDE = SIDE.TEAM_1
 var _players_to_act: Dictionary
+
+var can_select_critters: bool = true
 
 var _selected_critter: Critter :
 	get:
@@ -31,6 +35,7 @@ var _selected_critter: Critter :
 		_selected_critter.is_selected = true
 
 func _ready():
+	instance = self
 	call_deferred("configure_game")
 
 func configure_game():
@@ -76,8 +81,16 @@ func switch_turns_rpc():
 
 func get_critter_at_cell(cell) -> Critter:
 	for team_key in arena_critters:
-		for critter in arena_critters[team_key]:
+		for critter in arena_critters.get(team_key):
 			if critter._current_tile == cell:
 				return critter
 	return null
+	
+func get_critter_at_position(position):
+	var cell: Vector2i = TileMapManager.instance.get_cell_from_position(position)
+	for team_key in arena_critters:
+		for critter in arena_critters.get(team_key):
+			if critter._current_tile == cell:
+				return critter
+	return cell
 

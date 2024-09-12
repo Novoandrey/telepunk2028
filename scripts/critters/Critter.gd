@@ -3,8 +3,11 @@ class_name Critter
 extends CharacterBody2D
 
 enum State {
-	IDLE = 0,
-	WALK = 1
+	IDLE,
+	MOVING,
+	ATTACK_01,
+	DISABLED,
+	HURT
 }
 
 enum CRITTER_TYPE{
@@ -12,7 +15,6 @@ enum CRITTER_TYPE{
 	ENEMY = 1,
 } 
 
-const state_names := ["IDLE", "WALK"]
 const UNSELECTED: Color = Color(0, 0, 125)
 const SELECTED: Color = Color(0, 150, 255)
 const ALLY: Color = Color(0, 125, 0)
@@ -23,15 +25,11 @@ signal current_movePoints_on_value_changed(previousValue, currentValue)
 signal current_actionPoints_on_value_changed(previousValue, currentValue)
 signal current_action_on_value_changed(previousValue, currentValue)
 
-@onready var tilemap: TileMapManager = get_node("../Environment/TileMap")
-@onready var gameManager: GameManager = get_node("../../GameManager")
+@onready var tilemap: TileMapManager = TileMapManager.instance
+@onready var gameManager: GameManager = GameManager.instance
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 @export var _critter_name: String = "dummy"
-@export var _health: int = 0
-@export var _actionPoints: int = 4
-@export var _movePoints: int = 4
-@export var _moveSpeed: float = 5
 @export var _critterType: CRITTER_TYPE = CRITTER_TYPE.PLAYER
 @export var critter_side: GameManager.SIDE = GameManager.SIDE.ENEMY
 @export var owner_id: int = 0 :
@@ -48,32 +46,10 @@ signal current_action_on_value_changed(previousValue, currentValue)
 		else:
 			$Sprite2D.material.set_shader_parameter("outline_color", ENEMY)
 
-var _state: String = state_names[State.IDLE]
+var _state: State = State.IDLE
 
-var _currentAction: Action :
-	get:
-		return _currentAction
-	set(value):
-		current_action_on_value_changed.emit(_currentAction, value)
-		_currentAction = value
-@onready var _currentHealth: int = _health :
-	get:
-		return _currentHealth
-	set(value):
-		current_health_on_value_changed.emit(_currentHealth, value)
-		_currentHealth = value
-@onready var _currentActionPoints: int = _actionPoints :
-	get: 
-		return _currentActionPoints
-	set(value):
-		current_actionPoints_on_value_changed.emit(_currentActionPoints, value)
-		_currentActionPoints = value
-@onready var _currentMovePoints: int = _movePoints :
-	get:
-		return _currentMovePoints
-	set(value):
-		current_movePoints_on_value_changed.emit(_currentMovePoints, value)
-		_currentMovePoints = value
+var critter_component_list: Dictionary
+
 var _current_path: Array :
 	get:
 		return _current_path
@@ -104,29 +80,27 @@ var _current_tile: Vector2i:
 
 func _ready():
 	add_to_group("critters")
+	for child in get_children():
+		if child is CritterComponent:
+			critter_component_list[child.get_custom_class_name()] = child
 	if !gameManager.arena_critters.has(critter_side):
 		gameManager.arena_critters[critter_side] = [self]
 	else:
 		gameManager.arena_critters[critter_side].append(self)
 	call_deferred("set_critter_position")
 
+func has_critter_component(component_name: String) -> bool:
+	if critter_component_list.has(component_name):
+		return true
+	return false
+
+func get_critter_component(component_name: String):
+	return critter_component_list.get(component_name)
+
 func set_critter_position():
-	global_position = get_arena_position()
-	_current_tile = get_current_tile()
-	_currentMovePoints = _movePoints
-	pass
-
-func refresh_actions(): ##
-	_currentActionPoints = _actionPoints
-	_currentMovePoints = _movePoints	
-
-func get_arena_position():
-	return tilemap.to_global(tilemap.map_to_local(tilemap.local_to_map(tilemap.to_local(global_position))))
+	_current_tile = TileMapManager.instance.get_cell_from_position(global_position)
 	
-func get_current_tile(): ##Получить координату текущего тайла
-	return tilemap.local_to_map(tilemap.to_local(global_position))
-	
-func update_shader():
+func update_outline():
 	if owner_id == MultiplayerManager.player_id:
 		$Sprite2D.material.set_shader_parameter("outline_color", UNSELECTED)
 	elif critter_side == MultiplayerManager.players[MultiplayerManager.player_id].side:

@@ -28,20 +28,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SceneButton" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock", "scene_to_unload") instance=ExtResource("3_2wcjj")]
+[node name="SceneButton" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock", "scene_to_unload", "scene_root") instance=ExtResource("3_2wcjj")]
 layout_mode = 0
-offset_left = 224.0
-offset_top = 77.0
-offset_right = 316.0
-offset_bottom = 108.0
+offset_left = 227.0
+offset_top = 71.0
+offset_right = 319.0
+offset_bottom = 102.0
+disabled = false
 text = "Арена А"
-levels_to_unlock = [NodePath("../SceneButton2")]
+levels_to_unlock = [NodePath("../SceneButton2"), NodePath("../SceneButton4")]
 is_entry = true
 scene_to_load = ExtResource("4_ic8il")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
+scene_root = NodePath("")
 
-[node name="SceneButton2" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock", "scene_to_unload") instance=ExtResource("3_2wcjj")]
+[node name="SceneButton2" parent="CanvasLayer/Control" node_paths=PackedStringArray("levels_to_unlock", "scene_to_unload", "scene_root") instance=ExtResource("3_2wcjj")]
 layout_mode = 0
 offset_left = 189.0
 offset_top = 211.0
@@ -52,8 +54,9 @@ levels_to_unlock = [NodePath("../SceneButton3"), NodePath("../SceneButton4")]
 scene_to_load = ExtResource("5_5kfkk")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
+scene_root = NodePath("")
 
-[node name="SceneButton3" parent="CanvasLayer/Control" node_paths=PackedStringArray("scene_to_unload") instance=ExtResource("3_2wcjj")]
+[node name="SceneButton3" parent="CanvasLayer/Control" node_paths=PackedStringArray("scene_to_unload", "scene_root") instance=ExtResource("3_2wcjj")]
 layout_mode = 0
 offset_left = 98.0
 offset_top = 329.0
@@ -63,8 +66,9 @@ text = "Арена Б"
 scene_to_load = ExtResource("6_k6r2l")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
+scene_root = NodePath("")
 
-[node name="SceneButton4" parent="CanvasLayer/Control" node_paths=PackedStringArray("scene_to_unload") instance=ExtResource("3_2wcjj")]
+[node name="SceneButton4" parent="CanvasLayer/Control" node_paths=PackedStringArray("scene_to_unload", "scene_root") instance=ExtResource("3_2wcjj")]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 328.0
@@ -74,6 +78,7 @@ text = "Событие А"
 scene_to_load = ExtResource("7_ettmg")
 keep_current_scene = true
 scene_to_unload = NodePath("../../..")
+scene_root = NodePath("")
 
 [node name="BackButton" parent="CanvasLayer/Control" instance=ExtResource("8_4nsb7")]
 layout_mode = 0

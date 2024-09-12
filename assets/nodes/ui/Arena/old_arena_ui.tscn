@@ -1,0 +1,90 @@
+[gd_scene load_steps=8 format=3 uid="uid://ddsy2qbxi4ko6"]
+
+[ext_resource type="PackedScene" uid="uid://dnibqrmehch54" path="res://assets/nodes/ui/Arena/action_points.tscn" id="1_dpcqw"]
+[ext_resource type="PackedScene" uid="uid://barud68673doa" path="res://assets/nodes/ui/Arena/move_points.tscn" id="2_vyanj"]
+[ext_resource type="Script" path="res://scripts/tools/ActionNotify.gd" id="3_cfspn"]
+[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="4_iulda"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_1a7ty"]
+events = [SubResource("InputEventKey_6um3h")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
+
+[node name="ArenaUI" type="Control"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="PlayerResources" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 291.0
+offset_bottom = -44.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="PlayerResources"]
+layout_mode = 2
+text = "Очки действий"
+
+[node name="AP" parent="PlayerResources" instance=ExtResource("1_dpcqw")]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PlayerResources"]
+layout_mode = 2
+text = "Очки движений"
+
+[node name="MP" parent="PlayerResources" instance=ExtResource("2_vyanj")]
+layout_mode = 2
+
+[node name="TurnButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+shortcut = SubResource("Shortcut_1a7ty")
+text = "Закончить ход"
+
+[node name="ActionHint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -333.0
+offset_top = 20.0
+offset_right = -10.0
+offset_bottom = 43.0
+grow_horizontal = 0
+text = "Описание действия"
+label_settings = SubResource("LabelSettings_ljfbr")
+horizontal_alignment = 1
+script = ExtResource("3_cfspn")
+
+[node name="GETBACK" type="Button" parent="."]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 50.0
+text = "Back
+"
+script = ExtResource("4_iulda")
+
+[connection signal="pressed" from="GETBACK" to="GETBACK" method="_return_to_previous_level"]

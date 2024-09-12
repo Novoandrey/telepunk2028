@@ -18,6 +18,6 @@ func spawn_critter(player_info: Dictionary = {}):
 		object.critter_side = GameManager.SIDE.ENEMY
 		object.owner_id = -1
 	get_node("../../../").add_child(object, true)
-	object.update_shader()
+	object.update_outline()
 	queue_free()
 	pass

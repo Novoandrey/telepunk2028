@@ -8,7 +8,7 @@ point_count = 1
 
 [sub_resource type="Curve2D" id="Curve2D_gdch3"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+"points": PackedVector2Array(0, 0, 0, 58.5, 0, 0, 0, -58.5, 0, 0, 101, 86)
 }
 point_count = 2
 
@@ -20,4 +20,5 @@ width_curve = SubResource("Curve_y6ep7")
 default_color = Color(0, 0, 0, 1)
 
 [node name="Path2D" type="Path2D" parent="."]
+visible = false
 curve = SubResource("Curve2D_gdch3")

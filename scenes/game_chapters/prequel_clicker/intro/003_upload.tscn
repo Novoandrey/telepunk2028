@@ -195,7 +195,7 @@ level_to_autoload = ExtResource("3_con23")
 level_to_unload = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(240, 480)
+position = Vector2(270, 480)
 
 [node name="FollowCamera" type="CanvasLayer" parent="."]
 
@@ -217,9 +217,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FollowCamera/Control"]
-position = Vector2(240, 135)
+position = Vector2(270, 135)
 rotation = 0.610865
 scale = Vector2(1.4, 1)
 sprite_frames = SubResource("SpriteFrames_amp7c")
@@ -311,7 +312,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="Hello" type="Label" parent="FollowCamera/Control/Uploads"]
-modulate = Color(1, 1, 1, 6.55651e-07)
 layout_mode = 2
 text = "003_upload_message_8"
 label_settings = SubResource("LabelSettings_mnhjc")
@@ -329,7 +329,6 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="StartLabel" type="Label" parent="FollowCamera/Control"]
-modulate = Color(1, 1, 1, 6.55651e-07)
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

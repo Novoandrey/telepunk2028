@@ -72,7 +72,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.5, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(238, 483), Vector2(238, 422)]
+"values": [Vector2(270, 483), Vector2(270, 422)]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
@@ -187,7 +187,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(238, 483)
+position = Vector2(270, 483)
 position_smoothing_speed = 500.0
 
 [node name="EventController" parent="." instance=ExtResource("4_n4p1o")]

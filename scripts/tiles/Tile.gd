@@ -1,22 +1,20 @@
-class_name Tile
-extends Node
-
-@export var outline_sprite: Sprite2D
+@tool 
+class_name Tile extends Node2D
 
 @onready var test_ui: Control = $Control
+@onready var tile_coords: Label = $Control/Panel/Label
 
 var is_occupied: bool = false :
 	get:
 		return is_occupied
 	set(value):
-		if value:
-			test_ui.show()
-		else :
-			test_ui.hide()
 		is_occupied = value
 
 func _ready():
-	test_ui.hide()
+	tile_coords.text = str(TileMapManager.instance.get_cell_from_position(global_position))
+	#test_ui.hide()
+	
+	pass
 
 func critter_enter(body: Node2D):
 	is_occupied = true;

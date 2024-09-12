@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://df6va56hupiw8" path="res://scenes/game_chapters/metro/arenas/tilemap_scenes/metro_entrance_battle_arena.tscn" id="3_2drut"]
 [ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="4_dpe1v"]
 [ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="5_vxxkc"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="6_dujkv"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/move_button.tscn" id="6_dujkv"]
 [ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="7_ulyg3"]
 [ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="8_dhwo8"]
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="9_5ms3l"]

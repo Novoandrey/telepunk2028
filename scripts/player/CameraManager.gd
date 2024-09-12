@@ -2,6 +2,8 @@ class_name CameraManager
 
 extends Camera2D
 
+static var instance: CameraManager
+
 @export var max_zoom = 2
 @export var min_zoom = 0.25
 @export var zoom_speed = 0.1
@@ -12,7 +14,7 @@ extends Camera2D
 @export var can_rotate: bool
 
 
-@onready var tile_map : TileMap = get_node("../BattleArena/Environment/TileMap")
+@onready var tile_map : TileMap = TileMapManager.instance
 @onready var point_a = get_node("../PointA")
 @onready var point_b = get_node("../PointB")
 @onready var point_center = get_node("../PointCenter")
@@ -31,6 +33,8 @@ var start_dist: float
 var _touches: Dictionary = {}
 
 func _ready():
+	instance = self
+	
 	var top_bound = 0
 	var left_bound = 0
 	var right_bound = get_viewport_rect().size.x
@@ -47,10 +51,10 @@ func _ready():
 		right_bound = boundsEnd.x
 		bottom_bound = boundsEnd.y
 	
-	limit_top = top_bound
-	limit_left = left_bound
-	limit_right = right_bound
-	limit_bottom = bottom_bound
+	#limit_top = top_bound
+	#limit_left = left_bound
+	#limit_right = right_bound
+	#limit_bottom = bottom_bound
 	
 	make_current()
 

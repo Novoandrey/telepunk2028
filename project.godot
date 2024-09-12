@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="telepunk2028"
-run/main_scene="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn"
+run/main_scene="res://scenes/game_chapters/game_intro/introduction.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -26,7 +26,7 @@ SceneManager="*res://scripts/scene_manager/SceneManager.gd"
 
 [display]
 
-window/size/viewport_width=480
+window/size/viewport_width=540
 window/size/viewport_height=960
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1

@@ -1,11 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://df6va56hupiw8"]
+[gd_scene load_steps=3 format=3 uid="uid://df6va56hupiw8"]
 
 [ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="1_n6d1l"]
 [ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="2_80nm7"]
-
-[sub_resource type="Curve" id="Curve_a1aor"]
-_data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0]
-point_count = 1
 
 [node name="BattleArena" type="MultiplayerSpawner"]
 _spawnable_scenes = PackedStringArray("res://assets/nodes/entities/character/basic_char.tscn", "res://assets/nodes/entities/character/basic_enemy_char.tscn")
@@ -37,8 +33,3 @@ layer_3/name = "prediction"
 layer_3/y_sort_enabled = true
 layer_3/tile_data = PackedInt32Array(786432, 2, 131072, 262144, 2, 131072, 524290, 2, 131072)
 script = ExtResource("2_80nm7")
-
-[node name="Line2D" type="Line2D" parent="."]
-z_index = 2
-width_curve = SubResource("Curve_a1aor")
-joint_mode = 2
