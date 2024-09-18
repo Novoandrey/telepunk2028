@@ -16,14 +16,14 @@ func _ready():
 	
 	pass
 
-func critter_enter(body: Node2D):
+func critter_enter(_body: Node2D):
 	is_occupied = true;
 	pass
 	#var shader: ShaderMaterial = outline_sprite.material
 	#print(shader)
 	#shader.set_shader_parameter("outline_color", Color.CRIMSON)
 
-func critter_exit(body: Node2D):
+func critter_exit(_body: Node2D):
 	is_occupied = false;
 	pass
 	#var shader: ShaderMaterial = outline_sprite.material

@@ -1,122 +1,256 @@
-[gd_scene load_steps=6 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=12 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
-[ext_resource type="Script" path="res://scenes/game_chapters/prequel_clicker/upgrade_tree_manager.gd" id="3_3k44y"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
-[ext_resource type="PackedScene" uid="uid://6g63puq3f3xk" path="res://scenes/game_chapters/prequel_clicker/upgrade_node_template.tscn" id="4_4jjsy"]
+[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_tree_manager.gd" id="4_75dd6"]
+[ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="4_u6g0e"]
+[ext_resource type="Script" path="res://scripts/talent_tree/resource_button.gd" id="6_1nagx"]
+[ext_resource type="PackedScene" uid="uid://daplsoc7ofciu" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/generator_node_template.tscn" id="6_iu4ce"]
+[ext_resource type="Script" path="res://scripts/talent_tree/ClickerUI.gd" id="6_veeby"]
+[ext_resource type="PackedScene" uid="uid://btweifvc3amdj" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn" id="7_a0kji"]
+[ext_resource type="PackedScene" uid="uid://jvyejru5ragb" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/modifier_node_template.tscn" id="8_6nukx"]
+[ext_resource type="Script" path="res://scripts/talent_tree/buy_node_window.gd" id="8_stfc5"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yxhan")
 level_name = "Prequel"
 
-[node name="ClickerManager" type="Node2D" parent="."]
+[node name="AutoLoader" parent="." instance=ExtResource("3_e3x6g")]
+
+[node name="ClickerManager" type="Node" parent="."]
 script = ExtResource("2_grbvu")
 
-[node name="TapsScore" type="Label" parent="ClickerManager"]
-offset_left = 153.0
-offset_top = 92.0
-offset_right = 317.0
-offset_bottom = 124.0
+[node name="CameraManager" type="Camera2D" parent="."]
+position = Vector2(272, 481)
+script = ExtResource("4_u6g0e")
+can_pan = true
+can_zoom = true
+
+[node name="GameObjects" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
+
+[node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
+script = ExtResource("4_75dd6")
+
+[node name="SkillNode" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("6_iu4ce")]
+offset_left = 228.0
+offset_top = 157.0
+offset_right = 308.0
+offset_bottom = 237.0
+is_hidden = true
+is_unlocked = true
+strength = 2
+strength_increase = 2
+mult_bool = false
+unlock_cost = 10
+unlock_increase = 10
+reveal_on_nodes_revealed = false
+reveal_on_resource_amount_reached = true
+unlock_on_resource_amount_reached = true
+unlock_on_nodes_level_reached = false
+next_nodes = [NodePath("../SkillNode2"), NodePath("../SkillNode4")]
+"Reveal Conditions/Resource Amount Required" = 10
+"Unlock Conditions/Resource Amount Required" = 10
+
+[node name="SkillNode2" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 365.0
+offset_top = 358.0
+offset_right = 445.0
+offset_bottom = 438.0
+node_id = 1
+is_hidden = true
+next_nodes = [NodePath("../SkillNode5"), NodePath("../SkillNode3")]
+previous_nodes = [NodePath("../SkillNode")]
+"Unlock Conditions/Level Required" = 1
+
+[node name="SkillNode3" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 165.0
+offset_top = 532.0
+offset_right = 245.0
+offset_bottom = 612.0
+node_id = 2
+is_hidden = true
+previous_nodes = [NodePath("../SkillNode2")]
+"Unlock Conditions/Level Required" = 1
+
+[node name="SkillNode4" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
+offset_left = 49.0
+offset_top = 246.0
+offset_right = 129.0
+offset_bottom = 326.0
+parent_node = NodePath("../SkillNode")
+node_id = 3
+is_hidden = true
+"Unlock Conditions/Level Required" = 1
+
+[node name="SkillNode5" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
+offset_left = 525.0
+offset_top = 416.0
+offset_right = 605.0
+offset_bottom = 496.0
+parent_node = NodePath("../SkillNode2")
+node_id = 4
+is_hidden = true
+"Unlock Conditions/Level Required" = 1
+
+[node name="GameScreen" type="CanvasLayer" parent="."]
+
+[node name="Screen" type="MarginContainer" parent="GameScreen"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+script = ExtResource("6_veeby")
+
+[node name="ClickInfo" type="HBoxContainer" parent="GameScreen/Screen"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="ExitButton" type="Button" parent="GameScreen/Screen/ClickInfo"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "Exit"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen/Screen/ClickInfo"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="TapsScore" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
+layout_mode = 2
 text = "000"
 horizontal_alignment = 1
 
-[node name="TapsStrength" type="Label" parent="ClickerManager"]
-offset_left = 151.0
-offset_top = 21.0
-offset_right = 315.0
-offset_bottom = 53.0
+[node name="TapsStrength" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
+layout_mode = 2
 text = "STRENGTH"
 horizontal_alignment = 1
 
-[node name="AutoScore" type="Label" parent="ClickerManager"]
-offset_left = 141.0
-offset_top = 60.0
-offset_right = 305.0
-offset_bottom = 92.0
+[node name="AutoScore" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
+layout_mode = 2
 text = "Auto Score"
 horizontal_alignment = 1
 
-[node name="TapButton" type="Button" parent="ClickerManager"]
-offset_left = 117.0
-offset_top = 810.0
-offset_right = 345.0
-offset_bottom = 964.0
-text = "TAP"
-
-[node name="UpgradeButton" type="Button" parent="ClickerManager"]
-offset_left = 118.0
-offset_top = 707.0
-offset_right = 344.0
-offset_bottom = 742.0
-text = "Upgrade"
-
-[node name="AutoButton" type="Button" parent="ClickerManager"]
-offset_left = 118.0
-offset_top = 759.0
-offset_right = 344.0
-offset_bottom = 794.0
-text = "Auto"
-
-[node name="Timer" type="Timer" parent="ClickerManager"]
-autostart = true
-
-[node name="RichTextLabel" type="RichTextLabel" parent="ClickerManager"]
+[node name="RichTextLabel" type="RichTextLabel" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
-offset_left = 88.0
-offset_top = 128.0
-offset_right = 388.0
-offset_bottom = 151.0
+layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "вот тут у нас длиннющее описание"
 fit_content = true
 tab_size = 5
 
-[node name="Container" type="Container" parent="ClickerManager"]
-offset_left = 44.0
-offset_top = 54.0
-offset_right = 114.0
-offset_bottom = 97.0
-
-[node name="Button2" type="Button" parent="ClickerManager/Container"]
+[node name="ControlButtons" type="HBoxContainer" parent="GameScreen/Screen"]
 layout_mode = 2
-size_flags_horizontal = 8
-text = "Exit"
+size_flags_vertical = 8
 
-[node name="ProgressTreeManager" type="Node2D" parent="ClickerManager"]
-script = ExtResource("3_3k44y")
+[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen/Screen/ControlButtons"]
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_constants/separation = 10
 
-[node name="SkillNode1" parent="ClickerManager/ProgressTreeManager" instance=ExtResource("4_4jjsy")]
-offset_left = 189.0
-offset_top = 542.0
-offset_right = 269.0
-offset_bottom = 622.0
-strength = 2
+[node name="TapButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer" groups=["resource_buttons"]]
+custom_minimum_size = Vector2(200, 150)
+layout_mode = 2
+text = "TAP"
+script = ExtResource("6_1nagx")
 
-[node name="SkillNode2" parent="ClickerManager/ProgressTreeManager/SkillNode1" instance=ExtResource("4_4jjsy")]
+[node name="UpgradeButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Upgrade"
+
+[node name="AutoButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+text = "Auto"
+
+[node name="BuyWindow" type="PanelContainer" parent="GameScreen/Screen"]
+visible = false
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("8_stfc5")
+
+[node name="Margin" type="MarginContainer" parent="GameScreen/Screen/BuyWindow"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Control" type="Control" parent="GameScreen/Screen/BuyWindow/Margin"]
+layout_mode = 2
+
+[node name="VLayout" type="VBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control"]
 layout_mode = 1
-anchors_preset = -1
-offset_left = 8.0
-offset_top = -127.0
-offset_right = 88.0001
-offset_bottom = -47.0
-strength = 10
-mult_bool = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="SkillNode3" parent="ClickerManager/ProgressTreeManager" instance=ExtResource("4_4jjsy")]
-offset_left = 201.0
-offset_top = 298.0
-offset_right = 281.0
-offset_bottom = 378.0
+[node name="MenuBar" type="HBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout"]
+layout_mode = 2
 
-[node name="AutoLoader" parent="." instance=ExtResource("3_e3x6g")]
+[node name="CloseWindow" type="Button" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/MenuBar"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+text = "Close
+"
 
-[connection signal="pressed" from="ClickerManager/TapButton" to="ClickerManager" method="_on_tap_button_pressed"]
-[connection signal="pressed" from="ClickerManager/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="ClickerManager/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
-[connection signal="timeout" from="ClickerManager/Timer" to="ClickerManager" method="_on_timer_timeout"]
-[connection signal="pressed" from="ClickerManager/Container/Button2" to="." method="return_to_main_menu"]
-[connection signal="pressed" from="ClickerManager/ProgressTreeManager/SkillNode1" to="ClickerManager/ProgressTreeManager" method="_on_skill_node_pressed_control"]
-[connection signal="pressed" from="ClickerManager/ProgressTreeManager/SkillNode1/SkillNode2" to="ClickerManager/ProgressTreeManager" method="_on_skill_node_pressed_control"]
-[connection signal="pressed" from="ClickerManager/ProgressTreeManager/SkillNode3" to="ClickerManager/ProgressTreeManager" method="_on_skill_node_pressed_control"]
+[node name="NodeInfo" type="HBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NodeDescription" type="VBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo/NodeDescription"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "I am a node, very very cool node with interesting description
+"
+
+[node name="NodeParameters" type="VBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo/NodeParameters"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Strength: 100
+Cost: 150
+"
+
+[node name="TextureRect" type="TextureRect" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo"]
+layout_mode = 2
+size_flags_horizontal = 10
+expand_mode = 2
+
+[node name="BuyInfo" type="HBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout"]
+layout_mode = 2
+size_flags_vertical = 10
+
+[node name="BuyNode" type="Button" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/BuyInfo"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "Buy"
+
+[connection signal="pressed" from="GameScreen/Screen/ClickInfo/ExitButton" to="." method="return_to_main_menu"]
+[connection signal="pressed" from="GameScreen/Screen/ControlButtons/VBoxContainer/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
+[connection signal="pressed" from="GameScreen/Screen/ControlButtons/VBoxContainer/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
+[connection signal="pressed" from="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/MenuBar/CloseWindow" to="GameScreen/Screen/BuyWindow" method="hide"]
+[connection signal="pressed" from="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/BuyInfo/BuyNode" to="GameScreen/Screen/BuyWindow" method="try_to_buy_node"]

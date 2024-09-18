@@ -33,7 +33,7 @@ func switch_scenes(_scene_to_load_path: String, _scene_to_destroy_path: String, 
 			print("returned")
 			return
 
-func add_scene(_scene_to_load, parent_scene = root):
+func add_scene(_scene_to_load, _parent_scene = root):
 	root.add_child(_scene_to_load.instantiate())
 	scene_stack.append(_scene_to_load)
 

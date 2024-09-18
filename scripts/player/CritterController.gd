@@ -29,3 +29,4 @@ func _unhandled_input(event):
 func _on_input_event(viewport, event, shape_idx):
 	if event.is_action_pressed("ui_action"):
 		GameManager.instance._selected_critter = self
+

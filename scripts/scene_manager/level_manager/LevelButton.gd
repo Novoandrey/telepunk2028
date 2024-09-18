@@ -24,11 +24,9 @@ func _ready():
 	
 	for level_button in levels_to_unlock:
 		var _current_curve = curve.instantiate()
-		_current_curve.position.y = size.y
-		_current_curve.position.x = size.x/2
 		add_child(_current_curve)
 		_current_curve._path.curve.set_point_position(0, Vector2(0,0))
-		_current_curve._path.curve.set_point_position(1, Vector2(level_button.position.x - position.x, level_button.position.y - position.y - size.y))
+		_current_curve._path.curve.set_point_position(1, Vector2(level_button.position.x - position.x, level_button.position.y - position.y))
 		_current_curve._path.curve.set_point_out(0, Vector2(0,(level_button.position.y - position.y)/2))
 		_current_curve._path.curve.set_point_in(1, Vector2(0,-(level_button.position.y - position.y)/2))
 		_current_curve.redraw()

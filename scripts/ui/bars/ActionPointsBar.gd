@@ -19,6 +19,6 @@ func on_critter_selected(_previous_critter, _selected_critter):
 	else:
 		hide()
 
-func current_action_points(previousValue, currentValue):
+func current_action_points(_previousValue, currentValue):
 	value = currentValue;
 	label.text = "{current}/{max}".format({"current": value, "max": max_value})

@@ -35,7 +35,7 @@ func connect_traversable_tiles(tiles: Array): ##Соединение точек,
 			
 			if not astar.has_point(target_id):
 				continue
-			
+				
 			astar.connect_points(id, target_id, true)
 
 func get_id_for_point(point: Vector2): ##уникальный id для точки навигации на карте в зависимости от положения тайла

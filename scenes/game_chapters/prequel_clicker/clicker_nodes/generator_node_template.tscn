@@ -1,23 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://6g63puq3f3xk"]
+[gd_scene load_steps=6 format=3 uid="uid://daplsoc7ofciu"]
 
-[ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_6nnyd"]
-[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node.gd" id="2_hnjys"]
+[ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_v4trx"]
+[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node_generator.gd" id="2_e3fqs"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="3_wxxcq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_87d78"]
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_x2u3m"]
+font_color = Color(0, 0, 0, 1)
 
 [node name="SkillNode" type="TextureButton"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
-disabled = true
-toggle_mode = true
-texture_normal = ExtResource("1_6nnyd")
+texture_normal = ExtResource("1_v4trx")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("2_hnjys")
-"Unlock Conditions/Level Required" = 1
+script = ExtResource("2_e3fqs")
+"Unlock Conditions/Level Required" = null
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(40, 0, 80, 80, 0, 80)
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_wxxcq")
+expand_mode = 2
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -46,6 +59,7 @@ layout_mode = 2
 size_flags_vertical = 8
 theme_override_font_sizes/font_size = 24
 text = "0/10"
+label_settings = SubResource("LabelSettings_87d78")
 horizontal_alignment = 2
 vertical_alignment = 1
 
@@ -60,5 +74,7 @@ layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "1"
-horizontal_alignment = 1
+label_settings = SubResource("LabelSettings_x2u3m")
 vertical_alignment = 1
+
+[connection signal="pressed" from="." to="." method="_on_skill_node_pressed"]

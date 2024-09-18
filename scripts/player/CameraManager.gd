@@ -18,7 +18,7 @@ static var instance: CameraManager
 @onready var point_a = get_node("../PointA")
 @onready var point_b = get_node("../PointB")
 @onready var point_center = get_node("../PointCenter")
-@onready var drag_timer = $Timer
+@onready var drag_timer
 
 var drag_start_pos = Vector2.ZERO
 var drag_camera_pos = Vector2.ZERO
@@ -34,6 +34,8 @@ var _touches: Dictionary = {}
 
 func _ready():
 	instance = self
+	
+	create_drag_timer()
 	
 	var top_bound = 0
 	var left_bound = 0
@@ -58,9 +60,12 @@ func _ready():
 	
 	make_current()
 
-func _process(delta):
-	pass
-
+func create_drag_timer():
+	drag_timer = Timer.new()
+	add_child(drag_timer)
+	drag_timer.one_shot = true
+	drag_timer.wait_time = 0.2
+	drag_timer.timeout.connect(_on_timer_timeout)
 
 func _unhandled_input(event):
 	

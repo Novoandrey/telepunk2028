@@ -18,6 +18,6 @@ func on_critter_selected(_previous_critter, _selected_critter):
 	value = _player._movePoints
 	label.text = "{current}/{max}".format({"current": value, "max": max_value})
 
-func current_movePoints(previousValue, currentValue):
+func current_movePoints(_previousValue, currentValue):
 	value = currentValue;
 	label.text = "{current}/{max}".format({"current": value, "max": max_value})

@@ -244,7 +244,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera2D" parent="." instance=ExtResource("4_4oqin")]
-can_rotate = null
 
 [node name="PointA" type="Sprite2D" parent="."]
 position = Vector2(270, 480)

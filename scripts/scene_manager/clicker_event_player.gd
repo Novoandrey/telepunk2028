@@ -20,7 +20,7 @@ func _ready():
 	if get_animation_list().size() == 0:
 		can_interact = false
 
-func _process(delta):
+func _process(_delta):
 	if !skip_timer.is_stopped():
 		skip_progress_bar.value = skip_progress_bar.max_value - skip_timer.time_left
 		pass
