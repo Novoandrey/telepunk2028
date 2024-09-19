@@ -23,6 +23,10 @@ script = ExtResource("2_grbvu")
 
 [node name="CameraManager" type="Camera2D" parent="."]
 position = Vector2(272, 481)
+limit_left = 0
+limit_top = 0
+limit_right = 540
+editor_draw_limits = true
 script = ExtResource("4_u6g0e")
 can_pan = true
 can_zoom = true
@@ -33,15 +37,26 @@ follow_viewport_enabled = true
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
 script = ExtResource("4_75dd6")
 
-[node name="SkillNode" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("6_iu4ce")]
-offset_left = 228.0
-offset_top = 157.0
-offset_right = 308.0
-offset_bottom = 237.0
+[node name="0_SkillNode" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 227.0
+offset_top = 174.0
+offset_right = 307.0
+offset_bottom = 254.0
+node_name = &"Beginning"
+node_description = "Here we come"
+is_unlocked = true
+unlock_cost = 15
+next_nodes = [NodePath("../SkillNode")]
+
+[node name="SkillNode" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("6_iu4ce")]
+visible = false
+offset_left = 268.0
+offset_top = 317.0
+offset_right = 348.0
+offset_bottom = 397.0
 is_hidden = true
 is_unlocked = true
 strength = 2
-strength_increase = 2
 mult_bool = false
 unlock_cost = 10
 unlock_increase = 10
@@ -50,21 +65,27 @@ reveal_on_resource_amount_reached = true
 unlock_on_resource_amount_reached = true
 unlock_on_nodes_level_reached = false
 next_nodes = [NodePath("../SkillNode2"), NodePath("../SkillNode4")]
+previous_nodes = [NodePath("../0_SkillNode")]
 "Reveal Conditions/Resource Amount Required" = 10
 "Unlock Conditions/Resource Amount Required" = 10
 
 [node name="SkillNode2" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-offset_left = 365.0
-offset_top = 358.0
-offset_right = 445.0
-offset_bottom = 438.0
+visible = false
+offset_left = 388.0
+offset_top = 426.0
+offset_right = 468.0
+offset_bottom = 506.0
 node_id = 1
 is_hidden = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
 next_nodes = [NodePath("../SkillNode5"), NodePath("../SkillNode3")]
 previous_nodes = [NodePath("../SkillNode")]
+"Reveal Conditions/Level Required" = 1
 "Unlock Conditions/Level Required" = 1
 
 [node name="SkillNode3" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 165.0
 offset_top = 532.0
 offset_right = 245.0
@@ -75,16 +96,18 @@ previous_nodes = [NodePath("../SkillNode2")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="SkillNode4" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
-offset_left = 49.0
-offset_top = 246.0
-offset_right = 129.0
-offset_bottom = 326.0
+visible = false
+offset_left = 92.0
+offset_top = 402.0
+offset_right = 172.0
+offset_bottom = 482.0
 parent_node = NodePath("../SkillNode")
 node_id = 3
 is_hidden = true
 "Unlock Conditions/Level Required" = 1
 
 [node name="SkillNode5" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
+visible = false
 offset_left = 525.0
 offset_top = 416.0
 offset_right = 605.0
