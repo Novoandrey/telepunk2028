@@ -182,20 +182,10 @@ size_flags_horizontal = 6
 theme_override_constants/separation = 10
 
 [node name="TapButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer" groups=["resource_buttons"]]
-custom_minimum_size = Vector2(200, 150)
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 text = "TAP"
 script = ExtResource("6_1nagx")
-
-[node name="UpgradeButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Upgrade"
-
-[node name="AutoButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
-layout_mode = 2
-text = "Auto"
 
 [node name="BuyWindow" type="PanelContainer" parent="GameScreen/Screen"]
 visible = false
@@ -273,7 +263,5 @@ size_flags_horizontal = 10
 text = "Buy"
 
 [connection signal="pressed" from="GameScreen/Screen/ClickInfo/ExitButton" to="." method="return_to_main_menu"]
-[connection signal="pressed" from="GameScreen/Screen/ControlButtons/VBoxContainer/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
-[connection signal="pressed" from="GameScreen/Screen/ControlButtons/VBoxContainer/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
 [connection signal="pressed" from="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/MenuBar/CloseWindow" to="GameScreen/Screen/BuyWindow" method="hide"]
 [connection signal="pressed" from="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/BuyInfo/BuyNode" to="GameScreen/Screen/BuyWindow" method="try_to_buy_node"]
