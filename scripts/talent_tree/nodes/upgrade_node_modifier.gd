@@ -12,7 +12,7 @@ func increase_level(value):
 	super(value)
 	power_up_parent()
 
-func power_up_parent():
+func power_up_parent(type: INCREASE_MODIFIER = power_up_type):
 	match power_up_type:
 		INCREASE_MODIFIER.ADDITIVE:
 			print(parent_node.current_strength)

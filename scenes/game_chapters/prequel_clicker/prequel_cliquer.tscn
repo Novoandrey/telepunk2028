@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/talent_tree/ClickerUI.gd" id="6_veeby"]
 [ext_resource type="PackedScene" uid="uid://btweifvc3amdj" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn" id="7_a0kji"]
 [ext_resource type="PackedScene" uid="uid://jvyejru5ragb" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/modifier_node_template.tscn" id="8_6nukx"]
-[ext_resource type="Script" path="res://scripts/talent_tree/buy_node_window.gd" id="8_stfc5"]
+[ext_resource type="PackedScene" uid="uid://dg0k2wxud2cn3" path="res://assets/nodes/ui/clicker/buy_window.tscn" id="11_imrjp"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yxhan")
@@ -34,10 +34,12 @@ follow_viewport_enabled = true
 script = ExtResource("4_75dd6")
 
 [node name="SkillNode" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("6_iu4ce")]
+visible = false
 offset_left = 228.0
 offset_top = 157.0
 offset_right = 308.0
 offset_bottom = 237.0
+node_name = &"Generator"
 is_hidden = true
 is_unlocked = true
 strength = 2
@@ -54,6 +56,7 @@ next_nodes = [NodePath("../SkillNode2"), NodePath("../SkillNode4")]
 "Unlock Conditions/Resource Amount Required" = 10
 
 [node name="SkillNode2" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 365.0
 offset_top = 358.0
 offset_right = 445.0
@@ -65,6 +68,7 @@ previous_nodes = [NodePath("../SkillNode")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="SkillNode3" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 165.0
 offset_top = 532.0
 offset_right = 245.0
@@ -75,6 +79,7 @@ previous_nodes = [NodePath("../SkillNode2")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="SkillNode4" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
+visible = false
 offset_left = 49.0
 offset_top = 246.0
 offset_right = 129.0
@@ -85,6 +90,7 @@ is_hidden = true
 "Unlock Conditions/Level Required" = 1
 
 [node name="SkillNode5" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
+visible = false
 offset_left = 525.0
 offset_top = 416.0
 offset_right = 605.0
@@ -174,83 +180,9 @@ custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Auto"
 
-[node name="BuyWindow" type="PanelContainer" parent="GameScreen/Screen"]
-visible = false
+[node name="BuyWindow" parent="GameScreen/Screen" instance=ExtResource("11_imrjp")]
 layout_mode = 2
-size_flags_vertical = 4
-script = ExtResource("8_stfc5")
-
-[node name="Margin" type="MarginContainer" parent="GameScreen/Screen/BuyWindow"]
-custom_minimum_size = Vector2(0, 400)
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="Control" type="Control" parent="GameScreen/Screen/BuyWindow/Margin"]
-layout_mode = 2
-
-[node name="VLayout" type="VBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="MenuBar" type="HBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout"]
-layout_mode = 2
-
-[node name="CloseWindow" type="Button" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/MenuBar"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-text = "Close
-"
-
-[node name="NodeInfo" type="HBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="NodeDescription" type="VBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo/NodeDescription"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "I am a node, very very cool node with interesting description
-"
-
-[node name="NodeParameters" type="VBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="RichTextLabel" type="RichTextLabel" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo/NodeParameters"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Strength: 100
-Cost: 150
-"
-
-[node name="TextureRect" type="TextureRect" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/NodeInfo"]
-layout_mode = 2
-size_flags_horizontal = 10
-expand_mode = 2
-
-[node name="BuyInfo" type="HBoxContainer" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout"]
-layout_mode = 2
-size_flags_vertical = 10
-
-[node name="BuyNode" type="Button" parent="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/BuyInfo"]
-custom_minimum_size = Vector2(80, 0)
-layout_mode = 2
-size_flags_horizontal = 10
-text = "Buy"
 
 [connection signal="pressed" from="GameScreen/Screen/ClickInfo/ExitButton" to="." method="return_to_main_menu"]
 [connection signal="pressed" from="GameScreen/Screen/ControlButtons/VBoxContainer/UpgradeButton" to="ClickerManager" method="_on_upgrade_button_pressed"]
 [connection signal="pressed" from="GameScreen/Screen/ControlButtons/VBoxContainer/AutoButton" to="ClickerManager" method="_on_auto_button_pressed"]
-[connection signal="pressed" from="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/MenuBar/CloseWindow" to="GameScreen/Screen/BuyWindow" method="hide"]
-[connection signal="pressed" from="GameScreen/Screen/BuyWindow/Margin/Control/VLayout/BuyInfo/BuyNode" to="GameScreen/Screen/BuyWindow" method="try_to_buy_node"]

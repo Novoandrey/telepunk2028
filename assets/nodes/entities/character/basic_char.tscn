@@ -261,7 +261,7 @@ libraries = {
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_fn46v")
 position = Vector2(2, -30)
-texture = ExtResource("5_ug2bi")
+texture = ExtResource("6_l6oac")
 
 [node name="CritterActions" type="Node2D" parent="."]
 script = ExtResource("21_gpm1g")

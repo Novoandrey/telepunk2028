@@ -39,6 +39,7 @@ enum INCREASE_MODIFIER {
 
 @onready var node_level_label = $NodeLevel/Label
 @onready var node_cost_lable = $NodeCost/Label
+@onready var node_name_label = $NodeName/Label
 @onready var panel = $Panel
 @onready var curve: PackedScene = preload("res://scenes/scene_managment/level_selection/curved_line.tscn")
 
@@ -121,6 +122,7 @@ func _ready():
 	if is_hidden:
 		hide()
 	node_level_label.text = "0/" + str(max_level)
+	node_name_label.text = node_name
 	current_cost = unlock_cost
 	initialize_node_data()
 	create_connections(next_nodes, CONNECTION_TYPE.NEXT)

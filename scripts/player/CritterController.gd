@@ -1,6 +1,4 @@
-class_name CritterController
-
-extends Critter
+class_name CritterController extends Critter
 
 @onready var _camera : CameraManager = CameraManager.instance
 

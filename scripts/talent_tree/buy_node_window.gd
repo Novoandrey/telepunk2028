@@ -5,6 +5,7 @@ class_name BuyNodeWindow extends PanelContainer
 @onready var description_label: RichTextLabel = $Margin/Control/VLayout/NodeInfo/NodeDescription/RichTextLabel
 @onready var parameters_label: RichTextLabel = $Margin/Control/VLayout/NodeInfo/NodeParameters/RichTextLabel
 @onready var node_icon: TextureRect = $Margin/Control/VLayout/NodeInfo/TextureRect
+@onready var node_name: Label = $Margin/Control/VLayout/MenuBar/NodeName
 
 var node: SkillNode : 
 	set(value):
@@ -18,7 +19,7 @@ func update_node_info():
 	+ "\nCurrent node cost: " + str(node.node_data.get(node.NODE_DATA_KEYS.CURRENT_COST)) \
 	+ "\nCurrent node strength: " + str(node.node_data.get(node.NODE_DATA_KEYS.CURRENT_STRENGTH))
 	node_icon.texture = node.texture_normal
-	
+	node_name.text = node.node_name
 	pass
 
 func can_buy_node():
