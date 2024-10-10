@@ -38,7 +38,7 @@ enum INCREASE_MODIFIER {
 }
 
 @onready var node_level_label = $NodeLevel/Label
-@onready var node_cost_lable = $NodeCost/Label
+@onready var node_cost_lable = $NodeCost/HBoxContainer/Label
 @onready var node_name_label = $NodeName/Label
 @onready var panel = $Panel
 @onready var curve: PackedScene = preload("res://scenes/scene_managment/level_selection/curved_line.tscn")
@@ -200,7 +200,6 @@ func buy_node():
 		if current_cost <= ClickerManager.instance.get_resource_value(resource_required) and level < max_level:
 			ClickerManager.instance.update_resource_value(resource_required, -current_cost)
 			level = min( level + 1, max_level) 
-			panel.show_behind_parent = true
 			return true
 		else:
 			pass

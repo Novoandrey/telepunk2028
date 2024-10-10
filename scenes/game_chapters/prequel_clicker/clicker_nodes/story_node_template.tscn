@@ -1,71 +1,108 @@
-[gd_scene load_steps=5 format=3 uid="uid://btweifvc3amdj"]
+[gd_scene load_steps=8 format=3 uid="uid://btweifvc3amdj"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_htscm"]
 [ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node_story.gd" id="2_2l7wl"]
+[ext_resource type="Texture2D" uid="uid://bbooa0207udkg" path="res://assets/sprites/ui/nodes/gameobject-processor.png" id="3_eyimo"]
+[ext_resource type="Texture2D" uid="uid://b5fqhsna3pvs5" path="res://assets/sprites/ui/icons/score-icon.png" id="5_nbp3k"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_oo6ri"]
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_dn4lo"]
+font_size = 160
 
-[sub_resource type="LabelSettings" id="LabelSettings_2jw6q"]
-font_color = Color(0, 0, 0, 1)
+[sub_resource type="LabelSettings" id="LabelSettings_u0ane"]
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_fvx7v"]
+font_size = 160
 
 [node name="SkillNode" type="TextureButton"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
+scale = Vector2(2, 2)
 texture_normal = ExtResource("1_htscm")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_2l7wl")
 "Unlock Conditions/Level Required" = null
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(80, 0, 80, 80, 0, 80, 0, 0)
-
-[node name="Panel" type="Panel" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+texture = ExtResource("3_eyimo")
+expand_mode = 2
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2(18.9581, 61.4078)
+scale = Vector2(0.422297, 0.427134)
+color = Color(0.286275, 1, 1, 1)
+polygon = PackedVector2Array(0, 0, 100, 0, 100, -100, 0, -100)
 
 [node name="NodeLevel" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -19.8055
+offset_top = -0.412131
+offset_right = 780.195
+offset_bottom = 399.588
+grow_horizontal = 2
+scale = Vector2(0.05, 0.05)
+theme_override_constants/margin_top = 5
 
 [node name="Label" type="Label" parent="NodeLevel"]
 layout_mode = 2
-size_flags_vertical = 8
 theme_override_font_sizes/font_size = 24
-text = "0/10"
-label_settings = SubResource("LabelSettings_oo6ri")
-horizontal_alignment = 2
+text = "x1"
+label_settings = SubResource("LabelSettings_dn4lo")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NodeCost" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 10)
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -12.3871
+offset_top = -15.2952
+offset_right = 487.613
+offset_bottom = 149.705
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
 
-[node name="Label" type="Label" parent="NodeCost"]
+[node name="ColorRect" type="ColorRect" parent="NodeCost"]
+layout_mode = 2
+color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NodeCost"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NodeCost/HBoxContainer"]
+custom_minimum_size = Vector2(15, 6)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("5_nbp3k")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="NodeCost/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "1"
-label_settings = SubResource("LabelSettings_2jw6q")
+label_settings = SubResource("LabelSettings_u0ane")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NodeName" type="MarginContainer" parent="."]
@@ -74,16 +111,18 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.2364
+offset_top = -14.4709
+offset_right = 1521.24
+offset_bottom = 822.529
 grow_horizontal = 2
-
-[node name="ColorRect" type="ColorRect" parent="NodeName"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
 
 [node name="Label" type="Label" parent="NodeName"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "default"
+label_settings = SubResource("LabelSettings_fvx7v")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3

@@ -49,6 +49,28 @@ follow_viewport_enabled = true
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
 script = ExtResource("4_75dd6")
 
+[node name="10_G_SendReport2" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("6_iu4ce")]
+visible = false
+offset_left = 441.0
+offset_top = 317.0
+offset_right = 521.0
+offset_bottom = 397.0
+node_id = 100
+node_name = &"Отправить Отчет"
+max_level = 1000
+is_hidden = true
+is_unlocked = true
+strength = 2
+strength_increase = 2
+mult_bool = false
+unlock_cost = 10
+unlock_increase = 10
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+unlock_on_nodes_level_reached = false
+previous_nodes = [NodePath("../1_B_Open")]
+"Reveal Conditions/Level Required" = 1
+
 [node name="1_B_Open" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
 visible = false
 offset_left = 232.0

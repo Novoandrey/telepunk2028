@@ -1,20 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://daplsoc7ofciu"]
+[gd_scene load_steps=9 format=3 uid="uid://daplsoc7ofciu"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_v4trx"]
 [ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node_generator.gd" id="2_e3fqs"]
+[ext_resource type="Texture2D" uid="uid://csb1he4417yb0" path="res://assets/sprites/ui/nodes/gameobject-generator.png" id="3_wjp1h"]
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="3_wxxcq"]
+[ext_resource type="Texture2D" uid="uid://b5fqhsna3pvs5" path="res://assets/sprites/ui/icons/score-icon.png" id="4_77q7y"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_87d78"]
-font_color = Color(0, 0, 0, 1)
+font_size = 160
 
 [sub_resource type="LabelSettings" id="LabelSettings_x2u3m"]
-font_color = Color(0, 0, 0, 1)
+font_size = 120
+
+[sub_resource type="LabelSettings" id="LabelSettings_ee05g"]
+font_size = 160
 
 [node name="SkillNode" type="TextureButton"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(80, 80)
 offset_right = 80.0
 offset_bottom = 80.0
+scale = Vector2(2.5, 2.5)
 texture_normal = ExtResource("1_v4trx")
 ignore_texture_size = true
 stretch_mode = 0
@@ -30,52 +36,86 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_wxxcq")
+texture = ExtResource("3_wjp1h")
 expand_mode = 2
 
-[node name="Panel" type="Panel" parent="."]
+[node name="Layout" type="TextureRect" parent="."]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.6306
+offset_top = -16.1528
+offset_right = 25.3694
+offset_bottom = 23.8472
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+scale = Vector2(0.866133, 0.866133)
+texture = ExtResource("3_wxxcq")
+expand_mode = 2
 
 [node name="NodeLevel" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -16.6602
+offset_top = 13.1921
+offset_right = 783.34
+offset_bottom = 413.192
+grow_horizontal = 2
+scale = Vector2(0.05, 0.05)
+theme_override_constants/margin_top = 5
 
 [node name="Label" type="Label" parent="NodeLevel"]
 layout_mode = 2
-size_flags_vertical = 8
 theme_override_font_sizes/font_size = 24
-text = "0/10"
+text = "x1"
 label_settings = SubResource("LabelSettings_87d78")
-horizontal_alignment = 2
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NodeCost" type="MarginContainer" parent="."]
-custom_minimum_size = Vector2(40, 40)
+custom_minimum_size = Vector2(30, 10)
 layout_mode = 1
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -10.0642
+offset_top = -25.2022
+offset_right = 489.936
+offset_bottom = 139.798
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.05, 0.05)
 
-[node name="Label" type="Label" parent="NodeCost"]
+[node name="ColorRect" type="ColorRect" parent="NodeCost"]
+layout_mode = 2
+color = Color(0.0562916, 0.0562916, 0.0562916, 1)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NodeCost"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="NodeCost/HBoxContainer"]
+custom_minimum_size = Vector2(15, 6)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = ExtResource("4_77q7y")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="NodeCost/HBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 24
 text = "1"
 label_settings = SubResource("LabelSettings_x2u3m")
+horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="NodeName" type="MarginContainer" parent="."]
@@ -84,16 +124,18 @@ anchors_preset = -1
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 3.04432
+offset_top = -15.0544
+offset_right = 1523.04
+offset_bottom = 821.946
 grow_horizontal = 2
-
-[node name="ColorRect" type="ColorRect" parent="NodeName"]
-layout_mode = 2
-color = Color(0, 0, 0, 1)
+scale = Vector2(0.05, 0.05)
 
 [node name="Label" type="Label" parent="NodeName"]
 custom_minimum_size = Vector2(40, 0)
 layout_mode = 2
 text = "default"
+label_settings = SubResource("LabelSettings_ee05g")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
