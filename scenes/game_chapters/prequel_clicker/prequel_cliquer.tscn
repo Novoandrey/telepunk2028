@@ -1381,13 +1381,13 @@ theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
 script = ExtResource("6_veeby")
 
-[node name="MarginContainer" type="MarginContainer" parent="GameScreen/Screen"]
+[node name="TapContainer" type="MarginContainer" parent="GameScreen/Screen"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme_override_constants/margin_bottom = -70
 
-[node name="TapButton" type="TextureButton" parent="GameScreen/Screen/MarginContainer" groups=["resource_buttons"]]
+[node name="TapButton" type="TextureButton" parent="GameScreen/Screen/TapContainer" groups=["resource_buttons"]]
 custom_minimum_size = Vector2(280, 280)
 layout_mode = 2
 texture_normal = ExtResource("10_3fvq7")
@@ -1397,7 +1397,7 @@ ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_1nagx")
 
-[node name="TapLabel" type="Label" parent="GameScreen/Screen/MarginContainer"]
+[node name="TapLabel" type="Label" parent="GameScreen/Screen/TapContainer"]
 layout_mode = 2
 text = "tap_button"
 horizontal_alignment = 1
