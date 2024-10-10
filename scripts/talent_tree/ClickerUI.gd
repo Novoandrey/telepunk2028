@@ -2,7 +2,7 @@ class_name ClickerUI extends MarginContainer
 
 static var instance: ClickerUI
 
-@onready var tap_button: ResourceButton = $"../MarginContainer/TapButton"
+@onready var tap_button: ResourceButton = $MarginContainer/TapButton
 @onready var taps_label = $ClickInfo/VBoxContainer/TapsScore
 @onready var taps_strength_label = $ClickInfo/VBoxContainer/TapsStrength
 @onready var auto_score_label = $ClickInfo/VBoxContainer/AutoScore
