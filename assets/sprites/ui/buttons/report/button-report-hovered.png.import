@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d33k3ktr61i7h"
-path="res://.godot/imported/button-tap-hovered.png-1e988e7cfa79105b9070f061c0d829d8.ctex"
+uid="uid://bpg1m2qbbol4y"
+path="res://.godot/imported/button-report-hovered.png-3938d89a7e3996e75862eca5bc3c70de.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/tap/button-tap-hovered.png"
-dest_files=["res://.godot/imported/button-tap-hovered.png-1e988e7cfa79105b9070f061c0d829d8.ctex"]
+source_file="res://assets/sprites/ui/buttons/report/button-report-hovered.png"
+dest_files=["res://.godot/imported/button-report-hovered.png-3938d89a7e3996e75862eca5bc3c70de.ctex"]
 
 [params]
 

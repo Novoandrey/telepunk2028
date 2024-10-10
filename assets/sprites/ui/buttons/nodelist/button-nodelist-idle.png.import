@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bilehfu2nbrkl"
-path="res://.godot/imported/button-tap-pressed.png-28433a78497a0fbe03109eb26413845c.ctex"
+uid="uid://brbh0km15umpy"
+path="res://.godot/imported/button-nodelist-idle.png-b922a6f796b57a47ec581462e9529780.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/tap/button-tap-pressed.png"
-dest_files=["res://.godot/imported/button-tap-pressed.png-28433a78497a0fbe03109eb26413845c.ctex"]
+source_file="res://assets/sprites/ui/buttons/nodelist/button-nodelist-idle.png"
+dest_files=["res://.godot/imported/button-nodelist-idle.png-b922a6f796b57a47ec581462e9529780.ctex"]
 
 [params]
 

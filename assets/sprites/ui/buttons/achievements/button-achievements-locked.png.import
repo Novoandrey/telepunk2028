@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv4s3h54dv2sm"
-path="res://.godot/imported/button-nodelist-pressed.png-511794ddafabfe4c995ee72bfc0f213f.ctex"
+uid="uid://4ggyn8u2sog0"
+path="res://.godot/imported/button-achievements-locked.png-8747efc9c453cc5c7e5748c823cbd411.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/nodelist/button-nodelist-pressed.png"
-dest_files=["res://.godot/imported/button-nodelist-pressed.png-511794ddafabfe4c995ee72bfc0f213f.ctex"]
+source_file="res://assets/sprites/ui/buttons/achievements/button-achievements-locked.png"
+dest_files=["res://.godot/imported/button-achievements-locked.png-8747efc9c453cc5c7e5748c823cbd411.ctex"]
 
 [params]
 

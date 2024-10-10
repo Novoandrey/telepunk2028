@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brbh0km15umpy"
-path="res://.godot/imported/button-nodelist-idle.png-56046065384ab90292292eed35142092.ctex"
+uid="uid://b43j4b0hs7h4i"
+path="res://.godot/imported/button-settings-idle.png-1447f49cfb83d5fa9cda52babde49716.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/nodelist/button-nodelist-idle.png"
-dest_files=["res://.godot/imported/button-nodelist-idle.png-56046065384ab90292292eed35142092.ctex"]
+source_file="res://assets/sprites/ui/buttons/settings/button-settings-idle.png"
+dest_files=["res://.godot/imported/button-settings-idle.png-1447f49cfb83d5fa9cda52babde49716.ctex"]
 
 [params]
 

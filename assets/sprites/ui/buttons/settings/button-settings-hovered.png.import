@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://duloigtl061mn"
-path="res://.godot/imported/button-settings-pressed.png-056a538753bcd8e46569335ab275b824.ctex"
+uid="uid://bsdi0l56ppymf"
+path="res://.godot/imported/button-settings-hovered.png-0c85eff1483665de6ece049a50fc3414.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/settings/button-settings-pressed.png"
-dest_files=["res://.godot/imported/button-settings-pressed.png-056a538753bcd8e46569335ab275b824.ctex"]
+source_file="res://assets/sprites/ui/buttons/settings/button-settings-hovered.png"
+dest_files=["res://.godot/imported/button-settings-hovered.png-0c85eff1483665de6ece049a50fc3414.ctex"]
 
 [params]
 

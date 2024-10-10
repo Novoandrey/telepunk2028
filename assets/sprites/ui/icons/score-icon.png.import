@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsdi0l56ppymf"
-path="res://.godot/imported/button-settings-hovered.png-d69dc749f586d82645882e1435cb30f8.ctex"
+uid="uid://b5fqhsna3pvs5"
+path="res://.godot/imported/score-icon.png-b735215fb58e1195a3f54a8a20b882d0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/settings/button-settings-hovered.png"
-dest_files=["res://.godot/imported/button-settings-hovered.png-d69dc749f586d82645882e1435cb30f8.ctex"]
+source_file="res://assets/sprites/ui/icons/score-icon.png"
+dest_files=["res://.godot/imported/score-icon.png-b735215fb58e1195a3f54a8a20b882d0.ctex"]
 
 [params]
 

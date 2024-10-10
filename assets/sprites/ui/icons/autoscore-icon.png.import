@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b43j4b0hs7h4i"
-path="res://.godot/imported/button-settings-idle.png-8c473d7cb82819931a293d52bf03af3f.ctex"
+uid="uid://c0hg47pgin21g"
+path="res://.godot/imported/autoscore-icon.png-099ec0185a6ae74e4dca23f89670d8c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/settings/button-settings-idle.png"
-dest_files=["res://.godot/imported/button-settings-idle.png-8c473d7cb82819931a293d52bf03af3f.ctex"]
+source_file="res://assets/sprites/ui/icons/autoscore-icon.png"
+dest_files=["res://.godot/imported/autoscore-icon.png-099ec0185a6ae74e4dca23f89670d8c9.ctex"]
 
 [params]
 

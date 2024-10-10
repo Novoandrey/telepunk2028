@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4ggyn8u2sog0"
-path="res://.godot/imported/button-achievements-locked.png-90bb9f22278e63c69e1d82e559ff0ac7.ctex"
+uid="uid://dobl000oorqwm"
+path="res://.godot/imported/tappower-icon.png-e4ade0591964415077037d7196a29ce7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/achievements/button-achievements-locked.png"
-dest_files=["res://.godot/imported/button-achievements-locked.png-90bb9f22278e63c69e1d82e559ff0ac7.ctex"]
+source_file="res://assets/sprites/ui/icons/tappower-icon.png"
+dest_files=["res://.godot/imported/tappower-icon.png-e4ade0591964415077037d7196a29ce7.ctex"]
 
 [params]
 

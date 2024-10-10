@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b4kjahpkyphwt"
-path="res://.godot/imported/button-report-idle.png-eb86a7eb65353da8fdee019e597e2246.ctex"
+path="res://.godot/imported/button-report-idle.png-ee133151f3f4aed3eab6767938347b87.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/buttons/report/button-report-idle.png"
-dest_files=["res://.godot/imported/button-report-idle.png-eb86a7eb65353da8fdee019e597e2246.ctex"]
+source_file="res://assets/sprites/ui/buttons/report/button-report-idle.png"
+dest_files=["res://.godot/imported/button-report-idle.png-ee133151f3f4aed3eab6767938347b87.ctex"]
 
 [params]
 

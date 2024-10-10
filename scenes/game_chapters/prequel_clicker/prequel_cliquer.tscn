@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=28 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
@@ -10,14 +10,23 @@
 [ext_resource type="Script" path="res://scripts/talent_tree/ClickerUI.gd" id="6_veeby"]
 [ext_resource type="PackedScene" uid="uid://btweifvc3amdj" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn" id="7_a0kji"]
 [ext_resource type="PackedScene" uid="uid://jvyejru5ragb" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/modifier_node_template.tscn" id="8_6nukx"]
-[ext_resource type="Texture2D" uid="uid://bllu1r1m5amn3" path="res://assets/sprites/buttons/tap/button-tap-idle.png" id="10_3fvq7"]
-[ext_resource type="Texture2D" uid="uid://bilehfu2nbrkl" path="res://assets/sprites/buttons/tap/button-tap-pressed.png" id="11_2g1gn"]
+[ext_resource type="Texture2D" uid="uid://bllu1r1m5amn3" path="res://assets/sprites/ui/buttons/tap/button-tap-idle.png" id="10_q1owc"]
+[ext_resource type="Texture2D" uid="uid://bilehfu2nbrkl" path="res://assets/sprites/ui/buttons/tap/button-tap-pressed.png" id="11_7kl3u"]
 [ext_resource type="PackedScene" uid="uid://dg0k2wxud2cn3" path="res://assets/nodes/ui/clicker/buy_window.tscn" id="11_imrjp"]
-[ext_resource type="Texture2D" uid="uid://d33k3ktr61i7h" path="res://assets/sprites/buttons/tap/button-tap-hovered.png" id="12_3pure"]
-[ext_resource type="Texture2D" uid="uid://brbh0km15umpy" path="res://assets/sprites/buttons/nodelist/button-nodelist-idle.png" id="14_qjhnm"]
-[ext_resource type="Texture2D" uid="uid://cv4s3h54dv2sm" path="res://assets/sprites/buttons/nodelist/button-nodelist-pressed.png" id="15_o35u0"]
-[ext_resource type="Texture2D" uid="uid://4ggyn8u2sog0" path="res://assets/sprites/buttons/achievements/button-achievements-locked.png" id="15_tqc8d"]
-[ext_resource type="Texture2D" uid="uid://cn3qmnavlm0dr" path="res://assets/sprites/buttons/nodelist/button-nodelist-hovered.png" id="16_0o7s8"]
+[ext_resource type="Texture2D" uid="uid://d33k3ktr61i7h" path="res://assets/sprites/ui/buttons/tap/button-tap-hovered.png" id="12_b0td5"]
+[ext_resource type="Texture2D" uid="uid://brbh0km15umpy" path="res://assets/sprites/ui/buttons/nodelist/button-nodelist-idle.png" id="14_4acsd"]
+[ext_resource type="Texture2D" uid="uid://b5fqhsna3pvs5" path="res://assets/sprites/ui/icons/score-icon.png" id="14_wnk1q"]
+[ext_resource type="Texture2D" uid="uid://c0hg47pgin21g" path="res://assets/sprites/ui/icons/autoscore-icon.png" id="15_js6ot"]
+[ext_resource type="Texture2D" uid="uid://cv4s3h54dv2sm" path="res://assets/sprites/ui/buttons/nodelist/button-nodelist-pressed.png" id="15_vuauc"]
+[ext_resource type="Texture2D" uid="uid://cn3qmnavlm0dr" path="res://assets/sprites/ui/buttons/nodelist/button-nodelist-hovered.png" id="16_14h6q"]
+[ext_resource type="Texture2D" uid="uid://dobl000oorqwm" path="res://assets/sprites/ui/icons/tappower-icon.png" id="16_mopvg"]
+[ext_resource type="Texture2D" uid="uid://4ggyn8u2sog0" path="res://assets/sprites/ui/buttons/achievements/button-achievements-locked.png" id="17_42n2u"]
+[ext_resource type="Texture2D" uid="uid://b43j4b0hs7h4i" path="res://assets/sprites/ui/buttons/settings/button-settings-idle.png" id="17_wkj6j"]
+[ext_resource type="Texture2D" uid="uid://b4kjahpkyphwt" path="res://assets/sprites/ui/buttons/report/button-report-idle.png" id="18_5cirx"]
+[ext_resource type="Texture2D" uid="uid://duloigtl061mn" path="res://assets/sprites/ui/buttons/settings/button-settings-pressed.png" id="18_fs5k4"]
+[ext_resource type="Texture2D" uid="uid://bsdi0l56ppymf" path="res://assets/sprites/ui/buttons/settings/button-settings-hovered.png" id="19_6o4gd"]
+[ext_resource type="Texture2D" uid="uid://bilpq26hkarsy" path="res://assets/sprites/ui/buttons/report/button-report-pressed.png" id="21_l133e"]
+[ext_resource type="Texture2D" uid="uid://bpg1m2qbbol4y" path="res://assets/sprites/ui/buttons/report/button-report-hovered.png" id="22_eps1h"]
 
 [node name="Level" type="Node2D"]
 script = ExtResource("1_yxhan")
@@ -1390,9 +1399,9 @@ theme_override_constants/margin_bottom = -70
 [node name="TapButton" type="TextureButton" parent="GameScreen/Screen/TapContainer" groups=["resource_buttons"]]
 custom_minimum_size = Vector2(280, 280)
 layout_mode = 2
-texture_normal = ExtResource("10_3fvq7")
-texture_pressed = ExtResource("11_2g1gn")
-texture_hover = ExtResource("12_3pure")
+texture_normal = ExtResource("10_q1owc")
+texture_pressed = ExtResource("11_7kl3u")
+texture_hover = ExtResource("12_b0td5")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("6_1nagx")
@@ -1406,41 +1415,72 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 0
 
-[node name="ExitButton" type="Button" parent="GameScreen/Screen/ClickInfo"]
-custom_minimum_size = Vector2(100, 50)
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-text = "Exit"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="GameScreen/Screen/ClickInfo"]
+[node name="VBoxScores" type="VBoxContainer" parent="GameScreen/Screen/ClickInfo"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 
-[node name="TapsScore" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
+[node name="HBoxScore" type="HBoxContainer" parent="GameScreen/Screen/ClickInfo/VBoxScores"]
+layout_mode = 2
+
+[node name="ScoreIcon" type="TextureRect" parent="GameScreen/Screen/ClickInfo/VBoxScores/HBoxScore"]
+layout_mode = 2
+texture = ExtResource("14_wnk1q")
+expand_mode = 2
+
+[node name="Score" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxScores/HBoxScore"]
 layout_mode = 2
 text = "000"
 horizontal_alignment = 1
 
-[node name="TapsStrength" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
+[node name="HBoxAutoScore" type="HBoxContainer" parent="GameScreen/Screen/ClickInfo/VBoxScores"]
 layout_mode = 2
-text = "STRENGTH"
-horizontal_alignment = 1
 
-[node name="AutoScore" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
+[node name="AutoScoreIcon" type="TextureRect" parent="GameScreen/Screen/ClickInfo/VBoxScores/HBoxAutoScore"]
 layout_mode = 2
-text = "Auto Score"
-horizontal_alignment = 1
+texture = ExtResource("15_js6ot")
+expand_mode = 2
 
-[node name="RichTextLabel" type="RichTextLabel" parent="GameScreen/Screen/ClickInfo/VBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+[node name="AutoScore" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxScores/HBoxAutoScore"]
 layout_mode = 2
-size_flags_horizontal = 4
+text = "AutoScore"
+
+[node name="HBoxTapStrength" type="HBoxContainer" parent="GameScreen/Screen/ClickInfo/VBoxScores"]
+layout_mode = 2
+
+[node name="TapsStrengthIcon" type="TextureRect" parent="GameScreen/Screen/ClickInfo/VBoxScores/HBoxTapStrength"]
+layout_mode = 2
+texture = ExtResource("16_mopvg")
+expand_mode = 2
+
+[node name="TapsStrength" type="Label" parent="GameScreen/Screen/ClickInfo/VBoxScores/HBoxTapStrength"]
+layout_mode = 2
+text = "TapStrength"
+
+[node name="ExitButton" type="Button" parent="GameScreen/Screen/ClickInfo"]
+custom_minimum_size = Vector2(100, 50)
+layout_mode = 2
+size_flags_horizontal = 10
 size_flags_vertical = 4
-text = "вот тут у нас длиннющее описание"
-fit_content = true
-tab_size = 5
+text = "Exit"
+
+[node name="SettingsButton" type="TextureButton" parent="GameScreen/Screen/ClickInfo"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture_normal = ExtResource("17_wkj6j")
+texture_pressed = ExtResource("18_fs5k4")
+texture_hover = ExtResource("19_6o4gd")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="ReportButton" type="TextureButton" parent="GameScreen/Screen/ClickInfo"]
+custom_minimum_size = Vector2(70, 70)
+layout_mode = 2
+texture_normal = ExtResource("18_5cirx")
+texture_pressed = ExtResource("21_l133e")
+texture_hover = ExtResource("22_eps1h")
+ignore_texture_size = true
+stretch_mode = 4
 
 [node name="ControlButtons" type="HBoxContainer" parent="GameScreen/Screen"]
 layout_mode = 2
@@ -1451,9 +1491,9 @@ mouse_filter = 2
 custom_minimum_size = Vector2(70, 70)
 layout_mode = 2
 size_flags_horizontal = 0
-texture_normal = ExtResource("14_qjhnm")
-texture_pressed = ExtResource("15_o35u0")
-texture_hover = ExtResource("16_0o7s8")
+texture_normal = ExtResource("14_4acsd")
+texture_pressed = ExtResource("15_vuauc")
+texture_hover = ExtResource("16_14h6q")
 ignore_texture_size = true
 stretch_mode = 0
 
@@ -1461,7 +1501,7 @@ stretch_mode = 0
 custom_minimum_size = Vector2(70, 0)
 layout_mode = 2
 size_flags_horizontal = 10
-texture_normal = ExtResource("15_tqc8d")
+texture_normal = ExtResource("17_42n2u")
 ignore_texture_size = true
 stretch_mode = 0
 
