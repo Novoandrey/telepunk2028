@@ -1,4 +1,4 @@
-class_name ResourceButton extends Button
+class_name ResourceButton extends TextureButton
 
 signal gain_resource(resource_name)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=15 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
@@ -10,6 +10,9 @@
 [ext_resource type="Script" path="res://scripts/talent_tree/ClickerUI.gd" id="6_veeby"]
 [ext_resource type="PackedScene" uid="uid://btweifvc3amdj" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn" id="7_a0kji"]
 [ext_resource type="PackedScene" uid="uid://jvyejru5ragb" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/modifier_node_template.tscn" id="8_6nukx"]
+[ext_resource type="Texture2D" uid="uid://bllu1r1m5amn3" path="res://assets/sprites/buttons/button-tap-idle.png" id="9_ai3bh"]
+[ext_resource type="Texture2D" uid="uid://bilehfu2nbrkl" path="res://assets/sprites/buttons/button-tap-pressed.png" id="10_li2uh"]
+[ext_resource type="Texture2D" uid="uid://d33k3ktr61i7h" path="res://assets/sprites/buttons/button-tap-hovered.png" id="11_8s3pf"]
 [ext_resource type="PackedScene" uid="uid://dg0k2wxud2cn3" path="res://assets/nodes/ui/clicker/buy_window.tscn" id="11_imrjp"]
 
 [node name="Level" type="Node2D"]
@@ -790,6 +793,7 @@ previous_nodes = [NodePath("../11_B_Branches")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="49_OurValues" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
+visible = false
 offset_left = 43.0
 offset_top = 2358.0
 offset_right = 171.0
@@ -1360,6 +1364,34 @@ previous_nodes = [NodePath("../19_B_EveryoneQuestion")]
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
+[node name="MarginContainer" type="MarginContainer" parent="GameScreen"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -206.0
+offset_top = -322.0
+offset_right = 206.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TapButton" type="TextureButton" parent="GameScreen/MarginContainer" groups=["resource_buttons"]]
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+texture_normal = ExtResource("9_ai3bh")
+texture_pressed = ExtResource("10_li2uh")
+texture_hover = ExtResource("11_8s3pf")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("6_1nagx")
+
+[node name="Label" type="Label" parent="GameScreen/MarginContainer"]
+layout_mode = 2
+text = "tap_button"
+horizontal_alignment = 1
+
 [node name="Screen" type="MarginContainer" parent="GameScreen"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -1421,12 +1453,6 @@ size_flags_vertical = 8
 layout_mode = 2
 size_flags_horizontal = 6
 theme_override_constants/separation = 10
-
-[node name="TapButton" type="Button" parent="GameScreen/Screen/ControlButtons/VBoxContainer" groups=["resource_buttons"]]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-text = "TAP"
-script = ExtResource("6_1nagx")
 
 [node name="BuyWindow" parent="GameScreen/Screen" instance=ExtResource("11_imrjp")]
 layout_mode = 2
