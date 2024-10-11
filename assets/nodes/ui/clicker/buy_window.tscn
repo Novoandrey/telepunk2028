@@ -3,7 +3,10 @@
 [ext_resource type="Script" path="res://scripts/talent_tree/buy_node_window.gd" id="1_18guc"]
 
 [node name="BuyWindow" type="PanelContainer"]
-visible = false
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 400.0
+grow_horizontal = 2
 size_flags_vertical = 4
 script = ExtResource("1_18guc")
 
@@ -44,15 +47,18 @@ text = "Node Name"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="NodeInfo" type="HBoxContainer" parent="Margin/Control/VLayout"]
+[node name="NodeInfo" type="VBoxContainer" parent="Margin/Control/VLayout"]
+custom_minimum_size = Vector2(0, 330)
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="NodeDescription" type="VBoxContainer" parent="Margin/Control/VLayout/NodeInfo"]
+custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Margin/Control/VLayout/NodeInfo/NodeDescription"]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 text = "I am a node, very very cool node with interesting description
@@ -61,6 +67,7 @@ text = "I am a node, very very cool node with interesting description
 [node name="NodeParameters" type="VBoxContainer" parent="Margin/Control/VLayout/NodeInfo"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Margin/Control/VLayout/NodeInfo/NodeParameters"]
 layout_mode = 2
