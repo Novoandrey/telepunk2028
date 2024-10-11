@@ -1,0 +1,262 @@
+[gd_scene load_steps=13 format=3 uid="uid://34axhhhrme4h"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_6ecsi"]
+[ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/game_chapters/e-city/arenas/tilemap_scenes/e-city_streets_battle_arena.tscn" id="2_s3m33"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="3_nb8a3"]
+[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/nodes/ui/player_camera.tscn" id="4_4oqin"]
+[ext_resource type="Script" path="res://scripts/ui/ArenaUI.gd" id="5_kwf10"]
+[ext_resource type="PackedScene" uid="uid://dnibqrmehch54" path="res://assets/nodes/ui/Arena/action_points.tscn" id="7_coxd0"]
+[ext_resource type="Script" path="res://scripts/tools/ActionNotify.gd" id="9_0esps"]
+[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="10_xotcw"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="11_c6ukb"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_1a7ty"]
+events = [SubResource("InputEventKey_6um3h")]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_6ecsi")
+level_name = "Улицы E-City (2)"
+metadata/SceneType = "Arena"
+
+[node name="LevelManagers" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="LevelManagers" groups=["game_manager"]]
+script = ExtResource("3_nb8a3")
+_turn_order = Array[int]([1, 2, 0])
+
+[node name="LevelObjectives" type="Node" parent="LevelManagers"]
+
+[node name="LevelEnvironment" parent="." instance=ExtResource("2_s3m33")]
+
+[node name="LevelCritters" type="Node" parent="."]
+
+[node name="LevelUI" type="CanvasLayer" parent="."]
+follow_viewport_scale = 10.865
+
+[node name="ArenaUI" type="Control" parent="LevelUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("5_kwf10")
+
+[node name="MenuControl" type="VBoxContainer" parent="LevelUI/ArenaUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_constants/separation = 5
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelUI/ArenaUI/MenuControl"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+
+[node name="Background" type="ColorRect" parent="LevelUI/ArenaUI/MenuControl/PanelContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+color = Color(0.396889, 0.396889, 0.396889, 1)
+
+[node name="Margin" type="MarginContainer" parent="LevelUI/ArenaUI/MenuControl/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/ArenaUI/MenuControl/PanelContainer/Margin"]
+layout_mode = 2
+
+[node name="BackButton" type="Button" parent="LevelUI/ArenaUI/MenuControl/PanelContainer/Margin/HBoxContainer"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+text = "BACK_BUTTON"
+script = ExtResource("10_xotcw")
+
+[node name="ActionHint" type="Label" parent="LevelUI/ArenaUI/MenuControl/PanelContainer/Margin/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 1
+text = "Описание действия"
+label_settings = SubResource("LabelSettings_ljfbr")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+script = ExtResource("9_0esps")
+
+[node name="Donation" type="Button" parent="LevelUI/ArenaUI/MenuControl/PanelContainer/Margin/HBoxContainer"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 8
+text = "DONATE_BUTTON"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/ArenaUI/MenuControl"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LevelUI/ArenaUI/MenuControl/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "YOUR_TURN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PlayerControl" type="PanelContainer" parent="LevelUI/ArenaUI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -270.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="ColorRect" parent="LevelUI/ArenaUI/PlayerControl"]
+layout_mode = 2
+color = Color(0.270222, 0.270222, 0.270222, 1)
+
+[node name="Margin" type="MarginContainer" parent="LevelUI/ArenaUI/PlayerControl"]
+layout_mode = 2
+mouse_filter = 0
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="PlayerCurrentInfo" type="HBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="ActionPoints" type="MarginContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/ActionPoints"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Text" type="Label" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/ActionPoints/HBoxContainer"]
+layout_mode = 2
+text = "ACTION_POINTS"
+
+[node name="AP" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/ActionPoints/HBoxContainer" instance=ExtResource("7_coxd0")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="HitPoints" type="MarginContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/HitPoints"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Text" type="Label" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/HitPoints/HBoxContainer"]
+layout_mode = 2
+text = "HIT_POINTS"
+
+[node name="AP" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/HitPoints/HBoxContainer" instance=ExtResource("7_coxd0")]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+
+[node name="StatusEffects" type="MarginContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/StatusEffects"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerCurrentInfo/StatusEffects/HBoxContainer"]
+layout_mode = 2
+text = "STATUS_EFFECT_ICONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Log&EndTurn" type="HBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/Log&EndTurn"]
+custom_minimum_size = Vector2(300, 100)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Log" type="MarginContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/Log&EndTurn/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="RichTextLabel" type="RichTextLabel" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/Log&EndTurn/PanelContainer/Log"]
+layout_mode = 2
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+
+[node name="TurnButton" type="Button" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/Log&EndTurn"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+shortcut = SubResource("Shortcut_1a7ty")
+text = "END_TURN"
+
+[node name="PlayerActions" type="ScrollContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer"]
+custom_minimum_size = Vector2(0, 80)
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_scroll_mode = 3
+vertical_scroll_mode = 0
+
+[node name="HBox" type="HBoxContainer" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerActions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 15
+
+[node name="NothingSelected" type="Label" parent="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/PlayerActions/HBox"]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "NO_CRITTER_SELECTED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Camera2D" parent="." instance=ExtResource("4_4oqin")]
+
+[node name="PointA" type="Sprite2D" parent="."]
+position = Vector2(270, 480)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_c6ukb")
+
+[node name="PointB" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("11_c6ukb")
+
+[node name="PointCenter" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("11_c6ukb")
+
+[connection signal="pressed" from="LevelUI/ArenaUI/MenuControl/PanelContainer/Margin/HBoxContainer/BackButton" to="LevelUI/ArenaUI/MenuControl/PanelContainer/Margin/HBoxContainer/BackButton" method="_return_to_previous_level"]
+[connection signal="pressed" from="LevelUI/ArenaUI/PlayerControl/Margin/VBoxContainer/Log&EndTurn/TurnButton" to="LevelManagers/GameManager" method="switch_turns"]

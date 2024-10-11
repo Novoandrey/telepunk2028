@@ -2,6 +2,8 @@ class_name CameraManager
 
 extends Camera2D
 
+static var instance: CameraManager
+
 @export var max_zoom = 2
 @export var min_zoom = 0.25
 @export var zoom_speed = 0.1
@@ -12,11 +14,11 @@ extends Camera2D
 @export var can_rotate: bool
 
 
-@onready var tile_map : TileMap = get_node("../BattleArena/Environment/TileMap")
+@onready var tile_map : TileMap = TileMapManager.instance
 @onready var point_a = get_node("../PointA")
 @onready var point_b = get_node("../PointB")
 @onready var point_center = get_node("../PointCenter")
-@onready var drag_timer = $Timer
+@onready var drag_timer
 
 var drag_start_pos = Vector2.ZERO
 var drag_camera_pos = Vector2.ZERO
@@ -31,6 +33,10 @@ var start_dist: float
 var _touches: Dictionary = {}
 
 func _ready():
+	instance = self
+	
+	create_drag_timer()
+	
 	var top_bound = 0
 	var left_bound = 0
 	var right_bound = get_viewport_rect().size.x
@@ -47,21 +53,23 @@ func _ready():
 		right_bound = boundsEnd.x
 		bottom_bound = boundsEnd.y
 	
-	limit_top = top_bound
-	limit_left = left_bound
-	limit_right = right_bound
-	limit_bottom = bottom_bound
+	#limit_top = top_bound
+	#limit_left = left_bound
+	#limit_right = right_bound
+	#limit_bottom = bottom_bound
 	
 	make_current()
 
-func _process(delta):
-	pass
-
+func create_drag_timer():
+	drag_timer = Timer.new()
+	add_child(drag_timer)
+	drag_timer.one_shot = true
+	drag_timer.wait_time = 0.2
+	drag_timer.timeout.connect(_on_timer_timeout)
 
 func _unhandled_input(event):
 	
 	mobile_camera_control(event)
-	#print(get_canvas_transform().affine_inverse() * event.position)
 	
 	pc_camera_control(event)
 	
@@ -83,7 +91,6 @@ func pc_camera_control(event):
 			drag_start_pos = get_viewport().get_mouse_position()
 			drag_camera_pos = get_screen_center_position()
 			start_drag()
-			print("Mouse")
 			
 		if event.button_index == MOUSE_BUTTON_LEFT and !event.pressed:
 			_touches.erase(0)

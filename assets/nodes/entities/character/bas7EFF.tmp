@@ -1,0 +1,259 @@
+[gd_scene load_steps=47 format=3 uid="uid://b655whi43nq3n"]
+
+[ext_resource type="Script" path="res://scripts/player/CritterController.gd" id="1_r2jjn"]
+[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/health.tscn" id="3_ecd6b"]
+[ext_resource type="Texture2D" uid="uid://bojnbxpqva8hd" path="res://assets/sprites/player/Animations/Idle/idle1.png" id="4_10s4p"]
+[ext_resource type="Texture2D" uid="uid://hcnr2fh3bfns" path="res://assets/sprites/player/Animations/Idle/idle2.png" id="5_ug2bi"]
+[ext_resource type="Texture2D" uid="uid://dc16nkefmhc6w" path="res://assets/sprites/player/Animations/Idle/idle3.png" id="6_l6oac"]
+[ext_resource type="Texture2D" uid="uid://c4toqhjo3nnku" path="res://assets/sprites/player/Animations/Idle/idle4.png" id="7_lvnqb"]
+[ext_resource type="Texture2D" uid="uid://pgghb2hxwsy4" path="res://assets/sprites/player/Animations/Punch/punch1.png" id="8_7woc3"]
+[ext_resource type="Texture2D" uid="uid://cs32oao0qwxuc" path="res://assets/sprites/player/Animations/Punch/punch2.png" id="9_6t4m8"]
+[ext_resource type="Texture2D" uid="uid://sdvyde7kt60d" path="res://assets/sprites/player/Animations/Punch/punch3.png" id="10_2trdc"]
+[ext_resource type="Texture2D" uid="uid://djdyg62k2teg2" path="res://assets/sprites/player/Animations/Walk/walk1.png" id="11_lf7bi"]
+[ext_resource type="Texture2D" uid="uid://bv5l0n8abwcgy" path="res://assets/sprites/player/Animations/Walk/walk2.png" id="12_gl6ti"]
+[ext_resource type="Texture2D" uid="uid://bep4y5anfwpgc" path="res://assets/sprites/player/Animations/Walk/walk3.png" id="13_vxwaf"]
+[ext_resource type="Texture2D" uid="uid://c2g8bq3wuqq57" path="res://assets/sprites/player/Animations/Walk/walk4.png" id="14_w0tlv"]
+[ext_resource type="Texture2D" uid="uid://cr2rbbhy14l71" path="res://assets/sprites/player/Animations/Walk/walk5.png" id="15_nr7xo"]
+[ext_resource type="Texture2D" uid="uid://b10jamr5uabmo" path="res://assets/sprites/player/Animations/Walk/walk6.png" id="16_50inc"]
+[ext_resource type="Texture2D" uid="uid://cwod7dust1bbw" path="res://assets/sprites/player/Animations/Walk/walk7.png" id="17_5f5dw"]
+[ext_resource type="Texture2D" uid="uid://c4kcc0w38a1co" path="res://assets/sprites/player/Animations/Walk/walk8.png" id="18_88cy3"]
+[ext_resource type="Texture2D" uid="uid://qltkyvspwmm7" path="res://assets/sprites/player/Animations/Walk/walk9.png" id="19_doedw"]
+[ext_resource type="Texture2D" uid="uid://dfpdfb6uofhoo" path="res://assets/sprites/player/Animations/Walk/walk10.png" id="20_yi1ms"]
+[ext_resource type="Script" path="res://scripts/critters/components/CritterActions.gd" id="21_b6ftl"]
+[ext_resource type="Shader" path="res://assets/shaders/outline_full.gdshader" id="21_dalfq"]
+[ext_resource type="Script" path="res://scripts/critters/components/CritterMovement.gd" id="22_fp51s"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="22_fwgc7"]
+[ext_resource type="Script" path="res://scripts/actions/Effect/Movement/MovementType/MovementWilling.gd" id="23_n5np2"]
+[ext_resource type="Script" path="res://scripts/actions/Effect/Movement/Move.gd" id="24_dhof4"]
+[ext_resource type="Script" path="res://scripts/actions/Action.gd" id="25_igswn"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_am7na"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:critter_side")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:owner_id")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("AnimationTree:parameters/conditions/isIdle")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("AnimationTree:parameters/conditions/isMoving")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("AnimationTree:parameters/conditions/isPunching")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:_currentMovePoints")
+properties/6/spawn = true
+properties/6/replication_mode = 2
+properties/7/path = NodePath(".:_current_tile")
+properties/7/spawn = true
+properties/7/replication_mode = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8mem"]
+radius = 18.6666
+height = 58.0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p0m7l"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hdbn7"]
+animation = &"punch"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_hxfu3"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xh0tn"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_odivp"]
+advance_mode = 2
+advance_condition = &"isPunching"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gdt55"]
+switch_mode = 2
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xmx28"]
+advance_mode = 2
+advance_condition = &"isMoving"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pho5j"]
+advance_mode = 2
+advance_condition = &"isIdle"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wt8el"]
+states/Start/position = Vector2(207, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_p0m7l")
+states/idle/position = Vector2(411, 100)
+states/punch/node = SubResource("AnimationNodeAnimation_hdbn7")
+states/punch/position = Vector2(411, -21)
+states/walk/node = SubResource("AnimationNodeAnimation_hxfu3")
+states/walk/position = Vector2(603, 100)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_xh0tn"), "idle", "punch", SubResource("AnimationNodeStateMachineTransition_odivp"), "punch", "idle", SubResource("AnimationNodeStateMachineTransition_gdt55"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_xmx28"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_pho5j")]
+graph_offset = Vector2(-144, -98)
+
+[sub_resource type="Animation" id="Animation_vj18a"]
+resource_name = "idle"
+length = 0.80001
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("4_10s4p"), ExtResource("5_ug2bi"), ExtResource("6_l6oac"), ExtResource("7_lvnqb")]
+}
+
+[sub_resource type="Animation" id="Animation_n40gf"]
+resource_name = "punch"
+length = 1.20002
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2, 0.4, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("8_7woc3"), ExtResource("9_6t4m8"), ExtResource("10_2trdc"), ExtResource("8_7woc3")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationTree:parameters/conditions/isPunching")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_d44oi"]
+resource_name = "walk"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.1001, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("11_lf7bi"), ExtResource("11_lf7bi"), ExtResource("12_gl6ti"), ExtResource("13_vxwaf"), ExtResource("14_w0tlv"), ExtResource("15_nr7xo"), ExtResource("16_50inc"), ExtResource("17_5f5dw"), ExtResource("18_88cy3"), ExtResource("19_doedw"), ExtResource("20_yi1ms")]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q1bsh"]
+_data = {
+"idle": SubResource("Animation_vj18a"),
+"punch": SubResource("Animation_n40gf"),
+"walk": SubResource("Animation_d44oi")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn46v"]
+resource_local_to_scene = true
+shader = ExtResource("21_dalfq")
+shader_parameter/width = 1.5
+shader_parameter/outline_color = Color(0, 0, 0.490196, 1)
+
+[sub_resource type="Curve" id="Curve_eaube"]
+bake_resolution = 1000
+_data = [Vector2(0, 0.5), 0.0, 0.0, 0, 0]
+point_count = 1
+
+[sub_resource type="Resource" id="Resource_r4oi7"]
+script = ExtResource("23_n5np2")
+
+[sub_resource type="Resource" id="Resource_rrwb4"]
+script = ExtResource("24_dhof4")
+move_distance = 4
+move_type = SubResource("Resource_r4oi7")
+is_targeting = 1
+
+[sub_resource type="Resource" id="Resource_x26g7"]
+script = ExtResource("25_igswn")
+action_name = "Walk"
+action_button_scene = ExtResource("22_fwgc7")
+effect_list = Array[Resource("res://scripts/actions/Effect/ActionEffect.gd")]([SubResource("Resource_rrwb4")])
+conditions_list = Array[Resource("res://scripts/actions/conditions/Condition.gd")]([])
+_actionHintText = "Pick a cell to move to"
+_animation_to_play = 1
+_action_cost = 1
+action_targets = 1
+require_visual = true
+end_turn = true
+is_targeting = 1
+
+[node name="Character" type="CharacterBody2D"]
+z_index = 1
+y_sort_enabled = true
+scale = Vector2(3, 3)
+input_pickable = true
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_r2jjn")
+_critter_name = null
+_health = 20
+_critterType = null
+critter_side = 1
+owner_id = null
+speed_mod = 3.0
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_am7na")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6.98492e-09, -21)
+rotation = 3.13816
+shape = SubResource("CapsuleShape2D_e8mem")
+
+[node name="Health" parent="." instance=ExtResource("3_ecd6b")]
+mouse_filter = 2
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_wt8el")
+anim_player = NodePath("AnimationPlayer")
+parameters/conditions/isIdle = false
+parameters/conditions/isMoving = false
+parameters/conditions/isPunching = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimationTree"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_q1bsh")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fn46v")
+position = Vector2(2, -30)
+texture = ExtResource("7_lvnqb")
+
+[node name="PathPrediction" type="Line2D" parent="."]
+z_index = 2
+width_curve = SubResource("Curve_eaube")
+joint_mode = 2
+
+[node name="ActionComponent" type="Node2D" parent="."]
+script = ExtResource("21_b6ftl")
+_actions = Array[ExtResource("25_igswn")]([SubResource("Resource_x26g7")])
+_action_points = 2
+
+[node name="MovementComponent" type="Node2D" parent="."]
+script = ExtResource("22_fp51s")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

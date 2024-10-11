@@ -1,8 +1,6 @@
-[gd_scene load_steps=35 format=3 uid="uid://b655whi43nq3n"]
+[gd_scene load_steps=50 format=3 uid="uid://b655whi43nq3n"]
 
 [ext_resource type="Script" path="res://scripts/player/CritterController.gd" id="1_r2jjn"]
-[ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_1kso7"]
-[ext_resource type="PackedScene" uid="uid://cnxkfsy73nirc" path="res://assets/nodes/ui/Arena/health.tscn" id="3_ecd6b"]
 [ext_resource type="Texture2D" uid="uid://bojnbxpqva8hd" path="res://assets/sprites/player/Animations/Idle/idle1.png" id="4_10s4p"]
 [ext_resource type="Texture2D" uid="uid://hcnr2fh3bfns" path="res://assets/sprites/player/Animations/Idle/idle2.png" id="5_ug2bi"]
 [ext_resource type="Texture2D" uid="uid://dc16nkefmhc6w" path="res://assets/sprites/player/Animations/Idle/idle3.png" id="6_l6oac"]
@@ -20,10 +18,45 @@
 [ext_resource type="Texture2D" uid="uid://c4kcc0w38a1co" path="res://assets/sprites/player/Animations/Walk/walk8.png" id="18_88cy3"]
 [ext_resource type="Texture2D" uid="uid://qltkyvspwmm7" path="res://assets/sprites/player/Animations/Walk/walk9.png" id="19_doedw"]
 [ext_resource type="Texture2D" uid="uid://dfpdfb6uofhoo" path="res://assets/sprites/player/Animations/Walk/walk10.png" id="20_yi1ms"]
+[ext_resource type="Shader" path="res://assets/shaders/outline_full.gdshader" id="21_dalfq"]
+[ext_resource type="Script" path="res://scripts/critters/components/CritterActions.gd" id="21_gpm1g"]
+[ext_resource type="Script" path="res://scripts/actions/Action.gd" id="22_6pydu"]
+[ext_resource type="Script" path="res://scripts/actions/effect/Movement/MovementType/MovementWilling.gd" id="22_f6j2b"]
+[ext_resource type="Script" path="res://scripts/actions/effect/Movement/Move.gd" id="22_pl5t1"]
+[ext_resource type="Script" path="res://scripts/critters/components/CritterMovement.gd" id="24_8l3na"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/move_button.tscn" id="24_rlnmr"]
+[ext_resource type="Script" path="res://scripts/actions/effect/Movement/MovementType/MovementForced.gd" id="26_oaf20"]
+[ext_resource type="PackedScene" uid="uid://cbqsld5vhu606" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="27_qutrk"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_am7na"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:critter_side")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:owner_id")
+properties/2/spawn = true
+properties/2/replication_mode = 2
+properties/3/path = NodePath("AnimationTree:parameters/conditions/isIdle")
+properties/3/spawn = true
+properties/3/replication_mode = 2
+properties/4/path = NodePath("AnimationTree:parameters/conditions/isMoving")
+properties/4/spawn = true
+properties/4/replication_mode = 2
+properties/5/path = NodePath("AnimationTree:parameters/conditions/isPunching")
+properties/5/spawn = true
+properties/5/replication_mode = 2
+properties/6/path = NodePath(".:_currentMovePoints")
+properties/6/spawn = true
+properties/6/replication_mode = 2
+properties/7/path = NodePath(".:_current_tile")
+properties/7/spawn = true
+properties/7/replication_mode = 2
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e8mem"]
-radius = 3.0
-height = 26.0
+radius = 12.0
+height = 42.6667
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p0m7l"]
 animation = &"idle"
@@ -133,32 +166,85 @@ _data = {
 "walk": SubResource("Animation_d44oi")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_fn46v"]
+resource_local_to_scene = true
+shader = ExtResource("21_dalfq")
+shader_parameter/width = 1.5
+shader_parameter/outline_color = Color(0, 0, 0.490196, 1)
+
+[sub_resource type="Resource" id="Resource_82atm"]
+script = ExtResource("22_f6j2b")
+
+[sub_resource type="Resource" id="Resource_vyidj"]
+script = ExtResource("22_pl5t1")
+move_distance = 4
+move_type = SubResource("Resource_82atm")
+effect_name = &"SimpleMove"
+is_targeting = 1
+has_own_range = false
+has_own_area = false
+has_own_targets = false
+
+[sub_resource type="Resource" id="Resource_26tkc"]
+script = ExtResource("22_6pydu")
+action_name = "default"
+_effects = Array[Resource("res://scripts/actions/effect/ActionEffect.gd")]([SubResource("Resource_vyidj")])
+_conditions = Array[Resource("res://scripts/actions/conditions/Condition.gd")]([])
+action_button_scene = ExtResource("24_rlnmr")
+_area = 0
+_range = 0
+_actionHintText = ""
+_animation = 0
+_action_cost = 1
+max_targets = 1
+require_visual = true
+end_turn = true
+
+[sub_resource type="Resource" id="Resource_14uq8"]
+script = ExtResource("26_oaf20")
+move_direction = 32
+_push_speed = 5.0
+
+[sub_resource type="Resource" id="Resource_iis12"]
+script = ExtResource("22_pl5t1")
+move_distance = 2
+move_type = SubResource("Resource_14uq8")
+effect_name = &"SimplePush"
+is_targeting = 4
+has_own_range = false
+has_own_area = false
+has_own_targets = false
+
+[sub_resource type="Resource" id="Resource_1aci7"]
+script = ExtResource("22_6pydu")
+action_name = "default"
+_effects = Array[Resource("res://scripts/actions/effect/ActionEffect.gd")]([SubResource("Resource_iis12")])
+_conditions = Array[Resource("res://scripts/actions/conditions/Condition.gd")]([])
+action_button_scene = ExtResource("27_qutrk")
+_area = 0
+_range = 0
+_actionHintText = ""
+_animation = 0
+_action_cost = 1
+max_targets = 1
+require_visual = true
+end_turn = true
+
 [node name="Character" type="CharacterBody2D"]
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(3, 3)
+input_pickable = true
 motion_mode = 1
 wall_min_slide_angle = 0.0
 script = ExtResource("1_r2jjn")
-_health = 20
-_actionPoints = 10
-_movePoints = 7
-_moveSpeed = 7.0
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(2, -30)
-sprite_frames = ExtResource("2_1kso7")
-animation = &"idle"
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_am7na")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
-rotation = 1.5708
+position = Vector2(0, -20)
 shape = SubResource("CapsuleShape2D_e8mem")
-disabled = true
-
-[node name="Health" parent="." instance=ExtResource("3_ecd6b")]
-mouse_filter = 2
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationNodeStateMachine_wt8el")
@@ -173,5 +259,16 @@ libraries = {
 }
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_fn46v")
 position = Vector2(2, -30)
-texture = ExtResource("7_lvnqb")
+texture = ExtResource("6_l6oac")
+
+[node name="CritterActions" type="Node2D" parent="."]
+script = ExtResource("21_gpm1g")
+_actions = Array[ExtResource("22_6pydu")]([SubResource("Resource_26tkc"), SubResource("Resource_1aci7")])
+_action_points = 2
+
+[node name="CritterMovement" type="Node2D" parent="."]
+script = ExtResource("24_8l3na")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

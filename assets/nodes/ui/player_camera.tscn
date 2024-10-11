@@ -4,19 +4,9 @@
 
 [node name="Camera2D" type="Camera2D"]
 position = Vector2(270, 480)
-limit_left = -540
-limit_top = -200
-limit_right = 1080
-limit_bottom = 1080
 editor_draw_limits = true
 script = ExtResource("1_eggb5")
 pan_speed = 2.0
 boundsUpperOffset = 300
 can_pan = true
 can_zoom = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

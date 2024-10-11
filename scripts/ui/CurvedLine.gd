@@ -1,4 +1,5 @@
-extends Node2D
+@tool
+extends Control
 
 @onready var _path = $Path2D
 @onready var _line = $Line2D

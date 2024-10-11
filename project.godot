@@ -11,13 +11,22 @@ config_version=5
 [application]
 
 config/name="telepunk2028"
-run/main_scene="res://scenes/scene_managment/SceneManager.tscn"
+run/main_scene="res://scenes/game_chapters/game_intro/introduction.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://assets/music/default_bus_layout.tres"
+
+[autoload]
+
+MultiplayerManager="*res://scripts/multiplayer/multiplayer_manager.gd"
+SceneManager="*res://scripts/scene_manager/SceneManager.gd"
+
 [display]
 
-window/size/viewport_width=480
+window/size/viewport_width=540
 window/size/viewport_height=960
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
@@ -47,6 +56,10 @@ ui_scroll_down={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"canceled":false,"pressed":false,"double_click":false,"script":null)
 ]
 }
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
 
 [internationalization]
 

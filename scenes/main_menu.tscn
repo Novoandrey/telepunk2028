@@ -1,0 +1,236 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8losi1peqew4"]
+
+[ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_c5582"]
+[ext_resource type="AudioStream" uid="uid://cto076y8tkcb6" path="res://assets/music/02-the-morning-of-the-new-millennium.mp3" id="2_eng21"]
+[ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="2_u0q28"]
+[ext_resource type="Script" path="res://scripts/scene_manager/LoadButton.gd" id="3_wcs3v"]
+[ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ox0b0"]
+[ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city/e-city.tscn" id="5_38na0"]
+[ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro/metro_level_selection.tscn" id="6_urvkc"]
+[ext_resource type="Script" path="res://scripts/tools/show_hide.gd" id="8_85yxo"]
+[ext_resource type="PackedScene" uid="uid://clnvpfxiwcloe" path="res://scenes/game_chapters/prequel_clicker/intro/001_intro.tscn" id="8_kpydi"]
+[ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_manager_ui.gd" id="9_bwey3"]
+[ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_chapters/e-city/arenas/e-city_streets.tscn" id="10_doyt2"]
+[ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_chapters/metro/arenas/metro_entrance.tscn" id="12_vpqbg"]
+
+[node name="Game" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(-3, -109)
+scale = Vector2(0.863281, 0.863282)
+texture = ExtResource("1_c5582")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_eng21")
+autoplay = true
+
+[node name="MainMenuUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_u0q28")
+
+[node name="ButtonRU" type="Button" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -329.0
+offset_right = 71.0
+offset_bottom = -293.0
+text = "STARTSCREEN_LANG_RU"
+clip_text = true
+
+[node name="ButtonEN" type="Button" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -277.0
+offset_right = 71.0
+offset_bottom = -241.0
+text = "STARTSCREEN_LANG_EN"
+clip_text = true
+
+[node name="ButtonFR" type="Button" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = -224.0
+offset_right = 71.0
+offset_bottom = -188.0
+text = "STARTSCREEN_LANG_FR"
+clip_text = true
+
+[node name="ButtonContinue" type="Button" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = -70.0
+offset_top = 194.0
+offset_right = 71.0
+offset_bottom = 230.0
+text = "STARTSCREEN_PROCEED"
+clip_text = true
+
+[node name="PanelContainer" type="PanelContainer" parent="MainMenuUI"]
+layout_mode = 0
+offset_left = -129.0
+offset_top = -117.0
+offset_right = 131.0
+offset_bottom = 117.0
+
+[node name="Label" type="Label" parent="MainMenuUI/PanelContainer"]
+custom_minimum_size = Vector2(10, 10)
+layout_mode = 2
+text = "STARTSCREEN_WELCOME"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Arena 1" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("scene_to_unload")]
+layout_mode = 0
+offset_left = -88.0
+offset_top = 269.0
+offset_right = 87.0
+offset_bottom = 305.0
+text = "Загрузить уровень"
+clip_text = true
+script = ExtResource("3_wcs3v")
+keep_current_scene = true
+scene_to_unload = NodePath("../..")
+
+[node name="LevelList" type="Panel" parent="MainMenuUI" node_paths=PackedStringArray("load_button", "container")]
+layout_mode = 0
+offset_left = 97.0
+offset_top = 222.0
+offset_right = 232.0
+offset_bottom = 357.0
+script = ExtResource("4_ox0b0")
+level_list = Array[PackedScene]([ExtResource("5_38na0"), ExtResource("6_urvkc"), ExtResource("8_kpydi")])
+load_button = NodePath("../Arena 1")
+container = NodePath("ScrollContainer/VBoxContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MainMenuUI/LevelList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainMenuUI/LevelList/ScrollContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MultiplayerButton" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("node_to_hide", "node_to_show")]
+layout_mode = 0
+offset_left = -100.0
+offset_top = 362.0
+offset_right = 100.0
+offset_bottom = 412.0
+text = "Мультиплеер"
+script = ExtResource("8_85yxo")
+node_to_hide = NodePath("..")
+node_to_show = NodePath("../../MultiplayerMenuUI")
+
+[node name="MultiplayerMenuUI" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("9_bwey3")
+
+[node name="Back" type="Button" parent="MultiplayerMenuUI" node_paths=PackedStringArray("node_to_hide", "node_to_show")]
+layout_mode = 0
+offset_left = -227.0
+offset_top = -431.0
+offset_right = -61.0
+offset_bottom = -389.0
+text = "Назад"
+script = ExtResource("8_85yxo")
+node_to_hide = NodePath("..")
+node_to_show = NodePath("../../MainMenuUI")
+
+[node name="Host" type="Button" parent="MultiplayerMenuUI"]
+layout_mode = 0
+offset_left = -241.0
+offset_top = 263.0
+offset_right = -75.0
+offset_bottom = 325.0
+text = "Хост"
+
+[node name="Client" type="Button" parent="MultiplayerMenuUI"]
+layout_mode = 0
+offset_left = 81.0
+offset_top = 264.0
+offset_right = 247.0
+offset_bottom = 326.0
+text = "Клиент
+"
+
+[node name="LevelList" type="Panel" parent="MultiplayerMenuUI" node_paths=PackedStringArray("container")]
+layout_mode = 0
+offset_left = -178.0
+offset_top = -180.0
+offset_right = 176.0
+offset_bottom = 174.0
+script = ExtResource("4_ox0b0")
+level_list = Array[PackedScene]([ExtResource("10_doyt2"), ExtResource("12_vpqbg")])
+container = NodePath("ScrollContainer/VBoxContainer")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MultiplayerMenuUI/LevelList"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_scroll_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerMenuUI/LevelList/ScrollContainer"]
+custom_minimum_size = Vector2(340, 0)
+layout_mode = 2
+
+[node name="TextEdit" type="TextEdit" parent="MultiplayerMenuUI"]
+layout_mode = 0
+offset_left = -226.0
+offset_top = -278.0
+offset_bottom = -238.0
+placeholder_text = "Имя игрока"
+
+[node name="Arena 1" type="Button" parent="MultiplayerMenuUI" node_paths=PackedStringArray("scene_to_unload")]
+layout_mode = 0
+offset_left = -87.0
+offset_top = 368.0
+offset_right = 88.0
+offset_bottom = 404.0
+text = "Загрузить уровень"
+clip_text = true
+script = ExtResource("3_wcs3v")
+keep_current_scene = true
+scene_to_unload = NodePath("../..")
+
+[node name="OptionButton" type="OptionButton" parent="MultiplayerMenuUI"]
+layout_mode = 0
+offset_left = 23.0
+offset_top = -279.0
+offset_right = 223.0
+offset_bottom = -239.0
+
+[connection signal="button_down" from="MainMenuUI/ButtonRU" to="." method="_on_button_ru_button_down"]
+[connection signal="button_down" from="MainMenuUI/ButtonRU" to="MainMenuUI" method="_on_button_ru_button_down"]
+[connection signal="button_down" from="MainMenuUI/ButtonEN" to="." method="_on_button_en_button_down"]
+[connection signal="button_down" from="MainMenuUI/ButtonEN" to="MainMenuUI" method="_on_button_en_button_down"]
+[connection signal="button_down" from="MainMenuUI/ButtonFR" to="." method="_on_button_fr_button_down"]
+[connection signal="button_down" from="MainMenuUI/ButtonFR" to="MainMenuUI" method="_on_button_fr_button_down"]
+[connection signal="pressed" from="MainMenuUI/Arena 1" to="MainMenuUI/Arena 1" method="_on_pressed"]
+[connection signal="pressed" from="MainMenuUI/Arena 1" to="MultiplayerMenuUI" method="start_server"]
+[connection signal="selected_level_changed" from="MainMenuUI/LevelList" to="MainMenuUI/Arena 1" method="set_scene_to_load"]
+[connection signal="pressed" from="MainMenuUI/MultiplayerButton" to="MainMenuUI/MultiplayerButton" method="_on_pressed"]
+[connection signal="pressed" from="MultiplayerMenuUI/Back" to="MultiplayerMenuUI/Back" method="_on_pressed"]
+[connection signal="pressed" from="MultiplayerMenuUI/Host" to="MultiplayerMenuUI" method="start_server"]
+[connection signal="pressed" from="MultiplayerMenuUI/Client" to="MultiplayerMenuUI" method="start_client"]
+[connection signal="selected_level_changed" from="MultiplayerMenuUI/LevelList" to="MultiplayerMenuUI/Arena 1" method="set_scene_to_load"]
+[connection signal="text_changed" from="MultiplayerMenuUI/TextEdit" to="MultiplayerMenuUI" method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="MultiplayerMenuUI/Arena 1" to="MultiplayerMenuUI/Arena 1" method="_on_pressed_network"]
+[connection signal="item_selected" from="MultiplayerMenuUI/OptionButton" to="MultiplayerMenuUI" method="_on_option_button_item_selected"]
