@@ -60,7 +60,7 @@ theme_override_constants/margin_top = 5
 [node name="Label" type="Label" parent="NodeLevel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "x1"
+text = "0/10"
 label_settings = SubResource("LabelSettings_dn4lo")
 horizontal_alignment = 1
 vertical_alignment = 1
