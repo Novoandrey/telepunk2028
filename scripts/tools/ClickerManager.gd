@@ -75,6 +75,10 @@ func _on_resource_gained(resource_name):
 	# Обновляем количество ресурса с учетом его полной силы.
 	update_resource_value(resource_name, resource_dict.get(resource_name).strength.full)
 
+# Функция чтобы доставать из словаря силу клика. Например, чтобы всплывала нужная циферка
+func get_resource_strength(resource_name):
+	return resource_dict.get(resource_name).strength.full
+
 # Очистка экземпляра при выходе из сцены.
 func _exit_tree():
 	instance = null
