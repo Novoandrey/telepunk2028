@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://daplsoc7ofciu"]
+[gd_scene load_steps=8 format=3 uid="uid://daplsoc7ofciu"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_v4trx"]
 [ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node_generator.gd" id="2_e3fqs"]
-[ext_resource type="Texture2D" uid="uid://csb1he4417yb0" path="res://assets/sprites/ui/nodes/gameobject-generator.png" id="3_wjp1h"]
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="3_wxxcq"]
 [ext_resource type="Texture2D" uid="uid://b5fqhsna3pvs5" path="res://assets/sprites/ui/icons/score-icon.png" id="4_77q7y"]
 
@@ -36,7 +35,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_wjp1h")
 expand_mode = 2
 
 [node name="Layout" type="TextureRect" parent="."]

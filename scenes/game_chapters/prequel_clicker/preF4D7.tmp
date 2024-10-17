@@ -1,15 +1,14 @@
-[gd_scene load_steps=28 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=27 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
 [ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_tree_manager.gd" id="4_75dd6"]
 [ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="4_u6g0e"]
-[ext_resource type="Script" path="res://scripts/talent_tree/resource_button.gd" id="6_1nagx"]
 [ext_resource type="PackedScene" uid="uid://daplsoc7ofciu" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/generator_node_template.tscn" id="6_iu4ce"]
 [ext_resource type="PackedScene" uid="uid://btweifvc3amdj" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn" id="7_a0kji"]
 [ext_resource type="PackedScene" uid="uid://jvyejru5ragb" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/modifier_node_template.tscn" id="8_6nukx"]
-[ext_resource type="Script" path="res://scripts/talent_tree/clicker_ui.gd" id="9_aep48"]
+[ext_resource type="Script" path="res://scripts/talent_tree/node_managers/ClickerUI.gd" id="9_nmki0"]
 [ext_resource type="Texture2D" uid="uid://bllu1r1m5amn3" path="res://assets/sprites/ui/buttons/tap/button-tap-idle.png" id="10_q1owc"]
 [ext_resource type="Texture2D" uid="uid://bilehfu2nbrkl" path="res://assets/sprites/ui/buttons/tap/button-tap-pressed.png" id="11_7kl3u"]
 [ext_resource type="PackedScene" uid="uid://dg0k2wxud2cn3" path="res://assets/nodes/ui/clicker/buy_window.tscn" id="11_imrjp"]
@@ -49,28 +48,6 @@ follow_viewport_enabled = true
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
 script = ExtResource("4_75dd6")
 
-[node name="10_G_SendReport2" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("6_iu4ce")]
-visible = false
-offset_left = 441.0
-offset_top = 317.0
-offset_right = 521.0
-offset_bottom = 397.0
-node_id = 100
-node_name = &"Отправить Отчет"
-max_level = 1000
-is_hidden = true
-is_unlocked = true
-strength = 2
-strength_increase = 2
-mult_bool = false
-unlock_cost = 10
-unlock_increase = 10
-reveal_on_nodes_revealed = false
-reveal_on_nodes_level_reached = true
-unlock_on_nodes_level_reached = false
-previous_nodes = [NodePath("../1_B_Open")]
-"Reveal Conditions/Level Required" = 1
-
 [node name="1_B_Open" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
 visible = false
 offset_left = 232.0
@@ -79,7 +56,6 @@ offset_right = 312.0
 offset_bottom = 218.0
 node_id = 1
 node_name = &"Откройте ячейку"
-node_description = "Для того, чтобы мы могли общаться с вами, пока вы находитесь в нашей КомфортКамере+, вам необходимо будет тратить совсем небольшое количество РЕАЛов на расшифровку специальных сообщений. Для вас они будут представлены в виде таких ячеек! Чтобы компенсировать неудобства от  подобных трат, мы предоставляем специальные бонусы за открытие ячеек, которые позволят вам легко восполнить и даже преумножить богатство!"
 max_level = 1
 is_hidden = true
 is_unlocked = true
@@ -1411,7 +1387,7 @@ theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 15
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 15
-script = ExtResource("9_aep48")
+script = ExtResource("9_nmki0")
 
 [node name="TapContainer" type="MarginContainer" parent="GameScreen/Screen"]
 layout_mode = 2
@@ -1427,7 +1403,6 @@ texture_pressed = ExtResource("11_7kl3u")
 texture_hover = ExtResource("12_b0td5")
 ignore_texture_size = true
 stretch_mode = 0
-script = ExtResource("6_1nagx")
 
 [node name="TapLabel" type="Label" parent="GameScreen/Screen/TapContainer"]
 layout_mode = 2
@@ -1529,7 +1504,6 @@ ignore_texture_size = true
 stretch_mode = 0
 
 [node name="BuyWindow" parent="GameScreen/Screen" instance=ExtResource("11_imrjp")]
-visible = false
 layout_mode = 2
 
 [connection signal="pressed" from="GameScreen/Screen/ClickInfo/ExitButton" to="." method="return_to_main_menu"]

@@ -1,24 +1,12 @@
-extends Node2D
+class_name UpgradeTreeManager extends Node2D
 
-var strength : int = 1
-var tree_nodes: Array[SkillNode]
+var tree_nodes: Array[Dictionary]
 var node_data: Dictionary
-var node_table: Dictionary
 
 
 func _ready():
 	get_children_rec(self, tree_nodes)
 	print(tree_nodes)
-
-func _on_skill_node_pressed_control():
-	for child in tree_nodes:
-		if (child.mult_bool == true) && (child.level != 0):
-			strength *= child.strength
-		elif (child.mult_bool == false) && (child.level != 0):
-			strength += child.strength
-		else:
-			continue
-	return
 
 func get_children_rec(node, arr):
 	var num_children = node.get_child_count()
@@ -29,7 +17,7 @@ func get_children_rec(node, arr):
 				child.node_level_changed.connect(on_node_level_changed)
 				if child is GeneratorNode:
 					child.resource_generated.connect(on_resource_generated)
-				arr.append(child)
+				arr.append({"node":child, "node_data": child.node_data})
 			get_children_rec(child, arr)
 	else:
 		return
