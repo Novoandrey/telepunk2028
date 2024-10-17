@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://btweifvc3amdj"]
+[gd_scene load_steps=8 format=3 uid="uid://btweifvc3amdj"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_htscm"]
 [ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node_story.gd" id="2_2l7wl"]
+[ext_resource type="Texture2D" uid="uid://bbooa0207udkg" path="res://assets/sprites/ui/nodes/gameobject-processor.png" id="3_7qsyr"]
 [ext_resource type="Texture2D" uid="uid://b5fqhsna3pvs5" path="res://assets/sprites/ui/icons/score-icon.png" id="5_nbp3k"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_dn4lo"]
@@ -33,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_7qsyr")
 expand_mode = 2
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
