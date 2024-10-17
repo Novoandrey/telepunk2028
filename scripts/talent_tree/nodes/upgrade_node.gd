@@ -148,6 +148,8 @@ func create_connections(nodes_to_connect, connection_type):
 		node.node_level_changed.connect(on_node_level_changed)
 
 func draw_connection(_node: SkillNode):
+	if _node == null:
+		return
 	var _current_curve = curve.instantiate()
 	add_child(_current_curve)
 	_current_curve._path.curve.set_point_position(0, Vector2(0,0))
