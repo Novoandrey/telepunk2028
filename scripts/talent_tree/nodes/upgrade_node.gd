@@ -138,6 +138,8 @@ func initialize_node_data():
 
 func create_connections(nodes_to_connect, connection_type):
 	for node: SkillNode in nodes_to_connect:
+		if node == null:
+			continue
 		print(str(self) + " has " + str(node))
 		if connection_type == CONNECTION_TYPE.NEXT:
 			var _current_curve = draw_connection(node)
@@ -148,8 +150,6 @@ func create_connections(nodes_to_connect, connection_type):
 		node.node_level_changed.connect(on_node_level_changed)
 
 func draw_connection(_node: SkillNode):
-	if _node == null:
-		return
 	var _current_curve = curve.instantiate()
 	add_child(_current_curve)
 	_current_curve._path.curve.set_point_position(0, Vector2(0,0))
