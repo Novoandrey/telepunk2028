@@ -49,30 +49,7 @@ follow_viewport_enabled = true
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
 script = ExtResource("4_75dd6")
 
-[node name="10_G_SendReport2" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("6_iu4ce")]
-visible = false
-offset_left = 441.0
-offset_top = 317.0
-offset_right = 521.0
-offset_bottom = 397.0
-node_id = 100
-node_name = &"Отправить Отчет"
-max_level = 1000
-is_hidden = true
-is_unlocked = true
-strength = 2
-strength_increase = 2
-mult_bool = false
-unlock_cost = 10
-unlock_increase = 10
-reveal_on_nodes_revealed = false
-reveal_on_nodes_level_reached = true
-unlock_on_nodes_level_reached = false
-previous_nodes = [NodePath("../1_B_Open")]
-"Reveal Conditions/Level Required" = 1
-
 [node name="1_B_Open" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 232.0
 offset_top = 138.0
 offset_right = 312.0
@@ -87,47 +64,11 @@ unlock_cost = 10
 reveal_on_nodes_revealed = false
 reveal_on_resource_amount_reached = true
 unlock_on_nodes_level_reached = false
-next_nodes = [NodePath("../21_M_Signal"), NodePath("../22_M_Transmitter"), NodePath("../2_B_Who?")]
+next_nodes = [NodePath(""), NodePath(""), NodePath("../2_B_Who?")]
 previous_nodes = [NodePath("../10_G_SendReport")]
 "Reveal Conditions/Resource Amount Required" = 10
 
-[node name="21_M_Signal" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
-offset_left = 1.0
-offset_top = 139.0
-offset_right = 81.0
-offset_bottom = 219.0
-parent_node = NodePath("../1_B_Open")
-node_id = 21
-node_name = &"Электрический Сигнал"
-max_level = 1
-is_hidden = true
-is_unlocked = true
-reveal_on_nodes_revealed = false
-reveal_on_nodes_level_reached = true
-previous_nodes = [NodePath("../1_B_Open")]
-"Reveal Conditions/Level Required" = 1
-"Unlock Conditions/Level Required" = 1
-
-[node name="22_M_Transmitter" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
-offset_left = 461.0
-offset_top = 139.0
-offset_right = 541.0
-offset_bottom = 219.0
-parent_node = NodePath("../1_B_Open")
-node_id = 22
-node_name = &"Передатчик"
-is_hidden = true
-is_unlocked = true
-reveal_on_nodes_revealed = false
-reveal_on_nodes_level_reached = true
-previous_nodes = [NodePath("../1_B_Open")]
-"Reveal Conditions/Level Required" = 1
-"Unlock Conditions/Level Required" = 1
-
 [node name="2_B_Who?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 293.0
 offset_right = 311.0
@@ -145,7 +86,6 @@ previous_nodes = [NodePath("../1_B_Open")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="3_B_From?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 472.0
 offset_right = 311.0
@@ -163,7 +103,6 @@ previous_nodes = [NodePath("../2_B_Who?")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="4_B_Where?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 617.0
 offset_right = 311.0
@@ -181,7 +120,6 @@ previous_nodes = [NodePath("../3_B_From?")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="5_B_Welcome" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 796.0
 offset_right = 311.0
@@ -199,7 +137,6 @@ previous_nodes = [NodePath("../4_B_Where?")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="23_M_Activity" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 461.0
 offset_top = 795.0
 offset_right = 541.0
@@ -218,7 +155,6 @@ previous_nodes = [NodePath("../5_B_Welcome")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="24_M_Statistics" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 714.0
 offset_top = 795.0
 offset_right = 794.0
@@ -237,7 +173,6 @@ previous_nodes = [NodePath("../23_M_Activity")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="25_M_Offices" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 948.0
 offset_top = 795.0
 offset_right = 1028.0
@@ -256,7 +191,6 @@ previous_nodes = [NodePath("../24_M_Statistics")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="26_M_Letov" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 948.0
 offset_top = 613.0
 offset_right = 1028.0
@@ -275,7 +209,6 @@ previous_nodes = [NodePath("../25_M_Offices")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="27_M_CivilDefense" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 948.0
 offset_top = 419.0
 offset_right = 1028.0
@@ -293,7 +226,6 @@ previous_nodes = [NodePath("../26_M_Letov")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="28_M_MegaBuilding" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1169.0
 offset_top = 613.0
 offset_right = 1249.0
@@ -312,7 +244,6 @@ previous_nodes = [NodePath("../26_M_Letov")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="29_M_Departments" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1388.0
 offset_top = 613.0
 offset_right = 1468.0
@@ -331,7 +262,6 @@ previous_nodes = [NodePath("../28_M_MegaBuilding")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="30_M_Press" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1388.0
 offset_top = 409.0
 offset_right = 1468.0
@@ -349,7 +279,6 @@ previous_nodes = [NodePath("../29_M_Departments")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="31_M_CityMonitoring" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1551.0
 offset_top = 410.0
 offset_right = 1631.0
@@ -367,7 +296,6 @@ previous_nodes = [NodePath("../29_M_Departments")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="32_M_Cryonics" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1715.0
 offset_top = 410.0
 offset_right = 1795.0
@@ -385,7 +313,6 @@ previous_nodes = [NodePath("../29_M_Departments")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="33_M_AndOther" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1891.0
 offset_top = 411.0
 offset_right = 1971.0
@@ -403,7 +330,6 @@ previous_nodes = [NodePath("../29_M_Departments")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="6_B_Helper" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 1039.0
 offset_right = 311.0
@@ -421,7 +347,6 @@ previous_nodes = [NodePath("../5_B_Welcome")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="34_M_PersonalityN" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 7.0
 offset_top = 1037.0
 offset_right = 87.0
@@ -438,7 +363,6 @@ unlock_on_nodes_level_reached = false
 "Reveal Conditions/Level Required" = 1
 
 [node name="35_M_ThoughtsConvo" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 461.0
 offset_top = 1037.0
 offset_right = 541.0
@@ -457,7 +381,6 @@ previous_nodes = [NodePath("../6_B_Helper")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="36_M_DataSecurity" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 714.0
 offset_top = 1037.0
 offset_right = 794.0
@@ -475,7 +398,6 @@ previous_nodes = [NodePath("../35_M_ThoughtsConvo")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="7_B_Reals" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 1277.0
 offset_right = 311.0
@@ -493,7 +415,6 @@ previous_nodes = [NodePath("../6_B_Helper")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="37_SuperCrypto" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 461.0
 offset_top = 1281.0
 offset_right = 541.0
@@ -512,7 +433,6 @@ previous_nodes = [NodePath("../7_B_Reals")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="38_KPI" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 714.0
 offset_top = 1281.0
 offset_right = 794.0
@@ -531,7 +451,6 @@ previous_nodes = [NodePath("../37_SuperCrypto")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="39_PersonalAccount" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 948.0
 offset_top = 1281.0
 offset_right = 1028.0
@@ -549,7 +468,6 @@ previous_nodes = [NodePath("../38_KPI")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="8_B_Experiment" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 1438.0
 offset_right = 311.0
@@ -567,7 +485,6 @@ previous_nodes = [NodePath("../7_B_Reals")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="40_SignAgreement" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 461.0
 offset_top = 1441.0
 offset_right = 541.0
@@ -586,7 +503,6 @@ previous_nodes = [NodePath("../8_B_Experiment")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="41_EXIT" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 714.0
 offset_top = 1441.0
 offset_right = 794.0
@@ -605,7 +521,6 @@ previous_nodes = [NodePath("../40_SignAgreement")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="42_ExitProccess" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 948.0
 offset_top = 1441.0
 offset_right = 1028.0
@@ -623,7 +538,6 @@ previous_nodes = [NodePath("../41_EXIT")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="9_B_Subscribe" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 231.0
 offset_top = 1602.0
 offset_right = 311.0
@@ -641,7 +555,6 @@ previous_nodes = [NodePath("../8_B_Experiment")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="43_Notifications" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 461.0
 offset_top = 1611.0
 offset_right = 541.0
@@ -659,7 +572,6 @@ previous_nodes = [NodePath("../9_B_Subscribe")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="10_G_SendReport" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("6_iu4ce")]
-visible = false
 offset_left = 231.0
 offset_top = 1806.0
 offset_right = 311.0
@@ -682,7 +594,6 @@ previous_nodes = [NodePath("../9_B_Subscribe")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="44_GENERATORS" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 461.0
 offset_top = 1809.0
 offset_right = 541.0
@@ -701,7 +612,6 @@ previous_nodes = [NodePath("../10_G_SendReport")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="45_StrengtheningConnections" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 714.0
 offset_top = 1809.0
 offset_right = 794.0
@@ -720,7 +630,6 @@ previous_nodes = [NodePath("../44_GENERATORS")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="46_RevenuePerSecond" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 948.0
 offset_top = 1809.0
 offset_right = 1028.0
@@ -738,7 +647,6 @@ previous_nodes = [NodePath("../45_StrengtheningConnections")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="11_B_Branches" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 230.0
 offset_top = 1988.0
 offset_right = 310.0
@@ -756,7 +664,6 @@ previous_nodes = [NodePath("../10_G_SendReport")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="12_B_Matrix?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = -148.0
 offset_top = 2153.0
 offset_right = -68.0
@@ -774,7 +681,6 @@ previous_nodes = [NodePath("../11_B_Branches")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="47_IntrusiveThoughts" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -320.0
 offset_top = 2155.0
 offset_right = -240.0
@@ -793,7 +699,6 @@ previous_nodes = [NodePath("../12_B_Matrix?")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="48_No!" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -510.0
 offset_top = 2155.0
 offset_right = -430.0
@@ -811,7 +716,6 @@ previous_nodes = [NodePath("../47_IntrusiveThoughts")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="13_B_Care" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 230.0
 offset_top = 2152.0
 offset_right = 310.0
@@ -829,7 +733,6 @@ previous_nodes = [NodePath("../11_B_Branches")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="49_OurValues" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 43.0
 offset_top = 2358.0
 offset_right = 171.0
@@ -849,7 +752,6 @@ previous_nodes = [NodePath("../13_B_Care")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="50_DontHurt" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 43.0
 offset_top = 2542.0
 offset_right = 123.0
@@ -867,7 +769,6 @@ previous_nodes = [NodePath("../49_OurValues")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="51_Creation" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -121.0
 offset_top = 2542.0
 offset_right = -41.0
@@ -885,7 +786,6 @@ previous_nodes = [NodePath("../49_OurValues")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="52_Progress" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -303.0
 offset_top = 2542.0
 offset_right = -223.0
@@ -903,7 +803,6 @@ previous_nodes = [NodePath("../49_OurValues")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="53_Transparency" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -471.0
 offset_top = 2542.0
 offset_right = -391.0
@@ -921,7 +820,6 @@ previous_nodes = [NodePath("../49_OurValues")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="54_Humanity" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -606.0
 offset_top = 2542.0
 offset_right = -526.0
@@ -939,7 +837,6 @@ previous_nodes = [NodePath("../49_OurValues")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="55_Unity" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -758.0
 offset_top = 2542.0
 offset_right = -678.0
@@ -957,7 +854,6 @@ previous_nodes = [NodePath("../49_OurValues")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="56_SafetyPrecautions" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 285.0
 offset_top = 2358.0
 offset_right = 365.0
@@ -976,7 +872,6 @@ previous_nodes = [NodePath("../13_B_Care")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="57_OurTechnologies" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 285.0
 offset_top = 2546.0
 offset_right = 365.0
@@ -995,7 +890,6 @@ previous_nodes = [NodePath("../56_SafetyPrecautions")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="58_INET" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -19.0
 offset_top = 2783.0
 offset_right = 61.0
@@ -1014,7 +908,6 @@ previous_nodes = [NodePath("../57_OurTechnologies")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="59_EncryptionX" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -131.0
 offset_top = 2815.0
 offset_right = -51.0
@@ -1033,7 +926,6 @@ previous_nodes = [NodePath("../58_INET")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="60_ProtocolY" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -230.0
 offset_top = 2876.0
 offset_right = -150.0
@@ -1052,7 +944,6 @@ previous_nodes = [NodePath("../59_EncryptionX")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="61_LowerInternetProtection" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = -335.0
 offset_top = 2926.0
 offset_right = -255.0
@@ -1070,7 +961,6 @@ previous_nodes = [NodePath("../60_ProtocolY")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="62_CryoChamber" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 337.0
 offset_top = 2790.0
 offset_right = 417.0
@@ -1089,7 +979,6 @@ previous_nodes = [NodePath("../57_OurTechnologies")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="63_LifeSupportButton" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 224.0
 offset_top = 2790.0
 offset_right = 304.0
@@ -1108,7 +997,6 @@ previous_nodes = [NodePath("../57_OurTechnologies")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="64_SideEffects" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 443.0
 offset_top = 2790.0
 offset_right = 523.0
@@ -1126,7 +1014,6 @@ previous_nodes = [NodePath("../57_OurTechnologies")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="65_CryonicRevolution" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 337.0
 offset_top = 2966.0
 offset_right = 417.0
@@ -1145,7 +1032,6 @@ previous_nodes = [NodePath("../62_CryoChamber"), NodePath("../63_LifeSupportButt
 "Reveal Conditions/Level Required" = 1
 
 [node name="66_SuperLiquid" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 224.0
 offset_top = 2966.0
 offset_right = 304.0
@@ -1164,7 +1050,6 @@ previous_nodes = [NodePath("../62_CryoChamber"), NodePath("../63_LifeSupportButt
 "Reveal Conditions/Level Required" = 1
 
 [node name="67_YouHaveControl" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 443.0
 offset_top = 2966.0
 offset_right = 523.0
@@ -1183,7 +1068,6 @@ previous_nodes = [NodePath("../62_CryoChamber")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="68_BrainIntact" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 224.0
 offset_top = 3138.0
 offset_right = 304.0
@@ -1201,7 +1085,6 @@ previous_nodes = [NodePath("../66_SuperLiquid"), NodePath("../65_CryonicRevoluti
 "Reveal Conditions/Level Required" = 1
 
 [node name="69_DefrostProtocol" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 443.0
 offset_top = 3138.0
 offset_right = 523.0
@@ -1218,7 +1101,6 @@ unlock_on_nodes_level_reached = false
 "Reveal Conditions/Level Required" = 1
 
 [node name="14_B_OurMission" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 2154.0
 offset_right = 701.0
@@ -1236,7 +1118,6 @@ previous_nodes = [NodePath("../11_B_Branches")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="70_Philantropy" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 817.0
 offset_top = 2155.0
 offset_right = 897.0
@@ -1255,7 +1136,6 @@ previous_nodes = [NodePath("../14_B_OurMission")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="71_NoonWorld" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "next_nodes", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 992.0
 offset_top = 2155.0
 offset_right = 1072.0
@@ -1274,7 +1154,6 @@ previous_nodes = [NodePath("../70_Philantropy")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="72_ABStrugatskyi" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_6nukx")]
-visible = false
 offset_left = 1167.0
 offset_top = 2155.0
 offset_right = 1247.0
@@ -1292,7 +1171,6 @@ previous_nodes = [NodePath("../71_NoonWorld")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="15_B_NoOneWantsToDie" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 2341.0
 offset_right = 701.0
@@ -1310,7 +1188,6 @@ previous_nodes = [NodePath("../14_B_OurMission")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="16_B_LongLife" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 2549.0
 offset_right = 701.0
@@ -1328,7 +1205,6 @@ previous_nodes = [NodePath("../15_B_NoOneWantsToDie")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="17_B_MarsChronicles" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 2805.0
 offset_right = 701.0
@@ -1346,7 +1222,6 @@ previous_nodes = [NodePath("../16_B_LongLife")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="18_B_EveryoneDot" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 3061.0
 offset_right = 701.0
@@ -1364,7 +1239,6 @@ previous_nodes = [NodePath("../17_B_MarsChronicles")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="19_B_EveryoneQuestion" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 3312.0
 offset_right = 701.0
@@ -1382,7 +1256,6 @@ previous_nodes = [NodePath("../18_B_EveryoneDot")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="20_B_EveryoneExclaim" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
 offset_left = 621.0
 offset_top = 3576.0
 offset_right = 701.0
