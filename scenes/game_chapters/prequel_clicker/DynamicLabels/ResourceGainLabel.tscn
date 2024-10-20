@@ -1,10 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://di6uocw810gex"]
+[gd_scene load_steps=5 format=3 uid="uid://di6uocw810gex"]
 
-[ext_resource type="FontFile" uid="uid://3twssopq3waq" path="res://assets/sprites/ui/fonts/GolosText-ExtraBold.ttf" id="1_8v55f"]
 [ext_resource type="Script" path="res://scenes/game_chapters/prequel_clicker/DynamicLabels/ResourceGainLabel.gd" id="2_bhtwq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a3mds"]
-font = ExtResource("1_8v55f")
 font_size = 32
 font_color = Color(0.784314, 1, 1, 1)
 outline_size = 5

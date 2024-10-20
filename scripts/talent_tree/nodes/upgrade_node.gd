@@ -61,9 +61,10 @@ enum INCREASE_MODIFIER {
 @export var max_level: int = 10  # Максимальный уровень узла
 @export var is_hidden: bool = false:  # Скрыт ли узел
 	set(value):
-		is_hidden = value
-		visible = !is_hidden  # Изменяем видимость
-		node_visibility_changed.emit(self, visible)  # Вызываем сигнал изменения видимости
+		if value != is_hidden:
+			is_hidden = value
+			visible = !is_hidden  # Изменяем видимость
+			node_visibility_changed.emit(self, visible)  # Вызываем сигнал изменения видимости
 @export var is_unlocked: bool = false  # Разблокирован ли узел для покупки
 
 # Группа переменных, связанных с силой узла
@@ -180,7 +181,7 @@ func draw_connection(_node: SkillNode):
 	var _current_curve = curve.instantiate()  # Создание экземпляра кривой
 	add_child(_current_curve)  # Добавление кривой как дочернего объекта
 	_current_curve._path.curve.set_point_position(0, Vector2(0, 0))  # Начальная точка кривой
-	_current_curve._path.curve.set_point_position(1, Vector2(_node.global_position.x - position.x, _node.global_position.y - position.y))
+	_current_curve._path.curve.set_point_position(1, Vector2((_node.global_position.x - position.x) / _node.scale.x, (_node.global_position.y - position.y) / _node.scale.y)) 
 	_current_curve._path.curve.set_point_out(0, Vector2(0, (_node.position.y - position.y) / 2))
 	_current_curve._path.curve.set_point_in(1, Vector2(0, -(_node.position.y - position.y) / 2))
 	_current_curve.redraw()  # Перерисовка кривой

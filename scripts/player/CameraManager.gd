@@ -6,8 +6,8 @@ static var instance: CameraManager
 
 # Параметры управления камерой.
 @export var max_zoom = 2  # Максимальное приближение.
-@export var min_zoom = 0.25  # Минимальное отдаление.
-@export var zoom_speed = 0.1  # Скорость изменения масштаба.
+@export var min_zoom = 1  # Минимальное отдаление.
+@export var zoom_speed = 0.01  # Скорость изменения масштаба.
 @export var pan_speed: float = 1.0  # Скорость панорамирования (перемещения камеры).
 @export var boundsUpperOffset = 0  # Верхнее смещение границ карты.
 @export var can_pan: bool  # Разрешено ли панорамирование.

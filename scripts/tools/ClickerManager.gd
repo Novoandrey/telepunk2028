@@ -4,6 +4,7 @@ extends Node
 # Сигналы для уведомления об изменении ресурса и его силы.
 signal resource_changed(resource_name, current_value)
 signal resource_strength_changed(resource_name, current_value)
+signal node_revealed(node, visibility) # Узел открывается
 
 # Статическая переменная для хранения экземпляра ClickerManager.
 static var instance: ClickerManager
@@ -27,6 +28,7 @@ var tapssecond = 0  # Клики в секунду (для авто-кликов
 var auto = 0  # Количество автоматических кликов.
 var resource_dict: Dictionary = {}  # Словарь для хранения информации о ресурсах.
 var current_resource_key: int  # Текущий ресурс, с которым работает игрок.
+var clicker_nodes: Dictionary = {} # словарь для всех узлов
 
 # Функция, вызываемая при готовности узла.
 func _ready():
@@ -42,7 +44,7 @@ func _ready():
 			}
 		# Подключаем сигнал к кнопке ресурса для обработки получения ресурса.
 		resource_button.gain_resource.connect(_on_resource_gained)
-
+	
 # Получение текущего значения ресурса по его имени.
 func get_resource_value(resource_name):
 	return resource_dict.get(resource_name).amount
@@ -82,3 +84,14 @@ func get_resource_strength(resource_name):
 # Очистка экземпляра при выходе из сцены.
 func _exit_tree():
 	instance = null
+
+func _on_node_revealed(node, visibility):
+	node_revealed.emit(node, visibility)
+	pass
+		
+
+func update_clicker_nodes(tree_name, tree_nodes):
+	clicker_nodes[tree_name] = tree_nodes
+	for node_data in tree_nodes:
+		node_data["node"].node_visibility_changed.connect(_on_node_revealed)
+		

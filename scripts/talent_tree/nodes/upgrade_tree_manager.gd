@@ -10,6 +10,7 @@ var node_data: Dictionary
 func _ready():
 	# Рекурсивное получение всех дочерних узлов, являющихся частью дерева
 	get_children_rec(self, tree_nodes)
+	ClickerManager.instance.update_clicker_nodes(name, tree_nodes)
 	# Вывод полученных узлов в лог для проверки
 	print(tree_nodes)
 
