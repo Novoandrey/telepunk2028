@@ -176,17 +176,31 @@ func create_connections(nodes_to_connect, connection_type):
 		node.node_visibility_changed.connect(on_node_visibility_changed)  # Подключение сигнала видимости
 		node.node_level_changed.connect(on_node_level_changed)  # Подключение сигнала изменения уровня
 
-# Отрисовка кривой для соединения узлов
+# Отрисовка кривой для соединения узлов.
 func draw_connection(_node: SkillNode):
-	var _current_curve = curve.instantiate()  # Создание экземпляра кривой
-	add_child(_current_curve)  # Добавление кривой как дочернего объекта
-	_current_curve._path.curve.set_point_position(0, Vector2(0, 0))  # Начальная точка кривой
-	_current_curve._path.curve.set_point_position(1, Vector2((_node.global_position.x - position.x) / _node.scale.x, (_node.global_position.y - position.y) / _node.scale.y)) 
-	_current_curve._path.curve.set_point_out(0, Vector2(0, (_node.position.y - position.y) / 2))
-	_current_curve._path.curve.set_point_in(1, Vector2(0, -(_node.position.y - position.y) / 2))
-	_current_curve.redraw()  # Перерисовка кривой
+	var _current_curve = curve.instantiate()  # Создание экземпляра кривой.
+	add_child(_current_curve)  # Добавление кривой как дочернего объекта.
+
+	# Рассчитываем глобальные координаты начала и конца линии, учитывая масштаб.
+	var start_pos = global_position / scale  # Начальная позиция узла.
+	var end_pos = _node.global_position / _node.scale  # Конечная позиция целевого узла.
+
+	# Устанавливаем начальную и конечную точки кривой.
+	_current_curve._path.curve.set_point_position(0, Vector2(0, 0))  # Начальная точка.
+	_current_curve._path.curve.set_point_position(1, end_pos - start_pos)  # Конечная точка с учётом разницы позиций.
+
+	# Устанавливаем контрольные точки для создания плавной линии.
+	var midpoint_y = (start_pos.y + end_pos.y) / 2  # Средняя точка по оси Y.
+	_current_curve._path.curve.set_point_out(0, Vector2(0, midpoint_y - start_pos.y))  # Контрольная точка на выходе.
+	_current_curve._path.curve.set_point_in(1, Vector2(0, end_pos.y - midpoint_y))  # Контрольная точка на входе.
+
+	# Перерисовываем кривую после установки точек.
+	_current_curve.redraw()
+
+	# Скрываем кривую, если целевой узел скрыт.
 	if _node.is_hidden:
-		_current_curve.hide()  # Скрытие кривой, если узел скрыт
+		_current_curve.hide()
+
 	return _current_curve
 
 # Обработчик изменения количества ресурсов

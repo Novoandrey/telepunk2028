@@ -85,13 +85,21 @@ func get_resource_strength(resource_name):
 func _exit_tree():
 	instance = null
 
+# Обработчик события, когда нода становится видимой.
+# Генерирует сигнал о том, что нода была раскрыта.
 func _on_node_revealed(node, visibility):
+	# Излучаем сигнал о раскрытии ноды, передавая саму ноду и её видимость.
 	node_revealed.emit(node, visibility)
-	pass
-		
+	pass  # Заглушка на случай, если нужно будет добавить логику позже.
 
+# Обновляет структуру нод для указанного дерева и подключает обработчики видимости.
 func update_clicker_nodes(tree_name, tree_nodes):
+	# Сохраняем массив нод для указанного дерева в словаре clicker_nodes.
 	clicker_nodes[tree_name] = tree_nodes
+
+	# Для каждой ноды в дереве подключаем сигнал изменения видимости.
 	for node_data in tree_nodes:
+		# Подключаем сигнал, чтобы вызывать _on_node_revealed при изменении видимости ноды.
 		node_data["node"].node_visibility_changed.connect(_on_node_revealed)
+
 		

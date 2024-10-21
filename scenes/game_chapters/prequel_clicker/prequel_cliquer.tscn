@@ -56,10 +56,12 @@ limit_top = 0
 limit_right = 540
 limit_bottom = 960
 position_smoothing_enabled = true
-position_smoothing_speed = 6.0
+position_smoothing_speed = 4.0
 script = ExtResource("4_u6g0e")
+max_zoom = 1
 zoom_speed = 0.1
 can_pan = true
+can_zoom = true
 
 [node name="CameraMover" type="Node2D" parent="CameraManager"]
 script = ExtResource("5_8o15m")
@@ -71,6 +73,7 @@ follow_viewport_enabled = true
 script = ExtResource("4_75dd6")
 
 [node name="1_B_Open" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 230.0
 offset_top = 540.0
 offset_right = 310.0
@@ -110,9 +113,9 @@ previous_nodes = [NodePath("../1_B_Open")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="3_B_From?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-offset_left = 115.0
+offset_left = -46.0
 offset_top = 1200.0
-offset_right = 195.0
+offset_right = 34.0
 offset_bottom = 1280.0
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(40, 40)
@@ -123,15 +126,15 @@ is_hidden = true
 is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
-next_nodes = [NodePath("../4_B_Where?")]
+next_nodes = [NodePath("../4_B_Where?"), NodePath("../5_B_Welcome")]
 previous_nodes = [NodePath("../2_B_Who?")]
 "Reveal Conditions/Level Required" = 1
 "Unlock Conditions/Level Required" = 1
 
-[node name="4_B_Where?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-offset_left = 345.0
+[node name="4_B_Where?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 230.0
 offset_top = 1500.0
-offset_right = 425.0
+offset_right = 310.0
 offset_bottom = 1580.0
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(40, 40)
@@ -143,15 +146,14 @@ is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
 unlock_on_nodes_level_reached = false
-next_nodes = [NodePath("../5_B_Welcome")]
 previous_nodes = [NodePath("../3_B_From?")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="5_B_Welcome" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
-offset_left = 230.0
-offset_top = 1800.0
-offset_right = 310.0
-offset_bottom = 1880.0
+offset_left = 538.0
+offset_top = 1500.0
+offset_right = 618.0
+offset_bottom = 1580.0
 scale = Vector2(1.5, 1.5)
 pivot_offset = Vector2(40, 40)
 node_id = 5
@@ -162,7 +164,7 @@ is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
 unlock_on_nodes_level_reached = false
-previous_nodes = [NodePath("../4_B_Where?")]
+previous_nodes = [NodePath("../3_B_From?")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
