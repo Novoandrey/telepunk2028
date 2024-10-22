@@ -18,4 +18,3 @@ func validate_effect(possible_target):
 
 func apply_effect(action_target, action_owner):
 	pass
-

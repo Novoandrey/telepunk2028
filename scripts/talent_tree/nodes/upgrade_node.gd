@@ -199,16 +199,16 @@ func buy_node():
 	if is_unlocked:
 		if current_cost <= ClickerManager.instance.get_resource_value(resource_required) and level < max_level:
 			ClickerManager.instance.update_resource_value(resource_required, -current_cost)
-			level = min( level + 1, max_level) 
+			level = min(level + 1, max_level)
+			LoggerG.add_log("Приобретена нода: " + node_name + " " + str(level) + " уровня")
 			return true
 		else:
-			pass
-			print("not enough resources")
+			LoggerG.add_log("Недостаточно ресурса для покупки " + node_name)
 			return false
 	else:
-		print("This node can't be bought")
+		LoggerG.add_log("This node can't be bought")
 		pass
-
+		
 func increase_cost():
 	match unlock_cost_modifier:
 		INCREASE_MODIFIER.ADDITIVE:
@@ -263,4 +263,3 @@ func _set(prop_name: StringName, value):
 func _get(prop_name: StringName):
 	if exposed_properties_keys.has(prop_name):
 		return exposed_properties.get(prop_name)
-

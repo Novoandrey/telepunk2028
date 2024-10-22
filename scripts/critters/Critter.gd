@@ -107,3 +107,14 @@ func update_outline():
 		$Sprite2D.material.set_shader_parameter("outline_color", ALLY)
 	else:
 		$Sprite2D.material.set_shader_parameter("outline_color", ENEMY)
+		
+func move(new_position: Vector2):
+	# Логируем перемещение
+	log_movement(global_position, new_position)
+	# Обновляем позицию
+	global_position = new_position
+	set_critter_position()
+
+func log_movement(from: Vector2, to: Vector2):
+	var log_message = "Персонаж " + _critter_name + " переместился с " + str(from) + " на " + str(to)
+	get_tree().get_root().get_node("Logger").add_log(log_message)  # Предполагается, что у вас есть узел Logger

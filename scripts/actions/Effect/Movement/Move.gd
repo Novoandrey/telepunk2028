@@ -22,4 +22,3 @@ func validate_effect(possible_target):
 
 func apply_effect(action_target, action_owner):
 	move_type.move(action_target, move_distance, action_owner, is_targeting)
-
