@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cdnrhxx85gis6"]
+[gd_scene load_steps=34 format=3 uid="uid://cdnrhxx85gis6"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
 [ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
@@ -8,6 +8,8 @@
 [ext_resource type="Script" path="res://scripts/talent_tree/CameraMover.gd" id="5_8o15m"]
 [ext_resource type="Script" path="res://scripts/talent_tree/resource_button.gd" id="6_1nagx"]
 [ext_resource type="PackedScene" uid="uid://btweifvc3amdj" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn" id="7_a0kji"]
+[ext_resource type="PackedScene" uid="uid://daplsoc7ofciu" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/generator_node_template.tscn" id="8_76guc"]
+[ext_resource type="PackedScene" uid="uid://jvyejru5ragb" path="res://scenes/game_chapters/prequel_clicker/clicker_nodes/modifier_node_template.tscn" id="8_la6b6"]
 [ext_resource type="Script" path="res://scripts/talent_tree/clicker_ui.gd" id="9_aep48"]
 [ext_resource type="Texture2D" uid="uid://bllu1r1m5amn3" path="res://assets/sprites/ui/buttons/tap/button-tap-idle.png" id="10_q1owc"]
 [ext_resource type="Texture2D" uid="uid://bilehfu2nbrkl" path="res://assets/sprites/ui/buttons/tap/button-tap-pressed.png" id="11_7kl3u"]
@@ -90,10 +92,34 @@ unlock_cost = 10
 reveal_on_nodes_revealed = false
 reveal_on_resource_amount_reached = true
 unlock_on_nodes_level_reached = false
-next_nodes = [NodePath("../2_B_Who?")]
+next_nodes = [NodePath("../2_B_Who?"), NodePath("../2_G_Lol")]
 "Reveal Conditions/Resource Amount Required" = 10
 
+[node name="SkillNode" parent="GameObjects/ProgressTreeManager" instance=ExtResource("8_la6b6")]
+offset_left = -169.0
+offset_top = 419.0
+offset_right = -89.0
+offset_bottom = 499.0
+scale = Vector2(1.5, 1.5)
+
+[node name="2_G_Lol" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("8_76guc")]
+visible = false
+offset_left = 597.0
+offset_top = 567.0
+offset_right = 717.0
+offset_bottom = 687.0
+scale = Vector2(1.5, 1.5)
+node_id = 6
+is_hidden = true
+is_unlocked = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+previous_nodes = [NodePath("../1_B_Open")]
+"Reveal Conditions/Level Required" = 1
+"Unlock Conditions/Level Required" = 1
+
 [node name="2_B_Who?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 230.0
 offset_top = 900.0
 offset_right = 310.0
@@ -113,6 +139,7 @@ previous_nodes = [NodePath("../1_B_Open")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="3_B_From?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = -46.0
 offset_top = 1200.0
 offset_right = 34.0
@@ -132,6 +159,7 @@ previous_nodes = [NodePath("../2_B_Who?")]
 "Unlock Conditions/Level Required" = 1
 
 [node name="4_B_Where?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 230.0
 offset_top = 1500.0
 offset_right = 310.0
@@ -150,6 +178,7 @@ previous_nodes = [NodePath("../3_B_From?")]
 "Reveal Conditions/Level Required" = 1
 
 [node name="5_B_Welcome" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
+visible = false
 offset_left = 538.0
 offset_top = 1500.0
 offset_right = 618.0

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg0k2wxud2cn3"]
+[gd_scene load_steps=4 format=3 uid="uid://dg0k2wxud2cn3"]
 
 [ext_resource type="Script" path="res://scripts/talent_tree/buy_node_window.gd" id="1_18guc"]
+[ext_resource type="FontFile" uid="uid://bnvfuvvfwodw3" path="res://assets/ui/fonts/source/GolosText-Medium.ttf" id="2_5bru7"]
+[ext_resource type="FontFile" uid="uid://cw1i5e61s6ha0" path="res://assets/ui/fonts/source/GolosText-Regular.ttf" id="3_unpmw"]
 
 [node name="BuyWindow" type="PanelContainer"]
 anchors_preset = 10
@@ -36,6 +38,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 2
+theme_override_fonts/font = ExtResource("2_5bru7")
 text = "Close
 "
 
@@ -43,6 +46,7 @@ text = "Close
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 6.0
+theme_override_fonts/font = ExtResource("2_5bru7")
 text = "Node Name"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -57,10 +61,16 @@ custom_minimum_size = Vector2(0, 250)
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="RichTextLabel2" type="RichTextLabel" parent="Margin/Control/VLayout/NodeInfo/NodeDescription"]
+custom_minimum_size = Vector2(0, 40)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("3_unpmw")
+
 [node name="RichTextLabel" type="RichTextLabel" parent="Margin/Control/VLayout/NodeInfo/NodeDescription"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("3_unpmw")
 text = "I am a node, very very cool node with interesting description
 "
 
@@ -72,6 +82,7 @@ size_flags_vertical = 3
 [node name="RichTextLabel" type="RichTextLabel" parent="Margin/Control/VLayout/NodeInfo/NodeParameters"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/normal_font = ExtResource("2_5bru7")
 text = "Strength: 100
 Cost: 150
 "
@@ -89,6 +100,7 @@ size_flags_vertical = 10
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 10
+theme_override_fonts/font = ExtResource("2_5bru7")
 text = "Buy"
 
 [connection signal="pressed" from="Margin/Control/VLayout/MenuBar/CloseWindow" to="." method="hide"]

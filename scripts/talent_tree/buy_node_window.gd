@@ -4,6 +4,7 @@ class_name BuyNodeWindow extends PanelContainer
 @onready var buy_button: Button = $Margin/Control/VLayout/BuyInfo/BuyNode
 @onready var close_button: Button = $Margin/Control/VLayout/MenuBar/CloseWindow
 @onready var description_label: RichTextLabel = $Margin/Control/VLayout/NodeInfo/NodeDescription/RichTextLabel
+@onready var song_label: RichTextLabel = $Margin/Control/VLayout/NodeInfo/NodeDescription/RichTextLabel2
 @onready var parameters_label: RichTextLabel = $Margin/Control/VLayout/NodeInfo/NodeParameters/RichTextLabel
 @onready var node_icon: TextureRect = $Margin/Control/VLayout/NodeInfo/TextureRect
 @onready var node_name: Label = $Margin/Control/VLayout/MenuBar/NodeName

@@ -10,7 +10,7 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_u0ane"]
 font = ExtResource("5_3t7d0")
-font_size = 10
+font_size = 14
 
 [sub_resource type="LabelSettings" id="LabelSettings_fvx7v"]
 font = ExtResource("5_3t7d0")
