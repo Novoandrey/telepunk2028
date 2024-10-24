@@ -11,6 +11,7 @@ signal resource_generated(resource_name, amount)
 var generator_timer: Timer
 # Сумма ресурса, которая была произведена, но еще не использована
 var resource_made: float
+var log_timer: Timer  # Таймер для логирования ресурсов
 
 # Увеличение уровня узла
 func increase_level(value):
@@ -22,10 +23,14 @@ func increase_level(value):
 		add_child(generator_timer)
 		# Подключение сигнала таймера к обработчику on_generator_timeout
 		generator_timer.timeout.connect(on_generator_timeout)
-		# Запуск таймера с интервалом 0.05 секунд
-		generator_timer.start(0.05)
-	# Таймер для регулировки времени ожидания между генерацией ресурсов можно добавить здесь
-	# generator_wait_time = generator_max_wait_time / level / current_strength
+		generator_timer.start(0.05)  # Вы можете настроить это значение по своему усмотрению
+
+	# Настройка логирования
+	if log_timer == null:
+		log_timer = Timer.new()
+		add_child(log_timer)
+		log_timer.timeout.connect(log_resource_amount)
+		log_timer.start(60)  # Логирование каждую минуту
 
 # Обработчик срабатывания таймера генерации
 func on_generator_timeout():
@@ -36,3 +41,8 @@ func on_generator_timeout():
 	# Обновление произведенного ресурса (оставшаяся часть после передачи ресурса)
 	if resource_made > 0:
 		resource_made = fmod(resource_made, clamp(round(resource_made), 1, current_strength))
+
+func log_resource_amount():
+	# Получаем общее количество сгенерированного ресурса
+	var current_amount = ClickerManager.instance.get_resource_value(resource_name_generated)
+	LoggerG.add_log("Общее количество ресурса: " + str(current_amount))

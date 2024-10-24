@@ -10,10 +10,21 @@ var scene_stack: Array[Node] = []
 # Текущая активная сцена
 var _current_scene: Node
 
+func return_to_main_menu():
+	# Проверяем, есть ли текущая сцена, и если да, удаляем её
+	if _current_scene != null:
+		_current_scene.queue_free()  # Удаляем текущую сцену
+
+	# Загружаем сцену главного меню
+	var main_menu_instance = main_menu_scene.instantiate()
+	root.add_child(main_menu_instance)
+	_current_scene = main_menu_instance  # Обновляем текущую сцену
+
 # RPC функция для переключения между сценами
 @rpc("call_local", "reliable")
 func switch_scenes(_scene_to_load_path: String, _scene_to_destroy_path: String, keep_scene: bool = true, _parent_scene_path: String = "/root"):
-	# Проверка, загружена ли уже сцена
+	log_scene_change(_scene_to_destroy_path, _scene_to_load_path)
+
 	var has_scene: bool = false
 	for _scene in scene_stack:
 		if str(_scene.get_path()) == _scene_to_load_path:
@@ -27,8 +38,10 @@ func switch_scenes(_scene_to_load_path: String, _scene_to_destroy_path: String, 
 	# Находим и удаляем сцену, которую нужно уничтожить
 	var _scene_to_destroy: Node = root.get_node(_scene_to_destroy_path)
 	var _parent_scene: Node = root.get_node(_parent_scene_path)
+	
 	if _parent_scene == null:
 		_parent_scene = root
+	
 	if _scene_to_destroy != null:
 		_scene_to_destroy.get_parent().remove_child(_scene_to_destroy)
 	# Добавляем новую сцену в иерархию
@@ -60,14 +73,16 @@ func add_scene_to_parent(_scene_to_load, _scene_parent):
 
 # Функция возврата к предыдущей сцене
 func return_to_scene():
-	# Переключаемся на предпоследнюю сцену в стеке
-	switch_scenes(str(scene_stack[-2].get_path()), str(scene_stack[-1].get_path()))
+	if scene_stack.size() > 0:
+		var current_scene = scene_stack.pop_back()
+		if current_scene:
+			current_scene.queue_free()
+		if scene_stack.size() > 0:
+			var previous_scene = scene_stack.back()
+			get_tree().root.add_child(previous_scene)
+	else:
+		print("Нет доступных сцен для возврата.")
 
-# Функция возврата в главное меню
-func return_to_main_menu():
-	# Очистка текущей сцены и возврат к главному меню
-	root.get_child(2).queue_free()
-	scene_stack.clear()
-	var main_menu = main_menu_scene.instantiate()
-	root.add_child(main_menu)
-	scene_stack.append(main_menu)
+func log_scene_change(old_scene: String, new_scene: String):
+	var log_message = "Смена сцены: " + old_scene + " -> " + new_scene
+	LoggerG.add_log(log_message)

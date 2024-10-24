@@ -246,17 +246,17 @@ func _on_skill_node_pressed():
 func buy_node():
 	if is_unlocked:
 		if current_cost <= ClickerManager.instance.get_resource_value(resource_required) and level < max_level:
-			ClickerManager.instance.update_resource_value(resource_required, -current_cost)  # Списать ресурсы
-			level = min(level + 1, max_level)  # Увеличить уровень
+			ClickerManager.instance.update_resource_value(resource_required, -current_cost)
+			level = min(level + 1, max_level)
+			LoggerG.add_log("Приобретена нода: " + node_name + " " + str(level) + " уровня")
 			return true
 		else:
-			print("Not enough resources")  # Сообщение о нехватке ресурсов
+			LoggerG.add_log("Недостаточно ресурса для покупки " + node_name)
 			return false
 	else:
-		print("This node can't be bought")  # Сообщение о невозможности покупки
-		return false
-
-# Увеличение стоимости узла
+		LoggerG.add_log("This node can't be bought")
+		pass
+		
 func increase_cost():
 	match unlock_cost_modifier:
 		INCREASE_MODIFIER.ADDITIVE:

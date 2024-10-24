@@ -41,10 +41,7 @@ func on_button_pressed():
 	# Отображаем всплывающий текст на месте клика.
 	show_floating_text(resource_amount, get_global_mouse_position())
 
+	# Получаем общее количество ресурса после клика
+	var total_resources = ClickerManager.instance.get_resource_value(resource_name)
 	
-
-
-
-
-
-
+	LoggerG.add_log("Общее количество: " + str(total_resources))

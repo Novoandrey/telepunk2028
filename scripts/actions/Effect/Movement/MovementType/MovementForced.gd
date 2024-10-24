@@ -27,4 +27,3 @@ func move(target, _distance, owner: Critter, is_targeting):
 		var push_origin = owner._current_tile
 		push_target.get_critter_component(CritterMovement.get_custom_class_name()).force_move_critter(push_origin, move_direction, _distance, _push_speed)
 	pass
-

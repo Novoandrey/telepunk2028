@@ -47,13 +47,13 @@ func _ready():
 	
 # Получение текущего значения ресурса по его имени.
 func get_resource_value(resource_name):
+	# Проверяем наличие ресурса перед возвратом значения
 	return resource_dict.get(resource_name).amount
 
-# Обновление значения ресурса и вызов сигнала об изменении.
 func update_resource_value(resource_name, value):
-	resource_dict.get(resource_name).amount += value  # Увеличиваем значение ресурса.
-	# Излучаем сигнал об изменении ресурса.
-	resource_changed.emit(resource_name, resource_dict.get(resource_name).amount)
+	if resource_dict.has(resource_name):
+		resource_dict[resource_name].amount += value # Увеличиваем значение ресурса.
+		resource_changed.emit(resource_name, resource_dict[resource_name].amount) # Излучаем сигнал об изменении ресурса.
 
 # Обновление силы ресурса на основе источника и нового значения.
 func update_resource_strength(resource_name, source, value):
@@ -64,9 +64,9 @@ func update_resource_strength(resource_name, source, value):
 	for strength_key in resource_dict.get(resource_name).strength:
 		if strength_key == "full":
 			resource_dict.get(resource_name).strength.full = 1
-			continue
-		# Добавляем силу от каждого источника к полному значению.
-		resource_dict.get(resource_name).strength.full += resource_dict.get(resource_name).strength.get(strength_key)
+		else:
+			# Добавляем силу от каждого источника к полному значению.
+			resource_dict.get(resource_name).strength.full += resource_dict.get(resource_name).strength.get(strength_key)
 	
 	# Излучаем сигнал об изменении силы ресурса.
 	resource_strength_changed.emit(resource_name, resource_dict.get(resource_name).strength.full)
