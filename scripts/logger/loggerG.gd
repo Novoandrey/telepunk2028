@@ -33,7 +33,6 @@ func _ready():
 	# Создаем и настраиваем RichTextLabel
 	rich_text_label = RichTextLabel.new()
 	rich_text_label.bbcode_enabled = true
-	rich_text_label.text = "Это RichTextLabel"
 	rich_text_label.custom_minimum_size = Vector2(400, 300)
 	vbox.add_child(rich_text_label)
 

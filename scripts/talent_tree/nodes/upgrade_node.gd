@@ -303,5 +303,3 @@ func _set(prop_name: StringName, value):
 func _get(prop_name: StringName):
 	if exposed_properties_keys.has(prop_name):
 		return exposed_properties.get(prop_name)
-
-

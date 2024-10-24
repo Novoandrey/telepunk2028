@@ -26,6 +26,7 @@ func increase_level(value):
 		generator_timer.start(0.05)  # Вы можете настроить это значение по своему усмотрению
 
 	# Настройка логирования
+	# Будет несколько логов при нескольких генераторов
 	if log_timer == null:
 		log_timer = Timer.new()
 		add_child(log_timer)

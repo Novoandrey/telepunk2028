@@ -14,7 +14,8 @@ func return_to_main_menu():
 	# Проверяем, есть ли текущая сцена, и если да, удаляем её
 	if _current_scene != null:
 		_current_scene.queue_free()  # Удаляем текущую сцену
-
+	else:
+		LoggerG.add_log("Нет текущей сцены для удаления")
 	# Загружаем сцену главного меню
 	var main_menu_instance = main_menu_scene.instantiate()
 	root.add_child(main_menu_instance)

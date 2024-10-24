@@ -23,8 +23,10 @@ var objective_completed: bool = false :
 			# Здесь можно добавить дополнительную логику при завершении цели
 			pass
 
+func _ready():
+	SceneManager._current_scene = self
+
 func return_to_main_menu():
-	
 	SceneManager.return_to_main_menu()
 	#LoggerG.rich_text_label.text = ""
 	LoggerG.add_log("Переход в главное меню.")
