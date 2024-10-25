@@ -74,14 +74,11 @@ follow_viewport_enabled = true
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
 script = ExtResource("4_75dd6")
 
-[node name="1_B_Open" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("7_a0kji")]
-visible = false
+[node name="1_S_Open" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes") instance=ExtResource("7_a0kji")]
 offset_left = 230.0
 offset_top = 540.0
 offset_right = 310.0
 offset_bottom = 620.0
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(40, 40)
 node_id = 1
 node_name = &"Откройте ячейку"
 node_description = "Для того, чтобы мы могли общаться с вами, пока вы находитесь в нашей КомфортКамере+, вам необходимо будет тратить совсем небольшое количество РЕАЛов на расшифровку специальных сообщений. Для вас они будут представлены в виде таких ячеек! Чтобы компенсировать неудобства от  подобных трат, мы предоставляем специальные бонусы за открытие ячеек, которые позволят вам легко восполнить и даже преумножить богатство!"
@@ -92,40 +89,14 @@ unlock_cost = 10
 reveal_on_nodes_revealed = false
 reveal_on_resource_amount_reached = true
 unlock_on_nodes_level_reached = false
-next_nodes = [NodePath("../2_B_Who?"), NodePath("../2_G_Lol")]
+next_nodes = [NodePath("../2_S_Who?"), NodePath("../3_S_From?"), NodePath("../4_S_Where?")]
 "Reveal Conditions/Resource Amount Required" = 10
 
-[node name="SkillNode" parent="GameObjects/ProgressTreeManager" instance=ExtResource("8_la6b6")]
-offset_left = -169.0
-offset_top = 419.0
-offset_right = -89.0
-offset_bottom = 499.0
-scale = Vector2(1.5, 1.5)
-
-[node name="2_G_Lol" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("8_76guc")]
-visible = false
-offset_left = 597.0
-offset_top = 567.0
-offset_right = 717.0
-offset_bottom = 687.0
-scale = Vector2(1.5, 1.5)
-node_id = 6
-is_hidden = true
-is_unlocked = true
-reveal_on_nodes_revealed = false
-reveal_on_nodes_level_reached = true
-previous_nodes = [NodePath("../1_B_Open")]
-"Reveal Conditions/Level Required" = 1
-"Unlock Conditions/Level Required" = 1
-
-[node name="2_B_Who?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
-offset_left = 230.0
+[node name="2_S_Who?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 0.0
 offset_top = 900.0
-offset_right = 310.0
+offset_right = 80.0
 offset_bottom = 980.0
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(40, 40)
 node_id = 2
 node_name = &"Кто я?"
 max_level = 1
@@ -133,19 +104,16 @@ is_hidden = true
 is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
-next_nodes = [NodePath("../3_B_From?")]
-previous_nodes = [NodePath("../1_B_Open")]
+next_nodes = [NodePath("../5_S_Reals")]
+previous_nodes = [NodePath("../1_S_Open")]
 "Reveal Conditions/Level Required" = 1
 "Unlock Conditions/Level Required" = 1
 
-[node name="3_B_From?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
-offset_left = -46.0
-offset_top = 1200.0
-offset_right = 34.0
-offset_bottom = 1280.0
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(40, 40)
+[node name="3_S_From?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 230.0
+offset_top = 900.0
+offset_right = 310.0
+offset_bottom = 980.0
 node_id = 3
 node_name = &"Откуда?"
 max_level = 1
@@ -153,19 +121,16 @@ is_hidden = true
 is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
-next_nodes = [NodePath("../4_B_Where?"), NodePath("../5_B_Welcome")]
-previous_nodes = [NodePath("../2_B_Who?")]
+next_nodes = [NodePath("../5_S_Reals")]
+previous_nodes = [NodePath("../1_S_Open")]
 "Reveal Conditions/Level Required" = 1
 "Unlock Conditions/Level Required" = 1
 
-[node name="4_B_Where?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
-offset_left = 230.0
-offset_top = 1500.0
-offset_right = 310.0
-offset_bottom = 1580.0
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(40, 40)
+[node name="4_S_Where?" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 460.0
+offset_top = 900.0
+offset_right = 540.0
+offset_bottom = 980.0
 node_id = 4
 node_name = &"Куда я иду?"
 max_level = 1
@@ -174,27 +139,105 @@ is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
 unlock_on_nodes_level_reached = false
-previous_nodes = [NodePath("../3_B_From?")]
+next_nodes = [NodePath("../5_S_Reals")]
+previous_nodes = [NodePath("../1_S_Open")]
 "Reveal Conditions/Level Required" = 1
 
-[node name="5_B_Welcome" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("7_a0kji")]
-visible = false
-offset_left = 538.0
-offset_top = 1500.0
-offset_right = 618.0
-offset_bottom = 1580.0
-scale = Vector2(1.5, 1.5)
-pivot_offset = Vector2(40, 40)
+[node name="5_S_Reals" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 230.0
+offset_top = 1200.0
+offset_right = 310.0
+offset_bottom = 1280.0
 node_id = 5
-node_name = &"Добро пожаловать в \"Лето\"!"
+node_name = &"Reals"
 max_level = 1
 is_hidden = true
 is_unlocked = true
 reveal_on_nodes_revealed = false
 reveal_on_nodes_level_reached = true
 unlock_on_nodes_level_reached = false
-previous_nodes = [NodePath("../3_B_From?")]
+next_nodes = [NodePath("../6_S_Helper")]
+previous_nodes = [NodePath("../3_S_From?"), NodePath("../4_S_Where?"), NodePath(".")]
 "Reveal Conditions/Level Required" = 1
+
+[node name="6_S_Helper" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 230.0
+offset_top = 1500.0
+offset_right = 310.0
+offset_bottom = 1580.0
+node_id = 6
+node_name = &"Helper"
+max_level = 1
+is_hidden = true
+is_unlocked = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+next_nodes = [NodePath("../7_M_Personality"), NodePath("../8_M_Thoughts"), NodePath("../9_S_???")]
+previous_nodes = [NodePath("../5_S_Reals")]
+"Reveal Conditions/Level Required" = 1
+"Unlock Conditions/Level Required" = 1
+
+[node name="7_M_Personality" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_la6b6")]
+offset_left = 0.0
+offset_top = 1500.0
+offset_right = 80.0
+offset_bottom = 1580.0
+parent_node = NodePath("../6_S_Helper")
+node_id = 7
+is_hidden = true
+is_unlocked = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+previous_nodes = [NodePath("../6_S_Helper")]
+"Reveal Conditions/Level Required" = 1
+"Unlock Conditions/Level Required" = 1
+
+[node name="8_M_Thoughts" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("parent_node", "previous_nodes") instance=ExtResource("8_la6b6")]
+offset_left = 460.0
+offset_top = 1500.0
+offset_right = 540.0
+offset_bottom = 1580.0
+parent_node = NodePath("../6_S_Helper")
+node_id = 8
+is_hidden = true
+is_unlocked = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+previous_nodes = [NodePath("../6_S_Helper")]
+"Reveal Conditions/Level Required" = 1
+"Unlock Conditions/Level Required" = 1
+
+[node name="9_S_???" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("next_nodes", "previous_nodes") instance=ExtResource("7_a0kji")]
+offset_left = 230.0
+offset_top = 1800.0
+offset_right = 310.0
+offset_bottom = 1880.0
+node_id = 9
+node_name = &"?????"
+max_level = 1
+is_hidden = true
+is_unlocked = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+next_nodes = [NodePath("../10_G_Report")]
+previous_nodes = [NodePath("../6_S_Helper")]
+"Reveal Conditions/Level Required" = 1
+"Unlock Conditions/Level Required" = 1
+
+[node name="10_G_Report" parent="GameObjects/ProgressTreeManager" node_paths=PackedStringArray("previous_nodes") instance=ExtResource("8_76guc")]
+visible = false
+offset_left = 210.0
+offset_top = 2100.0
+offset_right = 330.0
+offset_bottom = 2220.0
+node_id = 10
+is_hidden = true
+is_unlocked = true
+reveal_on_nodes_revealed = false
+reveal_on_nodes_level_reached = true
+previous_nodes = [NodePath("../9_S_???")]
+"Reveal Conditions/Level Required" = 1
+"Unlock Conditions/Level Required" = 1
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 

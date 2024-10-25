@@ -29,6 +29,8 @@ offset_right = 80.0
 offset_bottom = 80.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(60, 60)
 texture_normal = ExtResource("1_v4trx")
 ignore_texture_size = true
 stretch_mode = 0
@@ -82,7 +84,7 @@ theme_override_constants/margin_top = 5
 [node name="Label" type="Label" parent="NodeLevel"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
-text = "0/10"
+text = "0/10000"
 label_settings = SubResource("LabelSettings_87d78")
 horizontal_alignment = 1
 vertical_alignment = 1
