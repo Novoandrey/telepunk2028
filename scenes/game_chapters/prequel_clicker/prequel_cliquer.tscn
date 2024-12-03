@@ -69,6 +69,7 @@ script = ExtResource("5_8o15m")
 follow_viewport_enabled = true
 
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
+position = Vector2(279, 250)
 script = ExtResource("4_75dd6")
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
@@ -209,4 +210,26 @@ stretch_mode = 0
 visible = false
 layout_mode = 2
 
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 1" to="GameObjects/ProgressTreeManager/node 1" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 2" to="GameObjects/ProgressTreeManager/node 2" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 3" to="GameObjects/ProgressTreeManager/node 3" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 4" to="GameObjects/ProgressTreeManager/node 4" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 5" to="GameObjects/ProgressTreeManager/node 5" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 6" to="GameObjects/ProgressTreeManager/node 6" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 7" to="GameObjects/ProgressTreeManager/node 7" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 8" to="GameObjects/ProgressTreeManager/node 8" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 9" to="GameObjects/ProgressTreeManager/node 9" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 10" to="GameObjects/ProgressTreeManager/node 10" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 11" to="GameObjects/ProgressTreeManager/node 11" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 12" to="GameObjects/ProgressTreeManager/node 12" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 13" to="GameObjects/ProgressTreeManager/node 13" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 14" to="GameObjects/ProgressTreeManager/node 14" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 15" to="GameObjects/ProgressTreeManager/node 15" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 16" to="GameObjects/ProgressTreeManager/node 16" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 17" to="GameObjects/ProgressTreeManager/node 17" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 18" to="GameObjects/ProgressTreeManager/node 18" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 19" to="GameObjects/ProgressTreeManager/node 19" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 20" to="GameObjects/ProgressTreeManager/node 20" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 21" to="GameObjects/ProgressTreeManager/node 21" method="_on_skill_node_pressed"]
+[connection signal="pressed" from="GameObjects/ProgressTreeManager/node 22" to="GameObjects/ProgressTreeManager/node 22" method="_on_skill_node_pressed"]
 [connection signal="pressed" from="GameScreen/Screen/ClickInfo/ExitButton" to="." method="return_to_main_menu"]

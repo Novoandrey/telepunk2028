@@ -1,4 +1,4 @@
-class_name SynapsNode extends TextureButton 
+@tool class_name SynapsNode extends TextureButton 
 
 # Определяем сигналы для отслеживания событий, связанных с узлами
 signal node_level_changed(node)  # Срабатывает при изменении уровня узла

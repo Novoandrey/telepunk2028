@@ -1,5 +1,4 @@
-class_name ClickerManager
-extends Node
+class_name ClickerManager extends Node
 
 # Сигналы для уведомления об изменении ресурса и его силы.
 signal resource_changed(resource_name, current_value)

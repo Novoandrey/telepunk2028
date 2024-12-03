@@ -1,4 +1,4 @@
-class_name UpgradeTreeManager extends Node2D
+@tool class_name UpgradeTreeManager extends Node2D
 
 # Массив для хранения узлов дерева и их данных
 var tree_nodes: Dictionary = {}
@@ -8,15 +8,17 @@ var synaps_template: PackedScene = preload("res://scenes/game_chapters/prequel_c
 func _ready():
 	# Рекурсивное получение всех дочерних узлов, являющихся частью дерева
 	get_children_rec(self, tree_nodes)
-	ClickerManager.instance.update_clicker_nodes(name, tree_nodes)
 	
-	var level_data = ClickerManager.instance.level_data
+	var level_data = CSVParser.read_csv("res://assets/clicker_level_data/defs_export.csv")
 	for node in level_data["def"]:
 		if !tree_nodes.has(node):
 			var new_synaps = synaps_template.instantiate()
 			new_synaps.initialize_node(level_data.get(node))
 			add_child(new_synaps)
 	
+	for node in tree_nodes:
+		if !level_data.get("def").has(node):
+			tree_nodes.get(node).queue_free()
 	# Вывод полученных узлов в лог для проверки
 
 # Рекурсивная функция для получения всех дочерних узлов

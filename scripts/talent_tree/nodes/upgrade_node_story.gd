@@ -1,4 +1,4 @@
-class_name StoryNode extends SynapsNode
+@tool class_name StoryNode extends SynapsNode
 
 # Экспортируемая переменная для увеличения силы при нажатии на ресурс
 @export var resource_tap_strength_increase: ClickerManager.RESOURCE = ClickerManager.RESOURCE.TCOIN
@@ -7,3 +7,6 @@ class_name StoryNode extends SynapsNode
 func _ready():
 	pass
 	# Вызов родительской функции _ready() для инициализации
+
+func initialize_node(synaps_data) -> void:
+	super(synaps_data)
