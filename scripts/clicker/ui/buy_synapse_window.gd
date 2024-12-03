@@ -1,4 +1,4 @@
-class_name BuyNodeWindow extends PanelContainer
+class_name BuySynapseWindow extends PanelContainer
 
 # UI элементы, которые будут загружены при старте
 @onready var buy_button: Button = $Margin/Control/VLayout/BuyInfo/BuyNode

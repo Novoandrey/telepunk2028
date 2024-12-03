@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/clicker/ClickerManager.gd" id="2_grbvu"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
 [ext_resource type="Script" path="res://scripts/tools/ui/CameraManager.gd" id="4_u6g0e"]
-[ext_resource type="Script" path="res://scripts/clicker/ui/CameraMover.gd" id="5_8o15m"]
+[ext_resource type="Script" path="res://scripts/clicker/ui/CameraCoordinator.gd" id="5_gluy6"]
 [ext_resource type="Script" path="res://scripts/clicker/ui/tap_button.gd" id="6_1nagx"]
 [ext_resource type="Script" path="res://scripts/clicker/synapses/synapse_manager.gd" id="6_ct5nm"]
 [ext_resource type="Script" path="res://scripts/clicker/ui/clicker_ui.gd" id="9_aep48"]
@@ -63,7 +63,7 @@ can_pan = true
 can_zoom = true
 
 [node name="CameraMover" type="Node2D" parent="CameraManager"]
-script = ExtResource("5_8o15m")
+script = ExtResource("5_gluy6")
 
 [node name="GameObjects" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
@@ -209,7 +209,6 @@ stretch_mode = 0
 [node name="BuyWindow" parent="GameScreen/Screen" instance=ExtResource("11_imrjp")]
 visible = false
 layout_mode = 2
-script = null
 
 [connection signal="pressed" from="GameObjects/ProgressTreeManager/node 1" to="GameObjects/ProgressTreeManager/node 1" method="_on_skill_node_pressed"]
 [connection signal="pressed" from="GameObjects/ProgressTreeManager/node 2" to="GameObjects/ProgressTreeManager/node 2" method="_on_skill_node_pressed"]

@@ -8,7 +8,7 @@ static var instance: ClickerUI
 @onready var taps_label = $ClickInfo/VBoxScores/HBoxScore/Score
 @onready var taps_strength_label = $ClickInfo/VBoxScores/HBoxTapStrength/TapsStrength
 @onready var auto_score_label = $ClickInfo/VBoxScores/HBoxAutoScore/AutoScore
-@onready var buy_window: BuyNodeWindow = $BuyWindow
+@onready var buy_window: BuySynapseWindow = $BuyWindow
 
 # Текущий ресурс, к которому привязана кнопка.
 var current_resource: Dictionary

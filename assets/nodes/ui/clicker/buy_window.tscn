@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://dg0k2wxud2cn3"]
 
-[ext_resource type="Script" path="res://scripts/clicker/buy_node_window.gd" id="1_18guc"]
+[ext_resource type="Script" path="res://scripts/clicker/ui/buy_synapse_window.gd" id="1_2bvwt"]
 [ext_resource type="FontFile" uid="uid://bnvfuvvfwodw3" path="res://assets/ui/fonts/source/GolosText-Medium.ttf" id="2_5bru7"]
 [ext_resource type="FontFile" uid="uid://cw1i5e61s6ha0" path="res://assets/ui/fonts/source/GolosText-Regular.ttf" id="3_unpmw"]
 
@@ -10,7 +10,7 @@ anchor_right = 1.0
 offset_bottom = 400.0
 grow_horizontal = 2
 size_flags_vertical = 4
-script = ExtResource("1_18guc")
+script = ExtResource("1_2bvwt")
 
 [node name="Margin" type="MarginContainer" parent="."]
 custom_minimum_size = Vector2(0, 400)
