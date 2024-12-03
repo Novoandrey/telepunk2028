@@ -43,4 +43,3 @@ func _process(delta):
 # Подключаем обработчик сигнала при готовности узла.
 func _ready():
 	ClickerManager.instance.node_revealed.connect(change_camera_bounds)
-

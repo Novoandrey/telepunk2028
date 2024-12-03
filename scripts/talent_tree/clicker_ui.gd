@@ -30,7 +30,7 @@ func _ready():
 	on_resource_strength_changed(tap_button.resource_name, current_resource.strength.full)
 
 # Открываем окно покупки узла навыков.
-func open_node_window(node: SkillNode):
+func open_node_window(node: SynapsNode):
 	buy_window.node = node  # Устанавливаем выбранный узел.
 	buy_window.show()  # Отображаем окно покупки.
 

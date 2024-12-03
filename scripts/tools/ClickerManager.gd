@@ -15,25 +15,16 @@ enum RESOURCE {
 	TAP
 }
 
-# Переменные для отслеживания состояния кликов и силы.
-var taps = 0 :
-	get:
-		return taps  # Возвращаем текущее количество кликов.
-	set(value):
-		taps = value  # Устанавливаем новое количество кликов.
-		#taps_changed.emit(value)  # Возможно, это может быть использовано для отдельного сигнала.
+@onready var level_holder: Node = $"../GameObjects"
 
-var strength = 1  # Сила кликов.
-var tapssecond = 0  # Клики в секунду (для авто-кликов).
-var auto = 0  # Количество автоматических кликов.
 var resource_dict: Dictionary = {}  # Словарь для хранения информации о ресурсах.
 var current_resource_key: int  # Текущий ресурс, с которым работает игрок.
 var clicker_nodes: Dictionary = {} # словарь для всех узлов
+var level_data
 
 # Функция, вызываемая при готовности узла.
 func _ready():
 	instance = self  # Сохраняем ссылку на текущий экземпляр.
-	
 	# Ищем все кнопки ресурсов в сцене.
 	for resource_button: ResourceButton in get_tree().get_nodes_in_group("resource_buttons"):
 		# Проверяем, есть ли данный ресурс в словаре. Если нет, добавляем его.
@@ -44,6 +35,8 @@ func _ready():
 			}
 		# Подключаем сигнал к кнопке ресурса для обработки получения ресурса.
 		resource_button.gain_resource.connect(_on_resource_gained)
+	
+	level_data = CSVParser.read_csv("res://assets/clicker_level_data/defs_export.csv")
 	
 # Получение текущего значения ресурса по его имени.
 func get_resource_value(resource_name):
@@ -94,6 +87,7 @@ func _on_node_revealed(node, visibility):
 
 # Обновляет структуру нод для указанного дерева и подключает обработчики видимости.
 func update_clicker_nodes(tree_name, tree_nodes):
+	return false
 	# Сохраняем массив нод для указанного дерева в словаре clicker_nodes.
 	clicker_nodes[tree_name] = tree_nodes
 

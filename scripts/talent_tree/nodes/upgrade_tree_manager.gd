@@ -1,18 +1,23 @@
-
 class_name UpgradeTreeManager extends Node2D
 
 # Массив для хранения узлов дерева и их данных
-var tree_nodes: Array[Dictionary]
-# Словарь для данных узла
-var node_data: Dictionary
+var tree_nodes: Dictionary = {}
+var synaps_template: PackedScene = preload("res://scenes/game_chapters/prequel_clicker/clicker_nodes/story_node_template.tscn")
 
 # Функция, вызываемая при готовности узла
 func _ready():
 	# Рекурсивное получение всех дочерних узлов, являющихся частью дерева
 	get_children_rec(self, tree_nodes)
 	ClickerManager.instance.update_clicker_nodes(name, tree_nodes)
+	
+	var level_data = ClickerManager.instance.level_data
+	for node in level_data["def"]:
+		if !tree_nodes.has(node):
+			var new_synaps = synaps_template.instantiate()
+			new_synaps.initialize_node(level_data.get(node))
+			add_child(new_synaps)
+	
 	# Вывод полученных узлов в лог для проверки
-	print(tree_nodes)
 
 # Рекурсивная функция для получения всех дочерних узлов
 func get_children_rec(node, arr):
@@ -23,7 +28,7 @@ func get_children_rec(node, arr):
 		for i in num_children:
 			var child = node.get_child(i)
 			# Если узел является экземпляром SkillNode
-			if child is SkillNode:
+			if child is SynapsNode:
 				# Подключаемся к сигналу изменения уровня узла
 				child.node_level_changed.connect(on_node_level_changed)
 				# Если узел также является генератором (GeneratorNode)
@@ -31,7 +36,7 @@ func get_children_rec(node, arr):
 					# Подключаемся к сигналу генерации ресурса
 					child.resource_generated.connect(on_resource_generated)
 				# Добавляем узел и его данные в массив
-				arr.append({"node": child, "node_data": child.node_data})
+				arr[child.name] = child
 			# Рекурсивно вызываем функцию для всех дочерних узлов
 			get_children_rec(child, arr)
 	else:

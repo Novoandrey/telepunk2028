@@ -20,7 +20,6 @@ texture_normal = ExtResource("1_6nnyd")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_hnjys")
-"Unlock Conditions/Level Required" = 1
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(40, 0, 80, 80, 0, 80)

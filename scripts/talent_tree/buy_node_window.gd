@@ -10,7 +10,7 @@ class_name BuyNodeWindow extends PanelContainer
 @onready var node_name: Label = $Margin/Control/VLayout/MenuBar/NodeName
 
 # Переменная для хранения текущего узла навыков
-var node: SkillNode : 
+var node: SynapsNode : 
 	set(value):
 		node = value
 		update_node_info()  # Обновляем информацию об узле

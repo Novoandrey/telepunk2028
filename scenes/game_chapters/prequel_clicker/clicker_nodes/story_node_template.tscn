@@ -36,7 +36,6 @@ texture_normal = ExtResource("1_htscm")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_2l7wl")
-"Unlock Conditions/Level Required" = null
 
 [node name="TextureRect" type="TextureRect" parent="."]
 custom_minimum_size = Vector2(80, 80)
