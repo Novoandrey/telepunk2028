@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjsbxxmw8y70u"]
 
-[ext_resource type="Script" path="res://scripts/scene_manager/LoadButton.gd" id="1_16ct4"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/LoadButton.gd" id="1_16ct4"]
 
 [node name="LoadButton" type="Button"]
 offset_right = 100.0

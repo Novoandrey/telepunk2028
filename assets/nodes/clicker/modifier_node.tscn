@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://t0fgio0b80ul"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_orxm6"]
-[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node.gd" id="2_di4bw"]
+[ext_resource type="Script" path="res://scripts/clicker/synapses/synapse.gd" id="2_di4bw"]
 
 [node name="ModifierNode" type="TextureButton"]
 visible = false

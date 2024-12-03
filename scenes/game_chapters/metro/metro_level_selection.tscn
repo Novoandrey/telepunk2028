@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cpefx5bldpslu"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_xs17x"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/Level.gd" id="1_xs17x"]
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="2_aojv7"]
 [ext_resource type="PackedScene" uid="uid://c6d4ceqhektri" path="res://scenes/scene_managment/level_selection/level_button.tscn" id="3_4q4yk"]
 [ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_chapters/e-city/arenas/e-city_streets.tscn" id="4_q0f85"]

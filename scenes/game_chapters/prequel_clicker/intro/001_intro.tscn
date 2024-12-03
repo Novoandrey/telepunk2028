@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://clnvpfxiwcloe"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_mgnwa"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/Level.gd" id="1_mgnwa"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_15r77"]
 [ext_resource type="PackedScene" uid="uid://cccjv1duxwf3p" path="res://scenes/game_chapters/prequel_clicker/intro/002_cryochamber.tscn" id="3_b7q4x"]
 [ext_resource type="Texture2D" uid="uid://fvkjtx7fjs0b" path="res://assets/sprites/background/clicker/001_Intro_Undertower.jpg" id="4_og82t"]

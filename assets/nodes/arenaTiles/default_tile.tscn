@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxf066cxoynkb"]
 
-[ext_resource type="Script" path="res://scripts/tiles/Tile.gd" id="1_eq5oh"]
+[ext_resource type="Script" path="res://scripts/arena/tiles/Tile.gd" id="1_eq5oh"]
 [ext_resource type="Texture2D" uid="uid://cmt71t2oc145n" path="res://assets/sprites/tilesets/testtile.png" id="2_nxbc8"]
 
 [node name="Tile" type="Node2D"]

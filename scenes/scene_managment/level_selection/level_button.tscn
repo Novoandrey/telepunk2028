@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c6d4ceqhektri"]
 
-[ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelButton.gd" id="1_ad5as"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/level_manager/LevelButton.gd" id="1_ad5as"]
 
 [node name="LevelButton" type="Button"]
 offset_right = 100.0

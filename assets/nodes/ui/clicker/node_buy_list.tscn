@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dfvpj30rmbrd4"]
 
-[ext_resource type="Script" path="res://scripts/talent_tree/node_buy_list.gd" id="1_lk2ns"]
+[ext_resource type="Script" path="res://scripts/clicker/ui/synapse_buy_list.gd" id="1_lk2ns"]
 
 [node name="NodeBuyList" type="VBoxContainer"]
 anchors_preset = 15

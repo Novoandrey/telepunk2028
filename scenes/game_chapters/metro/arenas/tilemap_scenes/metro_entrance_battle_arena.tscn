@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://df6va56hupiw8"]
 
 [ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="1_n6d1l"]
-[ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="2_80nm7"]
+[ext_resource type="Script" path="res://scripts/arena/tiles/TileMapManager.gd" id="2_80nm7"]
 
 [node name="BattleArena" type="MultiplayerSpawner"]
 _spawnable_scenes = PackedStringArray("res://assets/nodes/entities/character/basic_char.tscn", "res://assets/nodes/entities/character/basic_enemy_char.tscn")

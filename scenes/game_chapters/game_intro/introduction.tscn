@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://de4wd73d0yla3"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_5tguc"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/Level.gd" id="1_5tguc"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_7ii7q"]
 [ext_resource type="PackedScene" uid="uid://c0tg1v4a3up71" path="res://scenes/game_chapters/game_intro/warning.tscn" id="3_03hl1"]
 

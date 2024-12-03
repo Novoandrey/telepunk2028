@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bdcys2bwnj5e5"]
 
-[ext_resource type="Script" path="res://scripts/ui/ActionController.gd" id="1_3nsje"]
+[ext_resource type="Script" path="res://scripts/arena/ui/ActionController.gd" id="1_3nsje"]
 [ext_resource type="Texture2D" uid="uid://c34tdwq6jnf64" path="res://assets/sprites/player/Actions/grenadeIcon.png" id="1_yxi23"]
 [ext_resource type="PackedScene" uid="uid://c08om4uxu8ctk" path="res://assets/nodes/entities/actions/grenade.tscn" id="2_dc0nm"]
-[ext_resource type="Script" path="res://scripts/ui/bars/UsageBar.gd" id="4_s6g2i"]
+[ext_resource type="Script" path="res://scripts/arena/ui/bars/UsageBar.gd" id="4_s6g2i"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_hmayr"]
 line_spacing = 0.0

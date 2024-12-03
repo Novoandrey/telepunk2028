@@ -22,7 +22,7 @@ buses/default_bus_layout="res://assets/music/default_bus_layout.tres"
 [autoload]
 
 MultiplayerManager="*res://scripts/multiplayer/multiplayer_manager.gd"
-SceneManager="*res://scripts/scene_manager/SceneManager.gd"
+SceneManager="*res://scripts/tools/scene_manager/SceneManager.gd"
 
 [display]
 

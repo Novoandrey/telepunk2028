@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://khwdovkv6p6s"]
 
 [ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="1_n2o4l"]
-[ext_resource type="Script" path="res://scripts/tiles/SpawnPoint.gd" id="1_ti0lv"]
+[ext_resource type="Script" path="res://scripts/arena/tiles/SpawnPoint.gd" id="1_ti0lv"]
 [ext_resource type="PackedScene" uid="uid://b655whi43nq3n" path="res://assets/nodes/entities/character/basic_char.tscn" id="2_edqig"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ui77m"]

@@ -1,13 +1,13 @@
 [gd_scene load_steps=31 format=3 uid="uid://cdnrhxx85gis6"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_yxhan"]
-[ext_resource type="Script" path="res://scripts/tools/ClickerManager.gd" id="2_grbvu"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/Level.gd" id="1_yxhan"]
+[ext_resource type="Script" path="res://scripts/clicker/ClickerManager.gd" id="2_grbvu"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="3_e3x6g"]
-[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_tree_manager.gd" id="4_75dd6"]
-[ext_resource type="Script" path="res://scripts/player/CameraManager.gd" id="4_u6g0e"]
-[ext_resource type="Script" path="res://scripts/talent_tree/CameraMover.gd" id="5_8o15m"]
-[ext_resource type="Script" path="res://scripts/talent_tree/resource_button.gd" id="6_1nagx"]
-[ext_resource type="Script" path="res://scripts/talent_tree/clicker_ui.gd" id="9_aep48"]
+[ext_resource type="Script" path="res://scripts/tools/ui/CameraManager.gd" id="4_u6g0e"]
+[ext_resource type="Script" path="res://scripts/clicker/ui/CameraMover.gd" id="5_8o15m"]
+[ext_resource type="Script" path="res://scripts/clicker/ui/tap_button.gd" id="6_1nagx"]
+[ext_resource type="Script" path="res://scripts/clicker/synapses/synapse_manager.gd" id="6_ct5nm"]
+[ext_resource type="Script" path="res://scripts/clicker/ui/clicker_ui.gd" id="9_aep48"]
 [ext_resource type="Texture2D" uid="uid://bllu1r1m5amn3" path="res://assets/sprites/ui/buttons/tap/button-tap-idle.png" id="10_q1owc"]
 [ext_resource type="Texture2D" uid="uid://bilehfu2nbrkl" path="res://assets/sprites/ui/buttons/tap/button-tap-pressed.png" id="11_7kl3u"]
 [ext_resource type="PackedScene" uid="uid://dg0k2wxud2cn3" path="res://assets/nodes/ui/clicker/buy_window.tscn" id="11_imrjp"]
@@ -70,7 +70,7 @@ follow_viewport_enabled = true
 
 [node name="ProgressTreeManager" type="Node2D" parent="GameObjects"]
 position = Vector2(279, 250)
-script = ExtResource("4_75dd6")
+script = ExtResource("6_ct5nm")
 
 [node name="GameScreen" type="CanvasLayer" parent="."]
 
@@ -209,6 +209,7 @@ stretch_mode = 0
 [node name="BuyWindow" parent="GameScreen/Screen" instance=ExtResource("11_imrjp")]
 visible = false
 layout_mode = 2
+script = null
 
 [connection signal="pressed" from="GameObjects/ProgressTreeManager/node 1" to="GameObjects/ProgressTreeManager/node 1" method="_on_skill_node_pressed"]
 [connection signal="pressed" from="GameObjects/ProgressTreeManager/node 2" to="GameObjects/ProgressTreeManager/node 2" method="_on_skill_node_pressed"]

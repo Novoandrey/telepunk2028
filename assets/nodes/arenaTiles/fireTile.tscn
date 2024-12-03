@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cxasr4smr0hda"]
 
 [ext_resource type="Texture2D" uid="uid://cirs4mglvl2m7" path="res://assets/sprites/tilesets/tiles.tres" id="1_bsk3e"]
-[ext_resource type="Script" path="res://scripts/tiles/FireTile.gd" id="1_ssovo"]
+[ext_resource type="Script" path="res://scripts/arena/tiles/FireTile.gd" id="1_ssovo"]
 
 [node name="FireTile" type="Node2D"]
 z_index = -1

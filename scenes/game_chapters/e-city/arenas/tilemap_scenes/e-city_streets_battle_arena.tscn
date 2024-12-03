@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xvapc7uugcbf" path="res://assets/sprites/background/House.png" id="1_j2oby"]
 [ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="2_cuq5w"]
-[ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="3_8wk3b"]
+[ext_resource type="Script" path="res://scripts/arena/tiles/TileMapManager.gd" id="3_8wk3b"]
 
 [node name="BattleArena" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [-116.0, 19.0, -16.0]

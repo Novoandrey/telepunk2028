@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cbqsld5vhu606"]
 
-[ext_resource type="Script" path="res://scripts/ui/ActionController.gd" id="1_x3hfq"]
+[ext_resource type="Script" path="res://scripts/arena/ui/ActionController.gd" id="1_x3hfq"]
 [ext_resource type="Texture2D" uid="uid://3obx6i82ow7p" path="res://assets/sprites/player/Actions/punch.jpg" id="3_463k2"]
 
 [node name="Punch" type="Control"]

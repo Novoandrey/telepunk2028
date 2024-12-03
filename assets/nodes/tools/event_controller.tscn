@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bsat10pig88sv"]
 
-[ext_resource type="Script" path="res://scripts/scene_manager/clicker_event_player.gd" id="1_2iqqs"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/event_player.gd" id="1_2iqqs"]
 
 [node name="EventController" type="AnimationPlayer"]
 script = ExtResource("1_2iqqs")

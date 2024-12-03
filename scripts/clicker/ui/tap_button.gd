@@ -42,9 +42,3 @@ func on_button_pressed():
 	show_floating_text(resource_amount, get_global_mouse_position())
 
 	
-
-
-
-
-
-

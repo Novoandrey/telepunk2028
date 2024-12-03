@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bl24olpybhlie"]
 
-[ext_resource type="Script" path="res://scripts/critters/Critter.gd" id="1_fot8l"]
+[ext_resource type="Script" path="res://scripts/arena/critters/Critter.gd" id="1_fot8l"]
 [ext_resource type="Shader" path="res://assets/shaders/outline_full.gdshader" id="2_17fs1"]
 [ext_resource type="SpriteFrames" uid="uid://uljxm06btsih" path="res://assets/sprites/player/player_state.tres" id="2_q8ngt"]
-[ext_resource type="Script" path="res://scripts/critters/components/CritterMovement.gd" id="4_v102l"]
+[ext_resource type="Script" path="res://scripts/arena/critters/components/CritterMovement.gd" id="4_v102l"]
 
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_rkkrw"]
 properties/0/path = NodePath(".:position")

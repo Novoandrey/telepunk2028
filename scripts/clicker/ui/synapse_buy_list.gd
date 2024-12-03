@@ -1,6 +1,6 @@
 class_name NodeBuyList extends VBoxContainer
 
-var node_arr: Array
+var node_arr: Dictionary
 
 func _ready():
 	ClickerManager.instance.node_tree_changed.connect(on_node_tree_changed)
@@ -11,7 +11,7 @@ func clear_list():
 
 func fill_list():
 	for node in node_arr:
-		
+		pass	
 	pass
 
 func sort_list():

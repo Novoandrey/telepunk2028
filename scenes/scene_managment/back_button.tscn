@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c33r6wij86wpg"]
 
-[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="1_5r7ht"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/BackButton.gd" id="1_5r7ht"]
 
 [node name="BackButton" type="Button"]
 offset_left = 10.0

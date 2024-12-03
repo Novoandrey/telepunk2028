@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://ct0t45o82st4e"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_serlo"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/Level.gd" id="1_serlo"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_6uypq"]
-[ext_resource type="Script" path="res://scripts/ui/ScrollContainerController.gd" id="3_3vlqe"]
+[ext_resource type="Script" path="res://scripts/tools/ui/ScrollContainerController.gd" id="3_3vlqe"]
 [ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="3_3w8p1"]
-[ext_resource type="Script" path="res://scripts/scene_manager/LoadButton.gd" id="3_ak1tq"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/LoadButton.gd" id="3_ak1tq"]
 [ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn" id="4_cup6i"]
 [ext_resource type="Shader" path="res://assets/shaders/blur.gdshader" id="6_qb16u"]
 

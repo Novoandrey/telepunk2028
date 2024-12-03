@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bjw8tcgwdvt54"]
 
-[ext_resource type="Script" path="res://scripts/scene_manager/level_manager/AutoLoad.gd" id="1_kih76"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/level_manager/AutoLoad.gd" id="1_kih76"]
 
 [node name="AutoLoader" type="Timer"]
 one_shot = true

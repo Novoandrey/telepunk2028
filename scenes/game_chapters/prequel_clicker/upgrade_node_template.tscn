@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://6g63puq3f3xk"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_6nnyd"]
-[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node.gd" id="2_hnjys"]
+[ext_resource type="Script" path="res://scripts/clicker/synapses/synapse.gd" id="2_hnjys"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_off7c"]
 font_color = Color(0, 0, 0, 1)

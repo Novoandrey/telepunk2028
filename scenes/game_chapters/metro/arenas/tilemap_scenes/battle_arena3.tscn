@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dvtd36nregs7h"]
 
 [ext_resource type="TileSet" uid="uid://cnh4y1n4dwabp" path="res://assets/sprites/tilesets/arena_tiles.tres" id="1_xjofp"]
-[ext_resource type="Script" path="res://scripts/tiles/TileMapManager.gd" id="2_xk335"]
+[ext_resource type="Script" path="res://scripts/arena/tiles/TileMapManager.gd" id="2_xk335"]
 
 [sub_resource type="Curve" id="Curve_a1aor"]
 _data = [Vector2(0, 0.1), 0.0, 0.0, 0, 0]

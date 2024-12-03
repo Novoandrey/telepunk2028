@@ -93,4 +93,3 @@ func get_critter_at_position(position):
 			if critter._current_tile == cell:
 				return critter
 	return cell
-

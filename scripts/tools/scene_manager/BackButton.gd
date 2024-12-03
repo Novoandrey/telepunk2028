@@ -13,4 +13,3 @@ func _return_to_main_menu():
 func _return_to_previous_level():
 	SceneManager.return_to_scene()
 	pass
-

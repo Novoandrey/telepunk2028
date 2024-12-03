@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cccjv1duxwf3p"]
 
-[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_ffywm"]
+[ext_resource type="Script" path="res://scripts/tools/scene_manager/Level.gd" id="1_ffywm"]
 [ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="2_tqmjh"]
 [ext_resource type="PackedScene" uid="uid://brph51ccaimk8" path="res://scenes/game_chapters/prequel_clicker/intro/003_upload.tscn" id="3_nx4yy"]
 [ext_resource type="PackedScene" uid="uid://bsat10pig88sv" path="res://assets/nodes/tools/event_controller.tscn" id="4_n4p1o"]

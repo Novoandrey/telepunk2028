@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://jvyejru5ragb"]
 
 [ext_resource type="Texture2D" uid="uid://cvsgaxyhm5yl1" path="res://icon.svg" id="1_w6748"]
-[ext_resource type="Script" path="res://scripts/talent_tree/nodes/upgrade_node_modifier.gd" id="2_aht1t"]
+[ext_resource type="Script" path="res://scripts/clicker/synapses/upgrade_node_modifier.gd" id="2_aht1t"]
 [ext_resource type="Texture2D" uid="uid://cekhohdib1sjf" path="res://assets/sprites/ui/nodes/gameobject-modifier.png" id="3_io21a"]
 [ext_resource type="Texture2D" uid="uid://b5fqhsna3pvs5" path="res://assets/sprites/ui/icons/score-icon.png" id="4_nf71g"]
 
