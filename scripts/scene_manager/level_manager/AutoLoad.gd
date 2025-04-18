@@ -4,7 +4,7 @@ extends Timer
 @export var keep_current_level: bool = false ## Сохранить текущий уровень в стэке сцен SceneManager'a для возвращения
 @export var level_to_unload: Node
 
-#@onready var scene_manager: SceneManager = get_tree().root.get_child(1)
+@onready var scene_manager: SceneManager = get_tree().root.get_child(0)
 
 func _ready():
 	timeout.connect(auto_load_level)
@@ -16,5 +16,5 @@ func _exit_tree():
 
 func auto_load_level():
 	if level_to_autoload != null:
-		SceneManager.switch_scenes(level_to_autoload.resource_path, level_to_unload.get_path(), keep_current_level)
+		scene_manager.switch_scenes(level_to_autoload, level_to_unload, keep_current_level)
 	pass

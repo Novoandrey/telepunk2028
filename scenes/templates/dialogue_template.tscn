@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cc0rahc1qfts"]
 
 [ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_wbq15"]
-[ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/back_button.tscn" id="2_2un7r"]
+[ext_resource type="PackedScene" uid="uid://c33r6wij86wpg" path="res://scenes/scene_managment/level_selection/back_button.tscn" id="2_2un7r"]
 
 [node name="DialogueTemplate" type="Node2D"]
 script = ExtResource("1_wbq15")

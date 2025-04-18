@@ -1,31 +1,18 @@
-extends Node
+extends OptionButton
 
-signal selected_level_changed(selected_level: PackedScene)
-
-@export var level_list: Array[PackedScene]
+@export var chapter_list: Array[PackedScene]
 @export var load_button: LoadButton
-@export var container: Node
 
-var selected_level: PackedScene :
-	get:
-		return selected_level
-	set(value):
-		selected_level = value
-		selected_level_changed.emit(selected_level)
-
+@onready var scene_manager: SceneManager = get_node("/root/SceneManager")
 func  _ready():
-	var index = 0
-	for scene in level_list:
-		var button: Button = Button.new()
-		button.pressed.connect(_on_item_selected.bind(index))
-		button.text = get_scene_name(scene)
-		container.add_child(button)
-		index += 1
-	if level_list.size() > 0:
-		selected_level = level_list[0]
+	for scene in chapter_list:
+		add_item(get_scene_name(scene))
+	if chapter_list.size() > 0:
+		load_button.scene_to_load = chapter_list[0]
 	
 func _on_item_selected(index):
-	selected_level = level_list[index]
+	load_button.scene_to_load = chapter_list[index]
+	pass # Replace with function body.
 
 func get_scene_name(scene):
 	var instance = scene.instantiate()

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dvsiao2053egn"]
 
 [ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="1_le3nv"]
-[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/move_button.tscn" id="2_c1mf3"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="2_c1mf3"]
 
 [node name="Actions" type="VBoxContainer"]
 anchors_preset = 11

@@ -6,6 +6,8 @@ extends Node2D
 @export var level_sequence: Array[PackedScene]
 @export var next_stage: PackedScene #Сцена для загрузки после завершения главы
 
+@onready var scene_manager: SceneManager = get_node("/root/SceneManager")
+
 signal on_chapter_completed()
 
 var chapter_completed: bool = false :
@@ -15,7 +17,7 @@ var chapter_completed: bool = false :
 		chapter_completed = value
 		if chapter_completed:
 			on_chapter_completed.emit()
-			SceneManager.switch_scenes(next_stage.resource_path, self.get_path(), true, SceneManager.root)
+			scene_manager.switch_levels(next_stage,self,true,true)
 
 var level_buttons: Array[LevelButton]
 
@@ -30,14 +32,14 @@ func _ready():
 		level_selection = current_scene
 		add_child(current_scene)
 	elif next_stage != null:
-		SceneManager.switch_scenes(next_stage.resource_path, self.get_path(), true, SceneManager.root)
+		scene_manager.switch_scenes(next_stage, self, true, true)
 
 # Смена уровня внутри главы/stage
 func switch_level(level_to_load = null, finish_stage = false):
 	if finish_stage:
 		if next_stage != null:
 			remove_child(current_scene)
-			SceneManager.switch_scenes(next_stage.resource_path, self.get_path(), true, SceneManager.root)
+			scene_manager.switch_scenes(next_stage, self, true, true)
 		return
 	#Смена уровней. Уровень должен быть в списке уровней главы/stage LevelManager'a
 	if level_sequence.has(level_to_load): #Смена текущего уровня на указанный уровень

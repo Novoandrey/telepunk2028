@@ -9,7 +9,7 @@ func _ready():
 	label.text = str(action.current_usage) + "/" + str(action.max_usage)
 	action.current_usage_on_value_changed.connect(current_uses)
 
-func current_uses(_previousValue, currentValue):
+func current_uses(previousValue, currentValue):
 	max_value = action.max_usage
 	value = currentValue
 	label.text = str(currentValue) + "/" + str(action.max_usage)

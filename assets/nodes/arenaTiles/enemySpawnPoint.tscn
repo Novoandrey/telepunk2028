@@ -13,7 +13,6 @@ z_index = -1
 scale = Vector2(5, 5)
 script = ExtResource("1_l7dxb")
 critter = ExtResource("2_rwwbq")
-critter_type = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.124572, 0.0864943, 1)

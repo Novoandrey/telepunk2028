@@ -1,0 +1,179 @@
+[gd_scene load_steps=14 format=3 uid="uid://34axhhhrme4h"]
+
+[ext_resource type="Script" path="res://scripts/tools/Level.gd" id="1_b23n1"]
+[ext_resource type="Script" path="res://scripts/GameManager.gd" id="1_hr80h"]
+[ext_resource type="PackedScene" uid="uid://c6au4ft6g5mgf" path="res://scenes/tilemap_scenes/battle_arena.tscn" id="2_56hj0"]
+[ext_resource type="Texture2D" uid="uid://btq11p2prcem4" path="res://assets/sprites/tilesets/UIBg.png" id="4_6x25v"]
+[ext_resource type="Script" path="res://scripts/ui/bars/ActionPointsBar.gd" id="4_croqn"]
+[ext_resource type="PackedScene" uid="uid://d1nmgav5ci1ym" path="res://assets/nodes/ui/player_camera.tscn" id="4_ijrck"]
+[ext_resource type="Script" path="res://scripts/ui/bars/MovePointsBar.gd" id="5_wy61t"]
+[ext_resource type="Script" path="res://scripts/scene_manager/BackButton.gd" id="7_b3s6c"]
+[ext_resource type="PackedScene" uid="uid://oxwjndfopy8r" path="res://assets/nodes/ui/Arena/punch_button.tscn" id="7_o8j17"]
+[ext_resource type="PackedScene" uid="uid://bdcys2bwnj5e5" path="res://assets/nodes/ui/Arena/grenade_button.tscn" id="8_oxbhq"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_6um3h"]
+keycode = 32
+
+[sub_resource type="Shortcut" id="Shortcut_1a7ty"]
+events = [SubResource("InputEventKey_6um3h")]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ljfbr"]
+
+[node name="Level" type="Node2D"]
+script = ExtResource("1_b23n1")
+metadata/SceneType = "Arena"
+
+[node name="GameManager" type="Node" parent="."]
+script = ExtResource("1_hr80h")
+
+[node name="BattleArena" parent="." instance=ExtResource("2_56hj0")]
+
+[node name="Camera2D" parent="." instance=ExtResource("4_ijrck")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="UI" type="Control" parent="CanvasLayer"]
+z_index = 5
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -200.0
+offset_right = 291.0
+offset_bottom = -44.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+text = "Очки действий"
+
+[node name="AP" type="ProgressBar" parent="CanvasLayer/UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+show_percentage = false
+script = ExtResource("4_croqn")
+
+[node name="APCount" type="Label" parent="CanvasLayer/UI/VBoxContainer/AP"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "4/4"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="CanvasLayer/UI/VBoxContainer"]
+layout_mode = 2
+text = "Очки движений"
+
+[node name="MP" type="ProgressBar" parent="CanvasLayer/UI/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+show_percentage = false
+script = ExtResource("5_wy61t")
+
+[node name="MPCount" type="Label" parent="CanvasLayer/UI/VBoxContainer/MP"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "5/5"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TurnButton" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -31.0
+grow_horizontal = 2
+grow_vertical = 0
+shortcut = SubResource("Shortcut_1a7ty")
+text = "Закончить ход"
+
+[node name="Actions" type="VBoxContainer" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -75.0
+offset_bottom = -48.0
+grow_horizontal = 0
+grow_vertical = 2
+alignment = 2
+
+[node name="Punch" parent="CanvasLayer/UI/Actions" instance=ExtResource("7_o8j17")]
+layout_mode = 2
+
+[node name="Grenade" parent="CanvasLayer/UI/Actions" instance=ExtResource("8_oxbhq")]
+layout_mode = 2
+
+[node name="ActionHint" type="Label" parent="CanvasLayer/UI"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -235.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "Описание действия"
+label_settings = SubResource("LabelSettings_ljfbr")
+horizontal_alignment = 1
+
+[node name="GETBACK" type="Button" parent="CanvasLayer/UI"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 130.0
+offset_bottom = 50.0
+text = "GETBACK"
+script = ExtResource("7_b3s6c")
+
+[node name="PointA" type="Sprite2D" parent="."]
+position = Vector2(270, 480)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6x25v")
+
+[node name="PointB" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_6x25v")
+
+[node name="PointCenter" type="Sprite2D" parent="."]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_6x25v")
+
+[connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/AP" method="On_Player_Critter_Spawned"]
+[connection signal="Player_Critter_Added" from="GameManager" to="CanvasLayer/UI/VBoxContainer/MP" method="On_Player_Critter_Spawned"]
+[connection signal="pressed" from="CanvasLayer/UI/TurnButton" to="GameManager" method="switch_turns"]
+[connection signal="pressed" from="CanvasLayer/UI/GETBACK" to="CanvasLayer/UI/GETBACK" method="_return_to_previous_level"]
