@@ -18,4 +18,3 @@ var objective_completed: bool = false :
 			on_objective_completed.emit(auto_end_on_objective_completion)
 			#Цель уровня завершена
 			pass
-

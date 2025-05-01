@@ -12,7 +12,7 @@ config_version=5
 
 config/name="telepunk2028"
 run/main_scene="res://scenes/game_chapters/game_intro/introduction.tscn"
-config/features=PackedStringArray("4.3", "GL Compatibility")
+config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
 [audio]
@@ -26,8 +26,8 @@ SceneManager="*res://scripts/scene_manager/SceneManager.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=960
+window/size/viewport_width=1280
+window/size/viewport_height=720
 window/stretch/mode="canvas_items"
 window/handheld/orientation=1
 

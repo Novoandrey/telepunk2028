@@ -1,17 +1,70 @@
-[gd_scene load_steps=13 format=3 uid="uid://b8losi1peqew4"]
+[gd_scene load_steps=15 format=3 uid="uid://b8losi1peqew4"]
 
 [ext_resource type="Texture2D" uid="uid://bhmypdo7xr5s8" path="res://assets/sprites/background/background.webp" id="1_c5582"]
-[ext_resource type="AudioStream" uid="uid://cto076y8tkcb6" path="res://assets/music/02-the-morning-of-the-new-millennium.mp3" id="2_eng21"]
-[ext_resource type="Script" path="res://scripts/LocalizationManager.gd" id="2_u0q28"]
-[ext_resource type="Script" path="res://scripts/scene_manager/LoadButton.gd" id="3_wcs3v"]
-[ext_resource type="Script" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ox0b0"]
+[ext_resource type="Script" uid="uid://b85kli2xstx2c" path="res://scripts/LocalizationManager.gd" id="2_u0q28"]
+[ext_resource type="Script" uid="uid://blw3ipvtvbgv6" path="res://scripts/scene_manager/LoadButton.gd" id="3_wcs3v"]
+[ext_resource type="Script" uid="uid://hlbbig5rowq" path="res://scripts/scene_manager/level_manager/LevelListManager.gd" id="4_ox0b0"]
 [ext_resource type="PackedScene" uid="uid://b0kbpks8k1ulf" path="res://scenes/game_chapters/e-city/e-city.tscn" id="5_38na0"]
 [ext_resource type="PackedScene" uid="uid://cpefx5bldpslu" path="res://scenes/game_chapters/metro/metro_level_selection.tscn" id="6_urvkc"]
-[ext_resource type="PackedScene" uid="uid://cdnrhxx85gis6" path="res://scenes/game_chapters/prequel_clicker/prequel_cliquer.tscn" id="7_l1j1d"]
-[ext_resource type="Script" path="res://scripts/tools/show_hide.gd" id="8_85yxo"]
-[ext_resource type="Script" path="res://scripts/multiplayer/multiplayer_manager_ui.gd" id="9_bwey3"]
+[ext_resource type="Script" uid="uid://c0ltox1ct57da" path="res://scripts/tools/Level.gd" id="7_flqon"]
+[ext_resource type="Script" uid="uid://bbtmh2kav8dli" path="res://scripts/tools/show_hide.gd" id="8_85yxo"]
+[ext_resource type="PackedScene" uid="uid://bjw8tcgwdvt54" path="res://scenes/scene_managment/auto_loader.tscn" id="8_rcqid"]
+[ext_resource type="Script" uid="uid://b0vts23wcqtua" path="res://scripts/multiplayer/multiplayer_manager_ui.gd" id="9_bwey3"]
 [ext_resource type="PackedScene" uid="uid://34axhhhrme4h" path="res://scenes/game_chapters/e-city/arenas/e-city_streets.tscn" id="10_doyt2"]
 [ext_resource type="PackedScene" uid="uid://chp8gu65arjd7" path="res://scenes/game_chapters/metro/arenas/metro_entrance.tscn" id="12_vpqbg"]
+
+[sub_resource type="GDScript" id="GDScript_1ajci"]
+script/source = "extends Node2D
+
+var taps = 0
+var strength = 1
+var tapssecond = 0
+var auto = 0
+
+
+func _process(delta):
+	$TapsScore.text = str(taps)
+	$TapsStrength.text = \"Click Strength: \" + str(strength)
+	$AutoScore.text = \"Auto Score: \" + str(auto)
+	$UpgradeButton.text = \"Upgrade Cost: \" + str(strength * 10)
+	$AutoButton.text = \"Auto Cost: \" + str((auto + 1) * 20)
+
+
+func _on_tap_button_pressed():
+	taps += strength
+
+
+func _on_upgrade_button_pressed():
+	if (taps >= strength * 10):
+		taps -= strength * 10
+		strength += 1
+
+
+func _on_auto_button_pressed():
+	if (taps >= (auto + 1) * 20):
+		taps -= (auto + 1) * 20
+		auto += 1
+		
+		
+
+
+func _on_timer_timeout():
+	taps += auto
+	
+"
+
+[sub_resource type="PackedScene" id="PackedScene_7b55j"]
+_bundled = {
+"conn_count": 4,
+"conns": PackedInt32Array(1073741841, 1073741840, 95, 94, 2, 0, 0, 1073741843, 1073741842, 97, 96, 2, 0, 0, 1073741845, 1073741844, 99, 98, 2, 0, 0, 1073741847, 1073741846, 101, 100, 2, 0, 0),
+"editable_instances": [],
+"names": PackedStringArray("Level", "Node2D", "script", "level_name", "ClickerManager", "Node2D", "script", "TapsScore", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "horizontal_alignment", "TapsStrength", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "horizontal_alignment", "AutoScore", "Label", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "horizontal_alignment", "TapButton", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "UpgradeButton", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "AutoButton", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "text", "Timer", "Timer", "autostart", "Node1", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "Node2", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "Node3", "Button", "offset_left", "offset_top", "offset_right", "offset_bottom", "Container", "Container", "offset_left", "offset_top", "offset_right", "offset_bottom", "Button", "Button", "layout_mode", "text", "Button2", "Button", "layout_mode", "text", "RichTextLabel", "RichTextLabel", "layout_mode", "text", "fit_content", "tab_size", "AutoLoader", "_on_tap_button_pressed", "pressed", "_on_upgrade_button_pressed", "pressed", "_on_auto_button_pressed", "pressed", "_on_timer_timeout", "timeout"),
+"node_count": 17,
+"node_paths": [NodePath("."), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager"), NodePath("./ClickerManager/Container"), NodePath("./ClickerManager/Container"), NodePath("./ClickerManager/Container"), NodePath("."), NodePath("ClickerManager"), NodePath("ClickerManager/TapButton"), NodePath("ClickerManager"), NodePath("ClickerManager/UpgradeButton"), NodePath("ClickerManager"), NodePath("ClickerManager/AutoButton"), NodePath("ClickerManager"), NodePath("ClickerManager/Timer")],
+"nodes": PackedInt32Array(-1, -1, 1, 0, -1, 2, 2, 0, 3, 1, 0, 1073741824, 0, 5, 4, -1, 1, 6, 2, 0, 1073741825, 0, 8, 7, -1, 6, 9, 3, 10, 4, 11, 5, 12, 6, 13, 7, 14, 8, 0, 1073741826, 0, 16, 15, -1, 6, 17, 9, 18, 10, 19, 11, 20, 12, 21, 13, 22, 14, 0, 1073741827, 0, 24, 23, -1, 6, 25, 15, 26, 16, 27, 17, 28, 18, 29, 19, 30, 20, 0, 1073741828, 0, 32, 31, -1, 5, 33, 21, 34, 22, 35, 23, 36, 24, 37, 25, 0, 1073741829, 0, 39, 38, -1, 5, 40, 26, 41, 27, 42, 28, 43, 29, 44, 30, 0, 1073741830, 0, 46, 45, -1, 5, 47, 31, 48, 32, 49, 33, 50, 34, 51, 35, 0, 1073741831, 0, 53, 52, -1, 1, 54, 36, 0, 1073741832, 0, 56, 55, -1, 4, 57, 37, 58, 38, 59, 39, 60, 40, 0, 1073741833, 0, 62, 61, -1, 4, 63, 41, 64, 42, 65, 43, 66, 44, 0, 1073741834, 0, 68, 67, -1, 4, 69, 45, 70, 46, 71, 47, 72, 48, 0, 1073741835, 0, 74, 73, -1, 4, 75, 49, 76, 50, 77, 51, 78, 52, 0, 1073741836, 0, 80, 79, -1, 2, 81, 53, 82, 54, 0, 1073741837, 0, 84, 83, -1, 2, 85, 55, 86, 56, 0, 1073741838, 0, 88, 87, -1, 4, 89, 57, 90, 58, 91, 59, 92, 60, 0, 1073741839, 0, 2147483647, 93, 61, 0, 0),
+"variants": [ExtResource("7_flqon"), "Prequel", SubResource("GDScript_1ajci"), 153.0, 92.0, 317.0, 124.0, "000", 1, 151.0, 21.0, 315.0, 53.0, "STRENGTH", 1, 141.0, 60.0, 305.0, 92.0, "Auto Score", 1, 117.0, 810.0, 345.0, 964.0, "TAP", 118.0, 707.0, 344.0, 742.0, "Upgrade", 118.0, 759.0, 344.0, 794.0, "Auto", true, 174.0, 582.0, 283.0, 651.0, 174.0, 451.0, 283.0, 520.0, 174.0, 306.0, 283.0, 375.0, 65.0, 127.0, 424.0, 370.0, 2, "UPGRAGE", 2, "Exit", 2, "вот тут у нас длиннющее описание", true, 5, ExtResource("8_rcqid")],
+"version": 3
+}
 
 [node name="Game" type="Node2D"]
 
@@ -21,10 +74,6 @@ scale = Vector2(0.863281, 0.863282)
 texture = ExtResource("1_c5582")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_eng21")
-autoplay = true
 
 [node name="MainMenuUI" type="Control" parent="."]
 visible = false
@@ -99,12 +148,12 @@ scene_to_unload = NodePath("../..")
 
 [node name="LevelList" type="Panel" parent="MainMenuUI" node_paths=PackedStringArray("load_button", "container")]
 layout_mode = 0
-offset_left = 97.0
-offset_top = 222.0
-offset_right = 232.0
-offset_bottom = 357.0
+offset_left = -520.0
+offset_top = -24.0
+offset_right = -385.0
+offset_bottom = 111.0
 script = ExtResource("4_ox0b0")
-level_list = Array[PackedScene]([ExtResource("5_38na0"), ExtResource("6_urvkc"), ExtResource("7_l1j1d")])
+level_list = Array[PackedScene]([ExtResource("5_38na0"), ExtResource("6_urvkc"), SubResource("PackedScene_7b55j")])
 load_button = NodePath("../Arena 1")
 container = NodePath("ScrollContainer/VBoxContainer")
 
@@ -113,6 +162,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 61.0
+offset_top = -75.0
+offset_right = 61.0
+offset_bottom = -75.0
 grow_horizontal = 2
 grow_vertical = 2
 horizontal_scroll_mode = 0
@@ -124,10 +177,10 @@ size_flags_horizontal = 3
 
 [node name="MultiplayerButton" type="Button" parent="MainMenuUI" node_paths=PackedStringArray("node_to_hide", "node_to_show")]
 layout_mode = 0
-offset_left = -100.0
-offset_top = 362.0
-offset_right = 100.0
-offset_bottom = 412.0
+offset_left = -403.0
+offset_top = 208.0
+offset_right = -203.0
+offset_bottom = 258.0
 text = "Мультиплеер"
 script = ExtResource("8_85yxo")
 node_to_hide = NodePath("..")
@@ -142,10 +195,10 @@ script = ExtResource("9_bwey3")
 
 [node name="Back" type="Button" parent="MultiplayerMenuUI" node_paths=PackedStringArray("node_to_hide", "node_to_show")]
 layout_mode = 0
-offset_left = -227.0
-offset_top = -431.0
-offset_right = -61.0
-offset_bottom = -389.0
+offset_left = -492.0
+offset_top = 210.0
+offset_right = -326.0
+offset_bottom = 252.0
 text = "Назад"
 script = ExtResource("8_85yxo")
 node_to_hide = NodePath("..")
@@ -161,10 +214,10 @@ text = "Хост"
 
 [node name="Client" type="Button" parent="MultiplayerMenuUI"]
 layout_mode = 0
-offset_left = 81.0
-offset_top = 264.0
-offset_right = 247.0
-offset_bottom = 326.0
+offset_left = 208.0
+offset_top = 241.0
+offset_right = 374.0
+offset_bottom = 303.0
 text = "Клиент
 "
 
@@ -193,17 +246,18 @@ layout_mode = 2
 
 [node name="TextEdit" type="TextEdit" parent="MultiplayerMenuUI"]
 layout_mode = 0
-offset_left = -226.0
-offset_top = -278.0
-offset_bottom = -238.0
+offset_left = -428.0
+offset_top = -109.0
+offset_right = -202.0
+offset_bottom = -69.0
 placeholder_text = "Имя игрока"
 
 [node name="Arena 1" type="Button" parent="MultiplayerMenuUI" node_paths=PackedStringArray("scene_to_unload")]
 layout_mode = 0
-offset_left = -87.0
-offset_top = 368.0
-offset_right = 88.0
-offset_bottom = 404.0
+offset_left = -33.0
+offset_top = 264.0
+offset_right = 142.0
+offset_bottom = 300.0
 text = "Загрузить уровень"
 clip_text = true
 script = ExtResource("3_wcs3v")
@@ -212,10 +266,10 @@ scene_to_unload = NodePath("../..")
 
 [node name="OptionButton" type="OptionButton" parent="MultiplayerMenuUI"]
 layout_mode = 0
-offset_left = 23.0
-offset_top = -279.0
-offset_right = 223.0
-offset_bottom = -239.0
+offset_left = 218.0
+offset_top = -123.0
+offset_right = 418.0
+offset_bottom = -83.0
 
 [connection signal="button_down" from="MainMenuUI/ButtonRU" to="." method="_on_button_ru_button_down"]
 [connection signal="button_down" from="MainMenuUI/ButtonRU" to="MainMenuUI" method="_on_button_ru_button_down"]

@@ -1,9 +1,10 @@
 [gd_scene load_steps=2 format=3 uid="uid://dercsxmevvbdf"]
 
-[ext_resource type="Script" path="res://scripts/player/Player.gd" id="1_1tl5k"]
+[sub_resource type="Resource" id="Resource_s3k78"]
+metadata/__load_path__ = "res://scripts/player/Player.gd"
 
 [node name="Player" type="Node2D"]
 z_index = 1
 y_sort_enabled = true
 scale = Vector2(3, 3)
-script = ExtResource("1_1tl5k")
+script = SubResource("Resource_s3k78")

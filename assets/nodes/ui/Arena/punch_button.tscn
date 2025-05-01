@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://oxwjndfopy8r"]
 
-[ext_resource type="Script" path="res://scripts/ui/ActionController.gd" id="1_x3hfq"]
+[ext_resource type="Script" uid="uid://d4nj6plb6f7dc" path="res://scripts/ui/ActionController.gd" id="1_x3hfq"]
 [ext_resource type="PackedScene" uid="uid://b6pi2cjidhtv" path="res://assets/nodes/entities/actions/punch.tscn" id="2_ugsx5"]
 [ext_resource type="Texture2D" uid="uid://3obx6i82ow7p" path="res://assets/sprites/player/Actions/punch.jpg" id="3_463k2"]
-[ext_resource type="Script" path="res://scripts/ui/bars/UsageBar.gd" id="4_bihmg"]
+[ext_resource type="Script" uid="uid://qt6xwr074awm" path="res://scripts/ui/bars/UsageBar.gd" id="4_bihmg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_0xby3"]
 line_spacing = 0.0
